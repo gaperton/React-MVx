@@ -1,0 +1,34 @@
+{
+  "name": "react-mvc",
+  "version": "1.0.0",
+  "description": "React MVC library",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react",
+    "mvc",
+    "model",
+    "state",
+    "mvvm"
+  ],
+  "author": "Vlad Balin",
+  "license": "MIT",
+  "devDependencies": {
+    "awesome-typescript-loader": "^3.1.2",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "source-map-loader": "^0.2.0",
+    "type-r": "^1.0.0-rc6",
+    "typescript": "^2.2.1",
+    "valuelink": "^1.3.12",
+    "webpack": "^2.2.1"
+  },
+  "dependencies": {
+    "@types/react": "^15.0.16",
+    "@types/react-dom": "^0.14.23",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
+  }
+}

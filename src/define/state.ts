@@ -1,0 +1,64 @@
+/*****************
+ * State
+ */
+import { collectSpecs } from './typeSpecs'
+import { Record, Store } from 'type-r'
+
+export default function process( spec, baseProto ){
+    // process state spec...
+    const attributes = collectSpecs( spec, 'state' );
+
+    if( attributes || spec.State || baseProto.State ){
+        const BaseModel = baseProto.State || spec.State || Record;
+        
+        spec.State    = attributes ? (
+            typeof attributes === 'function' ? attributes : BaseModel.default( attributes )
+        ): BaseModel;
+
+        spec.mixins.push( StateMixin );
+        spec.mixins.push( UpdateOnNestedChangesMixin );
+
+        delete spec.state;
+        delete spec.attributes;
+    }
+}
+
+export const StateMixin = {
+    state : null,
+
+    componentWillMount(){
+        const state = this.state = new this.State();
+        // Take ownership on state...
+        state._owner = this;
+        state._ownerKey = 'state';
+    },
+
+    context : {
+        _nestedStore : Store
+    },
+
+    // reference global store to fix model's store locator
+    getStore(){
+        // Attempt to get the store from the context first. Then - fallback to the state's default store.
+        // TBD: Need to figure out a good way of managing local stores.
+        let context, state;
+
+        return  ( ( context = this.context ) && context._archetypeStore ) ||
+                ( ( state = this.state ) && state._defaultStore );
+    },
+
+    componentWillUnmount(){
+        const { state } = this;
+        state._owner = state._ownerKey = void 0;
+        state.dispose();
+        this.state = void 0;
+    }
+};
+
+export const UpdateOnNestedChangesMixin = {
+    _onChildrenChange(){},
+
+    componentDidMount(){
+        this._onChildrenChange = this.asyncUpdate;
+    }
+};
