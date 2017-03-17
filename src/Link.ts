@@ -4,7 +4,7 @@
  */
 
 import { Mixable, Record } from 'type-r'
-import Link 'valuelink'
+import Link from 'valuelink/valuelink'
 
 export default Link;
 
@@ -54,7 +54,7 @@ Record.mixins({
  * Strict evaluation of value, lazy evaluation of validation error.
  * Links are cached in the records
  */
-class RecordLink extends Link {
+class RecordLink extends Link< any > {
     constructor( public record, public attr, value ){
         super( value );
     }
@@ -76,7 +76,7 @@ class RecordLink extends Link {
     }
 }
 
-class RecordDeepLink extends Link {
+class RecordDeepLink extends Link< any > {
     constructor( public record, public path, public options ){
         super( record.deepGet( path ) );
     }
@@ -136,7 +136,7 @@ Record.Collection.mixins({
  * Strict evaluation of value, no error.
  * Safe implementation of _changeToken.
  */
-class CollectionLink extends Link{
+class CollectionLink extends Link< boolean >{
     constructor( public collection, public record ){
         super( Boolean( collection._byId[ record.cid ] ) );
     }
