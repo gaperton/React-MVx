@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { define, Record, mixins, mergeProps, extendable, mixinRules, tools, Mixable } from 'type-r'
-import processSpec, { Node, Element } from './define'
+import { define, Record, Store, mixins, mergeProps, extendable, mixinRules, tools, Mixable } from 'type-r'
+import processSpec, { Node, Element, TypeSpecs } from './define'
 import Link from './Link'
 
 // extend React namespace
@@ -56,14 +56,22 @@ function createClass( a_spec ){
 @extendable
 @mixinRules( reactMixinRules )
 export class Component<P> extends React.Component<P, Record> {
-    static propTypes: any;
-    static defaultProps: any;
-    static contextTypes : any;
-    static childContextTypes : any;
+    static state? : TypeSpecs | typeof Record
+    static store? : TypeSpecs | typeof Store
+    static props? : TypeSpecs
+    static autobind? : string
+    static context? : TypeSpecs
+    static childContext? : TypeSpecs
+    static pureRender? : boolean
+
+    private static propTypes: any;
+    private static defaultProps: any;
+    private static contextTypes : any;
+    private static childContextTypes : any;
 
     static define( protoProps, staticProps ){
         var BaseClass          = tools.getBaseClass( this ),
-            staticsDefinition = tools.getChangedStatics( this, 'state', 'Model', 'props', 'autobind', 'context', 'childContext', 'listenToProps', 'pureRender' ),
+            staticsDefinition = tools.getChangedStatics( this, 'state', 'store', 'props', 'autobind', 'context', 'childContext', 'pureRender' ),
             combinedDefinition = tools.assign( staticsDefinition, protoProps || {} );
 
         var definition = processSpec( combinedDefinition, this.prototype );

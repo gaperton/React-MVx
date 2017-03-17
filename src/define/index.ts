@@ -18,4 +18,4 @@ export default function process( spec, baseProto = {} ){
     return spec;
 };
 
-export { Node, Element } from './typeSpecs'
+export { Node, Element, TypeSpecs } from './typeSpecs'

@@ -8,8 +8,8 @@ export default function process( spec, baseProto ){
     // process state spec...
     const attributes = collectSpecs( spec, 'state' );
 
-    if( attributes || spec.State || baseProto.State ){
-        const BaseModel = baseProto.State || spec.State || Record;
+    if( attributes || baseProto.State ){
+        const BaseModel = baseProto.State || Record;
         
         spec.State    = attributes ? (
             typeof attributes === 'function' ? attributes : BaseModel.default( attributes )
