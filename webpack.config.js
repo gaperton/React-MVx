@@ -23,8 +23,18 @@ module.exports = {
     },
 
     externals: {
-        "react": "React",
-        "react-dom": "ReactDOM",
-        "type-r": "TypeR",
+        'react' : {
+            commonjs  : 'react',
+            commonjs2 : 'react',
+            amd       : 'react',
+            root      : 'React'
+        },
+
+        "type-r": {
+            commonjs  : 'type-r',
+            commonjs2 : 'type-r',
+            amd       : 'type-r',
+            root      : 'Nested'
+        }
     }
 };

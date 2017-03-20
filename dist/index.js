@@ -1,12 +1,12 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("TypeR"), require("React"));
+		module.exports = factory(require("type-r"), require("react"));
 	else if(typeof define === 'function' && define.amd)
-		define(["TypeR", "React"], factory);
+		define(["type-r", "react"], factory);
 	else if(typeof exports === 'object')
-		exports["ReactMVC"] = factory(require("TypeR"), require("React"));
+		exports["ReactMVC"] = factory(require("type-r"), require("react"));
 	else
-		root["ReactMVC"] = factory(root["TypeR"], root["React"]);
+		root["ReactMVC"] = factory(root["Nested"], root["React"]);
 })(this, function(__WEBPACK_EXTERNAL_MODULE_0__, __WEBPACK_EXTERNAL_MODULE_2__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
