@@ -1,15 +1,16 @@
 {
-  "name": "react-mvc",
-  "version": "1.0.0",
-  "description": "React MVC library",
+  "name": "react-mvx",
+  "version": "1.0.0-a00",
+  "description": "React MV* framework",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": ["dist"],
+  "files": ["dist", "tags.jsx", "tags.js"],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "pull" : "git submodule update --remote",
-    "compile" : "./node_modules/.bin/webpack", 
-    "build": "npm run pull && npm run compile"
+    "compile" : "./node_modules/.bin/webpack",
+    "deploy" : "cp ./NestedLink/tags.* .", 
+    "build": "npm run pull && npm run compile && npm run deploy"
   },
   "keywords": [
     "react",
