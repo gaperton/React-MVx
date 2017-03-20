@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { define, Record, Store, mixins, mergeProps, extendable, mixinRules, tools, Mixable } from 'type-r'
+import { define, Record, Store, mixins, mergeProps, extendable, mixinRules, tools, Mixable, MixinRules } from 'type-r'
 import processSpec, { Node, Element, TypeSpecs } from './define'
 import Link from './Link'
 
@@ -12,19 +12,13 @@ ReactMVC.Component = Component;
 ReactMVC.define = define;
 ReactMVC.mixins = mixins;
 
-declare global {
-    interface Function {
-        value( x : any ) : any
-    }
-}
-
 ReactMVC.Node = Node.value( null );
 ReactMVC.Element = Element.value( null );
 ReactMVC.Link = Link;
 
 export default ReactMVC;
 
-const reactMixinRules = {
+const reactMixinRules : MixinRules = {
     componentWillMount        : 'reverse',
     componentDidMount         : 'reverse',
     componentWillReceiveProps : 'reverse',

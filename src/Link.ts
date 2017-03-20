@@ -4,11 +4,11 @@
  */
 
 import { Mixable, Record } from 'type-r'
-import Link from 'valuelink/valuelink'
+import Link from '../NestedLink/valuelink'
 
 export default Link;
 
-Mixable.mixTo( Link );
+Mixable.mixTo( <any>Link );
 
 interface LinksCache {
     [ key : string ] : RecordLink
@@ -105,7 +105,7 @@ class RecordDeepLink extends Link< any > {
 }
 
 function getLinksCache( record : Record ) : LinksCache {
-    return record._links || ( record._links = new record.Attributes( {} ) );
+    return ( <any>record )._links || ( ( <any>record )._links = new record.Attributes( {} ) );
 }
 
 function cacheLink( links : LinksCache, record : Record, key : string ) : RecordLink {

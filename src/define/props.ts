@@ -7,7 +7,7 @@
 import { collectSpecs, compileSpecs, TypeSpecs } from './typeSpecs'
 import createPureRenderMixin from './pureRender'
 
-interface PropsMetadata {
+export interface PropsMetadata {
     pureRender? : boolean
     _props? : TypeSpecs
     _listenToPropsArray? : string[]
