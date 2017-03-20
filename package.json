@@ -1,6 +1,6 @@
 {
   "name": "react-mvx",
-  "version": "1.0.0-a00",
+  "version": "1.0.0-a01",
   "description": "React MV* framework",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
