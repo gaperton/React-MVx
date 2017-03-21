@@ -226,7 +226,7 @@ function process(spec, baseProto) {
     var attributes = typeSpecs_1.collectSpecs(spec, 'state');
     if (attributes || baseProto.State) {
         var BaseModel = baseProto.State || type_r_1.Record;
-        spec.State = attributes ? (typeof attributes === 'function' ? attributes : BaseModel.default(attributes)) : BaseModel;
+        spec.State = attributes ? (typeof attributes === 'function' ? attributes : BaseModel.defaults(attributes)) : BaseModel;
         spec.mixins.push(exports.StateMixin);
         spec.mixins.push(exports.UpdateOnNestedChangesMixin);
         delete spec.state;
@@ -1123,22 +1123,22 @@ var __rest = (this && this.__rest) || function (s, e) {
             t[p[i]] = s[p[i]];
     return t;
 };
-Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(2);
 var type_r_1 = __webpack_require__(0);
 var define_1 = __webpack_require__(5);
 var Link_1 = __webpack_require__(4);
 // extend React namespace
-var ReactMVC = Object.create(React);
+var ReactMVx = Object.create(React);
+// Make it compatible with ES6 module format.
+ReactMVx.default = ReactMVx;
 // listenToProps, listenToState, model, attributes, Model
-ReactMVC.createClass = createClass;
-ReactMVC.Component = Component;
-ReactMVC.define = type_r_1.define;
-ReactMVC.mixins = type_r_1.mixins;
-ReactMVC.Node = define_1.Node.value(null);
-ReactMVC.Element = define_1.Element.value(null);
-ReactMVC.Link = Link_1.default;
-exports.default = ReactMVC;
+ReactMVx.createClass = createClass;
+ReactMVx.Component = Component;
+ReactMVx.define = type_r_1.define;
+ReactMVx.mixins = type_r_1.mixins;
+ReactMVx.Node = define_1.Node.value(null);
+ReactMVx.Element = define_1.Element.value(null);
+ReactMVx.Link = Link_1.default;
 var reactMixinRules = {
     componentWillMount: 'reverse',
     componentDidMount: 'reverse',
@@ -1191,7 +1191,8 @@ Component = __decorate([
     type_r_1.extendable,
     type_r_1.mixinRules(reactMixinRules)
 ], Component);
-exports.Component = Component;
+ReactMVx.Component = Component;
+module.exports = ReactMVx;
 
 
 /***/ })

@@ -1,15 +1,15 @@
 {
   "name": "react-mvx",
-  "version": "1.0.0-a02",
+  "version": "1.0.0-a03",
   "description": "React MV* framework",
   "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "types": "./dist/src/index.d.ts",
   "files": ["dist", "tags.jsx", "tags.js"],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "pull" : "git submodule update --remote",
+    "pull" : "git submodule update --remote && cp ./NestedLink/tags.* .",
     "compile" : "./node_modules/.bin/webpack",
-    "deploy" : "cp ./NestedLink/tags.* .", 
+    "deploy" : "cp -R ./dist ./examples/*/node_modules/react-mvx", 
     "build": "npm run pull && npm run compile && npm run deploy"
   },
   "keywords": [

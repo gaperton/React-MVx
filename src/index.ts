@@ -4,19 +4,20 @@ import processSpec, { Node, Element, TypeSpecs } from './define'
 import Link from './Link'
 
 // extend React namespace
-const ReactMVC = Object.create( React );
+const ReactMVx = Object.create( React );
+// Make it compatible with ES6 module format.
+ReactMVx.default = ReactMVx;
+export = ReactMVx;
 
 // listenToProps, listenToState, model, attributes, Model
-ReactMVC.createClass = createClass;
-ReactMVC.Component = Component;
-ReactMVC.define = define;
-ReactMVC.mixins = mixins;
+ReactMVx.createClass = createClass;
+ReactMVx.Component = Component;
+ReactMVx.define = define;
+ReactMVx.mixins = mixins;
 
-ReactMVC.Node = Node.value( null );
-ReactMVC.Element = Element.value( null );
-ReactMVC.Link = Link;
-
-export default ReactMVC;
+ReactMVx.Node = Node.value( null );
+ReactMVx.Element = Element.value( null );
+ReactMVx.Link = Link;
 
 const reactMixinRules : MixinRules = {
     componentWillMount        : 'reverse',
@@ -49,7 +50,7 @@ function createClass( a_spec ){
 
 @extendable
 @mixinRules( reactMixinRules )
-export class Component<P> extends React.Component<P, Record> {
+class Component<P> extends React.Component<P, Record> {
     static state? : TypeSpecs | typeof Record
     static store? : TypeSpecs | typeof Store
     static props? : TypeSpecs
@@ -82,3 +83,5 @@ export class Component<P> extends React.Component<P, Record> {
         return this;
     }
 }
+
+ReactMVx.Component = Component;

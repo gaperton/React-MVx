@@ -12,7 +12,7 @@ export default function process( spec, baseProto ){
         const BaseModel = baseProto.State || Record;
         
         spec.State    = attributes ? (
-            typeof attributes === 'function' ? attributes : BaseModel.default( attributes )
+            typeof attributes === 'function' ? attributes : BaseModel.defaults( attributes )
         ): BaseModel;
 
         spec.mixins.push( StateMixin );
