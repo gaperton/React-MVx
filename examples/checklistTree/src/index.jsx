@@ -1,6 +1,6 @@
 import './styles.css'
 
-// You should import React from nestedreact, and use it as drop-in replacement.
+// You should import React from react-mvx, and use it as drop-in replacement.
 // It's 100% compatible.
 import React, { define } from 'react-mvx'
 import ReactDOM from 'react-dom'
@@ -14,10 +14,10 @@ import { ChecklistItem } from './model'
 // Local counter to help us count top-level renders.
 let _renders = 0;
 
-@define // <- That should be places before every class definition, which uses NestedReact features.
-class App extends React.Component {
-    // NestedReact state definition. Syntax is the same as NestedTypes model attributes spec.
-    // In fact, this state _is_ the NestedTypes model internally.
+// @define should be places before every class definition, which uses react-mvx features.
+@define class App extends React.Component {
+    // react-mvx state definition. Syntax is the same as type-R model attributes spec.
+    // In fact, this state _is_ the type-R model internally.
     static state = {
         // 'items' is a collection of ChecklistItem model.
         items : ChecklistItem.Collection // <- It's type annotation. Constructor function designates type.
@@ -25,7 +25,7 @@ class App extends React.Component {
 
     // Save and restore state.
     componentWillMount(){
-        // All state in NestedReact is serializable by default.
+        // All state in react-mvx is serializable by default.
         const { state } = this,
               // load raw JSON from local storage
               json = JSON.parse( localStorage.getItem( 'checklist' ) || "{}" );
@@ -66,9 +66,8 @@ const List = ({ items }) => (
     </div>
 );
 
-@define // <- Don't forget @define
-class Item extends React.Component{
-    // NestedReact props definition. Same syntax as for the 'state'.
+@define class Item extends React.Component{
+    // react-mvx props definition. Same syntax as for the 'state'.
     static props = {
         model : ChecklistItem // <- Type annotation, using constructor function. No default value.
     };

@@ -1,10 +1,9 @@
-import React, { define } from 'nestedreact'
+import React, { define } from 'react-mvx'
 import cx from 'classnames'
-import { Input } from 'valuelink/tags.jsx'
-
+import { Input } from 'react-mvx/tags.jsx'
 import { ToDo } from './model'
 
-@define
+@define export default
 class TodoList extends React.Component {
     static props = {
         todos      : ToDo.Collection,
@@ -26,7 +25,7 @@ class TodoList extends React.Component {
 
         return (
             <section className="main">
-                <Input className="toggle-all" type="checkbox"
+                <Input className="toggle-all" id="toggle-all" type="checkbox"
                        checkedLink={ todos.getLink( 'allDone' ) }/>
 
                 <label htmlFor="toggle-all">Mark all as complete</label>
@@ -41,8 +40,6 @@ class TodoList extends React.Component {
         );
     }
 }
-
-export default TodoList;
 
 function clearOnEnter( x, e ){
     if( e.keyCode === 13 ) return null;

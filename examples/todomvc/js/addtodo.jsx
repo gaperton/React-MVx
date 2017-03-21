@@ -1,9 +1,8 @@
-import React from 'nestedreact'
-import { define } from 'nestedtypes'
-import { Input } from 'valuelink/tags.jsx'
+import React, { define } from 'react-mvx'
+import { Input } from 'react-mvx/tags.jsx'
 
 @define
-class AddTodo extends React.Component {
+export default class AddTodo extends React.Component {
     static props = {
         onEnter : Function.value( function(){} )
     }
@@ -34,5 +33,3 @@ class AddTodo extends React.Component {
         }
     }
 }
-
-export default AddTodo;

@@ -1,7 +1,6 @@
-import { Model, Collection, define } from 'nestedtypes'
+import { Record, define } from 'type-r'
 
-@define
-class ToDoCollection extends Collection {
+@define class ToDoCollection extends Record.Collection {
 	clearCompleted(){
 		this.remove( this.filter( todo => todo.done ) );
 	}
@@ -11,9 +10,7 @@ class ToDoCollection extends Collection {
 	}
 
 	set allDone( val ){
-		this.transaction( () =>{
-			this.each( todo => todo.done = val );
-		});
+		this.updateEach( todo => todo.done = val );
 	}
 
 	get activeCount(){
@@ -22,8 +19,8 @@ class ToDoCollection extends Collection {
 }
 
 @define
-export class ToDo extends Model {
-	static Collection = ToDoCollection
+export class ToDo extends Record {
+	static Collection = ToDoCollection;
 	static attributes = {
 		done : Boolean,
 		desc : String

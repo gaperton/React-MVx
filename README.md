@@ -1,8 +1,23 @@
-# ReactMVC
+# React-MVx
 
-React's bindings to the Type-R
+MVVM framework based on React and Type-R. It is used as core frontend technology at Volicon/Verizon, and aims to
+fix what we believe is the wrong direction in React ecosystem development.
 
-## New spec for props
+In React-MVx:
+
+- Two-way data binding is first class citizen.
+- Domain state management doesn't rely on singletons.
+- Local UI state and domain state are managed with the same universal technique.
+- State is mutable, observable, JSON serializable, and utilize the full power of OO.
+- Both unidirectional data flow with pure render optimization and local UI updates are supported.
+
+This things are achieved with replacement of standard React's state with `Record` subclass,
+which is an observable and JSON serializable object with typed attributes. `Record` and `Record.Collection`
+can be nested to describe the state of arbitrary complexity.
+
+THIS IS THE TECHNOLOGY PREVIEW. NOT PRODUCTION READY YET. WE'RE WORKING ON IT.
+
+## Notes for myself. Don't read.
 
 Core functionality:
 

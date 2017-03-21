@@ -1,13 +1,12 @@
 import 'css/app.css'
-import React, { define } from 'nestedreact'
+import React, { define } from 'react-mvx'
 import ReactDOM from 'react-dom'
 import {ToDo} from './model.js'
 import TodoList from './todolist.jsx'
 import Filter from './filter.jsx'
 import AddTodo from './addtodo.jsx'
 
-@define
-class App extends React.Component {
+@define class App extends React.Component {
     // Declare component state
     static state = {
         todos      : ToDo.Collection,
