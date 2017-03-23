@@ -95,11 +95,11 @@
 	    }], [{
 	        key: 'attributes',
 	        value: {
-	            name: String.has.check(_reactMvxTags.isRequired).check(function (x) {
+	            name: String.isRequired.has.check(function (x) {
 	                return x.indexOf(' ') < 0;
 	            }, 'Spaces are not allowed'),
 	
-	            email: String.has.check(_reactMvxTags.isRequired).check(_reactMvxTags.isEmail),
+	            email: String.isRequired.has.check(_reactMvxTags.isEmail),
 	
 	            isActive: true
 	        },

@@ -9,12 +9,10 @@ import {Input, isRequired, isEmail } from 'react-mvx/tags'
 
 @define class User extends Record {
     static attributes = {
-        name : String.has
-                    .check( isRequired )
-                    .check( x => x.indexOf( ' ' ) < 0, 'Spaces are not allowed' ),
+        name : String.isRequired.has
+                     .check( x => x.indexOf( ' ' ) < 0, 'Spaces are not allowed' ),
 
-        email : String.has
-                      .check( isRequired )
+        email : String.isRequired.has
                       .check( isEmail ),
 
         isActive : true
