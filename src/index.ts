@@ -82,6 +82,14 @@ class Component<P> extends React.Component<P, Record> {
 
         return this;
     }
+
+    readonly state : Record
+    readonly store? : Store
+
+    assignToState( x, key ){
+        this.state.assignFrom({ [ key ] : x });
+    }
 }
 
 ReactMVx.Component = Component;
+ReactMVx.assignToState = Component.prototype.assignToState;

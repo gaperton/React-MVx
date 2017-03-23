@@ -1,6 +1,10 @@
 {
   "name": "react-mvx",
   "version": "1.0.0-a04",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gaperton/React-MVx.git"
+  },
   "description": "React MV* framework",
   "main": "./dist/index.js",
   "types": "./dist/src/index.d.ts",

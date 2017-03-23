@@ -1185,6 +1185,10 @@ var Component = (function (_super) {
         type_r_1.Mixable.define.call(this, protoDefinition, staticProps);
         return this;
     };
+    Component.prototype.assignToState = function (x, key) {
+        this.state.assignFrom((_a = {}, _a[key] = x, _a));
+        var _a;
+    };
     return Component;
 }(React.Component));
 Component = __decorate([
@@ -1192,6 +1196,7 @@ Component = __decorate([
     type_r_1.mixinRules(reactMixinRules)
 ], Component);
 ReactMVx.Component = Component;
+ReactMVx.assignToState = Component.prototype.assignToState;
 module.exports = ReactMVx;
 
 

@@ -1,14 +1,13 @@
 import './main.css'
 import ReactDOM from 'react-dom'
 
-import React from 'nestedreact'
-import { Model, define } from 'nestedtypes'
+import React from 'react-mvx'
+import { Record, define } from 'type-r'
 
 import Modal from 'react-modal'
-import {Input, isRequired, isEmail } from 'valuelink/tags'
+import {Input, isRequired, isEmail } from 'react-mvx/tags'
 
-@define
-class User extends Model{
+@define class User extends Record {
     static attributes = {
         name : String.has
                     .check( isRequired )
@@ -97,28 +96,24 @@ const UserRow = ( { user, onEdit } ) =>(
     </div>
 );
 
-@define({
-    autobind : 'onSubmit onCancel',
-    props : {
-        user    : User,
-        onClose : Function
-    },
+@define class EditUser extends React.Component {
+    static autobind = 'onSubmit onCancel';
 
-    state : {
+    static props = {
+        user    : User.has.watcher( React.assignToState ),
+        onClose : Function
+    };
+
+    static state = {
         user : User
-    }
-})
-class EditUser extends React.Component {
-    componentWillMount(){
-        this.state.user = this.props.user.clone();
-    }
+    };
 
     onSubmit( e ){
         e.preventDefault();
 
         const { user, onClose } = this.props;
 
-        user.set( this.state.user.attributes );
+        user.assignFrom( this.state.user );
         onClose( user );
     }
 
