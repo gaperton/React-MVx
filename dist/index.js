@@ -84,13 +84,19 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_0__;
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_type_r__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_type_r___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_type_r__);
+/* harmony export (immutable) */ __webpack_exports__["c"] = collectSpecs;
+/* harmony export (immutable) */ __webpack_exports__["d"] = compileSpecs;
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Node; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return Element; });
 
-Object.defineProperty(exports, "__esModule", { value: true });
-var react_1 = __webpack_require__(2);
-var type_r_1 = __webpack_require__(0);
+
 function collectSpecs(spec, name) {
     var attributes = null;
     // Scan through local mixin, and gather specs. Refactor it later, it's not good. At all.
@@ -98,14 +104,14 @@ function collectSpecs(spec, name) {
         var mixin = spec.mixins[i], mixinAttrs = mixin[name];
         if (mixinAttrs) {
             attributes || (attributes = {});
-            type_r_1.tools.assign(attributes, mixinAttrs);
+            __WEBPACK_IMPORTED_MODULE_1_type_r__["tools"].assign(attributes, mixinAttrs);
         }
     }
     // Merge it with local data.
     var specAttrs = spec[name];
     if (specAttrs) {
         if (attributes) {
-            type_r_1.tools.assign(attributes, specAttrs);
+            __WEBPACK_IMPORTED_MODULE_1_type_r__["tools"].assign(attributes, specAttrs);
         }
         else {
             attributes = specAttrs;
@@ -113,11 +119,10 @@ function collectSpecs(spec, name) {
     }
     return attributes;
 }
-exports.collectSpecs = collectSpecs;
 function compileSpecs(props) {
     var propTypes = {}, 
     // Create NestedTypes model definition to process props spec.
-    modelProto = type_r_1.Record.defaults(props).prototype;
+    modelProto = __WEBPACK_IMPORTED_MODULE_1_type_r__["Record"].defaults(props).prototype;
     var defaults, watchers, changeHandlers;
     modelProto.forEachAttr(modelProto._attributes, function (spec, name) {
         // Skip auto-generated `id` attribute.
@@ -153,7 +158,6 @@ function compileSpecs(props) {
     });
     return { propTypes: propTypes, defaults: defaults, watchers: watchers, changeHandlers: changeHandlers };
 }
-exports.compileSpecs = compileSpecs;
 function toLocalWatcher(ref) {
     return typeof ref === 'function' ? ref : function (value, name) {
         this[ref] && this[ref](value, name);
@@ -164,13 +168,13 @@ var Node = (function () {
     }
     return Node;
 }());
-exports.Node = Node;
+
 var Element = (function () {
     function Element() {
     }
     return Element;
 }());
-exports.Element = Element;
+
 function translateType(Type, isRequired) {
     var T = _translateType(Type);
     return isRequired ? T.isRequired : T;
@@ -179,26 +183,26 @@ function _translateType(Type) {
     switch (Type) {
         case Number:
         case Number.integer:
-            return react_1.PropTypes.number;
+            return __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].number;
         case String:
-            return react_1.PropTypes.string;
+            return __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].string;
         case Boolean:
-            return react_1.PropTypes.bool;
+            return __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].bool;
         case Array:
-            return react_1.PropTypes.array;
+            return __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].array;
         case Function:
-            return react_1.PropTypes.func;
+            return __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].func;
         case Object:
-            return react_1.PropTypes.object;
+            return __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].object;
         case Node:
-            return react_1.PropTypes.node;
+            return __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].node;
         case Element:
-            return react_1.PropTypes.element;
+            return __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].element;
         case void 0:
         case null:
-            return react_1.PropTypes.any;
+            return __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].any;
         default:
-            return react_1.PropTypes.instanceOf(Type);
+            return __WEBPACK_IMPORTED_MODULE_0_react__["PropTypes"].instanceOf(Type);
     }
 }
 
@@ -211,30 +215,33 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_2__;
 
 /***/ }),
 /* 3 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__typeSpecs__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_type_r__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_type_r___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_type_r__);
+/* harmony export (immutable) */ __webpack_exports__["a"] = process;
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return StateMixin; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return UpdateOnNestedChangesMixin; });
 /*****************
  * State
  */
-var typeSpecs_1 = __webpack_require__(1);
-var type_r_1 = __webpack_require__(0);
+
+
 function process(spec, baseProto) {
     // process state spec...
-    var attributes = typeSpecs_1.collectSpecs(spec, 'state');
+    var attributes = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__typeSpecs__["c" /* collectSpecs */])(spec, 'state');
     if (attributes || baseProto.State) {
-        var BaseModel = baseProto.State || type_r_1.Record;
+        var BaseModel = baseProto.State || __WEBPACK_IMPORTED_MODULE_1_type_r__["Record"];
         spec.State = attributes ? (typeof attributes === 'function' ? attributes : BaseModel.defaults(attributes)) : BaseModel;
-        spec.mixins.push(exports.StateMixin);
-        spec.mixins.push(exports.UpdateOnNestedChangesMixin);
+        spec.mixins.push(StateMixin);
+        spec.mixins.push(UpdateOnNestedChangesMixin);
         delete spec.state;
         delete spec.attributes;
     }
 }
-exports.default = process;
-exports.StateMixin = {
+var StateMixin = {
     state: null,
     componentWillMount: function () {
         var state = this.state = new this.State();
@@ -243,7 +250,7 @@ exports.StateMixin = {
         state._ownerKey = 'state';
     },
     context: {
-        _nestedStore: type_r_1.Store
+        _nestedStore: __WEBPACK_IMPORTED_MODULE_1_type_r__["Store"]
     },
     // reference global store to fix model's store locator
     getStore: function () {
@@ -260,7 +267,7 @@ exports.StateMixin = {
         this.state = void 0;
     }
 };
-exports.UpdateOnNestedChangesMixin = {
+var UpdateOnNestedChangesMixin = {
     _onChildrenChange: function () { },
     componentDidMount: function () {
         this._onChildrenChange = this.asyncUpdate;
@@ -270,14 +277,16 @@ exports.UpdateOnNestedChangesMixin = {
 
 /***/ }),
 /* 4 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_type_r__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_type_r___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_type_r__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__NestedLink_valuelink__ = __webpack_require__(6);
 /**
  * Import ValueLink library
  * Define value links binding mixins to the Record and Collection
  */
-
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -288,15 +297,14 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-Object.defineProperty(exports, "__esModule", { value: true });
-var type_r_1 = __webpack_require__(0);
-var valuelink_1 = __webpack_require__(6);
-exports.default = valuelink_1.default;
-type_r_1.Mixable.mixTo(valuelink_1.default);
+
+
+/* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_1__NestedLink_valuelink__["a" /* default */]);
+__WEBPACK_IMPORTED_MODULE_0_type_r__["Mixable"].mixTo(__WEBPACK_IMPORTED_MODULE_1__NestedLink_valuelink__["a" /* default */]);
 /**
  * Record
  */
-type_r_1.Record.mixins({
+__WEBPACK_IMPORTED_MODULE_0_type_r__["Record"].mixins({
     // Link to the record's attribute by its key.
     getLink: function (key) {
         return cacheLink(getLinksCache(this), this, key);
@@ -351,7 +359,7 @@ var RecordLink = (function (_super) {
         configurable: true
     });
     return RecordLink;
-}(valuelink_1.default));
+}(__WEBPACK_IMPORTED_MODULE_1__NestedLink_valuelink__["a" /* default */]));
 var RecordDeepLink = (function (_super) {
     __extends(RecordDeepLink, _super);
     function RecordDeepLink(record, path, options) {
@@ -385,7 +393,7 @@ var RecordDeepLink = (function (_super) {
         this.record.deepSet(this.path, x, this.options);
     };
     return RecordDeepLink;
-}(valuelink_1.default));
+}(__WEBPACK_IMPORTED_MODULE_1__NestedLink_valuelink__["a" /* default */]));
 function getLinksCache(record) {
     return record._links || (record._links = new record.Attributes({}));
 }
@@ -397,7 +405,7 @@ function cacheLink(links, record, key) {
 /***********************************
  * Collection
  */
-type_r_1.Record.Collection.mixins({
+__WEBPACK_IMPORTED_MODULE_0_type_r__["Record"].Collection.mixins({
     // Boolean link to the record's presence in the collection
     hasLink: function (record) {
         return new CollectionLink(this, record);
@@ -405,7 +413,7 @@ type_r_1.Record.Collection.mixins({
     // Link to collection's property
     getLink: function (prop) {
         var _this = this;
-        return valuelink_1.default.value(this[prop], function (x) { return _this[prop] = x; });
+        return __WEBPACK_IMPORTED_MODULE_1__NestedLink_valuelink__["a" /* default */].value(this[prop], function (x) { return _this[prop] = x; });
     }
 });
 /**
@@ -425,50 +433,60 @@ var CollectionLink = (function (_super) {
         this.collection.toggle(this.record, x);
     };
     return CollectionLink;
-}(valuelink_1.default));
+}(__WEBPACK_IMPORTED_MODULE_1__NestedLink_valuelink__["a" /* default */]));
 
 
 /***/ }),
 /* 5 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__store__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__state__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__context__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__common__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__props__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__typeSpecs__ = __webpack_require__(1);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_5__typeSpecs__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_5__typeSpecs__["b"]; });
+/* harmony export (immutable) */ __webpack_exports__["c"] = process;
 
-Object.defineProperty(exports, "__esModule", { value: true });
-var store_1 = __webpack_require__(11);
-var state_1 = __webpack_require__(3);
-var context_1 = __webpack_require__(8);
-var common_1 = __webpack_require__(7);
-var props_1 = __webpack_require__(9);
+
+
+
+
 function process(spec, baseProto) {
     if (baseProto === void 0) { baseProto = {}; }
     // Initialize mixins placeholder...
     spec.mixins || (spec.mixins = []);
-    store_1.default(spec, baseProto);
-    state_1.default(spec, baseProto);
-    context_1.default(spec, baseProto);
-    props_1.default(spec, baseProto);
-    common_1.default(spec, baseProto);
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__store__["a" /* default */])(spec, baseProto);
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__state__["a" /* default */])(spec, baseProto);
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__context__["a" /* default */])(spec, baseProto);
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__props__["a" /* default */])(spec, baseProto);
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__common__["a" /* default */])(spec, baseProto);
     return spec;
 }
-exports.default = process;
 ;
-var typeSpecs_1 = __webpack_require__(1);
-exports.Node = typeSpecs_1.Node;
-exports.Element = typeSpecs_1.Element;
+
 
 
 /***/ }),
 /* 6 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* unused harmony export CustomLink */
+/* unused harmony export CloneLink */
+/* unused harmony export StateLink */
+/* unused harmony export EqualsLink */
+/* unused harmony export EnabledLink */
+/* unused harmony export ContainsLink */
+/* unused harmony export ChainedLink */
 /**
  * Advanced React links for purely functional two-way data binding
  *
  * MIT License, (c) 2016 Vlad Balin, Volicon.
  */
-
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -479,7 +497,6 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-Object.defineProperty(exports, "__esModule", { value: true });
 // Main Link class. All links must extend it.
 var Link = (function () {
     // create 
@@ -602,7 +619,7 @@ var Link = (function () {
     };
     return Link;
 }());
-exports.default = Link;
+/* harmony default export */ __webpack_exports__["a"] = (Link);
 var CustomLink = (function (_super) {
     __extends(CustomLink, _super);
     function CustomLink(value, set) {
@@ -613,7 +630,7 @@ var CustomLink = (function (_super) {
     CustomLink.prototype.set = function (x) { };
     return CustomLink;
 }(Link));
-exports.CustomLink = CustomLink;
+
 var CloneLink = (function (_super) {
     __extends(CloneLink, _super);
     function CloneLink(parent, set) {
@@ -627,7 +644,7 @@ var CloneLink = (function (_super) {
     CloneLink.prototype.set = function (x) { };
     return CloneLink;
 }(Link));
-exports.CloneLink = CloneLink;
+
 var StateLink = (function (_super) {
     __extends(StateLink, _super);
     function StateLink(value, component, key) {
@@ -642,7 +659,7 @@ var StateLink = (function (_super) {
     };
     return StateLink;
 }(Link));
-exports.StateLink = StateLink;
+
 var EqualsLink = (function (_super) {
     __extends(EqualsLink, _super);
     function EqualsLink(parent, truthyValue) {
@@ -656,7 +673,7 @@ var EqualsLink = (function (_super) {
     };
     return EqualsLink;
 }(Link));
-exports.EqualsLink = EqualsLink;
+
 var EnabledLink = (function (_super) {
     __extends(EnabledLink, _super);
     function EnabledLink(parent, defaultValue) {
@@ -670,7 +687,7 @@ var EnabledLink = (function (_super) {
     };
     return EnabledLink;
 }(Link));
-exports.EnabledLink = EnabledLink;
+
 var ContainsLink = (function (_super) {
     __extends(ContainsLink, _super);
     function ContainsLink(parent, element) {
@@ -689,7 +706,7 @@ var ContainsLink = (function (_super) {
     };
     return ContainsLink;
 }(Link));
-exports.ContainsLink = ContainsLink;
+
 var defaultError = 'Invalid value';
 /**
  * Link to array or object element enclosed in parent link.
@@ -724,7 +741,7 @@ var ChainedLink = (function (_super) {
     ;
     return ChainedLink;
 }(Link));
-exports.ChainedLink = ChainedLink;
+
 var ArrayProto = Array.prototype, ObjectProto = Object.prototype;
 function helpers(value) {
     if (value && typeof value === 'object') {
@@ -790,15 +807,17 @@ var arrayHelpers = {
 
 /***/ }),
 /* 7 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_type_r__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_type_r___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_type_r__);
+/* harmony export (immutable) */ __webpack_exports__["a"] = compile;
+/* unused harmony export asyncUpdate */
 /**
  * Process `autobind` specs, attach async event processing and transactional support.
  */
 
-Object.defineProperty(exports, "__esModule", { value: true });
-var type_r_1 = __webpack_require__(0);
 function compile(spec, _a) {
     var _b = _a._autobind, _autobind = _b === void 0 ? [] : _b;
     // Attach autobind mixin...
@@ -810,7 +829,6 @@ function compile(spec, _a) {
     // Attach common mixin
     spec.mixins.push(CommonMixin);
 }
-exports.default = compile;
 /***
  * Autobinding
  */
@@ -825,12 +843,11 @@ var AutobindMixin = {
 function asyncUpdate() {
     this.shouldComponentUpdate === returnFalse || this._disposed || this.forceUpdate();
 }
-exports.asyncUpdate = asyncUpdate;
 function returnFalse() { return false; }
 /**
  * Mixin which is attached to all components.
  */
-var CommonMixin = type_r_1.tools.assign({
+var CommonMixin = __WEBPACK_IMPORTED_MODULE_0_type_r__["tools"].assign({
     componentWillUnmount: function () {
         // Prevent memory leaks when working with events.
         this.off();
@@ -858,15 +875,16 @@ var CommonMixin = type_r_1.tools.assign({
             this.asyncUpdate();
         }
     }
-}, type_r_1.Events);
+}, __WEBPACK_IMPORTED_MODULE_0_type_r__["Events"]);
 
 
 /***/ }),
 /* 8 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__typeSpecs__ = __webpack_require__(1);
+/* harmony export (immutable) */ __webpack_exports__["a"] = process;
 var __assign = (this && this.__assign) || Object.assign || function(t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
         s = arguments[i];
@@ -875,39 +893,39 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     }
     return t;
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var typeSpecs_1 = __webpack_require__(1);
+
 function process(spec, _a) {
     var _b = _a._context, _context = _b === void 0 ? {} : _b, _c = _a._childContext, _childContext = _c === void 0 ? {} : _c;
     // process context specs...
-    var context = typeSpecs_1.collectSpecs(spec, 'context');
+    var context = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__typeSpecs__["c" /* collectSpecs */])(spec, 'context');
     if (context) {
         spec._context = __assign({}, _context, context);
-        spec.contextTypes = typeSpecs_1.compileSpecs(context).propTypes;
+        spec.contextTypes = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__typeSpecs__["d" /* compileSpecs */])(context).propTypes;
         delete spec.context;
     }
     // and child context specs...
-    var childContext = typeSpecs_1.collectSpecs(spec, 'childContext');
+    var childContext = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__typeSpecs__["c" /* collectSpecs */])(spec, 'childContext');
     if (childContext) {
         spec._childContext = __assign({}, _childContext, childContext);
-        spec.childContextTypes = typeSpecs_1.compileSpecs(childContext).propTypes;
+        spec.childContextTypes = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__typeSpecs__["d" /* compileSpecs */])(childContext).propTypes;
         delete spec.childContext;
     }
 }
-exports.default = process;
 
 
 /***/ }),
 /* 9 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__typeSpecs__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pureRender__ = __webpack_require__(10);
+/* harmony export (immutable) */ __webpack_exports__["a"] = process;
 /**
  * Handle props specification and everything which is related:
  * - local listening to props changes
  * - pure render mixin
  */
-
 var __assign = (this && this.__assign) || Object.assign || function(t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
         s = arguments[i];
@@ -916,16 +934,15 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     }
     return t;
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var typeSpecs_1 = __webpack_require__(1);
-var pureRender_1 = __webpack_require__(10);
+
+
 function process(spec, _a) {
     var pureRender = _a.pureRender, _b = _a._props, _props = _b === void 0 ? {} : _b, _c = _a._listenToPropsArray, _listenToPropsArray = _c === void 0 ? [] : _c, _d = _a._listenToPropsHash, _listenToPropsHash = _d === void 0 ? {} : _d;
     // process props spec...
-    var props = typeSpecs_1.collectSpecs(spec, 'props');
+    var props = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__typeSpecs__["c" /* collectSpecs */])(spec, 'props');
     if (props) {
         var allProps = spec._props = __assign({}, _props, props);
-        var _e = typeSpecs_1.compileSpecs(allProps), propTypes = _e.propTypes, defaults_1 = _e.defaults, watchers = _e.watchers, changeHandlers = _e.changeHandlers;
+        var _e = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__typeSpecs__["d" /* compileSpecs */])(allProps), propTypes = _e.propTypes, defaults_1 = _e.defaults, watchers = _e.watchers, changeHandlers = _e.changeHandlers;
         spec.propTypes = propTypes;
         if (defaults_1)
             spec.getDefaultProps = function () { return defaults_1; };
@@ -941,10 +958,9 @@ function process(spec, _a) {
     }
     // compile pure render mixin
     if (spec._props && (spec.pureRender || pureRender)) {
-        spec.mixins.push(pureRender_1.default(spec._props));
+        spec.mixins.push(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__pureRender__["a" /* default */])(spec._props));
     }
 }
-exports.default = process;
 /**
  * ChangeHandlers are fired in sequence upon props replacement.
  * Fires _after_ UI is updated. Used for managing events subscriptions.
@@ -989,11 +1005,10 @@ var WatchersMixin = {
 
 /***/ }),
 /* 10 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
+/* harmony export (immutable) */ __webpack_exports__["a"] = createPureRenderMixin;
 function createPureRenderMixin(props) {
     var ctorBody = ['var v; this._s = s && s._changeToken'], isChangedBody = ['var v; return ( s && s._changeToken !== t._s )'];
     for (var name_1 in props) {
@@ -1016,25 +1031,27 @@ function createPureRenderMixin(props) {
         }
     };
 }
-exports.default = createPureRenderMixin;
 ;
 
 
 /***/ }),
 /* 11 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__typeSpecs__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_type_r__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_type_r___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_type_r__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__state__ = __webpack_require__(3);
+/* harmony export (immutable) */ __webpack_exports__["a"] = process;
 
-Object.defineProperty(exports, "__esModule", { value: true });
-var typeSpecs_1 = __webpack_require__(1);
-var type_r_1 = __webpack_require__(0);
-var state_1 = __webpack_require__(3);
+
+
 function process(spec, baseProto) {
-    var store = typeSpecs_1.collectSpecs(spec, 'store');
+    var store = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__typeSpecs__["c" /* collectSpecs */])(spec, 'store');
     if (store) {
         delete spec.store;
-        if (store instanceof type_r_1.Store) {
+        if (store instanceof __WEBPACK_IMPORTED_MODULE_1_type_r__["Store"]) {
             // Direct reference to an existing store. Put it to the prototype.
             spec.store = store;
             spec.mixins.push(ExternalStoreMixin);
@@ -1042,18 +1059,17 @@ function process(spec, baseProto) {
         else {
             spec.Store = store;
             spec.mixins.push(InternalStoreMixin);
-            spec.mixins.push(state_1.UpdateOnNestedChangesMixin);
+            spec.mixins.push(__WEBPACK_IMPORTED_MODULE_2__state__["b" /* UpdateOnNestedChangesMixin */]);
         }
         spec.mixins.push(ExposeStoreMixin);
     }
 }
-exports.default = process;
 /**
  * Attached whenever the store declaration of any form is present in the component.
  */
 var ExposeStoreMixin = {
     childContext: {
-        _nestedStore: type_r_1.Store
+        _nestedStore: __WEBPACK_IMPORTED_MODULE_1_type_r__["Store"]
     },
     getChildContext: function () {
         return { _nestedStore: this.store };
@@ -1064,7 +1080,7 @@ var ExposeStoreMixin = {
     // Will be called by the store when the lookup will fail.
     get: function (key) {
         // Ask upper store.
-        var store = state_1.StateMixin.getStore.call(this, key);
+        var store = __WEBPACK_IMPORTED_MODULE_2__state__["c" /* StateMixin */].getStore.call(this, key);
         return store && store.get(key);
     }
 };
@@ -1094,10 +1110,16 @@ var InternalStoreMixin = {
 
 /***/ }),
 /* 12 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_type_r__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_type_r___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_type_r__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__define__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Link__ = __webpack_require__(4);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -1123,22 +1145,23 @@ var __rest = (this && this.__rest) || function (s, e) {
             t[p[i]] = s[p[i]];
     return t;
 };
-var React = __webpack_require__(2);
-var type_r_1 = __webpack_require__(0);
-var define_1 = __webpack_require__(5);
-var Link_1 = __webpack_require__(4);
+
+
+
+
 // extend React namespace
-var ReactMVx = Object.create(React);
+var ReactMVx = Object.create(__WEBPACK_IMPORTED_MODULE_0_react__);
 // Make it compatible with ES6 module format.
 ReactMVx.default = ReactMVx;
+/* harmony default export */ __webpack_exports__["default"] = (ReactMVx);
 // listenToProps, listenToState, model, attributes, Model
 ReactMVx.createClass = createClass;
 ReactMVx.Component = Component;
-ReactMVx.define = type_r_1.define;
-ReactMVx.mixins = type_r_1.mixins;
-ReactMVx.Node = define_1.Node.value(null);
-ReactMVx.Element = define_1.Element.value(null);
-ReactMVx.Link = Link_1.default;
+ReactMVx.define = __WEBPACK_IMPORTED_MODULE_1_type_r__["define"];
+ReactMVx.mixins = __WEBPACK_IMPORTED_MODULE_1_type_r__["mixins"];
+ReactMVx.Node = __WEBPACK_IMPORTED_MODULE_2__define__["a" /* Node */].value(null);
+ReactMVx.Element = __WEBPACK_IMPORTED_MODULE_2__define__["b" /* Element */].value(null);
+ReactMVx.Link = __WEBPACK_IMPORTED_MODULE_3__Link__["a" /* default */];
 var reactMixinRules = {
     componentWillMount: 'reverse',
     componentDidMount: 'reverse',
@@ -1155,15 +1178,15 @@ var reactMixinRules = {
     getChildContext: 'mergeSequence'
 };
 function createClass(a_spec) {
-    var _a = define_1.default(a_spec), _b = _a.mixins, mixins = _b === void 0 ? [] : _b, spec = __rest(_a, ["mixins"]);
+    var _a = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__define__["c" /* default */])(a_spec), _b = _a.mixins, mixins = _b === void 0 ? [] : _b, spec = __rest(_a, ["mixins"]);
     // We have the reversed sequence for the majority of the lifecycle hooks.
     // So, mixins lifecycle methods works first. It's important.
     // To make it consistent with class mixins implementation, we override React mixins.
     for (var _i = 0, mixins_1 = mixins; _i < mixins_1.length; _i++) {
         var mixin = mixins_1[_i];
-        type_r_1.mergeProps(spec, mixin, reactMixinRules);
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_type_r__["mergeProps"])(spec, mixin, reactMixinRules);
     }
-    return React.createClass(spec);
+    return __WEBPACK_IMPORTED_MODULE_0_react__["createClass"](spec);
 }
 var Component = (function (_super) {
     __extends(Component, _super);
@@ -1171,8 +1194,8 @@ var Component = (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     Component.define = function (protoProps, staticProps) {
-        var BaseClass = type_r_1.tools.getBaseClass(this), staticsDefinition = type_r_1.tools.getChangedStatics(this, 'state', 'store', 'props', 'autobind', 'context', 'childContext', 'pureRender'), combinedDefinition = type_r_1.tools.assign(staticsDefinition, protoProps || {});
-        var definition = define_1.default(combinedDefinition, this.prototype);
+        var BaseClass = __WEBPACK_IMPORTED_MODULE_1_type_r__["tools"].getBaseClass(this), staticsDefinition = __WEBPACK_IMPORTED_MODULE_1_type_r__["tools"].getChangedStatics(this, 'state', 'store', 'props', 'autobind', 'context', 'childContext', 'pureRender'), combinedDefinition = __WEBPACK_IMPORTED_MODULE_1_type_r__["tools"].assign(staticsDefinition, protoProps || {});
+        var definition = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__define__["c" /* default */])(combinedDefinition, this.prototype);
         var getDefaultProps = definition.getDefaultProps, propTypes = definition.propTypes, contextTypes = definition.contextTypes, childContextTypes = definition.childContextTypes, protoDefinition = __rest(definition, ["getDefaultProps", "propTypes", "contextTypes", "childContextTypes"]);
         if (getDefaultProps)
             this.defaultProps = definition.getDefaultProps();
@@ -1182,7 +1205,7 @@ var Component = (function (_super) {
             this.contextTypes = contextTypes;
         if (childContextTypes)
             this.childContextTypes = childContextTypes;
-        type_r_1.Mixable.define.call(this, protoDefinition, staticProps);
+        __WEBPACK_IMPORTED_MODULE_1_type_r__["Mixable"].define.call(this, protoDefinition, staticProps);
         return this;
     };
     Component.prototype.assignToState = function (x, key) {
@@ -1190,14 +1213,13 @@ var Component = (function (_super) {
         var _a;
     };
     return Component;
-}(React.Component));
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
 Component = __decorate([
-    type_r_1.extendable,
-    type_r_1.mixinRules(reactMixinRules)
+    __WEBPACK_IMPORTED_MODULE_1_type_r__["extendable"],
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_type_r__["mixinRules"])(reactMixinRules)
 ], Component);
 ReactMVx.Component = Component;
 ReactMVx.assignToState = Component.prototype.assignToState;
-module.exports = ReactMVx;
 
 
 /***/ })

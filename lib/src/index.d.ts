@@ -1,2 +1,2 @@
 declare const ReactMVx: any;
-export = ReactMVx;
+export default ReactMVx;

@@ -7,7 +7,7 @@ import Link from './Link'
 const ReactMVx = Object.create( React );
 // Make it compatible with ES6 module format.
 ReactMVx.default = ReactMVx;
-export = ReactMVx;
+export default ReactMVx;
 
 // listenToProps, listenToState, model, attributes, Model
 ReactMVx.createClass = createClass;
