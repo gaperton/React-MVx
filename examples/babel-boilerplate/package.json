@@ -2,6 +2,9 @@
   "private": true,
   "dependencies": {},
   "devDependencies": {
+    "webpack": "*",
+    "css-loader": "*",
+    "style-loader": "*",
     "babel-cli": "*",
     "babel-core": "*",
     "babel-loader": "*",
@@ -15,18 +18,14 @@
     "babel-preset-react": "*",
     "babel-runtime": "*",
 
-    "react-mvx": "^1.0.0-a00",
-    "type-r": "^1.0.0-a00",
     "react": "*",
     "react-dom": "*",
-
-    "css-loader": "*",
-    "style-loader": "*",
-    "webpack": "*"
+    "react-mvx": "^1.0.0-a00",
+    "type-r": "^1.0.0-a00"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node_modules/.bin/webpack",
+    "build": "node_modules/.bin/webpack -p",
     "watch": "node_modules/.bin/webpack --progress --colors --watch"
   }
 }
