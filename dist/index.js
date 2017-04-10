@@ -1156,7 +1156,6 @@ ReactMVx.default = ReactMVx;
 /* harmony default export */ __webpack_exports__["default"] = (ReactMVx);
 // listenToProps, listenToState, model, attributes, Model
 ReactMVx.createClass = createClass;
-ReactMVx.Component = Component;
 ReactMVx.define = __WEBPACK_IMPORTED_MODULE_1_type_r__["define"];
 ReactMVx.mixins = __WEBPACK_IMPORTED_MODULE_1_type_r__["mixins"];
 ReactMVx.Node = __WEBPACK_IMPORTED_MODULE_2__define__["a" /* Node */].value(null);

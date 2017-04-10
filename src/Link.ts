@@ -19,12 +19,12 @@ interface LinksCache {
  */
 Record.mixins({
     // Link to the record's attribute by its key.
-    getLink( key : string ) : RecordLink {
+    linkAt( key : string ) : RecordLink {
         return cacheLink( getLinksCache( this ), this, key );
     },
 
     // Link to the attribute of the record's tree by symbolic path.
-    deepLink( path : string, options? : {} ) : RecordDeepLink {
+    linkAtPath( path : string, options? : {} ) : RecordDeepLink {
         return new RecordDeepLink( this, path, options )
     },
 

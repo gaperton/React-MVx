@@ -11,7 +11,6 @@ export default ReactMVx;
 
 // listenToProps, listenToState, model, attributes, Model
 ReactMVx.createClass = createClass;
-ReactMVx.Component = Component;
 ReactMVx.define = define;
 ReactMVx.mixins = mixins;
 
@@ -63,6 +62,17 @@ class Component<P> extends React.Component<P, Record> {
     private static defaultProps: any;
     private static contextTypes : any;
     private static childContextTypes : any;
+
+    linkAt( key : string ) : Link< any> {
+        // Quick and dirty hack to suppres type error - refactor later.
+        return (<any>this.state).linkAt( key );
+    }
+
+    linkAll( ...keys : string[] ) : { [ key : string ] : Link<any> }
+    linkAll(){
+        // Quick and dirty hack to suppres type error - refactor later.
+        return (<any>this.state).linkAll.apply( this, arguments );
+    }
 
     static define( protoProps, staticProps ){
         var BaseClass          = tools.getBaseClass( this ),
