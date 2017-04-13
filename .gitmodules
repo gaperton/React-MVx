@@ -1,3 +1,3 @@
-[submodule "NestedLink"]
-	path = NestedLink
-	url = https://github.com/Volicon/NestedLink.git
+[submodule "submodules/NestedLink"]
+	path = submodules/NestedLink
+	url = https://github.com/Volicon/NestedLink

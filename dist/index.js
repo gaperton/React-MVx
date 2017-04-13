@@ -280,13 +280,14 @@ var UpdateOnNestedChangesMixin = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_type_r__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_type_r___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_type_r__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__NestedLink_valuelink__ = __webpack_require__(6);
-/**
- * Import ValueLink library
- * Define value links binding mixins to the Record and Collection
- */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helpers__ = __webpack_require__(14);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Link; });
+/* unused harmony export CustomLink */
+/* unused harmony export CloneLink */
+/* unused harmony export EqualsLink */
+/* unused harmony export EnabledLink */
+/* unused harmony export ContainsLink */
+/* unused harmony export LinkAt */
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -297,229 +298,18 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-
-
-/* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_1__NestedLink_valuelink__["a" /* default */]);
-__WEBPACK_IMPORTED_MODULE_0_type_r__["Mixable"].mixTo(__WEBPACK_IMPORTED_MODULE_1__NestedLink_valuelink__["a" /* default */]);
-/**
- * Record
- */
-__WEBPACK_IMPORTED_MODULE_0_type_r__["Record"].mixins({
-    // Link to the record's attribute by its key.
-    getLink: function (key) {
-        return cacheLink(getLinksCache(this), this, key);
-    },
-    // Link to the attribute of the record's tree by symbolic path.
-    deepLink: function (path, options) {
-        return new RecordDeepLink(this, path, options);
-    },
-    // Link all (or listed) attributes and return links cache.
-    linkAll: function () {
-        var links = getLinksCache(this);
-        if (arguments.length) {
-            for (var i = 0; i < arguments.length; i++) {
-                cacheLink(links, this, arguments[i]);
-            }
-        }
-        else {
-            var attributes = this.attributes;
-            for (var key in attributes) {
-                attributes[key] === void 0 || cacheLink(links, this, key);
-            }
-        }
-        return links;
-    }
-});
-/**
- * Link to Type-R's record attribute.
- * Strict evaluation of value, lazy evaluation of validation error.
- * Links are cached in the records
- */
-var RecordLink = (function (_super) {
-    __extends(RecordLink, _super);
-    function RecordLink(record, attr, value) {
-        var _this = _super.call(this, value) || this;
-        _this.record = record;
-        _this.attr = attr;
-        return _this;
-    }
-    RecordLink.prototype.set = function (x) {
-        this.record[this.attr] = x;
-    };
-    Object.defineProperty(RecordLink.prototype, "error", {
-        get: function () {
-            return this._error === void 0 ?
-                this.record.getValidationError(this.attr) :
-                this._error;
-        },
-        set: function (x) {
-            this._error = x;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    return RecordLink;
-}(__WEBPACK_IMPORTED_MODULE_1__NestedLink_valuelink__["a" /* default */]));
-var RecordDeepLink = (function (_super) {
-    __extends(RecordDeepLink, _super);
-    function RecordDeepLink(record, path, options) {
-        var _this = _super.call(this, record.deepGet(path)) || this;
-        _this.record = record;
-        _this.path = path;
-        _this.options = options;
-        return _this;
-    }
-    Object.defineProperty(RecordDeepLink.prototype, "error", {
-        get: function () {
-            if (this._error === void 0) {
-                this._error = this.record.deepValidationError(this.path) || null;
-            }
-            return this._error;
-        },
-        set: function (x) {
-            this._error = x;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(RecordDeepLink.prototype, "_changeToken", {
-        get: function () {
-            return this.record._changeToken;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    RecordDeepLink.prototype.set = function (x) {
-        this.record.deepSet(this.path, x, this.options);
-    };
-    return RecordDeepLink;
-}(__WEBPACK_IMPORTED_MODULE_1__NestedLink_valuelink__["a" /* default */]));
-function getLinksCache(record) {
-    return record._links || (record._links = new record.Attributes({}));
-}
-function cacheLink(links, record, key) {
-    var cached = links[key], value = record[key];
-    return cached && cached.value === value ? cached
-        : links[key] = new RecordLink(record, key, value);
-}
-/***********************************
- * Collection
- */
-__WEBPACK_IMPORTED_MODULE_0_type_r__["Record"].Collection.mixins({
-    // Boolean link to the record's presence in the collection
-    hasLink: function (record) {
-        return new CollectionLink(this, record);
-    },
-    // Link to collection's property
-    getLink: function (prop) {
-        var _this = this;
-        return __WEBPACK_IMPORTED_MODULE_1__NestedLink_valuelink__["a" /* default */].value(this[prop], function (x) { return _this[prop] = x; });
-    }
-});
-/**
- * Boolean link to presence of NestedType's record in collection.
- * Strict evaluation of value, no error.
- * Safe implementation of _changeToken.
- */
-var CollectionLink = (function (_super) {
-    __extends(CollectionLink, _super);
-    function CollectionLink(collection, record) {
-        var _this = _super.call(this, Boolean(collection._byId[record.cid])) || this;
-        _this.collection = collection;
-        _this.record = record;
-        return _this;
-    }
-    CollectionLink.prototype.set = function (x) {
-        this.collection.toggle(this.record, x);
-    };
-    return CollectionLink;
-}(__WEBPACK_IMPORTED_MODULE_1__NestedLink_valuelink__["a" /* default */]));
-
-
-/***/ }),
-/* 5 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__store__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__state__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__context__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__common__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__props__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__typeSpecs__ = __webpack_require__(1);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_5__typeSpecs__["a"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_5__typeSpecs__["b"]; });
-/* harmony export (immutable) */ __webpack_exports__["c"] = process;
-
-
-
-
-
-function process(spec, baseProto) {
-    if (baseProto === void 0) { baseProto = {}; }
-    // Initialize mixins placeholder...
-    spec.mixins || (spec.mixins = []);
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__store__["a" /* default */])(spec, baseProto);
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__state__["a" /* default */])(spec, baseProto);
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__context__["a" /* default */])(spec, baseProto);
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__props__["a" /* default */])(spec, baseProto);
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__common__["a" /* default */])(spec, baseProto);
-    return spec;
-}
-;
-
-
-
-/***/ }),
-/* 6 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* unused harmony export CustomLink */
-/* unused harmony export CloneLink */
-/* unused harmony export StateLink */
-/* unused harmony export EqualsLink */
-/* unused harmony export EnabledLink */
-/* unused harmony export ContainsLink */
-/* unused harmony export ChainedLink */
 /**
  * Advanced React links for purely functional two-way data binding
  *
  * MIT License, (c) 2016 Vlad Balin, Volicon.
  */
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
+
 // Main Link class. All links must extend it.
 var Link = (function () {
     // create 
     function Link(value) {
         this.value = value;
     }
-    // Create link to componen't state
-    Link.state = function (component, key) {
-        var value = component.state[key], cache = component.links || (component.links = {}), cached = cache[key];
-        return cached && cached.value === value ? cached : cache[key] = new StateLink(value, component, key);
-    };
-    ;
-    // Ensure that listed links are cached. Return links cache.
-    Link.all = function (component) {
-        var state = component.state, links = component.links || (component.links = {});
-        for (var i = 1; i < arguments.length; i++) {
-            var key = arguments[i], value = state[key], cached = links[key];
-            if (!cached || cached.value !== value) {
-                links[key] = new StateLink(value, component, key);
-            }
-        }
-        return links;
-    };
     // Create custom link to arbitrary value
     Link.value = function (value, set) {
         return new CustomLink(value, set);
@@ -571,40 +361,39 @@ var Link = (function () {
         return new ContainsLink(this, element);
     };
     Link.prototype.push = function () {
-        var array = arrayHelpers.clone(this.value);
+        var array = __WEBPACK_IMPORTED_MODULE_0__helpers__["a" /* arrayHelpers */].clone(this.value);
         Array.prototype.push.apply(array, arguments);
         this.set(array);
     };
     Link.prototype.unshift = function () {
-        var array = arrayHelpers.clone(this.value);
+        var array = __WEBPACK_IMPORTED_MODULE_0__helpers__["a" /* arrayHelpers */].clone(this.value);
         Array.prototype.unshift.apply(array, arguments);
         this.set(array);
     };
     Link.prototype.splice = function () {
-        var array = arrayHelpers.clone(this.value);
+        var array = __WEBPACK_IMPORTED_MODULE_0__helpers__["a" /* arrayHelpers */].clone(this.value);
         Array.prototype.splice.apply(array, arguments);
         this.set(array);
     };
-    // Array and objects universal collection methods
     Link.prototype.map = function (iterator) {
-        return helpers(this.value).map(this, iterator);
+        return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__helpers__["b" /* helpers */])(this.value).map(this, iterator);
     };
-    Link.prototype.remove = function (key) {
-        var value = this.value, _ = helpers(value);
+    Link.prototype.removeAt = function (key) {
+        var value = this.value, _ = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__helpers__["b" /* helpers */])(value);
         this.set(_.remove(_.clone(value), key));
     };
     Link.prototype.at = function (key) {
-        return new ChainedLink(this, key);
+        return new LinkAt(this, key);
     };
     Link.prototype.clone = function () {
         var value = this.value;
-        return helpers(value).clone(value);
+        return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__helpers__["b" /* helpers */])(value).clone(value);
     };
     Link.prototype.pick = function () {
         var links = {};
         for (var i = 0; i < arguments.length; i++) {
             var key = arguments[i];
-            links[key] = new ChainedLink(this, key);
+            links[key] = new LinkAt(this, key);
         }
         return links;
     };
@@ -619,7 +408,7 @@ var Link = (function () {
     };
     return Link;
 }());
-/* harmony default export */ __webpack_exports__["a"] = (Link);
+
 var CustomLink = (function (_super) {
     __extends(CustomLink, _super);
     function CustomLink(value, set) {
@@ -643,21 +432,6 @@ var CloneLink = (function (_super) {
     }
     CloneLink.prototype.set = function (x) { };
     return CloneLink;
-}(Link));
-
-var StateLink = (function (_super) {
-    __extends(StateLink, _super);
-    function StateLink(value, component, key) {
-        var _this = _super.call(this, value) || this;
-        _this.component = component;
-        _this.key = key;
-        return _this;
-    }
-    StateLink.prototype.set = function (x) {
-        this.component.setState((_a = {}, _a[this.key] = x, _a));
-        var _a;
-    };
-    return StateLink;
 }(Link));
 
 var EqualsLink = (function (_super) {
@@ -712,24 +486,19 @@ var defaultError = 'Invalid value';
  * Link to array or object element enclosed in parent link.
  * Performs purely functional update of the parent, shallow copying its value on `set`.
  */
-var ChainedLink = (function (_super) {
-    __extends(ChainedLink, _super);
-    function ChainedLink(parent, key) {
+var LinkAt = (function (_super) {
+    __extends(LinkAt, _super);
+    function LinkAt(parent, key) {
         var _this = _super.call(this, parent.value[key]) || this;
         _this.parent = parent;
         _this.key = key;
         return _this;
     }
-    ChainedLink.prototype.remove = function (key) {
-        if (key === void 0) {
-            this.parent.remove(this.key);
-        }
-        else {
-            _super.prototype.remove.call(this, key);
-        }
+    LinkAt.prototype.remove = function () {
+        this.parent.removeAt(this.key);
     };
     // Set new element value to parent array or object, performing purely functional update.
-    ChainedLink.prototype.set = function (x) {
+    LinkAt.prototype.set = function (x) {
         var _this = this;
         if (this.value !== x) {
             this.parent.update(function (value) {
@@ -739,70 +508,204 @@ var ChainedLink = (function (_super) {
         }
     };
     ;
-    return ChainedLink;
+    return LinkAt;
 }(Link));
 
-var ArrayProto = Array.prototype, ObjectProto = Object.prototype;
-function helpers(value) {
-    if (value && typeof value === 'object') {
-        switch (Object.getPrototypeOf(value)) {
-            case ArrayProto: return arrayHelpers;
-            case ObjectProto: return objectHelpers;
+//# sourceMappingURL=link.js.map
+
+/***/ }),
+/* 5 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_type_r__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_type_r___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_type_r__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__submodules_NestedLink__ = __webpack_require__(15);
+/**
+ * Import ValueLink library
+ * Define value links binding mixins to the Record and Collection
+ */
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+/* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_1__submodules_NestedLink__["a" /* default */]);
+__WEBPACK_IMPORTED_MODULE_0_type_r__["Mixable"].mixTo(__WEBPACK_IMPORTED_MODULE_1__submodules_NestedLink__["a" /* default */]);
+/**
+ * Record
+ */
+__WEBPACK_IMPORTED_MODULE_0_type_r__["Record"].mixins({
+    // Link to the record's attribute by its key.
+    linkAt: function (key) {
+        return cacheLink(getLinksCache(this), this, key);
+    },
+    // Link to the attribute of the record's tree by symbolic path.
+    linkAtPath: function (path, options) {
+        return new RecordDeepLink(this, path, options);
+    },
+    // Link all (or listed) attributes and return links cache.
+    linkAll: function () {
+        var links = getLinksCache(this);
+        if (arguments.length) {
+            for (var i = 0; i < arguments.length; i++) {
+                cacheLink(links, this, arguments[i]);
+            }
         }
+        else {
+            var attributes = this.attributes;
+            for (var key in attributes) {
+                attributes[key] === void 0 || cacheLink(links, this, key);
+            }
+        }
+        return links;
     }
-    return dummyHelpers;
+});
+/**
+ * Link to Type-R's record attribute.
+ * Strict evaluation of value, lazy evaluation of validation error.
+ * Links are cached in the records
+ */
+var RecordLink = (function (_super) {
+    __extends(RecordLink, _super);
+    function RecordLink(record, attr, value) {
+        var _this = _super.call(this, value) || this;
+        _this.record = record;
+        _this.attr = attr;
+        return _this;
+    }
+    RecordLink.prototype.set = function (x) {
+        this.record[this.attr] = x;
+    };
+    Object.defineProperty(RecordLink.prototype, "error", {
+        get: function () {
+            return this._error === void 0 ?
+                this.record.getValidationError(this.attr) :
+                this._error;
+        },
+        set: function (x) {
+            this._error = x;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    return RecordLink;
+}(__WEBPACK_IMPORTED_MODULE_1__submodules_NestedLink__["a" /* default */]));
+var RecordDeepLink = (function (_super) {
+    __extends(RecordDeepLink, _super);
+    function RecordDeepLink(record, path, options) {
+        var _this = _super.call(this, record.deepGet(path)) || this;
+        _this.record = record;
+        _this.path = path;
+        _this.options = options;
+        return _this;
+    }
+    Object.defineProperty(RecordDeepLink.prototype, "error", {
+        get: function () {
+            if (this._error === void 0) {
+                this._error = this.record.deepValidationError(this.path) || null;
+            }
+            return this._error;
+        },
+        set: function (x) {
+            this._error = x;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(RecordDeepLink.prototype, "_changeToken", {
+        get: function () {
+            return this.record._changeToken;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    RecordDeepLink.prototype.set = function (x) {
+        this.record.deepSet(this.path, x, this.options);
+    };
+    return RecordDeepLink;
+}(__WEBPACK_IMPORTED_MODULE_1__submodules_NestedLink__["a" /* default */]));
+function getLinksCache(record) {
+    return record._links || (record._links = new record.Attributes({}));
 }
-// Do nothing for types other than Array and plain Object.
-var dummyHelpers = {
-    clone: function (value) { return value; },
-    map: function (link, fun) { return []; },
-    remove: function (value) { return value; }
-};
-// `map` and `clone` for plain JS objects
-var objectHelpers = {
-    // Map through the link to object
-    map: function (link, iterator) {
-        var hash = link.value;
-        var mapped = [];
-        for (var key in hash) {
-            var element = iterator(link.at(key), key);
-            element === void 0 || (mapped.push(element));
-        }
-        return mapped;
+function cacheLink(links, record, key) {
+    var cached = links[key], value = record[key];
+    return cached && cached.value === value ? cached
+        : links[key] = new RecordLink(record, key, value);
+}
+/***********************************
+ * Collection
+ */
+__WEBPACK_IMPORTED_MODULE_0_type_r__["Record"].Collection.mixins({
+    // Boolean link to the record's presence in the collection
+    hasLink: function (record) {
+        return new CollectionLink(this, record);
     },
-    remove: function (object, key) {
-        delete object[key];
-        return object;
-    },
-    // Shallow clone plain JS object
-    clone: function (object) {
-        var cloned = {};
-        for (var key in object) {
-            cloned[key] = object[key];
-        }
-        return cloned;
+    // Link to collection's property
+    getLink: function (prop) {
+        var _this = this;
+        return __WEBPACK_IMPORTED_MODULE_1__submodules_NestedLink__["a" /* default */].value(this[prop], function (x) { return _this[prop] = x; });
     }
-};
-// `map` and `clone` helpers for arrays.
-var arrayHelpers = {
-    // Shallow clone array
-    clone: function (array) {
-        return array.slice();
-    },
-    remove: function (array, i) {
-        array.splice(i, 1);
-        return array;
-    },
-    // Map through the link to array
-    map: function (link, iterator) {
-        var mapped = [], array = link.value;
-        for (var i = 0; i < array.length; i++) {
-            var y = iterator(link.at(i), i);
-            y === void 0 || (mapped.push(y));
-        }
-        return mapped;
+});
+/**
+ * Boolean link to presence of NestedType's record in collection.
+ * Strict evaluation of value, no error.
+ * Safe implementation of _changeToken.
+ */
+var CollectionLink = (function (_super) {
+    __extends(CollectionLink, _super);
+    function CollectionLink(collection, record) {
+        var _this = _super.call(this, Boolean(collection._byId[record.cid])) || this;
+        _this.collection = collection;
+        _this.record = record;
+        return _this;
     }
-};
+    CollectionLink.prototype.set = function (x) {
+        this.collection.toggle(this.record, x);
+    };
+    return CollectionLink;
+}(__WEBPACK_IMPORTED_MODULE_1__submodules_NestedLink__["a" /* default */]));
+
+
+/***/ }),
+/* 6 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__store__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__state__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__context__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__common__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__props__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__typeSpecs__ = __webpack_require__(1);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_5__typeSpecs__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_5__typeSpecs__["b"]; });
+/* harmony export (immutable) */ __webpack_exports__["c"] = process;
+
+
+
+
+
+function process(spec, baseProto) {
+    if (baseProto === void 0) { baseProto = {}; }
+    // Initialize mixins placeholder...
+    spec.mixins || (spec.mixins = []);
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__store__["a" /* default */])(spec, baseProto);
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__state__["a" /* default */])(spec, baseProto);
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__context__["a" /* default */])(spec, baseProto);
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__props__["a" /* default */])(spec, baseProto);
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__common__["a" /* default */])(spec, baseProto);
+    return spec;
+}
+;
+
 
 
 /***/ }),
@@ -1118,8 +1021,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_type_r__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_type_r___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_type_r__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__define__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Link__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__define__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Link__ = __webpack_require__(5);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -1192,6 +1095,14 @@ var Component = (function (_super) {
     function Component() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
+    Component.prototype.linkAt = function (key) {
+        // Quick and dirty hack to suppres type error - refactor later.
+        return this.state.linkAt(key);
+    };
+    Component.prototype.linkAll = function () {
+        // Quick and dirty hack to suppres type error - refactor later.
+        return this.state.linkAll.apply(this, arguments);
+    };
     Component.define = function (protoProps, staticProps) {
         var BaseClass = __WEBPACK_IMPORTED_MODULE_1_type_r__["tools"].getBaseClass(this), staticsDefinition = __WEBPACK_IMPORTED_MODULE_1_type_r__["tools"].getChangedStatics(this, 'state', 'store', 'props', 'autobind', 'context', 'childContext', 'pureRender'), combinedDefinition = __WEBPACK_IMPORTED_MODULE_1_type_r__["tools"].assign(staticsDefinition, protoProps || {});
         var definition = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__define__["c" /* default */])(combinedDefinition, this.prototype);
@@ -1220,6 +1131,173 @@ Component = __decorate([
 ReactMVx.Component = Component;
 ReactMVx.assignToState = Component.prototype.assignToState;
 
+
+/***/ }),
+/* 13 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__link__ = __webpack_require__(4);
+/* unused harmony export LinkedComponent */
+/* unused harmony export StateLink */
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+var LinkedComponent = (function (_super) {
+    __extends(LinkedComponent, _super);
+    function LinkedComponent() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.links = null;
+        return _this;
+    }
+    LinkedComponent.prototype.linkAt = function (key) {
+        return linkAt(this, key);
+    };
+    LinkedComponent.prototype.linkAll = function () {
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
+        }
+        return linkAll(this, args);
+    };
+    return LinkedComponent;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
+
+__WEBPACK_IMPORTED_MODULE_1__link__["a" /* Link */].all = function (component) {
+    var _keys = [];
+    for (var _i = 1; _i < arguments.length; _i++) {
+        _keys[_i - 1] = arguments[_i];
+    }
+    return linkAll(component, _keys);
+};
+__WEBPACK_IMPORTED_MODULE_1__link__["a" /* Link */].state = linkAt;
+function linkAll(component, _keys) {
+    var state = component.state, cache = component.links || (component.links = {}), keys = _keys.length ? _keys : Object.keys(state);
+    for (var _i = 0, keys_1 = keys; _i < keys_1.length; _i++) {
+        var key = keys_1[_i];
+        var value = state[key], cached = cache[key];
+        if (!cached || cached.value !== value) {
+            cache[key] = new StateLink(component, key, value);
+        }
+    }
+    return cache;
+}
+function linkAt(component, key) {
+    var value = component.state[key], cache = component.links || (component.links = {}), cached = cache[key];
+    return cached && cached.value === value ? cached : cache[key] = new StateLink(component, key, value);
+}
+var StateLink = (function (_super) {
+    __extends(StateLink, _super);
+    function StateLink(component, key, value) {
+        var _this = _super.call(this, value) || this;
+        _this.component = component;
+        _this.key = key;
+        return _this;
+    }
+    StateLink.prototype.set = function (x) {
+        var attrs = {};
+        attrs[this.key] = x;
+        this.component.setState(attrs);
+    };
+    return StateLink;
+}(__WEBPACK_IMPORTED_MODULE_1__link__["a" /* Link */]));
+
+//# sourceMappingURL=component.js.map
+
+/***/ }),
+/* 14 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["b"] = helpers;
+/* unused harmony export objectHelpers */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return arrayHelpers; });
+var ArrayProto = Array.prototype, ObjectProto = Object.prototype;
+function helpers(value) {
+    if (value && typeof value === 'object') {
+        switch (Object.getPrototypeOf(value)) {
+            case ArrayProto: return arrayHelpers;
+            case ObjectProto: return objectHelpers;
+        }
+    }
+    return dummyHelpers;
+}
+// Do nothing for types other than Array and plain Object.
+var dummyHelpers = {
+    clone: function (value) { return value; },
+    map: function (link, fun) { return []; },
+    remove: function (value) { return value; }
+};
+// `map` and `clone` for plain JS objects
+var objectHelpers = {
+    // Map through the link to object
+    map: function (link, iterator) {
+        var mapped = [];
+        for (var key in link.value) {
+            var element = iterator(link.at(key), key);
+            element === void 0 || (mapped.push(element));
+        }
+        return mapped;
+    },
+    remove: function (object, key) {
+        delete object[key];
+        return object;
+    },
+    // Shallow clone plain JS object
+    clone: function (object) {
+        var cloned = {};
+        for (var key in object) {
+            cloned[key] = object[key];
+        }
+        return cloned;
+    }
+};
+// `map` and `clone` helpers for arrays.
+var arrayHelpers = {
+    // Shallow clone array
+    clone: function (array) {
+        return array.slice();
+    },
+    remove: function (array, i) {
+        array.splice(i, 1);
+        return array;
+    },
+    // Map through the link to array
+    map: function (link, iterator) {
+        var length = link.value.length, mapped = Array(length);
+        for (var i = 0, j = 0; i < length; i++) {
+            var y = iterator(link.at(i), i);
+            y === void 0 || (mapped[j++] = y);
+        }
+        mapped.length === j || (mapped.length = j);
+        return mapped;
+    }
+};
+//# sourceMappingURL=helpers.js.map
+
+/***/ }),
+/* 15 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__link__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__component__ = __webpack_require__(13);
+/* unused harmony namespace reexport */
+
+/* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0__link__["a" /* Link */]);
+
+//# sourceMappingURL=index.js.map
 
 /***/ })
 /******/ ]);

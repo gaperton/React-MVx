@@ -2,6 +2,7 @@ import * as React from 'react'
 import { define, Record, Store, mixins, mergeProps, extendable, mixinRules, tools, Mixable, MixinRules } from 'type-r'
 import processSpec, { Node, Element, TypeSpecs } from './define'
 import Link from './Link'
+import { LinkedComponent } from '../submodules/NestedLink'
 
 // extend React namespace
 const ReactMVx = Object.create( React );

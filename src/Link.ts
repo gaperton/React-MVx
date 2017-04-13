@@ -4,7 +4,7 @@
  */
 
 import { Mixable, Record } from 'type-r'
-import Link from '../NestedLink/valuelink'
+import Link from '../submodules/NestedLink'
 
 export default Link;
 
