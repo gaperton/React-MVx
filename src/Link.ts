@@ -4,7 +4,7 @@
  */
 
 import { Mixable, Record } from 'type-r'
-import Link from '../submodules/NestedLink'
+import { Link } from './valuelink/link'
 
 export default Link;
 
@@ -121,12 +121,12 @@ function cacheLink( links : LinksCache, record : Record, key : string ) : Record
  */
 Record.Collection.mixins({
     // Boolean link to the record's presence in the collection
-    hasLink( record : Record ){
+    linkContains( record : Record ){
         return new CollectionLink( this, record );
     },
 
     // Link to collection's property
-    getLink( prop : string ){
+    linkAt( prop : string ){
         return Link.value( this[ prop ], x => this[ prop ] = x );
     }
 });

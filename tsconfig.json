@@ -1,13 +1,21 @@
 {
     "compilerOptions": {
-        "outDir": "./lib/",
+        "alwaysStrict": true,
         "moduleResolution": "node",
-        "sourceMap": true,
-        "module": "es6",
-        "target": "es5",
-        "jsx": "react",
+        "importHelpers": false,
+        "noEmitHelpers": false,
+        "outDir": "lib",
         "declaration": true,
-        "experimentalDecorators": true
+        "target": "es5",
+        "module": "es6",
+        "sourceMap": true,
+        "jsx": "react",
+        "baseUrl": "./",
+        "experimentalDecorators": true,
+        "paths": {
+            "tslib" : ["node_modules/tslib/tslib.d.ts"]
+        }
+
     },
     "files":[
         "./src/index.ts"

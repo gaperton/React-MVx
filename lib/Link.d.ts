@@ -1,2 +1,2 @@
-import Link from '../submodules/NestedLink';
+import { Link } from './valuelink/link';
 export default Link;

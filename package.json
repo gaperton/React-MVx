@@ -9,12 +9,13 @@
   "main": "./dist/index.js",
   "module":"./lib/src/index.js",
   "types": "./lib/src/index.d.ts",
-  "files": ["dist", "lib", "tags.jsx", "tags.js"],
+  "files": ["dist", "lib", "tags.jsx", "tags.js", "submodules"],
   "scripts": {
+    "postinstall": "npm run pull",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "pull" : "git submodule update --remote && cp ./submodules/NestedLink/tags.* .",
-    "compile" : "./node_modules/.bin/webpack",
-    "deploy" : "cp -R ./dist ./examples/*/node_modules/react-mvx", 
+    "pull" : "git submodule update --remote && cp ./submodules/NestedLink/tags.* . && cp -R ./submodules/NestedLink/src ./src/valuelink",
+    "compile" : "./node_modules/.bin/tsc",
+    "deploy" : "./node_modules/.bin/webpack -p && cp -R ./dist ./examples/*/node_modules/react-mvx", 
     "build": "npm run pull && npm run compile && npm run deploy"
   },
   "keywords": [
