@@ -1,21 +1,36 @@
 # React-MVx
 
-MVVM framework based on React and Type-R. It is used as core frontend technology at Volicon/Verizon, and aims to
-fix what we believe is the wrong direction in React ecosystem development.
+React-MVx is the MVVM SPA framework with React as View layer, built upon frontend technologies used at Volicon/Verizon for 3 years.
 
-In React-MVx:
+Contrary to the populular React approaches, React-MVx does not try to avoid the distributed application state.
+Instead, it focused on bringing stateful components capabilities to their maximum.
 
-- Two-way data binding is first class citizen.
-- Domain state management doesn't rely on singletons.
-- Local UI state and domain state are managed with the same universal technique.
-- State is mutable, observable, JSON serializable, and utilize the full power of OO.
-- Both unidirectional data flow with pure render optimization and local UI updates are supported.
+It manages both local UI state and application domain state with the same universal state container, which supports:
+- two-way data binding
+- declarative state validation
+- nested data structures & observable changes
+- painless state synchronization
+- automatic JSON serialization
 
-This things are achieved with replacement of standard React's state with `Record` subclass,
-which is an observable and JSON serializable object with typed attributes. `Record` and `Record.Collection`
-can be nested to describe the state of arbitrary complexity.
+React-MVx application architecture:
+- Follows familiar and scaleable MVVM architecture pattern.
+- Doesn't rely on singletons (unless you _really_ need some data to be shared across pages)
+- Welcomes _local encapsulated state_ and OO decomposition.
+- Features unidirectional data flow and "pure render" optimization. Yes.
 
 THIS IS THE TECHNOLOGY PREVIEW. NOT PRODUCTION READY YET. WE'RE WORKING ON IT.
+
+## Features
+
+
+## Examples
+
+## Documentation
+    - Simple Stateful Components
+    - Complex state. Records and collections
+    - 
+
+## Installation
 
 ## Notes for myself. Don't read.
 

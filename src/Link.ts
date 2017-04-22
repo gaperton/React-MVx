@@ -4,7 +4,7 @@
  */
 
 import { Mixable, Record } from 'type-r'
-import Link from '../NestedLink/valuelink'
+import { Link } from './valuelink/link'
 
 export default Link;
 
@@ -19,12 +19,12 @@ interface LinksCache {
  */
 Record.mixins({
     // Link to the record's attribute by its key.
-    getLink( key : string ) : RecordLink {
+    linkAt( key : string ) : RecordLink {
         return cacheLink( getLinksCache( this ), this, key );
     },
 
     // Link to the attribute of the record's tree by symbolic path.
-    deepLink( path : string, options? : {} ) : RecordDeepLink {
+    linkAtPath( path : string, options? : {} ) : RecordDeepLink {
         return new RecordDeepLink( this, path, options )
     },
 
@@ -121,12 +121,12 @@ function cacheLink( links : LinksCache, record : Record, key : string ) : Record
  */
 Record.Collection.mixins({
     // Boolean link to the record's presence in the collection
-    hasLink( record : Record ){
+    linkContains( record : Record ){
         return new CollectionLink( this, record );
     },
 
     // Link to collection's property
-    getLink( prop : string ){
+    linkAt( prop : string ){
         return Link.value( this[ prop ], x => this[ prop ] = x );
     }
 });
