@@ -58,7 +58,6 @@ And then, you just access `this.state` as if it would be the plain object.
 			</div>
 		);
 	}
-}
 ```
 
 Fairly simple. Now, it's time to understand what really happens behind the scene
