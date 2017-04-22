@@ -1,7 +1,7 @@
 # State management basics
 
 It's not a secret that the standard React component state is not very suitable and pleasant
-tp work. But it doesn't have to be so. The first and the most important thing React-MVx does
+thing work. But it doesn't have to be so. The first and the most important thing React-MVx does
  is that it replaces React state with the universal state container which is called `Record`.
 
 It's 'universal' because it's used to handle all the state in the application, no matter is it
