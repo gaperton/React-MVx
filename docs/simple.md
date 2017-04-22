@@ -1,4 +1,4 @@
-# State management basics
+# State management 101
 
 It's not a secret that the standard React component state is not very suitable and pleasant
 thing work. But it doesn't have to be so. The first and the most important thing React-MVx does
