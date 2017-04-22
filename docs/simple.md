@@ -60,7 +60,8 @@ And then, you just access `this.state` as if it would be the plain object.
 	}
 ```
 
-Fairly simple. It was one of the major design guidelines for the React-MVx - trivial things must look trivial.
+Fairly simple. The more subtle difference to the React state is that the changes to the
+ state are applied _immediately_, while the subsequent UI update may happen _asynchronously_.
 
 Now, it's time to understand what really happens behind the scene inside of the `@define` decorator and how this example works.
 
@@ -107,11 +108,3 @@ componentDidMount(){ // Works before your componentDidMount is called.
 
 Therefore, you may read and write the members of you state directly. 
 Any write operation will emit `change` event and trigger the UI update.
-
-## Differences to the React state
-
-An obvious difference is that you can assign `this.state` properties directly.
-
-The more subtle difference is that the changes to the state are applied _immediately_, while the subsequent UI update may happen _asynchronously_.
-
-And the most important practical difference is that contrary to React, *you have to declare all attributes of the state*. Or it won't work.
