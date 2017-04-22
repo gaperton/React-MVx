@@ -32,6 +32,7 @@ THIS IS THE BETA. NOT PRODUCTION READY YET. WE'RE WORKING ON IT.
 - State Management Basics
     - [Getting started](/docs/simple.md). State management basics with simple stateful component.
     - [Two-way data binding](/docs/databinding.md)
+    - [Handling the complex state](/docs/complex-state.md)
 - [Complex state]. Records and collections
 - 
 
