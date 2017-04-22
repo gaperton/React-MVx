@@ -26,9 +26,9 @@ THIS IS THE TECHNOLOGY PREVIEW. NOT PRODUCTION READY YET. WE'RE WORKING ON IT.
 ## Examples
 
 ## Documentation
-    - Architecture Overview
     - Simple Stateful Components
-    - Records and Collections
+    - Complex state. Records and collections
+    - 
 
 ## Installation
 
