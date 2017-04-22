@@ -17,7 +17,7 @@ React-MVx extends React namespace so you need to use it _instead_ of React.
 import { define, Component } from 'react-mvx'
 ```
 
-Definition of the React-MVx component *must* be preceeded with `@define` decorator.
+Definition of the React-MVx component *must* be preceded with `@define` decorator.
 
 ```jsx
 @define
@@ -28,8 +28,8 @@ export class MyComponent extends Component {
 }
 ```
 
-Then we define the state. In the simplest case the state definition looks similar
-to the standard React state initialization, but you need to preceed it with `static`.
+Then we define the state. In the simplest case, the state definition looks similar
+to the standard React state initialization, but you need to preced it with `static`.
 
 Contrary to the React state, *all* state attributes you're going to use *must* be declared.
 We will have just one state member - the counter.
