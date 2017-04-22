@@ -29,9 +29,9 @@ THIS IS THE BETA. NOT PRODUCTION READY YET. WE'RE WORKING ON IT.
 
 ## Documentation
 
-    - [Getting started](/docs/simple.md). State management basics with simple stateful component.
-    - [Complex state]. Records and collections
-    - 
+- [Getting started](/docs/simple.md). State management basics with simple stateful component.
+- [Complex state]. Records and collections
+- 
 
 ## Installation & Requirements
 
