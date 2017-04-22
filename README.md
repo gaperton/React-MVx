@@ -2,35 +2,52 @@
 
 React-MVx is the MVVM SPA framework with React as View layer, built upon frontend technologies used at Volicon/Verizon for 3 years.
 
-Contrary to the populular React approaches, React-MVx does not try to avoid the distributed application state.
-Instead, it focused on bringing stateful components capabilities to their maximum.
+Contrary to the populular React approaches, React-MVx does not try to avoid the distributed mutable application state. Instead, it is focused on bringing stateful components capabilities to their maximum.
 
-It manages both local UI state and application domain state with the same universal state container, which supports:
+React-MVx manages both local UI state and application domain state with the same universal state container provided by [Type-R]() data framework. It supports:
+
 - two-way data binding
 - declarative state validation
 - nested data structures & observable changes
 - painless state synchronization
 - automatic JSON serialization
 
-React-MVx application architecture:
-- Follows familiar and scaleable MVVM architecture pattern.
-- Doesn't rely on singletons (unless you _really_ need some data to be shared across pages)
-- Welcomes _local encapsulated state_ and OO decomposition.
-- Features unidirectional data flow and "pure render" optimization. Yes.
+React-MVx application architecture follows scalable MVVM architecture pattern. It features the _unidirectional data flow_ and _pure render_ optimization. But contrary to the popular React state management solutions:
 
-THIS IS THE TECHNOLOGY PREVIEW. NOT PRODUCTION READY YET. WE'RE WORKING ON IT.
+- It doesn't rely on singletons (unless you _really_ need some data to be shared across pages)
+- It assists and encourages usage of _locally encapsulated state_ and _OO decomposition_.
 
-## Features
-
+THIS IS THE BETA. NOT PRODUCTION READY YET. WE'RE WORKING ON IT.
 
 ## Examples
 
+- [Checklist tree]()([source](/examples/checklistTree))
+- [TodoMVC]()([source](/examples/todomvc))
+- [UsersList]()([source](/examples/userslist))
+- Flux Comparison([source]*/examples/flux-comparison))
+- Babel + Webpack [boilerplate]()([source](/examples/babel-boilerplate))
+
 ## Documentation
-    - Simple Stateful Components
-    - Complex state. Records and collections
+    - [Getting started](/docs/simple.md). State management basics with simple stateful component.
+    - [Complex state]. Records and collections
     - 
 
-## Installation
+## Installation & Requirements
+
+Supported browsers: Chrome, Firefox, Safari, IE10+.
+
+Requires `react` and `type-r` as peer dependecies. Installation (assuming that React is installed):
+
+    `npm install react-mvx type-r --save-dev`
+
+The best way to start is to use the [boilerplate](/examples/babel-boilerplate) which already has
+babel, webpack 2, and minimal set of required dependencies configured.
+
+TypeScript is unsupported (yet) but may work.
+
+---
+
+MIT License. Used and supported by Volicon and Verizon Digital Media Services.
 
 ## Notes for myself. Don't read.
 
