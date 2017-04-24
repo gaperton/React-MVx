@@ -4,7 +4,7 @@ React-MVx is the MVVM SPA framework with React as View layer, built upon fronten
 
 Contrary to the populular React approaches, React-MVx does not try to avoid the distributed mutable application state. Instead, it is focused on bringing stateful components capabilities to their maximum.
 
-React-MVx manages both local UI state and application domain state with the same universal state container provided by [Type-R]() data framework. It supports:
+React-MVx manages both local UI state and application domain state with the same universal state container provided by [Type-R](https://github.com/Volicon/Type-R) data framework. It supports:
 
 - two-way data binding
 - declarative state validation
@@ -21,9 +21,9 @@ THIS IS THE BETA. NOT PRODUCTION READY YET. WE'RE WORKING ON IT.
 
 ## Examples
 
-- [Checklist tree]()([source](/examples/checklistTree))
-- [TodoMVC]()([source](/examples/todomvc))
-- [UsersList]()([source](/examples/userslist))
+- [Checklist tree]() ([source](/examples/checklistTree))
+- [TodoMVC]() ([source](/examples/todomvc))
+- [UsersList]() ([source](/examples/userslist))
 - Flux Comparison([source]*/examples/flux-comparison))
 - Babel + Webpack [boilerplate]()([source](/examples/babel-boilerplate))
 
@@ -34,7 +34,7 @@ THIS IS THE BETA. NOT PRODUCTION READY YET. WE'RE WORKING ON IT.
     - [Two-way data binding](/docs/databinding.md)
     - [Handling the complex state](/docs/complex-state.md)
 - [Complex state]. Records and collections
-- 
+-
 
 ## Installation & Requirements
 
@@ -67,7 +67,7 @@ Engine for reactions on raw props changes.
 (?) Combine it with pure render?
 
     Type.has.watcher( name | function )
-    
+
     Type.value( x )
     Type.isRequired
 
@@ -84,4 +84,4 @@ Manage this stuff separately. Relies on the fact what was and what was not repla
 Pure render creates the constucted object for props (like Attributes).
 Used for the fast copying. It's needed because we need to grab and preserve _changeToken.
 
-Generic change tracking engine would create unrolled props comparison function. Then, it could utilize object `[ prop ] : [ handlers ]` 
+Generic change tracking engine would create unrolled props comparison function. Then, it could utilize object `[ prop ] : [ handlers ]`
