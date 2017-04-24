@@ -36,28 +36,28 @@ We will have just one state member - the counter.
 
 ```jsx
 @define class MyComponent extends Component {
-  static state = {
-    count : 0
-  };
+    static state = {
+        count : 0
+    };
 
-  render() {
-    return ( /* jsx */ )
-  }
+    render() {
+        return ( /* jsx */ )
+    }
 }
 ```
 
 And then, you just access `this.state` as if it would be the plain object.
 
 ```jsx
-  render() {
-    const { state } = this;
+    render() {
+        const { state } = this;
 
-    return (
-			<div onClick={ () => state.count++ }>
-				{ state.count }
-			</div>
-		);
-	}
+        return (
+            <div onClick={ () => state.count++ }>
+                { state.count }
+            </div>
+        );
+    }
 ```
 
 Fairly simple. The more subtle difference to the React state is that the changes to the
@@ -98,11 +98,11 @@ It works as if you had the following code in your component:
 
 ```jsx
 componentWillMount() { // Works before your componentWillMount will be called.
-  this.state = new MyState();
+    this.state = new MyState();
 }
 
 componentDidMount() { // Works before your componentDidMount is called.
-  this.state.on( 'change', () => this.forceUpdate() );
+    this.state.on( 'change', () => this.forceUpdate() );
 }
 ```
 

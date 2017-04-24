@@ -24,13 +24,13 @@ Then, you can create the controlled input component like this:
 ```javascript
 @define
 export class MyComponent extends Component {
-  static state = {
-    text : ''
-  }
+    static state = {
+        text : ''
+    }
 
-  render(){
-    return <Input valueLink={ this.linkAt( 'text' ) } />;
-  }
+    render(){
+        return <Input valueLink={ this.linkAt( 'text' ) } />;
+    }
 }
 ```
 
@@ -39,22 +39,22 @@ using `model.linkAll()` method. This is the preferable way of dealing with the c
 
 ```javascript
 @define export class MyComponent extends Component {
-  static state = {
-    a : '',
-    b : '',
-    c : ''
-  }
+    static state = {
+        a : '',
+        b : '',
+        c : ''
+    }
 
-  render() {
-    const links = this.linkAll();
-    return (
-        <form>
-            <Input valueLink={ links.a } />
-            <Input valueLink={ links.b } />
-            <Input valueLink={ links.c } />
-        </form>
-    );
-	}
+    render() {
+        const links = this.linkAll();
+        return (
+            <form>
+                <Input valueLink={ links.a } />
+                <Input valueLink={ links.b } />
+                <Input valueLink={ links.c } />
+            </form>
+        );
+    }
 }
 ```
 
@@ -65,12 +65,12 @@ close to this:
 
 ```javascript
 render() {
-  const link = {
-    value : this.state.text,
-    set   : x => this.state.text = x
-  };
+    const link = {
+        value : this.state.text,
+        set   : x => this.state.text = x
+    };
 
-  return <Input valueLink={ link } />;
+    return <Input valueLink={ link } />;
 }
 ```
 
@@ -78,8 +78,8 @@ And, an Input control which consumes such a link would look like this:
 
 ```javascript
 const Input = ({ valueLink }) => (
-  <input value={ valueLink.value }
-         onChange={ e => valueLink.set( e.target.value ) />
+    <input value={ valueLink.value }
+           onChange={ e => valueLink.set( e.target.value ) />
 );
 ```
 
