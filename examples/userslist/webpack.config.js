@@ -15,14 +15,6 @@ module.exports = {
         modulesDirectories : [ 'node_modules', 'js', '' ]
     },
 
-    plugins : [
-        new webpack.ProvidePlugin( {
-            $          : "jquery",
-            jQuery     : 'expose?jQuery!jquery',
-            _          : "underscore"
-        } )
-    ],
-
     module : {
         loaders : [
             {

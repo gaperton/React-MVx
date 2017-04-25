@@ -1,7 +1,7 @@
 import './main.css'
 import ReactDOM from 'react-dom'
 
-import React from 'react-mvx'
+import React, { Link } from 'react-mvx'
 import { Record, define } from 'type-r'
 
 import Modal from 'react-modal'
@@ -23,7 +23,6 @@ import {Input, isRequired, isEmail } from 'react-mvx/tags'
 
 @define
 export class UsersList extends React.Component {
-    static autobind = 'addUser'
     static state = {
         users   : User.Collection, // No comments required, isn't it?
         editing : User.from( 'users' ), // User from user collection, which is being edited.
@@ -49,26 +48,15 @@ export class UsersList extends React.Component {
                 ) )}
 
                 <Modal isOpen={ Boolean( state.adding ) }>
-                    <EditUser user={ state.adding }
-                              onClose={ this.addUser }/>
+                    <EditUser userLink={ state.linkAt( 'adding' ) }
+                              onSave={ () => state.users.add( state.adding ) }/>
                 </Modal>
 
                 <Modal isOpen={ Boolean( state.editing ) }>
-                    <EditUser user={ state.editing }
-                              onClose={ () => state.editing = null }/>
+                    <EditUser userLink={ state.linkAt( 'editing' ) } />
                 </Modal>
             </div>
         );
-    }
-
-    addUser( user ){
-        const { state } = this;
-
-        if( user ){
-            state.users.add( user );
-        }
-
-        state.adding = null;
     }
 }
 
@@ -95,32 +83,30 @@ const UserRow = ( { user, onEdit } ) =>(
 );
 
 @define class EditUser extends React.Component {
-    static autobind = 'onSubmit onCancel';
-
     static props = {
-        user    : User.has.watcher( React.assignToState ),
-        onClose : Function
+        userLink    : Link.has.watcher( React.assignToState( 'user' ) ),
+        onSave : Function
     };
 
     static state = {
         user : User
     };
 
-    onSubmit( e ){
+    onSubmit =  e => {
         e.preventDefault();
 
-        const { user, onClose } = this.props;
+        const { userLink, onSave } = this.props;
 
-        user.assignFrom( this.state.user );
-        onClose( user );
+        userLink.value.assignFrom( this.state.user );
+        onSave && onSave( userLink.value );
+        this.onCancel()
     }
 
-    onCancel(){
-        this.props.onClose();
-    }
+    onCancel = () => this.props.userLink.set( null );
 
     render(){
-        const linked = this.state.user.linkAll( 'name', 'email', 'isActive' );
+        const { user } = this.state,
+                linked = user.linkAll();
 
         return (
             <form onSubmit={ this.onSubmit }>
@@ -136,7 +122,7 @@ const UserRow = ( { user, onEdit } ) =>(
                     Is active: <Input type="checkbox" checkedLink={ linked.isActive }/>
                 </label>
 
-                <button type="submit" disabled={ linked.name.error || linked.email.error }>
+                <button type="submit" disabled={ !user.isValid() }>
                     Save
                 </button>
                 <button type="button" onClick={ this.onCancel }>

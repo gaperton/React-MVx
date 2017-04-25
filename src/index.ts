@@ -23,7 +23,7 @@ interface ReactMVx{
     Element : ChainableAttributeSpec
 
     // Helper methods
-    assignToState : typeof Component.prototype.assignToState
+    assignToState( key : string )
 }
 
 // extend React namespace
@@ -31,8 +31,6 @@ const ReactMVx : ReactMVx = Object.create( React );
 
 // Make it compatible with ES6 module format.
 ReactMVx.default = ReactMVx;
-export default ReactMVx;
-
 // listenToProps, listenToState, model, attributes, Model
 ReactMVx.createClass = createClass;
 ReactMVx.define = define;
@@ -43,4 +41,11 @@ ReactMVx.Element = Element.value( null );
 ReactMVx.Link = Link;
 
 ReactMVx.Component = Component;
-ReactMVx.assignToState = Component.prototype.assignToState;
+const assignToState = ReactMVx.assignToState = key => {
+    return function( prop ){
+        this.state.assignFrom({ [ key ] : prop && prop instanceof Link ? prop.value : prop });
+    }
+}
+
+export default ReactMVx;
+export { createClass, define, mixins, Node, Element, Link, Component, assignToState }

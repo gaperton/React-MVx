@@ -42,7 +42,7 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -58,29 +58,29 @@
 	
 	__webpack_require__(31);
 	
-	// You should import React from nestedreact, and use it as drop-in replacement.
+	// You should import React from react-mvx, and use it as drop-in replacement.
 	// It's 100% compatible.
 	
 	var _reactMvx = __webpack_require__(35);
 	
 	var _reactMvx2 = _interopRequireDefault(_reactMvx);
 	
-	var _reactDom = __webpack_require__(68);
+	var _reactDom = __webpack_require__(72);
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
 	// Import input controls, modified to support valueLink. Otherwise they behave as standard.
 	
-	var _reactMvxTags = __webpack_require__(214);
+	var _reactMvxTags = __webpack_require__(218);
 	
 	// Import checklist model definition. Think of "model" as of an observable serializable class.
 	
-	var _model = __webpack_require__(215);
+	var _model = __webpack_require__(219);
 	
 	// Local counter to help us count top-level renders.
 	var _renders = 0;
 	
-	// <- That should be places before every class definition, which uses NestedReact features.
+	// @define should be places before every class definition, which uses react-mvx features.
 	
 	var App = (function (_React$Component) {
 	    _inherits(App, _React$Component);
@@ -100,7 +100,7 @@
 	
 	        // Save and restore state.
 	        value: function componentWillMount() {
-	            // All state in NestedReact is serializable by default.
+	            // All state in react-mvx is serializable by default.
 	            var state = this.state;
 	            // load raw JSON from local storage
 	            var json = JSON.parse(localStorage.getItem('checklist') || "{}");
@@ -140,8 +140,8 @@
 	    }], [{
 	        key: 'state',
 	
-	        // NestedReact state definition. Syntax is the same as NestedTypes model attributes spec.
-	        // In fact, this state _is_ the NestedTypes model internally.
+	        // react-mvx state definition. Syntax is the same as type-R model attributes spec.
+	        // In fact, this state _is_ the type-R model internally.
 	        value: {
 	            // 'items' is a collection of ChecklistItem model.
 	            items: _model.ChecklistItem.Collection },
@@ -166,8 +166,6 @@
 	        })
 	    );
 	};
-	
-	// <- Don't forget @define
 	
 	var Item = (function (_React$Component2) {
 	    _inherits(Item, _React$Component2);
@@ -224,7 +222,7 @@
 	    }], [{
 	        key: 'props',
 	
-	        // NestedReact props definition. Same syntax as for the 'state'.
+	        // react-mvx props definition. Same syntax as for the 'state'.
 	        value: {
 	            model: _model.ChecklistItem // <- Type annotation, using constructor function. No default value.
 	        },
@@ -242,9 +240,9 @@
 	
 	_reactDom2['default'].render(_reactMvx2['default'].createElement(App, null), document.getElementById('app-mount-root'));
 
-/***/ },
+/***/ }),
 /* 1 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
@@ -291,15 +289,15 @@
 	
 	exports.__esModule = true;
 
-/***/ },
+/***/ }),
 /* 2 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	module.exports = { "default": __webpack_require__(3), __esModule: true };
 
-/***/ },
+/***/ }),
 /* 3 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var $ = __webpack_require__(4);
 	__webpack_require__(5);
@@ -307,9 +305,9 @@
 	  return $.getDesc(it, key);
 	};
 
-/***/ },
+/***/ }),
 /* 4 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	var $Object = Object;
 	module.exports = {
@@ -325,9 +323,9 @@
 	  each:       [].forEach
 	};
 
-/***/ },
+/***/ }),
 /* 5 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	// 19.1.2.6 Object.getOwnPropertyDescriptor(O, P)
 	var toIObject = __webpack_require__(6);
@@ -338,9 +336,9 @@
 	  };
 	});
 
-/***/ },
+/***/ }),
 /* 6 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	// to indexed object, toObject with fallback for non-array-like ES3 strings
 	var IObject = __webpack_require__(7)
@@ -349,9 +347,9 @@
 	  return IObject(defined(it));
 	};
 
-/***/ },
+/***/ }),
 /* 7 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	// fallback for non-array-like ES3 and non-enumerable old V8 strings
 	var cof = __webpack_require__(8);
@@ -359,9 +357,9 @@
 	  return cof(it) == 'String' ? it.split('') : Object(it);
 	};
 
-/***/ },
+/***/ }),
 /* 8 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	var toString = {}.toString;
 	
@@ -369,9 +367,9 @@
 	  return toString.call(it).slice(8, -1);
 	};
 
-/***/ },
+/***/ }),
 /* 9 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	// 7.2.1 RequireObjectCoercible(argument)
 	module.exports = function(it){
@@ -379,9 +377,9 @@
 	  return it;
 	};
 
-/***/ },
+/***/ }),
 /* 10 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	// most Object methods by ES6 should accept primitives
 	var $export = __webpack_require__(11)
@@ -394,9 +392,9 @@
 	  $export($export.S + $export.F * fails(function(){ fn(1); }), 'Object', exp);
 	};
 
-/***/ },
+/***/ }),
 /* 11 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var global    = __webpack_require__(12)
 	  , core      = __webpack_require__(13)
@@ -445,25 +443,25 @@
 	$export.W = 32; // wrap
 	module.exports = $export;
 
-/***/ },
+/***/ }),
 /* 12 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
 	var global = module.exports = typeof window != 'undefined' && window.Math == Math
 	  ? window : typeof self != 'undefined' && self.Math == Math ? self : Function('return this')();
 	if(typeof __g == 'number')__g = global; // eslint-disable-line no-undef
 
-/***/ },
+/***/ }),
 /* 13 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	var core = module.exports = {version: '1.2.6'};
 	if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
 
-/***/ },
+/***/ }),
 /* 14 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	// optional / simple context binding
 	var aFunction = __webpack_require__(15);
@@ -486,18 +484,18 @@
 	  };
 	};
 
-/***/ },
+/***/ }),
 /* 15 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = function(it){
 	  if(typeof it != 'function')throw TypeError(it + ' is not a function!');
 	  return it;
 	};
 
-/***/ },
+/***/ }),
 /* 16 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = function(exec){
 	  try {
@@ -507,9 +505,9 @@
 	  }
 	};
 
-/***/ },
+/***/ }),
 /* 17 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
@@ -535,45 +533,45 @@
 	
 	exports.__esModule = true;
 
-/***/ },
+/***/ }),
 /* 18 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	module.exports = { "default": __webpack_require__(19), __esModule: true };
 
-/***/ },
+/***/ }),
 /* 19 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var $ = __webpack_require__(4);
 	module.exports = function create(P, D){
 	  return $.create(P, D);
 	};
 
-/***/ },
+/***/ }),
 /* 20 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	module.exports = { "default": __webpack_require__(21), __esModule: true };
 
-/***/ },
+/***/ }),
 /* 21 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	__webpack_require__(22);
 	module.exports = __webpack_require__(13).Object.setPrototypeOf;
 
-/***/ },
+/***/ }),
 /* 22 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	// 19.1.3.19 Object.setPrototypeOf(O, proto)
 	var $export = __webpack_require__(11);
 	$export($export.S, 'Object', {setPrototypeOf: __webpack_require__(23).set});
 
-/***/ },
+/***/ }),
 /* 23 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	// Works with __proto__ only. Old v8 can't work with null proto objects.
 	/* eslint-disable no-proto */
@@ -602,17 +600,17 @@
 	  check: check
 	};
 
-/***/ },
+/***/ }),
 /* 24 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = function(it){
 	  return typeof it === 'object' ? it !== null : typeof it === 'function';
 	};
 
-/***/ },
+/***/ }),
 /* 25 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var isObject = __webpack_require__(24);
 	module.exports = function(it){
@@ -620,9 +618,9 @@
 	  return it;
 	};
 
-/***/ },
+/***/ }),
 /* 26 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
@@ -649,24 +647,24 @@
 	
 	exports.__esModule = true;
 
-/***/ },
+/***/ }),
 /* 27 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	module.exports = { "default": __webpack_require__(28), __esModule: true };
 
-/***/ },
+/***/ }),
 /* 28 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var $ = __webpack_require__(4);
 	module.exports = function defineProperty(it, key, desc){
 	  return $.setDesc(it, key, desc);
 	};
 
-/***/ },
+/***/ }),
 /* 29 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	"use strict";
 	
@@ -678,9 +676,9 @@
 	
 	exports.__esModule = true;
 
-/***/ },
+/***/ }),
 /* 30 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	"use strict";
 	
@@ -692,9 +690,9 @@
 	
 	exports.__esModule = true;
 
-/***/ },
+/***/ }),
 /* 31 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
@@ -718,9 +716,9 @@
 		module.hot.dispose(function() { update(); });
 	}
 
-/***/ },
+/***/ }),
 /* 32 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(33)();
 	// imports
@@ -732,9 +730,9 @@
 	// exports
 
 
-/***/ },
+/***/ }),
 /* 33 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/*
 		MIT License http://www.opensource.org/licenses/mit-license.php
@@ -788,9 +786,9 @@
 	};
 
 
-/***/ },
+/***/ }),
 /* 34 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/*
 		MIT License http://www.opensource.org/licenses/mit-license.php
@@ -1040,9 +1038,9 @@
 	}
 
 
-/***/ },
+/***/ }),
 /* 35 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	(function webpackUniversalModuleDefinition(root, factory) {
 		if(true)
@@ -2246,3695 +2244,2139 @@
 	});
 	//# sourceMappingURL=index.js.map
 
-/***/ },
+/***/ }),
 /* 36 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
-	(function webpackUniversalModuleDefinition(root, factory) {
-		if(true)
-			module.exports = factory();
-		else if(typeof define === 'function' && define.amd)
-			define([], factory);
-		else if(typeof exports === 'object')
-			exports["Nested"] = factory();
-		else
-			root["Nested"] = factory();
-	})(this, function() {
-	return /******/ (function(modules) { // webpackBootstrap
-	/******/ 	// The module cache
-	/******/ 	var installedModules = {};
-	/******/
-	/******/ 	// The require function
-	/******/ 	function __webpack_require__(moduleId) {
-	/******/
-	/******/ 		// Check if module is in cache
-	/******/ 		if(installedModules[moduleId])
-	/******/ 			return installedModules[moduleId].exports;
-	/******/
-	/******/ 		// Create a new module (and put it into the cache)
-	/******/ 		var module = installedModules[moduleId] = {
-	/******/ 			i: moduleId,
-	/******/ 			l: false,
-	/******/ 			exports: {}
-	/******/ 		};
-	/******/
-	/******/ 		// Execute the module function
-	/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-	/******/
-	/******/ 		// Flag the module as loaded
-	/******/ 		module.l = true;
-	/******/
-	/******/ 		// Return the exports of the module
-	/******/ 		return module.exports;
-	/******/ 	}
-	/******/
-	/******/
-	/******/ 	// expose the modules object (__webpack_modules__)
-	/******/ 	__webpack_require__.m = modules;
-	/******/
-	/******/ 	// expose the module cache
-	/******/ 	__webpack_require__.c = installedModules;
-	/******/
-	/******/ 	// identity function for calling harmony imports with the correct context
-	/******/ 	__webpack_require__.i = function(value) { return value; };
-	/******/
-	/******/ 	// define getter function for harmony exports
-	/******/ 	__webpack_require__.d = function(exports, name, getter) {
-	/******/ 		if(!__webpack_require__.o(exports, name)) {
-	/******/ 			Object.defineProperty(exports, name, {
-	/******/ 				configurable: false,
-	/******/ 				enumerable: true,
-	/******/ 				get: getter
-	/******/ 			});
-	/******/ 		}
-	/******/ 	};
-	/******/
-	/******/ 	// getDefaultExport function for compatibility with non-harmony modules
-	/******/ 	__webpack_require__.n = function(module) {
-	/******/ 		var getter = module && module.__esModule ?
-	/******/ 			function getDefault() { return module['default']; } :
-	/******/ 			function getModuleExports() { return module; };
-	/******/ 		__webpack_require__.d(getter, 'a', getter);
-	/******/ 		return getter;
-	/******/ 	};
-	/******/
-	/******/ 	// Object.prototype.hasOwnProperty.call
-	/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-	/******/
-	/******/ 	// __webpack_public_path__
-	/******/ 	__webpack_require__.p = "";
-	/******/
-	/******/ 	// Load entry module and return exports
-	/******/ 	return __webpack_require__(__webpack_require__.s = 28);
-	/******/ })
-	/************************************************************************/
-	/******/ ([
-	/* 0 */
-	/***/ (function(module, exports, __webpack_require__) {
+	/*
 	
-	"use strict";
+	*/
 	
-	function __export(m) {
-	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-	}
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var tools = __webpack_require__(5);
-	exports.tools = tools;
-	__export(__webpack_require__(7));
-	__export(__webpack_require__(18));
-	var eventsApi = __webpack_require__(6);
-	exports.eventsApi = eventsApi;
-	var mixins_1 = __webpack_require__(7);
-	Object.extend = function (protoProps, staticProps) { return mixins_1.Mixable.extend(protoProps, staticProps); };
-	Object.assign || (Object.assign = tools.assign);
-	Object.log = tools.log;
-	
-	
-	/***/ }),
-	/* 1 */
-	/***/ (function(module, exports, __webpack_require__) {
-	
-	"use strict";
-	
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var object_plus_1 = __webpack_require__(0);
-	var validation_1 = __webpack_require__(27);
-	var traversable_1 = __webpack_require__(10);
-	var assign = object_plus_1.tools.assign, trigger2 = object_plus_1.eventsApi.trigger2, trigger3 = object_plus_1.eventsApi.trigger3, on = object_plus_1.eventsApi.on, off = object_plus_1.eventsApi.off;
-	var ItemsBehavior;
-	(function (ItemsBehavior) {
-	    ItemsBehavior[ItemsBehavior["share"] = 1] = "share";
-	    ItemsBehavior[ItemsBehavior["listen"] = 2] = "listen";
-	    ItemsBehavior[ItemsBehavior["persistent"] = 4] = "persistent";
-	})(ItemsBehavior = exports.ItemsBehavior || (exports.ItemsBehavior = {}));
-	var Transactional = (function () {
-	    function Transactional(cid) {
-	        this._events = void 0;
-	        this._changeToken = {};
-	        this._transaction = false;
-	        this._isDirty = null;
-	        this._owner = void 0;
-	        this._ownerKey = void 0;
-	        this._validationError = void 0;
-	        this.cid = this.cidPrefix + cid;
-	    }
-	    Transactional.prototype.dispose = function () {
-	        if (this._disposed)
-	            return;
-	        this._owner = void 0;
-	        this._ownerKey = void 0;
-	        this.off();
-	        this.stopListening();
-	        this._disposed = true;
-	    };
-	    Transactional.prototype.initialize = function () { };
-	    Transactional.prototype.onChanges = function (handler, target) {
-	        on(this, this._changeEventName, handler, target);
-	    };
-	    Transactional.prototype.offChanges = function (handler, target) {
-	        off(this, this._changeEventName, handler, target);
-	    };
-	    Transactional.prototype.listenToChanges = function (target, handler) {
-	        this.listenTo(target, target._changeEventName, handler);
-	    };
-	    Transactional.prototype.transaction = function (fun, options) {
-	        if (options === void 0) { options = {}; }
-	        var isRoot = exports.transactionApi.begin(this);
-	        fun.call(this, this);
-	        isRoot && exports.transactionApi.commit(this);
-	    };
-	    Transactional.prototype.updateEach = function (iteratee, options) {
-	        var isRoot = exports.transactionApi.begin(this);
-	        this.each(iteratee);
-	        isRoot && exports.transactionApi.commit(this);
-	    };
-	    Transactional.prototype.set = function (values, options) {
-	        if (values) {
-	            var transaction = this._createTransaction(values, options);
-	            transaction && transaction.commit();
+	!function( t, e ){
+	     true ? module.exports = e() :
+	    "function" == typeof define && define.amd ? define( [], e ) :
+	    "object" == typeof exports ? exports.Nested = e() : t.Nested = e()
+	}( this, function(){
+	    return function( t ){
+	        function e( r ){
+	            if( n[ r ] ) return n[ r ].exports;
+	            var i = n[ r ] = { i : r, l : !1, exports : {} };
+	            return t[ r ].call( i.exports, i, i.exports, e ), i.l = !0, i.exports
 	        }
-	        return this;
-	    };
-	    Transactional.prototype.parse = function (data, options) { return data; };
-	    Transactional.prototype.deepGet = function (reference) {
-	        return traversable_1.resolveReference(this, reference, function (object, key) { return object.get ? object.get(key) : object[key]; });
-	    };
-	    Transactional.prototype.getOwner = function () {
-	        return this._owner;
-	    };
-	    Transactional.prototype.getStore = function () {
-	        var _owner = this._owner;
-	        return _owner ? _owner.getStore() : this._defaultStore;
-	    };
-	    Transactional.prototype.map = function (iteratee, context) {
-	        var arr = [], fun = context !== void 0 ? function (v, k) { return iteratee.call(context, v, k); } : iteratee;
-	        this.each(function (val, key) {
-	            var result = fun(val, key);
-	            if (result !== void 0)
-	                arr.push(result);
-	        });
-	        return arr;
-	    };
-	    Transactional.prototype.mapObject = function (iteratee, context) {
-	        var obj = {}, fun = context !== void 0 ? function (v, k) { return iteratee.call(context, v, k); } : iteratee;
-	        this.each(function (val, key) {
-	            var result = iteratee(val, key);
-	            if (result !== void 0)
-	                obj[key] = result;
-	        });
-	        return obj;
-	    };
-	    Object.defineProperty(Transactional.prototype, "validationError", {
-	        get: function () {
-	            var error = this._validationError || (this._validationError = new validation_1.ValidationError(this));
-	            return error.length ? error : null;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    Transactional.prototype.validate = function (obj) { };
-	    Transactional.prototype.getValidationError = function (key) {
-	        var error = this.validationError;
-	        return (key ? error && error.nested[key] : error) || null;
-	    };
-	    Transactional.prototype.deepValidationError = function (reference) {
-	        return traversable_1.resolveReference(this, reference, function (object, key) { return object.getValidationError(key); });
-	    };
-	    Transactional.prototype.eachValidationError = function (iteratee) {
-	        var validationError = this.validationError;
-	        validationError && validationError.eachError(iteratee, this);
-	    };
-	    Transactional.prototype.isValid = function (key) {
-	        return !this.getValidationError(key);
-	    };
-	    Transactional.prototype.valueOf = function () { return this.cid; };
-	    Transactional.prototype.toString = function () { return this.cid; };
-	    Transactional.prototype.getClassName = function () {
-	        var name = this.constructor.name;
-	        if (name !== 'Subclass')
-	            return name;
-	    };
-	    return Transactional;
-	}());
-	Transactional = __decorate([
-	    object_plus_1.mixins(object_plus_1.Messenger),
-	    object_plus_1.extendable
-	], Transactional);
-	exports.Transactional = Transactional;
-	exports.transactionApi = {
-	    begin: function (object) {
-	        return object._transaction ? false : (object._transaction = true);
-	    },
-	    markAsDirty: function (object, options) {
-	        var dirty = !options.silent;
-	        if (dirty)
-	            object._isDirty = options;
-	        object._changeToken = {};
-	        object._validationError = void 0;
-	        return dirty;
-	    },
-	    commit: function (object, initiator) {
-	        var originalOptions = object._isDirty;
-	        if (originalOptions) {
-	            while (object._isDirty) {
-	                var options = object._isDirty;
-	                object._isDirty = null;
-	                trigger3(object, object._changeEventName, object, options, initiator);
+	
+	        var n = {};
+	        return e.m = t, e.c = n, e.i = function( t ){ return t }, e.d = function( t, n, r ){
+	            e.o( t, n ) || Object.defineProperty( t, n, { configurable : !1, enumerable : !0, get : r } )
+	        }, e.n = function( t ){
+	            var n = t && t.__esModule ? function(){ return t.default } : function(){ return t };
+	            return e.d( n, "a", n ), n
+	        }, e.o = function( t, e ){ return Object.prototype.hasOwnProperty.call( t, e ) }, e.p = "", e( e.s = 18 )
+	    }( [ function( t, e, n ){
+	        "use strict";
+	        var r = n( 5 );
+	        n.d( e, "a", function(){ return r } );
+	        var i = n( 7 );
+	        n.d( e, "c", function(){ return i.a } ), n.d( e, "d", function(){ return i.b } ), n.d( e, "e",
+	            function(){ return i.c } ), n.d( e, "f", function(){ return i.d } ), n.d( e, "g",
+	            function(){ return i.e } ), n.d( e, "h", function(){ return i.f } ), n.d( e, "i",
+	            function(){ return i.g } );
+	        var o = n( 19 );
+	        n.d( e, "j", function(){ return o.a } ), n.d( e, "k", function(){ return o.b } ), n.d( e, "l",
+	            function(){ return o.c } );
+	        var s = n( 6 );
+	        n.d( e, "b", function(){ return s } ), Object.extend =
+	            function( t, e ){ return i.a.extend( t, e ) }, Object.assign || (Object.assign = r.assign), Object.log =
+	            r.log
+	    }, function( t, e, n ){
+	        "use strict";
+	        var r = n( 0 ), i = n( 28 ), o = n( 10 );
+	        n.d( e, "c", function(){ return s } ), n.d( e, "a", function(){ return p } ), n.d( e, "b",
+	            function(){ return h } );
+	        var s, a = this && this.__decorate || function( t, e, n, r ){
+	                var i, o = arguments.length,
+	                    s = o < 3 ? e : null === r ? r = Object.getOwnPropertyDescriptor( e, n ) : r;
+	                if( "object" == typeof Reflect && "function" == typeof Reflect.decorate ) s =
+	                    Reflect.decorate( t, e, n, r );
+	                else for( var a = t.length - 1; a >= 0; a-- )(i = t[ a ]) && (s =
+	                    (o < 3 ? i( s ) : o > 3 ? i( e, n, s ) : i( e, n )) || s);
+	                return o > 3 && s && Object.defineProperty( e, n, s ), s
+	            }, u = (r.a.assign, r.b.trigger2, r.b.trigger3), c = r.b.on, f = r.b.off;
+	        !function( t ){
+	            t[ t.share = 1 ] = "share", t[ t.listen = 2 ] = "listen", t[ t.persistent = 4 ] = "persistent"
+	        }( s || (s = {}) );
+	        var p = function(){
+	            function t( t ){
+	                this._events = void 0, this._changeToken = {}, this._transaction = !1, this._isDirty =
+	                    null, this._owner = void 0, this._ownerKey = void 0, this._validationError = void 0, this.cid =
+	                    this.cidPrefix + t
 	            }
-	            object._transaction = false;
-	            var _owner = object._owner;
-	            if (_owner && _owner !== initiator) {
-	                _owner._onChildrenChange(object, originalOptions);
-	            }
-	        }
-	        else {
-	            object._isDirty = null;
-	            object._transaction = false;
-	        }
-	    },
-	    aquire: function (owner, child, key) {
-	        if (!child._owner) {
-	            child._owner = owner;
-	            child._ownerKey = key;
-	            return true;
-	        }
-	        return child._owner === owner;
-	    },
-	    free: function (owner, child) {
-	        if (owner === child._owner) {
-	            child._owner = void 0;
-	            child._ownerKey = void 0;
-	        }
-	    }
-	};
 	
-	
-	/***/ }),
-	/* 2 */
-	/***/ (function(module, exports, __webpack_require__) {
-	
-	"use strict";
-	
-	function __export(m) {
-	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-	}
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var transaction_1 = __webpack_require__(9);
-	exports.Record = transaction_1.Record;
-	var object_plus_1 = __webpack_require__(0);
-	var define_1 = __webpack_require__(23);
-	var typespec_1 = __webpack_require__(12);
-	exports.ChainableAttributeSpec = typespec_1.ChainableAttributeSpec;
-	var transactions_1 = __webpack_require__(1);
-	var attributes_1 = __webpack_require__(8);
-	__export(__webpack_require__(8));
-	var assign = object_plus_1.tools.assign, defaults = object_plus_1.tools.defaults, omit = object_plus_1.tools.omit, getBaseClass = object_plus_1.tools.getBaseClass;
-	transaction_1.Record.define = function (protoProps, staticProps) {
-	    if (protoProps === void 0) { protoProps = {}; }
-	    var BaseConstructor = getBaseClass(this), baseProto = BaseConstructor.prototype, staticsDefinition = object_plus_1.tools.getChangedStatics(this, 'attributes', 'collection', 'Collection'), definition = assign(staticsDefinition, protoProps);
-	    if ('Collection' in this && this.Collection === void 0) {
-	        object_plus_1.tools.log.error("[Model Definition] " + this.prototype.getClassName() + ".Collection is undefined. It must be defined _before_ the model.", definition);
-	    }
-	    var dynamicMixin = define_1.compile(this.attributes = getAttributes(definition), baseProto._attributes);
-	    if (definition.properties === false) {
-	        dynamicMixin.properties = {};
-	    }
-	    assign(dynamicMixin.properties, protoProps.properties || {});
-	    assign(dynamicMixin, omit(definition, 'attributes', 'collection', 'defaults', 'properties', 'forEachAttr'));
-	    object_plus_1.Mixable.define.call(this, dynamicMixin, staticProps);
-	    defineCollection.call(this, definition.collection || definition.Collection);
-	    return this;
-	};
-	transaction_1.Record.predefine = function () {
-	    transactions_1.Transactional.predefine.call(this);
-	    this.Collection = getBaseClass(this).Collection.extend();
-	    this.Collection.prototype.model = this;
-	    createSharedTypeSpec(this, attributes_1.SharedType);
-	    return this;
-	};
-	transaction_1.Record._attribute = attributes_1.AggregatedType;
-	createSharedTypeSpec(transaction_1.Record, attributes_1.SharedType);
-	function getAttributes(_a) {
-	    var defaults = _a.defaults, attributes = _a.attributes, idAttribute = _a.idAttribute;
-	    var definition = typeof defaults === 'function' ? defaults() : attributes || defaults || {};
-	    if (idAttribute && !(idAttribute in definition)) {
-	        definition[idAttribute] = void 0;
-	    }
-	    return definition;
-	}
-	function defineCollection(collection) {
-	    if (typeof collection === 'function') {
-	        this.Collection = collection;
-	        this.Collection.prototype.model = this;
-	    }
-	    else {
-	        this.Collection.define(collection || {});
-	    }
-	}
-	Object.defineProperties(Date, {
-	    microsoft: {
-	        get: function () {
-	            return new typespec_1.ChainableAttributeSpec({
-	                type: Date,
-	                _attribute: attributes_1.MSDateType
-	            });
-	        }
-	    },
-	    timestamp: {
-	        get: function () {
-	            return new typespec_1.ChainableAttributeSpec({
-	                type: Date,
-	                _attribute: attributes_1.TimestampType
-	            });
-	        }
-	    }
-	});
-	Number.integer = function (x) { return x ? Math.round(x) : 0; };
-	Number.integer._attribute = attributes_1.NumericType;
-	if (typeof window !== 'undefined') {
-	    window.Integer = Number.integer;
-	}
-	function createSharedTypeSpec(Constructor, Attribute) {
-	    Constructor.hasOwnProperty('shared') ||
-	        Object.defineProperty(Constructor, 'shared', {
-	            get: function () {
-	                return new typespec_1.ChainableAttributeSpec({
-	                    value: null,
-	                    type: Constructor,
-	                    _attribute: Attribute
-	                });
-	            }
-	        });
-	}
-	exports.createSharedTypeSpec = createSharedTypeSpec;
-	
-	
-	/***/ }),
-	/* 3 */
-	/***/ (function(module, exports, __webpack_require__) {
-	
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var transaction_1 = __webpack_require__(9);
-	var object_plus_1 = __webpack_require__(0);
-	var notEqual = object_plus_1.tools.notEqual, assign = object_plus_1.tools.assign;
-	var AnyType = (function () {
-	    function AnyType(name, a_options) {
-	        this.name = name;
-	        this.getHook = null;
-	        this.options = a_options;
-	        var options = assign({ getHooks: [], transforms: [], changeHandlers: [] }, a_options);
-	        options.getHooks = options.getHooks.slice();
-	        options.transforms = options.transforms.slice();
-	        options.changeHandlers = options.changeHandlers.slice();
-	        var value = options.value, type = options.type, parse = options.parse, toJSON = options.toJSON, changeEvents = options.changeEvents, validate = options.validate, getHooks = options.getHooks, transforms = options.transforms, changeHandlers = options.changeHandlers;
-	        this.value = value;
-	        this.type = type;
-	        this.propagateChanges = changeEvents !== false;
-	        this.parse = parse;
-	        this.toJSON = toJSON === void 0 ? this.toJSON : toJSON;
-	        this.validate = validate || this.validate;
-	        if (options.isRequired) {
-	            this.validate = wrapIsRequired(this.validate);
-	        }
-	        transforms.unshift(this.convert);
-	        if (this.get)
-	            getHooks.unshift(this.get);
-	        this.initialize.call(this, options);
-	        if (getHooks.length) {
-	            var getHook_1 = this.getHook = getHooks.reduce(chainGetHooks);
-	            var validate_1 = this.validate;
-	            this.validate = function (record, value, key) {
-	                return validate_1.call(this, record, getHook_1.call(record, value, key), key);
-	            };
-	        }
-	        if (transforms.length) {
-	            this.transform = transforms.reduce(chainTransforms);
-	        }
-	        if (changeHandlers.length) {
-	            this.handleChange = changeHandlers.reduce(chainChangeHandlers);
-	        }
-	    }
-	    AnyType.create = function (options, name) {
-	        var type = options.type, AttributeCtor = options._attribute || (type ? type._attribute : AnyType);
-	        return new AttributeCtor(name, options);
-	    };
-	    AnyType.prototype.canBeUpdated = function (prev, next, options) { };
-	    AnyType.prototype.transform = function (value, options, prev, model) { return value; };
-	    AnyType.prototype.convert = function (value, options, prev, model) { return value; };
-	    AnyType.prototype.isChanged = function (a, b) {
-	        return notEqual(a, b);
-	    };
-	    AnyType.prototype.handleChange = function (next, prev, model) { };
-	    AnyType.prototype.create = function () { return new this.type(); };
-	    AnyType.prototype.clone = function (value, record) {
-	        if (value && typeof value === 'object') {
-	            if (value.clone)
-	                return value.clone();
-	            var proto = Object.getPrototypeOf(value);
-	            if (proto === Object.prototype || proto === Array.prototype) {
-	                return JSON.parse(JSON.stringify(value));
-	            }
-	        }
-	        return value;
-	    };
-	    AnyType.prototype.dispose = function (record, value) { };
-	    AnyType.prototype.validate = function (record, value, key) { };
-	    AnyType.prototype.toJSON = function (value, key) {
-	        return value && value.toJSON ? value.toJSON() : value;
-	    };
-	    AnyType.prototype.createPropertyDescriptor = function () {
-	        var _a = this, name = _a.name, getHook = _a.getHook;
-	        if (name !== 'id') {
-	            return {
-	                set: function (value) {
-	                    transaction_1.setAttribute(this, name, value);
-	                },
-	                get: getHook ?
-	                    function () {
-	                        return getHook.call(this, this.attributes[name], name);
-	                    } :
-	                    function () {
-	                        return this.attributes[name];
+	            return t.prototype.dispose = function(){
+	                this._disposed ||
+	                (this._owner = void 0, this._ownerKey = void 0, this.off(), this.stopListening(), this._disposed = !0)
+	            }, t.prototype.initialize = function(){ }, t.prototype.onChanges =
+	                function( t, e ){ c( this, this._changeEventName, t, e ) }, t.prototype.offChanges =
+	                function( t, e ){ f( this, this._changeEventName, t, e ) }, t.prototype.listenToChanges =
+	                function( t, e ){ this.listenTo( t, t._changeEventName, e ) }, t.prototype.transaction =
+	                function( t, e ){
+	                    void 0 === e && (e = {});
+	                    var n = h.begin( this );
+	                    t.call( this, this ), n && h.commit( this )
+	                }, t.prototype.updateEach = function( t, e ){
+	                var n = h.begin( this );
+	                this.each( t ), n && h.commit( this )
+	            }, t.prototype.set = function( t, e ){
+	                if( t ){
+	                    var n = this._createTransaction( t, e );
+	                    n && n.commit()
+	                }
+	                return this
+	            }, t.prototype.assignFrom =
+	                function( t ){ return this.set( t.__inner_state__ || t, { merge : !0 } ) }, t.prototype.parse =
+	                function( t, e ){ return t }, t.prototype.deepGet = function( t ){
+	                return n.i( o.a )( this, t, function( t, e ){ return t.get ? t.get( e ) : t[ e ] } )
+	            }, t.prototype.getOwner = function(){ return this._owner }, t.prototype.getStore = function(){
+	                var t = this._owner;
+	                return t ? t.getStore() : this._defaultStore
+	            }, t.prototype.map = function( t, e ){
+	                var n = [], r = void 0 !== e ? function( n, r ){ return t.call( e, n, r ) } : t;
+	                return this.each( function( t, e ){
+	                    var i = r( t, e );
+	                    void 0 !== i && n.push( i )
+	                } ), n
+	            }, t.prototype.mapObject = function( t, e ){
+	                var n = {};
+	                return this.each( function( e, r ){
+	                    var i = t( e, r );
+	                    void 0 !== i && (n[ r ] = i)
+	                } ), n
+	            }, Object.defineProperty( t.prototype, "validationError", {
+	                get           : function(){
+	                    var t = this._validationError || (this._validationError = new i.a( this ));
+	                    return t.length ? t : null
+	                }, enumerable : !0, configurable : !0
+	            } ), t.prototype.validate = function( t ){ }, t.prototype.getValidationError = function( t ){
+	                var e = this.validationError;
+	                return (t ? e && e.nested[ t ] : e) || null
+	            }, t.prototype.deepValidationError = function( t ){
+	                return n.i( o.a )( this, t, function( t, e ){ return t.getValidationError( e ) } )
+	            }, t.prototype.eachValidationError = function( t ){
+	                var e = this.validationError;
+	                e && e.eachError( t, this )
+	            }, t.prototype.isValid = function( t ){ return !this.getValidationError( t ) }, t.prototype.valueOf =
+	                function(){ return this.cid }, t.prototype.toString =
+	                function(){ return this.cid }, t.prototype.getClassName = function(){
+	                var t = this.constructor.name;
+	                if( "Subclass" !== t ) return t
+	            }, t
+	        }();
+	        p     = a( [ n.i( r.e )( r.k ), r.f ], p );
+	        var h = {
+	            begin       : function( t ){ return !t._transaction && (t._transaction = !0) },
+	            markAsDirty : function( t, e ){
+	                var n = !e.silent;
+	                return n && (t._isDirty = e), t._changeToken = {}, t._validationError = void 0, n
+	            },
+	            commit      : function( t, e ){
+	                var n = t._isDirty;
+	                if( n ){
+	                    for( ; t._isDirty; ){
+	                        var r = t._isDirty;
+	                        t._isDirty = null, u( t, t._changeEventName, t, r, e )
 	                    }
-	            };
-	        }
-	    };
-	    AnyType.prototype.initialize = function (name, options) { };
-	    AnyType.prototype._log = function (level, text, value, record) {
-	        object_plus_1.tools.log[level]("[Attribute Update] " + record.getClassName() + "." + this.name + ": " + text, value, 'Attributes spec:', record._attributes);
-	    };
-	    return AnyType;
-	}());
-	exports.AnyType = AnyType;
-	transaction_1.Record.prototype._attributes = { id: AnyType.create({ value: void 0 }, 'id') };
-	transaction_1.Record.prototype.defaults = function (attrs) {
-	    if (attrs === void 0) { attrs = {}; }
-	    return { id: attrs.id };
-	};
-	function chainChangeHandlers(prevHandler, nextHandler) {
-	    return function (next, prev, model) {
-	        prevHandler.call(this, next, prev, model);
-	        nextHandler.call(this, next, prev, model);
-	    };
-	}
-	function chainGetHooks(prevHook, nextHook) {
-	    return function (value, name) {
-	        return nextHook.call(this, prevHook.call(this, value, name), name);
-	    };
-	}
-	function chainTransforms(prevTransform, nextTransform) {
-	    return function (value, options, prev, model) {
-	        return nextTransform.call(this, prevTransform.call(this, value, options, prev, model), options, prev, model);
-	    };
-	}
-	function wrapIsRequired(validate) {
-	    return function (record, value, key) {
-	        return value ? validate.call(this, record, value, key) : 'Required';
-	    };
-	}
-	
-	
-	/***/ }),
-	/* 4 */
-	/***/ (function(module, exports, __webpack_require__) {
-	
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var transactions_1 = __webpack_require__(1);
-	var object_plus_1 = __webpack_require__(0);
-	var EventMap = object_plus_1.eventsApi.EventMap, trigger2 = object_plus_1.eventsApi.trigger2, trigger3 = object_plus_1.eventsApi.trigger3, on = object_plus_1.eventsApi.on, off = object_plus_1.eventsApi.off, commit = transactions_1.transactionApi.commit, markAsDirty = transactions_1.transactionApi.markAsDirty, _aquire = transactions_1.transactionApi.aquire, _free = transactions_1.transactionApi.free;
-	function dispose(collection) {
-	    var models = collection.models;
-	    collection.models = [];
-	    collection._byId = {};
-	    freeAll(collection, models);
-	    return models;
-	}
-	exports.dispose = dispose;
-	function convertAndAquire(collection, attrs, options) {
-	    var model = collection.model;
-	    var record;
-	    if (collection._shared) {
-	        record = attrs instanceof model ? attrs : model.create(attrs, options);
-	        if (collection._shared & transactions_1.ItemsBehavior.listen) {
-	            on(record, record._changeEventName, collection._onChildrenChange, collection);
-	        }
-	    }
-	    else {
-	        record = attrs instanceof model ? (options.merge ? attrs.clone() : attrs) : model.create(attrs, options);
-	        if (!_aquire(collection, record)) {
-	            var errors = collection._aggregationError || (collection._aggregationError = []);
-	            errors.push(record);
-	        }
-	    }
-	    var _itemEvents = collection._itemEvents;
-	    _itemEvents && _itemEvents.subscribe(collection, record);
-	    return record;
-	}
-	exports.convertAndAquire = convertAndAquire;
-	function free(owner, child) {
-	    if (owner._shared) {
-	        if (owner._shared & transactions_1.ItemsBehavior.listen) {
-	            off(child, child._changeEventName, owner._onChildrenChange, owner);
-	        }
-	    }
-	    else {
-	        _free(owner, child);
-	    }
-	    var _itemEvents = owner._itemEvents;
-	    _itemEvents && _itemEvents.unsubscribe(owner, child);
-	}
-	exports.free = free;
-	function freeAll(collection, children) {
-	    for (var _i = 0, children_1 = children; _i < children_1.length; _i++) {
-	        var child = children_1[_i];
-	        free(collection, child);
-	    }
-	    return children;
-	}
-	exports.freeAll = freeAll;
-	function sortElements(collection, options) {
-	    var _comparator = collection._comparator;
-	    if (_comparator && options.sort !== false) {
-	        collection.models.sort(_comparator);
-	        return true;
-	    }
-	    return false;
-	}
-	exports.sortElements = sortElements;
-	function addIndex(index, model) {
-	    index[model.cid] = model;
-	    var id = model.id;
-	    if (id != null) {
-	        index[id] = model;
-	    }
-	}
-	exports.addIndex = addIndex;
-	function removeIndex(index, model) {
-	    delete index[model.cid];
-	    var id = model.id;
-	    if (id != null) {
-	        delete index[id];
-	    }
-	}
-	exports.removeIndex = removeIndex;
-	function updateIndex(index, model) {
-	    delete index[model.previous(model.idAttribute)];
-	    var id = model.id;
-	    id == null || (index[id] = model);
-	}
-	exports.updateIndex = updateIndex;
-	var CollectionTransaction = (function () {
-	    function CollectionTransaction(object, isRoot, added, removed, nested, sorted) {
-	        this.object = object;
-	        this.isRoot = isRoot;
-	        this.added = added;
-	        this.removed = removed;
-	        this.nested = nested;
-	        this.sorted = sorted;
-	    }
-	    CollectionTransaction.prototype.commit = function (initiator) {
-	        var _a = this, nested = _a.nested, object = _a.object, _isDirty = object._isDirty;
-	        for (var _i = 0, nested_1 = nested; _i < nested_1.length; _i++) {
-	            var transaction = nested_1[_i];
-	            transaction.commit(object);
-	        }
-	        if (object._aggregationError) {
-	            logAggregationError(object);
-	        }
-	        for (var _b = 0, nested_2 = nested; _b < nested_2.length; _b++) {
-	            var transaction = nested_2[_b];
-	            trigger2(object, 'change', transaction.object, _isDirty);
-	        }
-	        var _c = this, added = _c.added, removed = _c.removed;
-	        for (var _d = 0, added_1 = added; _d < added_1.length; _d++) {
-	            var record = added_1[_d];
-	            trigger3(record, 'add', record, object, _isDirty);
-	            trigger3(object, 'add', record, object, _isDirty);
-	        }
-	        for (var _e = 0, removed_1 = removed; _e < removed_1.length; _e++) {
-	            var record = removed_1[_e];
-	            trigger3(record, 'remove', record, object, _isDirty);
-	            trigger3(object, 'remove', record, object, _isDirty);
-	        }
-	        if (this.sorted) {
-	            trigger2(object, 'sort', object, _isDirty);
-	        }
-	        if (added.length || removed.length) {
-	            trigger2(object, 'update', object, _isDirty);
-	        }
-	        this.isRoot && commit(object, initiator);
-	    };
-	    return CollectionTransaction;
-	}());
-	exports.CollectionTransaction = CollectionTransaction;
-	function logAggregationError(collection) {
-	    collection._log('error', 'added records already have an owner', collection._aggregationError);
-	    collection._aggregationError = void 0;
-	}
-	exports.logAggregationError = logAggregationError;
-	
-	
-	/***/ }),
-	/* 5 */
-	/***/ (function(module, exports, __webpack_require__) {
-	
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var Log = (function () {
-	    function Log() {
-	        this.stops = {};
-	        this.throws = {};
-	        this.logger = typeof console !== 'undefined' ? console : null;
-	        this.reset();
-	    }
-	    Log.prototype.doLogging = function (type, args) {
-	        var logger = this.logger, logMethod = logger && logger[type];
-	        if (logMethod)
-	            logMethod.apply(logger, args);
-	        if (this.stops[type])
-	            debugger;
-	        if (this.throws[type])
-	            throw new Error("[" + type + "] " + args[0]);
-	        this.counts[type]++;
-	    };
-	    Log.prototype.reset = function () {
-	        this.level = 2;
-	        this.counts = { error: 0, warn: 0, info: 0, debug: 0 };
-	        this.stops = {};
-	        return this;
-	    };
-	    Log.prototype.developer = function (trueDeveloper) {
-	        this.level = 3;
-	        this.stops = { error: true, warn: Boolean(trueDeveloper) };
-	        return this;
-	    };
-	    Log.prototype.error = function () {
-	        var args = [];
-	        for (var _i = 0; _i < arguments.length; _i++) {
-	            args[_i] = arguments[_i];
-	        }
-	        if (this.level > 0)
-	            this.doLogging('error', args);
-	    };
-	    Log.prototype.warn = function () {
-	        var args = [];
-	        for (var _i = 0; _i < arguments.length; _i++) {
-	            args[_i] = arguments[_i];
-	        }
-	        if (this.level > 1)
-	            this.doLogging('warn', args);
-	    };
-	    Log.prototype.info = function () {
-	        var args = [];
-	        for (var _i = 0; _i < arguments.length; _i++) {
-	            args[_i] = arguments[_i];
-	        }
-	        if (this.level > 2)
-	            this.doLogging('info', args);
-	    };
-	    Log.prototype.debug = function () {
-	        var args = [];
-	        for (var _i = 0; _i < arguments.length; _i++) {
-	            args[_i] = arguments[_i];
-	        }
-	        if (this.level > 3)
-	            this.doLogging('debug', args);
-	    };
-	    Object.defineProperty(Log.prototype, "state", {
-	        get: function () {
-	            return ("\nObject.log - Object+ Logging and Debugging Utility\n--------------------------------------------------\nObject.log.counts: Number of logged events by type\n    { errors : " + this.counts.error + ", warns : " + this.counts.warn + ", info : " + this.counts.info + ", debug : " + this.counts.debug + " }\n\nObject.log.level == " + this.level + " : Ignore events which are above specified level \n    - 0 - logging is off;\n    - 1 - Object.log.error(...) only;\n    - 2 - .error() and .warn();\n    - 3 - .error(), .warn(), and .info();\n    - 4 - all of above plus .debug().\n\nObject.log.stops: Stops in debugger for some certain event types\n     { error : " + (this.stops.error || false) + ", warn  : " + (this.stops.warn || false) + ", info  : " + (this.stops.info || false) + ", debug : " + (this.stops.debug || false) + " } \n\nObject.log.throws: Throws expection on some certain event types\n     { error : " + (this.throws.error || false) + ", warn  : " + (this.throws.warn || false) + ", info  : " + (this.throws.info || false) + ", debug : " + (this.throws.debug || false) + " }\n");
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    return Log;
-	}());
-	exports.Log = Log;
-	exports.log = new Log();
-	function isValidJSON(value) {
-	    if (value === null) {
-	        return true;
-	    }
-	    switch (typeof value) {
-	        case 'number':
-	        case 'string':
-	        case 'boolean':
-	            return true;
-	        case 'object':
-	            var proto = Object.getPrototypeOf(value);
-	            if (proto === Object.prototype || proto === Array.prototype) {
-	                return every(value, isValidJSON);
-	            }
-	    }
-	    return false;
-	}
-	exports.isValidJSON = isValidJSON;
-	function getBaseClass(Class) {
-	    return Object.getPrototypeOf(Class.prototype).constructor;
-	}
-	exports.getBaseClass = getBaseClass;
-	function getChangedStatics(Ctor) {
-	    var names = [];
-	    for (var _i = 1; _i < arguments.length; _i++) {
-	        names[_i - 1] = arguments[_i];
-	    }
-	    var Base = getBaseClass(Ctor), props = {};
-	    for (var _a = 0, names_1 = names; _a < names_1.length; _a++) {
-	        var name_1 = names_1[_a];
-	        var value = Ctor[name_1];
-	        if (value !== void 0 && value !== Base[name_1]) {
-	            props[name_1] = value;
-	        }
-	    }
-	    return props;
-	}
-	exports.getChangedStatics = getChangedStatics;
-	function isEmpty(obj) {
-	    if (obj) {
-	        for (var key in obj) {
-	            if (obj.hasOwnProperty(key)) {
-	                return false;
-	            }
-	        }
-	    }
-	    return true;
-	}
-	exports.isEmpty = isEmpty;
-	function someArray(arr, fun) {
-	    var result;
-	    for (var i = 0; i < arr.length; i++) {
-	        if (result = fun(arr[i], i)) {
-	            return result;
-	        }
-	    }
-	}
-	function someObject(obj, fun) {
-	    var result;
-	    for (var key in obj) {
-	        if (obj.hasOwnProperty(key)) {
-	            if (result = fun(obj[key], key)) {
-	                return result;
-	            }
-	        }
-	    }
-	}
-	function some(obj, fun) {
-	    if (Object.getPrototypeOf(obj) === ArrayProto) {
-	        return someArray(obj, fun);
-	    }
-	    else {
-	        return someObject(obj, fun);
-	    }
-	}
-	exports.some = some;
-	function every(obj, predicate) {
-	    return !some(obj, function (x) { return !predicate(x); });
-	}
-	exports.every = every;
-	function getPropertyDescriptor(obj, prop) {
-	    var desc;
-	    for (var proto = obj; !desc && proto; proto = Object.getPrototypeOf(proto)) {
-	        desc = Object.getOwnPropertyDescriptor(proto, prop);
-	    }
-	    return desc;
-	}
-	exports.getPropertyDescriptor = getPropertyDescriptor;
-	function omit(source) {
-	    var dest = {}, discard = {};
-	    for (var i = 1; i < arguments.length; i++) {
-	        discard[arguments[i]] = true;
-	    }
-	    for (var name in source) {
-	        if (!discard.hasOwnProperty(name) && source.hasOwnProperty(name)) {
-	            dest[name] = source[name];
-	        }
-	    }
-	    return dest;
-	}
-	exports.omit = omit;
-	function transform(dest, source, fun) {
-	    for (var name in source) {
-	        if (source.hasOwnProperty(name)) {
-	            var value = fun(source[name], name);
-	            value === void 0 || (dest[name] = value);
-	        }
-	    }
-	    return dest;
-	}
-	exports.transform = transform;
-	function fastAssign(dest, source) {
-	    for (var name in source) {
-	        dest[name] = source[name];
-	    }
-	    return dest;
-	}
-	exports.fastAssign = fastAssign;
-	function fastDefaults(dest, source) {
-	    for (var name in source) {
-	        if (dest[name] === void 0) {
-	            dest[name] = source[name];
-	        }
-	    }
-	    return dest;
-	}
-	exports.fastDefaults = fastDefaults;
-	function assign(dest, source) {
-	    for (var name in source) {
-	        if (source.hasOwnProperty(name)) {
-	            dest[name] = source[name];
-	        }
-	    }
-	    if (arguments.length > 2) {
-	        for (var i = 2; i < arguments.length; i++) {
-	            var other = arguments[i];
-	            other && assign(dest, other);
-	        }
-	    }
-	    return dest;
-	}
-	exports.assign = assign;
-	function defaults(dest, source) {
-	    for (var name in source) {
-	        if (source.hasOwnProperty(name) && !dest.hasOwnProperty(name)) {
-	            dest[name] = source[name];
-	        }
-	    }
-	    if (arguments.length > 2) {
-	        for (var i = 2; i < arguments.length; i++) {
-	            var other = arguments[i];
-	            other && defaults(dest, other);
-	        }
-	    }
-	    return dest;
-	}
-	exports.defaults = defaults;
-	Object.setPrototypeOf || (Object.setPrototypeOf = defaults);
-	function keys(o) {
-	    return o ? Object.keys(o) : [];
-	}
-	exports.keys = keys;
-	function once(func) {
-	    var memo, first = true;
-	    return function () {
-	        if (first) {
-	            first = false;
-	            memo = func.apply(this, arguments);
-	            func = null;
-	        }
-	        return memo;
-	    };
-	}
-	exports.once = once;
-	var ArrayProto = Array.prototype, DateProto = Date.prototype, ObjectProto = Object.prototype;
-	function notEqual(a, b) {
-	    if (a === b)
-	        return false;
-	    if (a && b && typeof a == 'object' && typeof b == 'object') {
-	        var protoA = Object.getPrototypeOf(a);
-	        if (protoA !== Object.getPrototypeOf(b))
-	            return true;
-	        switch (protoA) {
-	            case DateProto: return +a !== +b;
-	            case ArrayProto: return arraysNotEqual(a, b);
-	            case ObjectProto:
-	            case null:
-	                return objectsNotEqual(a, b);
-	        }
-	    }
-	    return true;
-	}
-	exports.notEqual = notEqual;
-	function objectsNotEqual(a, b) {
-	    var keysA = Object.keys(a);
-	    if (keysA.length !== Object.keys(b).length)
-	        return true;
-	    for (var i = 0; i < keysA.length; i++) {
-	        var key = keysA[i];
-	        if (!b.hasOwnProperty(key) || notEqual(a[key], b[key])) {
-	            return true;
-	        }
-	    }
-	    return false;
-	}
-	function arraysNotEqual(a, b) {
-	    if (a.length !== b.length)
-	        return true;
-	    for (var i = 0; i < a.length; i++) {
-	        if (notEqual(a[i], b[i]))
-	            return true;
-	    }
-	    return false;
-	}
-	
-	
-	/***/ }),
-	/* 6 */
-	/***/ (function(module, exports, __webpack_require__) {
-	
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var tools_1 = __webpack_require__(5);
-	var EventMap = (function () {
-	    function EventMap(map) {
-	        this.handlers = [];
-	        if (map) {
-	            if (map instanceof EventMap) {
-	                this.handlers = map.handlers.slice();
-	            }
-	            else {
-	                map && this.addEventsMap(map);
-	            }
-	        }
-	    }
-	    EventMap.prototype.merge = function (map) {
-	        this.handlers = this.handlers.concat(map.handlers);
-	    };
-	    EventMap.prototype.addEventsMap = function (map) {
-	        for (var names in map) {
-	            this.addEvent(names, map[names]);
-	        }
-	    };
-	    EventMap.prototype.bubbleEvents = function (names) {
-	        for (var _i = 0, _a = names.split(eventSplitter); _i < _a.length; _i++) {
-	            var name_1 = _a[_i];
-	            this.addEvent(name_1, getBubblingHandler(name_1));
-	        }
-	    };
-	    EventMap.prototype.addEvent = function (names, callback) {
-	        var handlers = this.handlers;
-	        for (var _i = 0, _a = names.split(eventSplitter); _i < _a.length; _i++) {
-	            var name_2 = _a[_i];
-	            handlers.push(new EventDescriptor(name_2, callback));
-	        }
-	    };
-	    EventMap.prototype.subscribe = function (target, source) {
-	        for (var _i = 0, _a = this.handlers; _i < _a.length; _i++) {
-	            var event_1 = _a[_i];
-	            on(source, event_1.name, event_1.callback, target);
-	        }
-	    };
-	    EventMap.prototype.unsubscribe = function (target, source) {
-	        for (var _i = 0, _a = this.handlers; _i < _a.length; _i++) {
-	            var event_2 = _a[_i];
-	            off(source, event_2.name, event_2.callback, target);
-	        }
-	    };
-	    return EventMap;
-	}());
-	exports.EventMap = EventMap;
-	var EventDescriptor = (function () {
-	    function EventDescriptor(name, callback) {
-	        this.name = name;
-	        if (callback === true) {
-	            this.callback = getBubblingHandler(name);
-	        }
-	        else if (typeof callback === 'string') {
-	            this.callback =
-	                function localCallback() {
-	                    var handler = this[callback];
-	                    handler && handler.apply(this, arguments);
-	                };
-	        }
-	        else {
-	            this.callback = callback;
-	        }
-	    }
-	    return EventDescriptor;
-	}());
-	exports.EventDescriptor = EventDescriptor;
-	var _bubblingHandlers = {};
-	function getBubblingHandler(event) {
-	    return _bubblingHandlers[event] || (_bubblingHandlers[event] = function (a, b, c, d, e) {
-	        if (d !== void 0 || e !== void 0)
-	            trigger5(this, event, a, b, c, d, e);
-	        if (c !== void 0)
-	            trigger3(this, event, a, b, c);
-	        else
-	            trigger2(this, event, a, b);
-	    });
-	}
-	var EventHandler = (function () {
-	    function EventHandler(callback, context, next) {
-	        if (next === void 0) { next = null; }
-	        this.callback = callback;
-	        this.context = context;
-	        this.next = next;
-	    }
-	    return EventHandler;
-	}());
-	exports.EventHandler = EventHandler;
-	function listOff(_events, name, callback, context) {
-	    var head = _events[name];
-	    var filteredHead, prev;
-	    for (var ev = head; ev; ev = ev.next) {
-	        if ((callback && callback !== ev.callback && callback !== ev.callback._callback) ||
-	            (context && context !== ev.context)) {
-	            prev = ev;
-	            filteredHead || (filteredHead = ev);
-	        }
-	        else {
-	            if (prev)
-	                prev.next = ev.next;
-	        }
-	    }
-	    if (head !== filteredHead)
-	        _events[name] = filteredHead;
-	}
-	function listSend2(head, a, b) {
-	    for (var ev = head; ev; ev = ev.next)
-	        ev.callback.call(ev.context, a, b);
-	}
-	function listSend3(head, a, b, c) {
-	    for (var ev = head; ev; ev = ev.next)
-	        ev.callback.call(ev.context, a, b, c);
-	}
-	function listSend4(head, a, b, c, d) {
-	    for (var ev = head; ev; ev = ev.next)
-	        ev.callback.call(ev.context, a, b, c, d);
-	}
-	function listSend5(head, a, b, c, d, e) {
-	    for (var ev = head; ev; ev = ev.next)
-	        ev.callback.call(ev.context, a, b, c, d, e);
-	}
-	function listSend6(head, a, b, c, d, e, f) {
-	    for (var ev = head; ev; ev = ev.next)
-	        ev.callback.call(ev.context, a, b, c, d, e, f);
-	}
-	function on(source, name, callback, context) {
-	    if (callback) {
-	        var _events = source._events || (source._events = Object.create(null));
-	        _events[name] = new EventHandler(callback, context, _events[name]);
-	    }
-	}
-	exports.on = on;
-	function once(source, name, callback, context) {
-	    if (callback) {
-	        var once_1 = tools_1.once(function () {
-	            off(source, name, once_1);
-	            callback.apply(this, arguments);
-	        });
-	        once_1._callback = callback;
-	        on(source, name, once_1, context);
-	    }
-	}
-	exports.once = once;
-	function off(source, name, callback, context) {
-	    var _events = source._events;
-	    if (_events) {
-	        if (callback || context) {
-	            if (name) {
-	                listOff(_events, name, callback, context);
-	            }
-	            else {
-	                for (var name_3 in _events) {
-	                    listOff(_events, name_3, callback, context);
+	                    t._transaction = !1;
+	                    var i          = t._owner;
+	                    i && i !== e && i._onChildrenChange( t, n )
 	                }
+	                else t._isDirty = null, t._transaction = !1
+	            },
+	            aquire      : function( t, e, n ){ return e._owner ? e._owner === t : (e._owner = t, e._ownerKey = n, !0) },
+	            free        : function( t, e ){ t === e._owner && (e._owner = void 0, e._ownerKey = void 0) }
+	        }
+	    }, function( t, e, n ){
+	        "use strict";
+	        function r( t ){
+	            var e = t.defaults, n = t.attributes, r = t.idAttribute, i = "function" == typeof e ? e() : n || e || {};
+	            return !r || r in i || (i[ r ] = void 0), i
+	        }
+	
+	        function i( t ){
+	            "function" == typeof t ? (this.Collection = t, this.Collection.prototype.model = this) :
+	            this.Collection.define( t || {} )
+	        }
+	
+	        function o( t, e ){
+	            t.hasOwnProperty( "shared" ) || Object.defineProperty( t, "shared",
+	                { get : function(){ return new c.a( { value : null, type : t, _attribute : e } ) } } )
+	        }
+	
+	        var s = n( 9 ), a = n( 0 ), u = n( 24 ), c = n( 12 ), f = n( 1 ), p = n( 8 );
+	        n.d( e, "d", function(){ return p.a } ), n.d( e, "e", function(){ return p.b } ), n.d( e, "f",
+	            function(){ return p.c } ), n.d( e, "g", function(){ return p.d } ), n.d( e, "h",
+	            function(){ return p.e } ), n.d( e, "i", function(){ return p.f } ), n.d( e, "j",
+	            function(){ return p.g } ), n.d( e, "k", function(){ return p.h } ), n.d( e, "l",
+	            function(){ return p.i } ), n.d( e, "a", function(){ return s.a } ), n.d( e, "b",
+	            function(){ return c.a } ), e.c = o;
+	        var h = a.a.assign, l = (a.a.defaults, a.a.omit), d = a.a.getBaseClass;
+	        s.a.define = function( t, e ){
+	            void 0 === t && (t = {});
+	            var o = d( this ), s = o.prototype,
+	                c = a.a.getChangedStatics( this, "attributes", "collection", "Collection" ), f = h( c, t );
+	            "Collection" in this && void 0 === this.Collection && a.a.log.error(
+	                "[Model Definition] " + this.prototype.getClassName() +
+	                ".Collection is undefined. It must be defined _before_ the model.", f );
+	            var p = n.i( u.a )( this.attributes = r( f ), s._attributes );
+	            return f.properties === !1 && (p.properties = {}), h( p.properties, t.properties || {} ), h( p,
+	                l( f, "attributes", "collection", "defaults", "properties", "forEachAttr" ) ), a.c.define.call( this, p,
+	                e ), i.call( this, f.collection || f.Collection ), this
+	        }, s.a.predefine = function(){
+	            return f.a.predefine.call( this ), this.Collection =
+	                d( this ).Collection.extend(), this.Collection.prototype.model = this, o( this, p.i ), this
+	        }, s.a._attribute = p.b, o( s.a, p.i ), Object.defineProperties( Date, {
+	            microsoft : { get : function(){ return new c.a( { type : Date, _attribute : p.d } ) } },
+	            timestamp : { get : function(){ return new c.a( { type : Date, _attribute : p.e } ) } }
+	        } ), Number.integer = function( t ){ return t ? Math.round( t ) : 0 }, Number.integer._attribute =
+	            p.g, "undefined" != typeof window && (window.Integer = Number.integer)
+	    }, function( t, e, n ){
+	        "use strict";
+	        function r( t, e ){ return function( n, r, i ){ t.call( this, n, r, i ), e.call( this, n, r, i ) } }
+	
+	        function i( t, e ){ return function( n, r ){ return e.call( this, t.call( this, n, r ), r ) } }
+	
+	        function o( t, e ){
+	            return function( n, r, i, o ){
+	                return e.call( this, t.call( this, n, r, i, o ), r, i, o )
 	            }
 	        }
-	        else if (name) {
-	            _events[name] = void 0;
-	        }
-	        else {
-	            source._events = void 0;
-	        }
-	    }
-	}
-	exports.off = off;
-	var eventSplitter = /\s+/;
-	function strings(api, source, events, callback, context) {
-	    if (eventSplitter.test(events)) {
-	        var names = events.split(eventSplitter);
-	        for (var _i = 0, names_1 = names; _i < names_1.length; _i++) {
-	            var name_4 = names_1[_i];
-	            api(source, name_4, callback, context);
-	        }
-	    }
-	    else
-	        api(source, events, callback, context);
-	}
-	exports.strings = strings;
-	function trigger2(self, name, a, b) {
-	    var _events = self._events;
-	    if (_events) {
-	        var queue = _events[name], all = _events.all;
-	        listSend2(queue, a, b);
-	        listSend3(all, name, a, b);
-	    }
-	}
-	exports.trigger2 = trigger2;
-	;
-	function trigger3(self, name, a, b, c) {
-	    var _events = self._events;
-	    if (_events) {
-	        var queue = _events[name], all = _events.all;
-	        listSend3(queue, a, b, c);
-	        listSend4(all, name, a, b, c);
-	    }
-	}
-	exports.trigger3 = trigger3;
-	;
-	function trigger5(self, name, a, b, c, d, e) {
-	    var _events = self._events;
-	    if (_events) {
-	        var queue = _events[name], all = _events.all;
-	        listSend5(queue, a, b, c, d, e);
-	        listSend6(all, name, a, b, c, d, e);
-	    }
-	}
-	exports.trigger5 = trigger5;
-	;
 	
+	        function s( t ){ return function( e, n, r ){ return n ? t.call( this, e, n, r ) : "Required" } }
 	
-	/***/ }),
-	/* 7 */
-	/***/ (function(module, exports, __webpack_require__) {
-	
-	"use strict";
-	
-	var __extends = (this && this.__extends) || (function () {
-	    var extendStatics = Object.setPrototypeOf ||
-	        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-	        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-	    return function (d, b) {
-	        extendStatics(d, b);
-	        function __() { this.constructor = d; }
-	        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	    };
-	})();
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var tools_1 = __webpack_require__(5);
-	var Mixable = (function () {
-	    function Mixable() {
-	        this.initialize.apply(this, arguments);
-	    }
-	    Mixable.prototype.initialize = function () { };
-	    Mixable.create = function (a, b) {
-	        return new this(a, b);
-	    };
-	    Mixable.mixins = function () {
-	        var mixins = [];
-	        for (var _i = 0; _i < arguments.length; _i++) {
-	            mixins[_i] = arguments[_i];
-	        }
-	        var proto = this.prototype, mergeRules = this._mixinRules || {}, _appliedMixins = this._appliedMixins = (this._appliedMixins || []).slice();
-	        for (var _a = 0, mixins_1 = mixins; _a < mixins_1.length; _a++) {
-	            var mixin = mixins_1[_a];
-	            if (mixin instanceof Array) {
-	                return Mixable.mixins.apply(this, mixin);
-	            }
-	            if (_appliedMixins.indexOf(mixin) >= 0)
-	                continue;
-	            _appliedMixins.push(mixin);
-	            if (typeof mixin === 'function') {
-	                tools_1.defaults(this, mixin);
-	                mergeProps(proto, mixin.prototype, mergeRules);
-	            }
-	            else {
-	                mergeProps(proto, mixin, mergeRules);
-	            }
-	        }
-	        return this;
-	    };
-	    Mixable.mixTo = function () {
-	        var args = [];
-	        for (var _i = 0; _i < arguments.length; _i++) {
-	            args[_i] = arguments[_i];
-	        }
-	        for (var _a = 0, args_1 = args; _a < args_1.length; _a++) {
-	            var Ctor = args_1[_a];
-	            Mixable.mixins.call(Ctor, this);
-	        }
-	        return this;
-	    };
-	    Mixable.mixinRules = function (mixinRules) {
-	        var Base = Object.getPrototypeOf(this.prototype).constructor;
-	        if (Base._mixinRules) {
-	            mergeProps(mixinRules, Base._mixinRules);
-	        }
-	        this._mixinRules = mixinRules;
-	        return this;
-	    };
-	    Mixable.define = function (definition, staticProps) {
-	        if (definition === void 0) { definition = {}; }
-	        if (!this.define) {
-	            tools_1.log.error("[Class Defininition] Class must have class extensions to use @define decorator. Use '@extendable' before @define, or extend the base class with class extensions.", definition);
-	            return this;
-	        }
-	        this.predefine();
-	        var proto = this.prototype;
-	        var protoProps = tools_1.omit(definition, 'properties', 'mixins', 'mixinRules'), _a = definition.properties, properties = _a === void 0 ? {} : _a, mixins = definition.mixins, mixinRules = definition.mixinRules;
-	        tools_1.assign(proto, protoProps);
-	        tools_1.assign(this, staticProps);
-	        properties && Object.defineProperties(proto, tools_1.transform({}, properties, toPropertyDescriptor));
-	        mixinRules && this.mixinRules(mixinRules);
-	        mixins && this.mixins(mixins);
-	        return this;
-	    };
-	    Mixable.extend = function (spec, statics) {
-	        var Subclass;
-	        if (spec && spec.hasOwnProperty('constructor')) {
-	            Subclass = spec.constructor;
-	            __extends(Subclass, this);
-	        }
-	        else {
-	            Subclass = (function (_super) {
-	                __extends(_Subclass, _super);
-	                function _Subclass() {
-	                    return _super !== null && _super.apply(this, arguments) || this;
+	        var a = n( 9 ), u = n( 0 );
+	        n.d( e, "a", function(){ return p } );
+	        var c = u.a.notEqual, f = u.a.assign, p = function(){
+	            function t( t, e ){
+	                this.name = t, this.getHook = null, this.options = e;
+	                var n = f( { getHooks : [], transforms : [], changeHandlers : [] }, e );
+	                n.getHooks = n.getHooks.slice(), n.transforms = n.transforms.slice(), n.changeHandlers =
+	                    n.changeHandlers.slice();
+	                var a = n.value, u = n.type, c = n.parse, p = n.toJSON, h = n.changeEvents, l = n.validate,
+	                    d = n.getHooks, v = n.transforms, g = n.changeHandlers;
+	                if( this.value = a, this.type = u, this.propagateChanges = h !== !1, this.parse = c, this.toJSON =
+	                        void 0 === p ? this.toJSON : p, this.validate = l || this.validate, n.isRequired &&
+	                                                                                            (this.validate =
+	                                                                                                s( this.validate )), v.unshift(
+	                        this.convert ), this.get && d.unshift( this.get ), this.initialize.call( this, n ), d.length ){
+	                    var y = this.getHook = d.reduce( i ), b = this.validate;
+	                    this.validate                           =
+	                        function( t, e, n ){ return b.call( this, t, y.call( t, e, n ), n ) }
 	                }
-	                return _Subclass;
-	            }(this));
-	        }
-	        return spec ? Subclass.define(spec, statics) : Subclass.predefine();
-	    };
-	    Mixable.predefine = function () {
-	        var BaseClass = tools_1.getBaseClass(this);
-	        if (BaseClass.create === this.create) {
-	            this.create = Mixable.create;
-	        }
-	        this.__super__ = BaseClass.prototype;
-	        return this;
-	    };
-	    return Mixable;
-	}());
-	Mixable._mixinRules = { properties: 'merge' };
-	exports.Mixable = Mixable;
-	function toPropertyDescriptor(x) {
-	    if (x) {
-	        return typeof x === 'function' ? { get: x } : x;
-	    }
-	}
-	function mixinRules(rules) {
-	    return createDecorator('mixinRules', rules);
-	}
-	exports.mixinRules = mixinRules;
-	function mixins() {
-	    var list = [];
-	    for (var _i = 0; _i < arguments.length; _i++) {
-	        list[_i] = arguments[_i];
-	    }
-	    return createDecorator('mixins', list);
-	}
-	exports.mixins = mixins;
-	function extendable(Type) {
-	    Mixable.mixTo(Type);
-	}
-	exports.extendable = extendable;
-	function predefine(Constructor) {
-	    Constructor.predefine();
-	}
-	exports.predefine = predefine;
-	function define(spec) {
-	    if (typeof spec === 'function') {
-	        spec.define({});
-	    }
-	    else {
-	        return createDecorator('define', spec);
-	    }
-	}
-	exports.define = define;
-	function createDecorator(name, spec) {
-	    return function (Ctor) {
-	        if (Ctor[name]) {
-	            Ctor[name](spec);
-	        }
-	        else {
-	            Mixable[name].call(Ctor, spec);
-	        }
-	    };
-	}
-	function mergeObjects(a, b, rules) {
-	    var x = tools_1.assign({}, a);
-	    return mergeProps(x, b, rules);
-	}
-	var mergeFunctions = {
-	    pipe: function (a, b) {
-	        return function (x) {
-	            return a.call(this, b.call(this, x));
-	        };
-	    },
-	    mergeSequence: function (a, b) {
-	        return function () {
-	            return tools_1.defaults(a.call(this), b.call(this));
-	        };
-	    },
-	    overwrite: function (a, b) {
-	        return b;
-	    },
-	    sequence: function (a, b) {
-	        return function () {
-	            a.apply(this, arguments);
-	            b.apply(this, arguments);
-	        };
-	    },
-	    reverse: function (a, b) {
-	        return function () {
-	            b.apply(this, arguments);
-	            a.apply(this, arguments);
-	        };
-	    },
-	    every: function (a, b) {
-	        return function () {
-	            return a.apply(this, arguments) && b.apply(this, arguments);
-	        };
-	    },
-	    some: function (a, b) {
-	        return function () {
-	            return a.apply(this, arguments) || b.apply(this, arguments);
-	        };
-	    }
-	};
-	function mergeProps(target, source, rules) {
-	    if (rules === void 0) { rules = {}; }
-	    for (var _i = 0, _a = Object.keys(source); _i < _a.length; _i++) {
-	        var name_1 = _a[_i];
-	        if (name_1 === 'constructor')
-	            continue;
-	        var sourceProp = Object.getOwnPropertyDescriptor(source, name_1), destProp = tools_1.getPropertyDescriptor(target, name_1), value = destProp && destProp.value;
-	        if (value != null) {
-	            var rule = rules[name_1];
-	            if (rule) {
-	                target[name_1] = typeof rule === 'object' ?
-	                    mergeObjects(value, sourceProp.value, rule) : (rule === 'merge' ?
-	                    mergeObjects(value, sourceProp.value) :
-	                    mergeFunctions[rule](value, sourceProp.value));
+	                v.length && (this.transform = v.reduce( o )), g.length && (this.handleChange = g.reduce( r ))
 	            }
-	        }
-	        else {
-	            Object.defineProperty(target, name_1, sourceProp);
-	        }
-	    }
-	    return target;
-	}
-	exports.mergeProps = mergeProps;
 	
-	
-	/***/ }),
-	/* 8 */
-	/***/ (function(module, exports, __webpack_require__) {
-	
-	"use strict";
-	
-	function __export(m) {
-	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-	}
-	Object.defineProperty(exports, "__esModule", { value: true });
-	__export(__webpack_require__(3));
-	__export(__webpack_require__(21));
-	__export(__webpack_require__(20));
-	__export(__webpack_require__(19));
-	__export(__webpack_require__(22));
-	
-	
-	/***/ }),
-	/* 9 */
-	/***/ (function(module, exports, __webpack_require__) {
-	
-	"use strict";
-	
-	var __extends = (this && this.__extends) || (function () {
-	    var extendStatics = Object.setPrototypeOf ||
-	        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-	        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-	    return function (d, b) {
-	        extendStatics(d, b);
-	        function __() { this.constructor = d; }
-	        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	    };
-	})();
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var object_plus_1 = __webpack_require__(0);
-	var transactions_1 = __webpack_require__(1);
-	var trigger3 = object_plus_1.eventsApi.trigger3, assign = object_plus_1.tools.assign, isEmpty = object_plus_1.tools.isEmpty, log = object_plus_1.tools.log, free = transactions_1.transactionApi.free, aquire = transactions_1.transactionApi.aquire, commit = transactions_1.transactionApi.commit, _begin = transactions_1.transactionApi.begin, _markAsDirty = transactions_1.transactionApi.markAsDirty;
-	var _cidCounter = 0;
-	var Record = Record_1 = (function (_super) {
-	    __extends(Record, _super);
-	    function Record(a_values, a_options) {
-	        var _this = _super.call(this, _cidCounter++) || this;
-	        _this.attributes = {};
-	        var options = a_options || {}, values = (options.parse ? _this.parse(a_values, options) : a_values) || {};
-	        var attributes = options.clone ? cloneAttributes(_this, values) : _this.defaults(values);
-	        _this.forEachAttr(attributes, function (value, key, attr) {
-	            var next = attributes[key] = attr.transform(value, options, void 0, _this);
-	            attr.handleChange(next, void 0, _this);
-	        });
-	        _this.attributes = _this._previousAttributes = attributes;
-	        _this.initialize(a_values, a_options);
-	        if (_this._localEvents)
-	            _this._localEvents.subscribe(_this, _this);
-	        return _this;
-	    }
-	    Record.define = function (protoProps, staticProps) {
-	        return transactions_1.Transactional.define(protoProps, staticProps);
-	    };
-	    Record.defaults = function (attrs) {
-	        return this.extend({ attributes: attrs });
-	    };
-	    Record.prototype.previousAttributes = function () { return new this.Attributes(this._previousAttributes); };
-	    Object.defineProperty(Record.prototype, "__inner_state__", {
-	        get: function () { return this.attributes; },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    Object.defineProperty(Record.prototype, "changed", {
-	        get: function () {
-	            var changed = this._changedAttributes;
-	            if (!changed) {
-	                var prev = this._previousAttributes;
-	                changed = {};
-	                var _a = this, _attributes = _a._attributes, attributes = _a.attributes;
-	                for (var _i = 0, _b = this._keys; _i < _b.length; _i++) {
-	                    var key = _b[_i];
-	                    var value = attributes[key];
-	                    if (_attributes[key].isChanged(value, prev[key])) {
-	                        changed[key] = value;
+	            return t.create = function( e, n ){
+	                var r = e.type;
+	                return new (e._attribute || (r ? r._attribute : t))( n, e )
+	            }, t.prototype.canBeUpdated = function( t, e, n ){ }, t.prototype.transform =
+	                function( t, e, n, r ){ return t }, t.prototype.convert =
+	                function( t, e, n, r ){ return t }, t.prototype.isChanged =
+	                function( t, e ){ return c( t, e ) }, t.prototype.handleChange =
+	                function( t, e, n ){ }, t.prototype.create = function(){ return new this.type }, t.prototype.clone =
+	                function( t, e ){
+	                    if( t && "object" == typeof t ){
+	                        if( t.clone ) return t.clone();
+	                        var n = Object.getPrototypeOf( t );
+	                        if( n === Object.prototype || n === Array.prototype ) return JSON.parse( JSON.stringify( t ) )
 	                    }
+	                    return t
+	                }, t.prototype.dispose = function( t, e ){ }, t.prototype.validate =
+	                function( t, e, n ){ }, t.prototype.toJSON =
+	                function( t, e ){ return t && t.toJSON ? t.toJSON() : t }, t.prototype.createPropertyDescriptor =
+	                function(){
+	                    var t = this, e = t.name, r = t.getHook;
+	                    if( "id" !== e ) return {
+	                        set : function( t ){ n.i( a.b )( this, e, t ) },
+	                        get : r ? function(){ return r.call( this, this.attributes[ e ], e ) } :
+	                              function(){ return this.attributes[ e ] }
+	                    }
+	                }, t.prototype.initialize = function( t, e ){ }, t.prototype._log = function( t, e, n, r ){
+	                u.a.log[ t ]( "[Attribute Update] " + r.getClassName() + "." + this.name + ": " + e, n,
+	                    "Attributes spec:", r._attributes )
+	            }, t
+	        }();
+	        a.a.prototype._attributes = { id : p.create( { value : void 0 }, "id" ) }, a.a.prototype.defaults =
+	            function( t ){ return void 0 === t && (t = {}), { id : t.id } }
+	    }, function( t, e, n ){
+	        "use strict";
+	        function r( t ){
+	            var e = t.models;
+	            return t.models = [], t._byId = {}, s( t, e ), e
+	        }
+	
+	        function i( t, e, n ){
+	            var r, i = t.model;
+	            if( t._shared ) r = e instanceof i ? e : i.create( e, n ), t._shared & h.c.listen &&
+	                                                                       g( r, r._changeEventName, t._onChildrenChange,
+	                                                                           t );
+	            else if( r = e instanceof i ? n.merge ? e.clone() : e : i.create( e, n ), !_( t, r ) ){
+	                var o = t._aggregationError || (t._aggregationError = []);
+	                o.push( r )
+	            }
+	            var s = t._itemEvents;
+	            return s && s.subscribe( t, r ), r
+	        }
+	
+	        function o( t, e ){
+	            t._shared ? t._shared & h.c.listen && y( e, e._changeEventName, t._onChildrenChange, t ) : m( t, e );
+	            var n = t._itemEvents;
+	            n && n.unsubscribe( t, e )
+	        }
+	
+	        function s( t, e ){
+	            for( var n = 0, r = e; n < r.length; n++ ){ o( t, r[ n ] ) }
+	            return e
+	        }
+	
+	        function a( t, e ){
+	            var n = t._comparator;
+	            return !(!n || e.sort === !1) && (t.models.sort( n ), !0)
+	        }
+	
+	        function u( t, e ){
+	            t[ e.cid ] = e;
+	            var n      = e.id;
+	            null != n && (t[ n ] = e)
+	        }
+	
+	        function c( t, e ){
+	            delete t[ e.cid ];
+	            var n = e.id;
+	            null != n && delete t[ n ]
+	        }
+	
+	        function f( t, e ){
+	            delete t[ e.previous( e.idAttribute ) ];
+	            var n = e.id;
+	            null == n || (t[ n ] = e)
+	        }
+	
+	        function p( t ){
+	            t._log( "error", "added records already have an owner", t._aggregationError ), t._aggregationError = void 0
+	        }
+	
+	        var h = n( 1 ), l = n( 0 );
+	        e.c = r, e.h = i, e.b = o, e.g = s, e.d = a, e.i = u, e.j = c, e.a = f, n.d( e, "e",
+	            function(){ return O } ), e.f = p;
+	        var d = (l.b.EventMap, l.b.trigger2), v = l.b.trigger3, g = l.b.on, y = l.b.off, b = h.b.commit,
+	            _ = (h.b.markAsDirty, h.b.aquire), m = h.b.free, O = function(){
+	                function t( t, e, n, r, i, o ){
+	                    this.object = t, this.isRoot = e, this.added = n, this.removed = r, this.nested = i, this.sorted = o
 	                }
-	                this._changedAttributes = changed;
+	
+	                return t.prototype.commit = function( t ){
+	                    for( var e = this, n = e.nested, r = e.object, i = r._isDirty, o = 0, s = n; o < s.length; o++ ){
+	                        var a = s[ o ];
+	                        a.commit( r )
+	                    }
+	                    r._aggregationError && p( r );
+	                    for( var u = 0, c = n; u < c.length; u++ ){
+	                        var a = c[ u ];
+	                        d( r, "change", a.object, i )
+	                    }
+	                    for( var f = this, h = f.added, l = f.removed, g = 0, y = h; g < y.length; g++ ){
+	                        var _ = y[ g ];
+	                        v( _, "add", _, r, i ), v( r, "add", _, r, i )
+	                    }
+	                    for( var m = 0, O = l; m < O.length; m++ ){
+	                        var _ = O[ m ];
+	                        v( _, "remove", _, r, i ), v( r, "remove", _, r, i )
+	                    }
+	                    this.sorted && d( r, "sort", r, i ), (h.length || l.length) && d( r, "update", r, i ), this.isRoot &&
+	                                                                                                           b( r, t )
+	                }, t
+	            }()
+	    }, function( t, e, n ){
+	        "use strict";
+	        function r( t ){
+	            if( null === t ) return !0;
+	            switch( typeof t ){
+	                case "number":
+	                case "string":
+	                case "boolean":
+	                    return !0;
+	                case "object":
+	                    var e = Object.getPrototypeOf( t );
+	                    if( e === Object.prototype || e === Array.prototype ) return f( t, r )
 	            }
-	            return changed;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    Record.prototype.changedAttributes = function (diff) {
-	        if (!diff)
-	            return this.hasChanged() ? assign({}, this.changed) : false;
-	        var val, changed = false, old = this._transaction ? this._previousAttributes : this.attributes, attrSpecs = this._attributes;
-	        for (var attr in diff) {
-	            if (!attrSpecs[attr].isChanged(old[attr], (val = diff[attr])))
-	                continue;
-	            (changed || (changed = {}))[attr] = val;
+	            return !1
 	        }
-	        return changed;
-	    };
-	    Record.prototype.hasChanged = function (key) {
-	        var _previousAttributes = this._previousAttributes;
-	        if (!_previousAttributes)
-	            return false;
-	        return key ?
-	            this._attributes[key].isChanged(this.attributes[key], _previousAttributes[key]) :
-	            !isEmpty(this.changed);
-	    };
-	    Record.prototype.previous = function (key) {
-	        if (key) {
-	            var _previousAttributes = this._previousAttributes;
-	            if (_previousAttributes)
-	                return _previousAttributes[key];
-	        }
-	        return null;
-	    };
-	    Record.prototype.isNew = function () {
-	        return this.id == null;
-	    };
-	    Record.prototype.has = function (key) {
-	        return this[key] != void 0;
-	    };
-	    Record.prototype.unset = function (key, options) {
-	        this.set(key, void 0, options);
-	        return this;
-	    };
-	    Record.prototype.clear = function (options) {
-	        var _this = this;
-	        var nullify = options && options.nullify;
-	        this.transaction(function () {
-	            _this.forEachAttr(_this.attributes, function (value, key) { return _this[key] = nullify ? null : void 0; });
-	        }, options);
-	        return this;
-	    };
-	    Record.prototype.getOwner = function () {
-	        var owner = this._owner;
-	        return this._ownerKey ? owner : owner && owner._owner;
-	    };
-	    Object.defineProperty(Record.prototype, "id", {
-	        get: function () { return this.attributes[this.idAttribute]; },
-	        set: function (x) { setAttribute(this, this.idAttribute, x); },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    Record.prototype.Attributes = function (x) { this.id = x.id; };
-	    Record.prototype.forEachAttr = function (attrs, iteratee) {
-	        var _attributes = this._attributes;
-	        var unknown;
-	        for (var name_1 in attrs) {
-	            var spec = _attributes[name_1];
-	            if (spec) {
-	                iteratee(attrs[name_1], name_1, spec);
+	
+	        function i( t ){ return Object.getPrototypeOf( t.prototype ).constructor }
+	
+	        function o( t ){
+	            for( var e = [], n = 1; n < arguments.length; n++ )e[ n - 1 ] = arguments[ n ];
+	            for( var r = i( t ), o = {}, s = 0, a = e; s < a.length; s++ ){
+	                var u = a[ s ], c = t[ u ];
+	                void 0 !== c && c !== r[ u ] && (o[ u ] = c)
 	            }
-	            else {
-	                unknown || (unknown = []);
-	                unknown.push("'" + name_1 + "'");
+	            return o
+	        }
+	
+	        function s( t ){
+	            if( t ) for( var e in t ) if( t.hasOwnProperty( e ) ) return !1;
+	            return !0
+	        }
+	
+	        function a( t, e ){ for( var n, r = 0; r < t.length; r++ )if( n = e( t[ r ], r ) ) return n }
+	
+	        function u( t, e ){
+	            var n;
+	            for( var r in t ) if( t.hasOwnProperty( r ) && (n = e( t[ r ], r )) ) return n
+	        }
+	
+	        function c( t, e ){ return Object.getPrototypeOf( t ) === E ? a( t, e ) : u( t, e ) }
+	
+	        function f( t, e ){ return !c( t, function( t ){ return !e( t ) } ) }
+	
+	        function p( t, e ){
+	            for( var n, r = t; !n && r; r = Object.getPrototypeOf( r ) )n = Object.getOwnPropertyDescriptor( r, e );
+	            return n
+	        }
+	
+	        function h( t ){
+	            for( var e = {}, n = {}, r = 1; r < arguments.length; r++ )n[ arguments[ r ] ] = !0;
+	            for( var i in t ) !n.hasOwnProperty( i ) && t.hasOwnProperty( i ) && (e[ i ] = t[ i ]);
+	            return e
+	        }
+	
+	        function l( t, e, n ){
+	            for( var r in e ) if( e.hasOwnProperty( r ) ){
+	                var i = n( e[ r ], r );
+	                void 0 === i || (t[ r ] = i)
+	            }
+	            return t
+	        }
+	
+	        function d( t, e ){
+	            for( var n in e ) t[ n ] = e[ n ];
+	            return t
+	        }
+	
+	        function v( t, e ){
+	            for( var n in e ) void 0 === t[ n ] && (t[ n ] = e[ n ]);
+	            return t
+	        }
+	
+	        function g( t, e ){
+	            for( var n in e ) e.hasOwnProperty( n ) && (t[ n ] = e[ n ]);
+	            if( arguments.length > 2 ) for( var r = 2; r < arguments.length; r++ ){
+	                var i = arguments[ r ];
+	                i && g( t, i )
+	            }
+	            return t
+	        }
+	
+	        function y( t, e ){
+	            for( var n in e ) e.hasOwnProperty( n ) && !t.hasOwnProperty( n ) && (t[ n ] = e[ n ]);
+	            if( arguments.length > 2 ) for( var r = 2; r < arguments.length; r++ ){
+	                var i = arguments[ r ];
+	                i && y( t, i )
+	            }
+	            return t
+	        }
+	
+	        function b( t ){ return t ? Object.keys( t ) : [] }
+	
+	        function _( t ){
+	            var e, n = !0;
+	            return function(){ return n && (n = !1, e = t.apply( this, arguments ), t = null), e }
+	        }
+	
+	        function m( t, e ){
+	            if( t === e ) return !1;
+	            if( t && e && "object" == typeof t && "object" == typeof e ){
+	                var n = Object.getPrototypeOf( t );
+	                if( n !== Object.getPrototypeOf( e ) ) return !0;
+	                switch( n ){
+	                    case C:
+	                        return +t != +e;
+	                    case E:
+	                        return w( t, e );
+	                    case P:
+	                    case null:
+	                        return O( t, e )
+	                }
+	            }
+	            return !0
+	        }
+	
+	        function O( t, e ){
+	            var n = Object.keys( t );
+	            if( n.length !== Object.keys( e ).length ) return !0;
+	            for( var r = 0; r < n.length; r++ ){
+	                var i = n[ r ];
+	                if( !e.hasOwnProperty( i ) || m( t[ i ], e[ i ] ) ) return !0
+	            }
+	            return !1
+	        }
+	
+	        function w( t, e ){
+	            if( t.length !== e.length ) return !0;
+	            for( var n = 0; n < t.length; n++ )if( m( t[ n ], e[ n ] ) ) return !0;
+	            return !1
+	        }
+	
+	        Object.defineProperty( e, "__esModule", { value : !0 } ), n.d( e, "Log", function(){ return j } ), n.d( e,
+	            "log", function(){ return A } ), e.isValidJSON = r, e.getBaseClass = i, e.getChangedStatics = o, e.isEmpty =
+	            s, e.some = c, e.every = f, e.getPropertyDescriptor = p, e.omit = h, e.transform = l, e.fastAssign =
+	            d, e.fastDefaults = v, e.assign = g, e.defaults = y, e.keys = b, e.once = _, e.notEqual = m;
+	        var j  = function(){
+	            function t(){
+	                this.stops = {}, this.throws = {}, this.logger =
+	                    "undefined" != typeof console ? console : null, this.reset()
+	            }
+	
+	            return t.prototype.doLogging = function( t, e ){
+	                var n = this.logger, r = n && n[ t ];
+	                if( r && r.apply( n, e ), this.stops[ t ], this.throws[ t ] ) throw new Error(
+	                    "[" + t + "] " + e[ 0 ] );
+	                this.counts[ t ]++
+	            }, t.prototype.reset = function(){
+	                return this.level = 2, this.counts = { error : 0, warn : 0, info : 0, debug : 0 }, this.stops = {}, this
+	            }, t.prototype.developer = function( t ){
+	                return this.level = 3, this.stops = { error : !0, warn : Boolean( t ) }, this
+	            }, t.prototype.error = function(){
+	                for( var t = [], e = 0; e < arguments.length; e++ )t[ e ] = arguments[ e ];
+	                this.level > 0 && this.doLogging( "error", t )
+	            }, t.prototype.warn = function(){
+	                for( var t = [], e = 0; e < arguments.length; e++ )t[ e ] = arguments[ e ];
+	                this.level > 1 && this.doLogging( "warn", t )
+	            }, t.prototype.info = function(){
+	                for( var t = [], e = 0; e < arguments.length; e++ )t[ e ] = arguments[ e ];
+	                this.level > 2 && this.doLogging( "info", t )
+	            }, t.prototype.debug = function(){
+	                for( var t = [], e = 0; e < arguments.length; e++ )t[ e ] = arguments[ e ];
+	                this.level > 3 && this.doLogging( "debug", t )
+	            }, Object.defineProperty( t.prototype, "state", {
+	                get           : function(){
+	                    return "\nObject.log - Object+ Logging and Debugging Utility\n--------------------------------------------------\nObject.log.counts: Number of logged events by type\n    { errors : " +
+	                           this.counts.error + ", warns : " + this.counts.warn + ", info : " + this.counts.info +
+	                           ", debug : " + this.counts.debug + " }\n\nObject.log.level == " + this.level +
+	                           " : Ignore events which are above specified level \n    - 0 - logging is off;\n    - 1 - Object.log.error(...) only;\n    - 2 - .error() and .warn();\n    - 3 - .error(), .warn(), and .info();\n    - 4 - all of above plus .debug().\n\nObject.log.stops: Stops in debugger for some certain event types\n     { error : " +
+	                           (this.stops.error || !1) + ", warn  : " + (this.stops.warn || !1) + ", info  : " +
+	                           (this.stops.info || !1) + ", debug : " + (this.stops.debug || !1) +
+	                           " } \n\nObject.log.throws: Throws expection on some certain event types\n     { error : " +
+	                           (this.throws.error || !1) + ", warn  : " + (this.throws.warn || !1) + ", info  : " +
+	                           (this.throws.info || !1) + ", debug : " + (this.throws.debug || !1) + " }\n"
+	                }, enumerable : !0, configurable : !0
+	            } ), t
+	        }(), A = new j;
+	        Object.setPrototypeOf || (Object.setPrototypeOf = y);
+	        var E = Array.prototype, C = Date.prototype, P = Object.prototype
+	    }, function( t, e, n ){
+	        "use strict";
+	        function r( t ){
+	            return m[ t ] || (m[ t ] = function( e, n, r, i, o ){
+	                    void 0 === i && void 0 === o || g( this, t, e, n, r, i, o ), void 0 !== r ? v( this, t, e, n, r ) :
+	                                                                                 d( this, t, e, n )
+	                })
+	        }
+	
+	        function i( t, e, n, r ){
+	            for( var i, o, s = t[ e ], a = s; a; a = a.next )n && n !== a.callback && n !== a.callback._callback ||
+	                                                             r && r !== a.context ? (o = a, i || (i = a)) :
+	                                                             o && (o.next = a.next);
+	            s !== i && (t[ e ] = i)
+	        }
+	
+	        function o( t, e, n ){ for( var r = t; r; r = r.next )r.callback.call( r.context, e, n ) }
+	
+	        function s( t, e, n, r ){ for( var i = t; i; i = i.next )i.callback.call( i.context, e, n, r ) }
+	
+	        function a( t, e, n, r, i ){ for( var o = t; o; o = o.next )o.callback.call( o.context, e, n, r, i ) }
+	
+	        function u( t, e, n, r, i, o ){ for( var s = t; s; s = s.next )s.callback.call( s.context, e, n, r, i, o ) }
+	
+	        function c( t, e, n, r, i, o, s ){
+	            for( var a = t; a; a = a.next )a.callback.call( a.context, e, n, r, i, o, s )
+	        }
+	
+	        function f( t, e, n, r ){
+	            if( n ){
+	                var i  = t._events || (t._events = Object.create( null ));
+	                i[ e ] = new O( n, r, i[ e ] )
 	            }
 	        }
-	        if (unknown) {
-	            this._log('warn', "attributes " + unknown.join(', ') + " are not defined", attrs);
-	        }
-	    };
-	    Record.prototype.each = function (iteratee, context) {
-	        var fun = context !== void 0 ? function (v, k) { return iteratee.call(context, v, k); } : iteratee, attributes = this.attributes;
-	        for (var _i = 0, _a = this._keys; _i < _a.length; _i++) {
-	            var key = _a[_i];
-	            var value = attributes[key];
-	            if (value !== void 0)
-	                fun(value, key);
-	        }
-	    };
-	    Record.prototype.keys = function () {
-	        var keys = [], attributes = this.attributes;
-	        for (var _i = 0, _a = this._keys; _i < _a.length; _i++) {
-	            var key = _a[_i];
-	            attributes[key] === void 0 || keys.push(key);
-	        }
-	        return keys;
-	    };
-	    Record.prototype.values = function () {
-	        return this.map(function (value) { return value; });
-	    };
-	    Record.prototype._toJSON = function () { return {}; };
-	    Record.prototype._parse = function (data) { return data; };
-	    Record.prototype.defaults = function (values) { return {}; };
-	    Record.prototype.initialize = function (values, options) { };
-	    Record.prototype.clone = function (options) {
-	        if (options === void 0) { options = {}; }
-	        var copy = new this.constructor(this.attributes, { clone: true });
-	        if (options.pinStore)
-	            copy._defaultStore = this.getStore();
-	        return copy;
-	    };
-	    Record.prototype.deepClone = function () { return this.clone(); };
-	    ;
-	    Record.prototype._validateNested = function (errors) {
-	        var _this = this;
-	        var length = 0;
-	        this.forEachAttr(this.attributes, function (value, name, attribute) {
-	            var error = attribute.validate(_this, value, name);
-	            if (error) {
-	                errors[name] = error;
-	                length++;
-	            }
-	        });
-	        return length;
-	    };
-	    Record.prototype.get = function (key) {
-	        return this[key];
-	    };
-	    Record.prototype.toJSON = function () {
-	        var _this = this;
-	        var json = {};
-	        this.forEachAttr(this.attributes, function (value, key, _a) {
-	            var toJSON = _a.toJSON;
-	            if (value !== void 0) {
-	                var asJson = toJSON.call(_this, value, key);
-	                if (asJson !== void 0)
-	                    json[key] = asJson;
-	            }
-	        });
-	        return json;
-	    };
-	    Record.prototype.parse = function (data, options) {
-	        return this._parse(data);
-	    };
-	    Record.prototype.set = function (a, b, c) {
-	        if (typeof a === 'string') {
-	            if (c) {
-	                return _super.prototype.set.call(this, (_a = {}, _a[a] = b, _a), c);
-	            }
-	            else {
-	                setAttribute(this, a, b);
-	                return this;
+	
+	        function p( t, e, r, i ){
+	            if( r ){
+	                var o = n.i( y.once )( function(){ h( t, e, o ), r.apply( this, arguments ) } );
+	                o._callback = r, f( t, e, o, i )
 	            }
 	        }
-	        else {
-	            return _super.prototype.set.call(this, a, b);
+	
+	        function h( t, e, n, r ){
+	            var o = t._events;
+	            if( o ) if( n || r ) if( e ) i( o, e, n, r );
+	            else for( var s in o ) i( o, s, n, r );
+	            else e ? o[ e ] = void 0 : t._events = void 0
 	        }
-	        var _a;
-	    };
-	    Record.prototype.deepSet = function (name, value, options) {
-	        var _this = this;
-	        this.transaction(function () {
-	            var path = name.split('.'), l = path.length - 1, attr = path[l];
-	            var model = _this;
-	            for (var i = 0; i < l; i++) {
-	                var key = path[i];
-	                var next = model.get ? model.get(key) : model[key];
-	                if (!next) {
-	                    var attrSpecs = model._attributes;
-	                    if (attrSpecs) {
-	                        var newModel = attrSpecs[key].create();
-	                        if (options && options.nullify && newModel._attributes) {
-	                            newModel.clear(options);
+	
+	        function l( t, e, n, r, i ){
+	            if( w.test( n ) ) for( var o = n.split( w ), s = 0, a = o; s < a.length; s++ ){
+	                var u = a[ s ];
+	                t( e, u, r, i )
+	            }
+	            else t( e, n, r, i )
+	        }
+	
+	        function d( t, e, n, r ){
+	            var i = t._events;
+	            if( i ){
+	                var a = i[ e ], u = i.all;
+	                o( a, n, r ), s( u, e, n, r )
+	            }
+	        }
+	
+	        function v( t, e, n, r, i ){
+	            var o = t._events;
+	            if( o ){
+	                var u = o[ e ], c = o.all;
+	                s( u, n, r, i ), a( c, e, n, r, i )
+	            }
+	        }
+	
+	        function g( t, e, n, r, i, o, s ){
+	            var a = t._events;
+	            if( a ){
+	                var f = a[ e ], p = a.all;
+	                u( f, n, r, i, o, s ), c( p, e, n, r, i, o, s )
+	            }
+	        }
+	
+	        Object.defineProperty( e, "__esModule", { value : !0 } );
+	        var y = n( 5 );
+	        n.d( e, "EventMap", function(){ return b } ), n.d( e, "EventDescriptor", function(){ return _ } ), n.d( e,
+	            "EventHandler", function(){ return O } ), e.on = f, e.once = p, e.off = h, e.strings = l, e.trigger2 =
+	            d, e.trigger3 = v, e.trigger5 = g;
+	        var b  = function(){
+	            function t( e ){
+	                this.handlers = [], e && (e instanceof t ? this.handlers = e.handlers.slice() :
+	                                    e && this.addEventsMap( e ))
+	            }
+	
+	            return t.prototype.merge =
+	                function( t ){ this.handlers = this.handlers.concat( t.handlers ) }, t.prototype.addEventsMap =
+	                function( t ){ for( var e in t ) this.addEvent( e, t[ e ] ) }, t.prototype.bubbleEvents = function( t ){
+	                for( var e = 0, n = t.split( w ); e < n.length; e++ ){
+	                    var i = n[ e ];
+	                    this.addEvent( i, r( i ) )
+	                }
+	            }, t.prototype.addEvent = function( t, e ){
+	                for( var n = this.handlers, r = 0, i = t.split( w ); r < i.length; r++ ){
+	                    var o = i[ r ];
+	                    n.push( new _( o, e ) )
+	                }
+	            }, t.prototype.subscribe = function( t, e ){
+	                for( var n = 0, r = this.handlers; n < r.length; n++ ){
+	                    var i = r[ n ];
+	                    f( e, i.name, i.callback, t )
+	                }
+	            }, t.prototype.unsubscribe = function( t, e ){
+	                for( var n = 0, r = this.handlers; n < r.length; n++ ){
+	                    var i = r[ n ];
+	                    h( e, i.name, i.callback, t )
+	                }
+	            }, t
+	        }(), _ = function(){
+	            function t( t, e ){
+	                this.name = t, this.callback = e === !0 ? r( t ) : "string" == typeof e ? function(){
+	                    var t = this[ e ];
+	                    t && t.apply( this, arguments )
+	                } : e
+	            }
+	
+	            return t
+	        }(), m = {}, O = function(){
+	            function t( t, e, n ){
+	                void 0 === n && (n = null), this.callback = t, this.context = e, this.next = n
+	            }
+	
+	            return t
+	        }(), w = /\s+/
+	    }, function( t, e, n ){
+	        "use strict";
+	        function r( t ){ if( t ) return "function" == typeof t ? { get : t } : t }
+	
+	        function i( t ){ return c( "mixinRules", t ) }
+	
+	        function o(){
+	            for( var t = [], e = 0; e < arguments.length; e++ )t[ e ] = arguments[ e ];
+	            return c( "mixins", t )
+	        }
+	
+	        function s( t ){ d.mixTo( t ) }
+	
+	        function a( t ){ t.predefine() }
+	
+	        function u( t ){
+	            if( "function" != typeof t ) return c( "define", t );
+	            t.define( {} )
+	        }
+	
+	        function c( t, e ){ return function( n ){ n[ t ] ? n[ t ]( e ) : d[ t ].call( n, e ) } }
+	
+	        function f( t, e, r ){ return p( n.i( h.assign )( {}, t ), e, r ) }
+	
+	        function p( t, e, r ){
+	            void 0 === r && (r = {});
+	            for( var i = 0, o = Object.keys( e ); i < o.length; i++ ){
+	                var s = o[ i ];
+	                if( "constructor" !== s ){
+	                    var a = Object.getOwnPropertyDescriptor( e, s ), u = n.i( h.getPropertyDescriptor )( t, s ),
+	                        c = u && u.value;
+	                    if( null != c ){
+	                        var p = r[ s ];
+	                        p && (t[ s ] = "object" == typeof p ? f( c, a.value, p ) :
+	                                       "merge" === p ? f( c, a.value ) : v[ p ]( c, a.value ))
+	                    }
+	                    else Object.defineProperty( t, s, a )
+	                }
+	            }
+	            return t
+	        }
+	
+	        var h = n( 5 );
+	        n.d( e, "a", function(){ return d } ), e.b = i, e.c = o, e.d = s, e.e = a, e.f = u, e.g = p;
+	        var l         = this && this.__extends || function(){
+	                var t = Object.setPrototypeOf ||
+	                        { __proto__ : [] } instanceof Array && function( t, e ){ t.__proto__ = e } ||
+	                        function( t, e ){ for( var n in e ) e.hasOwnProperty( n ) && (t[ n ] = e[ n ]) };
+	                return function( e, n ){
+	                    function r(){ this.constructor = e }
+	
+	                    t( e, n ), e.prototype = null === n ? Object.create( n ) : (r.prototype = n.prototype, new r)
+	                }
+	            }(), d    = function(){
+	            function t(){ this.initialize.apply( this, arguments ) }
+	
+	            return t.prototype.initialize = function(){ }, t.create =
+	                function( t, e ){ return new this( t, e ) }, t.mixins = function(){
+	                for( var e = [], r = 0; r < arguments.length; r++ )e[ r ] = arguments[ r ];
+	                for( var i = this.prototype, o = this._mixinRules || {},
+	                         s = this._appliedMixins = (this._appliedMixins || []).slice(), a = 0, u = e; a <
+	                                                                                                      u.length; a++ ){
+	                    var c = u[ a ];
+	                    if( c instanceof Array ) return t.mixins.apply( this, c );
+	                    s.indexOf( c ) >= 0 ||
+	                    (s.push( c ), "function" == typeof c ? (n.i( h.defaults )( this, c ), p( i, c.prototype, o )) :
+	                                  p( i, c, o ))
+	                }
+	                return this
+	            }, t.mixTo = function(){
+	                for( var e = [], n = 0; n < arguments.length; n++ )e[ n ] = arguments[ n ];
+	                for( var r = 0, i = e; r < i.length; r++ ){
+	                    var o = i[ r ];
+	                    t.mixins.call( o, this )
+	                }
+	                return this
+	            }, t.mixinRules = function( t ){
+	                var e = Object.getPrototypeOf( this.prototype ).constructor;
+	                return e._mixinRules && p( t, e._mixinRules ), this._mixinRules = t, this
+	            }, t.define = function( t, e ){
+	                if( void 0 === t && (t = {}), !this.define ) return h.log.error(
+	                    "[Class Defininition] Class must have class extensions to use @define decorator. Use '@extendable' before @define, or extend the base class with class extensions.",
+	                    t ), this;
+	                this.predefine();
+	                var i = this.prototype, o = n.i( h.omit )( t, "properties", "mixins", "mixinRules" ), s = t.properties,
+	                    a = void 0 === s ? {} : s, u = t.mixins, c = t.mixinRules;
+	                return n.i( h.assign )( i, o ), n.i( h.assign )( this, e ), a && Object.defineProperties( i,
+	                    n.i( h.transform )( {}, a, r ) ), c && this.mixinRules( c ), u && this.mixins( u ), this
+	            }, t.extend = function( t, e ){
+	                var n;
+	                return t && t.hasOwnProperty( "constructor" ) ? (n = t.constructor, l( n, this )) : n = function( t ){
+	                    function e(){ return null !== t && t.apply( this, arguments ) || this }
+	
+	                    return l( e, t ), e
+	                }( this ), t ? n.define( t, e ) : n.predefine()
+	            }, t.predefine = function(){
+	                var e = n.i( h.getBaseClass )( this );
+	                return e.create === this.create && (this.create = t.create), this.__super__ = e.prototype, this
+	            }, t
+	        }();
+	        d._mixinRules = { properties : "merge" };
+	        var v         = {
+	            pipe          : function( t, e ){ return function( n ){ return t.call( this, e.call( this, n ) ) } },
+	            mergeSequence : function( t, e ){
+	                return function(){
+	                    return n.i( h.defaults )( t.call( this ), e.call( this ) )
+	                }
+	            },
+	            overwrite     : function( t, e ){ return e },
+	            sequence      : function( t, e ){
+	                return function(){
+	                    t.apply( this, arguments ), e.apply( this, arguments )
+	                }
+	            },
+	            reverse       : function( t, e ){
+	                return function(){
+	                    e.apply( this, arguments ), t.apply( this, arguments )
+	                }
+	            },
+	            every         : function( t, e ){
+	                return function(){
+	                    return t.apply( this, arguments ) && e.apply( this, arguments )
+	                }
+	            },
+	            some          : function( t, e ){
+	                return function(){
+	                    return t.apply( this, arguments ) || e.apply( this, arguments )
+	                }
+	            }
+	        }
+	    }, function( t, e, n ){
+	        "use strict";
+	        var r = n( 3 );
+	        n.d( e, "a", function(){ return r.a } );
+	        var i = n( 22 );
+	        n.d( e, "b", function(){ return i.a } );
+	        var o = n( 21 );
+	        n.d( e, "c", function(){ return o.a } ), n.d( e, "d", function(){ return o.b } ), n.d( e, "e",
+	            function(){ return o.c } );
+	        var s = n( 20 );
+	        n.d( e, "f", function(){ return s.a } ), n.d( e, "g", function(){ return s.b } ), n.d( e, "h",
+	            function(){ return s.c } );
+	        var a = n( 23 );
+	        n.d( e, "i", function(){ return a.a } )
+	    }, function( t, e, n ){
+	        "use strict";
+	        function r( t ){
+	            return !!v( t ) && (t._previousAttributes = new t.Attributes( t.attributes ), t._changedAttributes =
+	                    null, !0)
+	        }
+	
+	        function i( t, e ){ return t._changedAttributes && (t._changedAttributes = null), g( t, e ) }
+	
+	        function o( t, e ){
+	            var n = new t.Attributes( e );
+	            return t.forEachAttr( n, function( e, r, i ){ n[ r ] = i.clone( e, t ) } ), n
+	        }
+	
+	        function s( t, e, n ){
+	            var o, s = r( t ), a = {}, u = t.attributes, c = t._attributes[ e ], f = u[ e ];
+	            if( o = c.canBeUpdated( f, n, a ) ){
+	                var h = f._createTransaction( o, a );
+	                h && (h.commit( t ), c.propagateChanges && (i( t, a ), p( t, "change:" + e, t, f, a )))
+	            }
+	            else{
+	                var l = c.transform( n, a, f, t );
+	                u[ e ] = l, c.isChanged( l, f ) &&
+	                            (c.handleChange( l, f, t ), i( t, a ), p( t, "change:" + e, t, l, a ))
+	            }
+	            s && d( t )
+	        }
+	
+	        var a = n( 0 ), u = n( 1 );
+	        n.d( e, "a", function(){ return b } ), e.b = s;
+	        var c = this && this.__extends || function(){
+	                    var t = Object.setPrototypeOf ||
+	                            { __proto__ : [] } instanceof Array && function( t, e ){ t.__proto__ = e } ||
+	                            function( t, e ){ for( var n in e ) e.hasOwnProperty( n ) && (t[ n ] = e[ n ]) };
+	                    return function( e, n ){
+	                        function r(){ this.constructor = e }
+	
+	                        t( e, n ), e.prototype = null === n ? Object.create( n ) : (r.prototype = n.prototype, new r)
+	                    }
+	                }(), f = this && this.__decorate || function( t, e, n, r ){
+	                    var i, o = arguments.length,
+	                        s = o < 3 ? e : null === r ? r = Object.getOwnPropertyDescriptor( e, n ) : r;
+	                    if( "object" == typeof Reflect && "function" == typeof Reflect.decorate ) s =
+	                        Reflect.decorate( t, e, n, r );
+	                    else for( var a = t.length - 1; a >= 0; a-- )(i = t[ a ]) && (s =
+	                        (o < 3 ? i( s ) : o > 3 ? i( e, n, s ) : i( e, n )) || s);
+	                    return o > 3 && s && Object.defineProperty( e, n, s ), s
+	                }, p = a.b.trigger3, h = a.a.assign, l = a.a.isEmpty, d = (a.a.log, u.b.free, u.b.aquire, u.b.commit),
+	            v = u.b.begin, g = u.b.markAsDirty, y = 0, b = _ = function( t ){
+	                function e( e, n ){
+	                    var r = t.call( this, y++ ) || this;
+	                    r.attributes = {};
+	                    var i = n || {}, s = (i.parse ? r.parse( e, i ) : e) || {},
+	                        a = i.clone ? o( r, s ) : r.defaults( s );
+	                    return r.forEachAttr( a, function( t, e, n ){
+	                        var o = a[ e ] = n.transform( t, i, void 0, r );
+	                        n.handleChange( o, void 0, r )
+	                    } ), r.attributes = r._previousAttributes = a, r.initialize( e, n ), r._localEvents &&
+	                                                                                         r._localEvents.subscribe( r, r ), r
+	                }
+	
+	                return c( e, t ), e.define = function( t, e ){ return u.a.define( t, e ) }, e.defaults =
+	                    function( t ){ return this.extend( { attributes : t } ) }, e.prototype.previousAttributes =
+	                    function(){ return new this.Attributes( this._previousAttributes ) }, Object.defineProperty(
+	                    e.prototype, "__inner_state__", {
+	                        get : function(){ return this.attributes },
+	                        enumerable : !0,
+	                        configurable : !0
+	                    } ), Object.defineProperty( e.prototype, "changed", {
+	                    get : function(){
+	                        var t = this._changedAttributes;
+	                        if( !t ){
+	                            var e = this._previousAttributes;
+	                            t = {};
+	                            for( var n = this, r = n._attributes, i = n.attributes, o = 0, s = this._keys; o <
+	                                                                                                           s.length; o++ ){
+	                                var a = s[ o ], u = i[ a ];
+	                                r[ a ].isChanged( u, e[ a ] ) && (t[ a ] = u)
+	                            }
+	                            this._changedAttributes = t
 	                        }
-	                        model[key] = next = newModel;
+	                        return t
+	                    }, enumerable : !0, configurable : !0
+	                } ), e.prototype.changedAttributes = function( t ){
+	                    if( !t ) return !!this.hasChanged() && h( {}, this.changed );
+	                    var e, n = !1, r = this._transaction ? this._previousAttributes : this.attributes, i = this._attributes;
+	                    for( var o in t ) i[ o ].isChanged( r[ o ], e = t[ o ] ) && ((n || (n = {}))[ o ] = e);
+	                    return n
+	                }, e.prototype.hasChanged = function( t ){
+	                    var e = this._previousAttributes;
+	                    return !!e && (t ? this._attributes[ t ].isChanged( this.attributes[ t ], e[ t ] ) : !l( this.changed ))
+	                }, e.prototype.previous = function( t ){
+	                    if( t ){
+	                        var e = this._previousAttributes;
+	                        if( e ) return e[ t ]
 	                    }
-	                    else
-	                        return;
+	                    return null
+	                }, e.prototype.isNew = function(){ return null == this.id }, e.prototype.has =
+	                    function( t ){ return void 0 != this[ t ] }, e.prototype.unset =
+	                    function( t, e ){ return this.set( t, void 0, e ), this }, e.prototype.clear = function( t ){
+	                    var e = this, n = t && t.nullify;
+	                    return this.transaction( function(){
+	                        e.forEachAttr( e.attributes, function( t, r ){ return e[ r ] = n ? null : void 0 } )
+	                    }, t ), this
+	                }, e.prototype.getOwner = function(){
+	                    var t = this._owner;
+	                    return this._ownerKey ? t : t && t._owner
+	                }, Object.defineProperty( e.prototype, "id", {
+	                    get : function(){ return this.attributes[ this.idAttribute ] },
+	                    set : function( t ){ s( this, this.idAttribute, t ) },
+	                    enumerable : !0,
+	                    configurable : !0
+	                } ), e.prototype.Attributes = function( t ){ this.id = t.id }, e.prototype.forEachAttr = function( t, e ){
+	                    var n, r = this._attributes;
+	                    for( var i in t ){
+	                        var o = r[ i ];
+	                        o ? e( t[ i ], i, o ) : (n || (n = []), n.push( "'" + i + "'" ))
+	                    }
+	                    n && this._log( "warn", "attributes " + n.join( ", " ) + " are not defined", t )
+	                }, e.prototype.each = function( t, e ){
+	                    for( var n = void 0 !== e ? function( n, r ){ return t.call( e, n, r ) } : t, r = this.attributes,
+	                             i = 0, o = this._keys; i < o.length; i++ ){
+	                        var s = o[ i ], a = r[ s ];
+	                        void 0 !== a && n( a, s )
+	                    }
+	                }, e.prototype.keys = function(){
+	                    for( var t = [], e = this.attributes, n = 0, r = this._keys; n < r.length; n++ ){
+	                        var i = r[ n ];
+	                        void 0 === e[ i ] || t.push( i )
+	                    }
+	                    return t
+	                }, e.prototype.values = function(){ return this.map( function( t ){ return t } ) }, e.prototype._toJSON =
+	                    function(){ return {} }, e.prototype._parse = function( t ){ return t }, e.prototype.defaults =
+	                    function( t ){ return {} }, e.prototype.initialize = function( t, e ){ }, e.prototype.clone =
+	                    function( t ){
+	                        void 0 === t && (t = {});
+	                        var e = new this.constructor( this.attributes, { clone : !0 } );
+	                        return t.pinStore && (e._defaultStore = this.getStore()), e
+	                    }, e.prototype.deepClone = function(){ return this.clone() }, e.prototype._validateNested =
+	                    function( t ){
+	                        var e = this, n = 0;
+	                        return this.forEachAttr( this.attributes, function( r, i, o ){
+	                            var s = o.validate( e, r, i );
+	                            s && (t[ i ] = s, n++)
+	                        } ), n
+	                    }, e.prototype.get = function( t ){ return this[ t ] }, e.prototype.toJSON = function(){
+	                    var t = this, e = {};
+	                    return this.forEachAttr( this.attributes, function( n, r, i ){
+	                        var o = i.toJSON;
+	                        if( void 0 !== n ){
+	                            var s = o.call( t, n, r );
+	                            void 0 !== s && (e[ r ] = s)
+	                        }
+	                    } ), e
+	                }, e.prototype.parse = function( t, e ){ return this._parse( t ) }, e.prototype.set = function( e, n, r ){
+	                    return "string" == typeof e ?
+	                           r ? t.prototype.set.call( this, (i = {}, i[ e ] = n, i), r ) : (s( this, e, n ), this) :
+	                           t.prototype.set.call( this, e, n );
+	                    var i
+	                }, e.prototype.deepSet = function( t, e, n ){
+	                    var r = this;
+	                    return this.transaction( function(){
+	                        for( var i = t.split( "." ), o = i.length - 1, s = i[ o ], a = r, u = 0; u < o; u++ ){
+	                            var c = i[ u ], f = a.get ? a.get( c ) : a[ c ];
+	                            if( !f ){
+	                                var p = a._attributes;
+	                                if( !p ) return;
+	                                var h = p[ c ].create();
+	                                n && n.nullify && h._attributes && h.clear( n ), a[ c ] = f = h
+	                            }
+	                            a = f
+	                        }
+	                        a.set ? a.set( s, e, n ) : a[ s ] = e
+	                    } ), this
+	                }, e.prototype.transaction = function( t, e ){
+	                    void 0 === e && (e = {});
+	                    var n = r( this );
+	                    t.call( this, this ), n && d( this )
+	                }, e.prototype._createTransaction = function( t, e ){
+	                    var n = this;
+	                    void 0 === e && (e = {});
+	                    var o = r( this ), s = [], a = [], u = this.attributes, c = e.parse ? this.parse( t, e ) : t;
+	                    if( c && c.constructor === Object ? this.forEachAttr( c, function( t, r, i ){
+	                            var o, c = u[ r ];
+	                            if( o = i.canBeUpdated( c, t, e ) ){
+	                                var f = c._createTransaction( o, e );
+	                                return void (f && (a.push( f ), i.propagateChanges && s.push( r )))
+	                            }
+	                            var p = i.transform( t, e, c, n );
+	                            u[ r ] = p, i.isChanged( p, c ) && (s.push( r ), i.handleChange( p, c, n ))
+	                        } ) : this._log( "error", "incompatible argument type", c ), s.length &&
+	                                                                                     i( this, e ) ) return new m( this, o,
+	                        a, s );
+	                    for( var f = 0, p = a; f < p.length; f++ ){ p[ f ].commit( this ) }
+	                    o && d( this )
+	                }, e.prototype._onChildrenChange = function( t, e ){
+	                    var n = t._ownerKey, r = this._attributes[ n ];
+	                    r && !r.propagateChanges || this.forceAttributeChange( n, e )
+	                }, e.prototype.forceAttributeChange = function( t, e ){
+	                    void 0 === e && (e = {});
+	                    var n = r( this );
+	                    i( this, e ) && p( this, "change:" + t, this, this.attributes[ t ], e ), n && d( this )
+	                }, Object.defineProperty( e.prototype, "collection", {
+	                    get : function(){ return this._ownerKey ? null : this._owner },
+	                    enumerable : !0,
+	                    configurable : !0
+	                } ), e.prototype.dispose = function(){
+	                    var e = this;
+	                    this._disposed || (this.forEachAttr( this.attributes,
+	                        function( t, n, r ){ r.dispose( e, t ) } ), t.prototype.dispose.call( this ))
+	                }, e.prototype._log = function( t, e, n ){
+	                    a.a.log[ t ]( "[Model Update] " + this.getClassName() + ": " + e, n, "Attributes spec:",
+	                        this._attributes )
+	                }, e.prototype.getClassName = function(){ return t.prototype.getClassName.call( this ) || "Model" }, e
+	            }( u.a );
+	        b = _ =
+	            f( [ n.i( a.h )( { cidPrefix : "m", _changeEventName : "change", idAttribute : "id", _keys : [ "id" ] } ) ],
+	                b );
+	        var _, m = function(){
+	            function t( t, e, n, r ){
+	                this.object = t, this.isRoot = e, this.nested = n, this.changes = r
+	            }
+	
+	            return t.prototype.commit = function( t ){
+	                for( var e = this, n = e.nested, r = e.object, i = e.changes, o = 0, s = n; o < s.length; o++ ){
+	                    s[ o ].commit( r )
 	                }
-	                model = next;
+	                for( var a = r.attributes, u = r._isDirty, c = 0, f = i; c < f.length; c++ ){
+	                    var h = f[ c ];
+	                    p( r, "change:" + h, r, a[ h ], u )
+	                }
+	                this.isRoot && d( r, t )
+	            }, t
+	        }()
+	    }, function( t, e, n ){
+	        "use strict";
+	        function r( t, e, n ){
+	            for( var r = e.match( i ), o = r.length - 1, s = t, a = 0; a < o; a++ ){
+	                var u = r[ a ];
+	                switch( u ){
+	                    case "~":
+	                        s = s.getStore();
+	                        break;
+	                    case "^":
+	                        s = s.getOwner();
+	                        break;
+	                    default:
+	                        s = s.get( u )
+	                }
+	                if( !s ) return
 	            }
-	            if (model.set) {
-	                model.set(attr, value, options);
+	            return n( s, r[ o ] )
+	        }
+	
+	        n.d( e, "b", function(){ return o } ), e.a = r;
+	        var i = /\^|([^.]+)/g, o = function(){
+	            function t( t, e ){
+	                void 0 === e && (e = !1);
+	                var n = t.match( i ).map( function( t ){
+	                    return "^" === t ? "getOwner()" : "~" === t[ 0 ] ? 'getStore().get("' + t.substr( 1 ) + '")' : t
+	                } );
+	                this.tail = e && n.pop(), this.local = !n.length, n.unshift( "self" ), this.resolve =
+	                    new Function( "self", "return " + n.join( "." ) + ";" )
 	            }
-	            else {
-	                model[attr] = value;
-	            }
-	        });
-	        return this;
-	    };
-	    Record.prototype.transaction = function (fun, options) {
-	        if (options === void 0) { options = {}; }
-	        var isRoot = begin(this);
-	        fun.call(this, this);
-	        isRoot && commit(this);
-	    };
-	    Record.prototype._createTransaction = function (a_values, options) {
-	        var _this = this;
-	        if (options === void 0) { options = {}; }
-	        var isRoot = begin(this), changes = [], nested = [], attributes = this.attributes, values = options.parse ? this.parse(a_values, options) : a_values;
-	        if (values && values.constructor === Object) {
-	            this.forEachAttr(values, function (value, key, attr) {
-	                var prev = attributes[key];
-	                var update;
-	                if (update = attr.canBeUpdated(prev, value, options)) {
-	                    var nestedTransaction = prev._createTransaction(update, options);
-	                    if (nestedTransaction) {
-	                        nested.push(nestedTransaction);
-	                        if (attr.propagateChanges)
-	                            changes.push(key);
+	
+	            return t
+	        }()
+	    }, function( t, e, n ){
+	        "use strict";
+	        function r( t, e, n ){
+	            var r = n.parse ? t.parse( e, n ) : e;
+	            return Array.isArray( r ) ? r : [ r ]
+	        }
+	
+	        var i = n( 0 ), o = n( 1 ), s = n( 2 ), a = n( 4 ), u = n( 15 ), c = n( 17 ), f = n( 16 );
+	        n.d( e, "a", function(){ return w } );
+	        var p = this && this.__extends || function(){
+	                    var t = Object.setPrototypeOf ||
+	                            { __proto__ : [] } instanceof Array && function( t, e ){ t.__proto__ = e } ||
+	                            function( t, e ){ for( var n in e ) e.hasOwnProperty( n ) && (t[ n ] = e[ n ]) };
+	                    return function( e, n ){
+	                        function r(){ this.constructor = e }
+	
+	                        t( e, n ), e.prototype = null === n ? Object.create( n ) : (r.prototype = n.prototype, new r)
 	                    }
+	                }(), h = this && this.__decorate || function( t, e, n, r ){
+	                    var i, o = arguments.length,
+	                        s = o < 3 ? e : null === r ? r = Object.getOwnPropertyDescriptor( e, n ) : r;
+	                    if( "object" == typeof Reflect && "function" == typeof Reflect.decorate ) s =
+	                        Reflect.decorate( t, e, n, r );
+	                    else for( var a = t.length - 1; a >= 0; a-- )(i = t[ a ]) && (s =
+	                        (o < 3 ? i( s ) : o > 3 ? i( e, n, s ) : i( e, n )) || s);
+	                    return o > 3 && s && Object.defineProperty( e, n, s ), s
+	                }, l = i.b.trigger2, d = (i.b.on, i.b.off, o.b.begin), v = o.b.commit, g = o.b.markAsDirty, y = i.a.omit,
+	            b = (i.a.log, i.a.assign), _ = i.a.defaults, m = 0, O = Array.prototype.slice, w = A = function( t ){
+	                function e( e, i, o ){
+	                    void 0 === i && (i = {});
+	                    var s = t.call( this, m++ ) || this;
+	                    if( s.models = [], s._byId = {}, s.comparator = s.comparator, void 0 !== i.comparator && (s.comparator =
+	                            i.comparator, i.comparator = void 0), s.model = s.model, i.model &&
+	                                                                                     (s.model = i.model, i.model =
+	                                                                                         void 0), s.idAttribute =
+	                            s.model.prototype.idAttribute, s._shared = o || 0, e ){
+	                        var a = r( s, e, i );
+	                        n.i( c.a )( s, a, i, !0 )
+	                    }
+	                    return s.initialize.apply( s, arguments ), s._localEvents && s._localEvents.subscribe( s, s ), s
+	                }
+	
+	                return p( e, t ), e.prototype.createSubset = function( t, e ){
+	                    var n = this.constructor.subsetOf( this ).options.type, r = new n( t, e );
+	                    return r.resolve( this ), r
+	                }, e.predefine = function(){
+	                    function t( t, n, r ){ e.call( this, t, n, o.c.share | (r ? o.c.listen : 0) ) }
+	
+	                    var e = this;
+	                    return this._SubsetOf = null, i.c.mixTo( t ), t.prototype = this.prototype, t._attribute =
+	                        j, this.Refs = this.Subset = t, o.a.predefine.call( this ), n.i( s.c )( this, s.l ), this
+	                }, e.define = function( t, e ){
+	                    void 0 === t && (t = {});
+	                    var n = i.a.getChangedStatics( this, "comparator", "model", "itemEvents" ), r = b( n, t ),
+	                        s = y( r, "itemEvents" );
+	                    if( r.itemEvents ){
+	                        var a = new i.j( this.prototype._itemEvents );
+	                        a.addEventsMap( r.itemEvents ), s._itemEvents = a
+	                    }
+	                    return o.a.define.call( this, s, e )
+	                }, Object.defineProperty( e.prototype, "__inner_state__", {
+	                    get : function(){ return this.models },
+	                    enumerable : !0,
+	                    configurable : !0
+	                } ), Object.defineProperty( e.prototype, "comparator", {
+	                    get : function(){ return this._comparator }, set : function( t ){
+	                        var e = this;
+	                        switch( typeof t ){
+	                            case "string":
+	                                this._comparator = function( e, n ){
+	                                    var r = e[ t ], i = n[ t ];
+	                                    return r === i ? 0 : r < i ? -1 : 1
+	                                };
+	                                break;
+	                            case "function":
+	                                1 === t.length ? this._comparator = function( n, r ){
+	                                    var i = t.call( e, n ), o = t.call( e, r );
+	                                    return i === o ? 0 : i < o ? -1 : 1
+	                                } : this._comparator = function( n, r ){ return t.call( e, n, r ) };
+	                                break;
+	                            default:
+	                                this._comparator = null
+	                        }
+	                    }, enumerable : !0, configurable : !0
+	                } ), e.prototype.getStore = function(){
+	                    return this._store || (this._store = this._owner ? this._owner.getStore() : this._defaultStore)
+	                }, e.prototype._onChildrenChange = function( t, e, r ){
+	                    if( void 0 === e && (e = {}), r !== this ){
+	                        var i = this.idAttribute;
+	                        t.hasChanged( i ) && n.i( a.a )( this._byId, t );
+	                        var o = d( this );
+	                        g( this, e ) && l( this, "change", t, e ), o && v( this )
+	                    }
+	                }, e.prototype.get = function( t ){
+	                    if( null != t ){
+	                        if( "object" == typeof t ){
+	                            var e = t[ this.idAttribute ];
+	                            return void 0 !== e && this._byId[ e ] || this._byId[ t.cid ]
+	                        }
+	                        return this._byId[ t ]
+	                    }
+	                }, e.prototype.each = function( t, e ){
+	                    for( var n = void 0 !== e ? function( n, r ){ return t.call( e, n, r ) } : t, r = this.models,
+	                             i = 0; i < r.length; i++ )n( r[ i ], i )
+	                }, e.prototype.every = function( t, e ){
+	                    for( var n = void 0 !== e ? function( n, r ){ return t.call( e, n, r ) } : t, r = this.models,
+	                             i = 0; i < r.length; i++ )if( !n( r[ i ], i ) ) return !1;
+	                    return !0
+	                }, e.prototype.filter = function( t, e ){
+	                    var n = void 0 !== e ? function( n, r ){ return t.call( e, n, r ) } : t;
+	                    this.models;
+	                    return this.map( function( t, e ){ return n( t, e ) ? t : void 0 } )
+	                }, e.prototype.some = function( t, e ){
+	                    for( var n = void 0 !== e ? function( n, r ){ return t.call( e, n, r ) } : t, r = this.models,
+	                             i = 0; i < r.length; i++ )if( n( r[ i ], i ) ) return !0;
+	                    return !1
+	                }, e.prototype.map = function( t, e ){
+	                    for( var n = void 0 !== e ? function( n, r ){ return t.call( e, n, r ) } : t, r = this.models,
+	                             i = Array( r.length ), o = 0, s = 0; s < r.length; s++ ){
+	                        var a = n( r[ s ], s );
+	                        void 0 === a || (i[ o++ ] = a)
+	                    }
+	                    return i.length = o, i
+	                }, e.prototype._validateNested = function( t ){
+	                    if( this._shared ) return 0;
+	                    var e = 0;
+	                    return this.each( function( n ){
+	                        var r = n.validationError;
+	                        r && (t[ n.cid ] = r, e++)
+	                    } ), e
+	                }, e.prototype.initialize = function(){ }, Object.defineProperty( e.prototype, "length", {
+	                    get : function(){ return this.models.length },
+	                    enumerable : !0,
+	                    configurable : !0
+	                } ), e.prototype.first = function(){ return this.models[ 0 ] }, e.prototype.last =
+	                    function(){ return this.models[ this.models.length - 1 ] }, e.prototype.at = function( t ){
+	                    var e = t < 0 ? t + this.models.length : t;
+	                    return this.models[ e ]
+	                }, e.prototype.clone = function( t ){
+	                    void 0 === t && (t = {});
+	                    var e = this._shared & o.c.share ? this.models : this.map( function( t ){ return t.clone() } ),
+	                        n = new this.constructor( e, { model : this.model, comparator : this.comparator }, this._shared );
+	                    return t.pinStore && (n._defaultStore = this.getStore()), n
+	                }, e.prototype.toJSON =
+	                    function(){ return this.models.map( function( t ){ return t.toJSON() } ) }, e.prototype.set =
+	                    function( t, e ){
+	                        if( void 0 === t && (t = []), void 0 === e && (e = {}), void 0 !== e.add && this._log( "warn",
+	                                "Collection.set doesn't support 'add' option, behaving as if options.add === true.",
+	                                e ), e.reset ) this.reset( t, e );
+	                        else{
+	                            var n = this._createTransaction( t, e );
+	                            n && n.commit()
+	                        }
+	                        return this
+	                    }, e.prototype.dispose = function(){
+	                    if( !this._disposed ){
+	                        for( var e = !this._shared, r = 0, i = this.models; r < i.length; r++ ){
+	                            var o = i[ r ];
+	                            n.i( a.b )( this, o ), e && o.dispose()
+	                        }
+	                        t.prototype.dispose.call( this )
+	                    }
+	                }, e.prototype.reset = function( t, e ){
+	                    void 0 === e && (e = {});
+	                    var i = d( this ), o = n.i( a.c )( this );
+	                    return t && n.i( c.a )( this, r( this, t, e ), e, !0 ), g( this, e ), e.silent ||
+	                                                                                          l( this, "reset", this,
+	                                                                                              _( { previousModels : o },
+	                                                                                                  e ) ), i &&
+	                                                                                                         v( this ), this.models
+	                }, e.prototype.add = function( t, e ){
+	                    void 0 === e && (e = {});
+	                    var i = r( this, t, e ), o = this.models.length ? n.i( u.a )( this, i, e ) : n.i( c.a )( this, i, e );
+	                    if( o ) return o.commit(), o.added
+	                }, e.prototype.remove = function( t, e ){
+	                    return void 0 === e && (e = {}), t ? Array.isArray( t ) ? n.i( f.a )( this, t, e ) :
+	                                                         n.i( f.b )( this, t, e ) : []
+	                }, e.prototype._createTransaction = function( t, e ){
+	                    void 0 === e && (e = {});
+	                    var i = r( this, t, e );
+	                    return this.models.length ? e.remove === !1 ? n.i( u.a )( this, i, e, !0 ) : n.i( c.b )( this, i, e ) :
+	                           n.i( c.a )( this, i, e )
+	                }, e.prototype.pluck =
+	                    function( t ){ return this.models.map( function( e ){ return e[ t ] } ) }, e.prototype.sort =
+	                    function( t ){
+	                        if( void 0 === t && (t = {}), n.i( a.d )( this, t ) ){
+	                            var e = d( this );
+	                            g( this, t ) && l( this, "sort", this, t ), e && v( this )
+	                        }
+	                        return this
+	                    }, e.prototype.push =
+	                    function( t, e ){ return this.add( t, b( { at : this.length }, e ) ) }, e.prototype.pop = function( t ){
+	                    var e = this.at( this.length - 1 );
+	                    return this.remove( e, t ), e
+	                }, e.prototype.unshift = function( t, e ){ return this.add( t, b( { at : 0 }, e ) ) }, e.prototype.shift =
+	                    function( t ){
+	                        var e = this.at( 0 );
+	                        return this.remove( e, t ), e
+	                    }, e.prototype.slice = function(){ return O.apply( this.models, arguments ) }, e.prototype.indexOf =
+	                    function( t ){
+	                        var e = this.get( t );
+	                        return this.models.indexOf( e )
+	                    }, e.prototype.modelId =
+	                    function( t ){ return t[ this.model.prototype.idAttribute ] }, e.prototype.toggle = function( t, e ){
+	                    var n = Boolean( this.get( t ) ), r = void 0 === e ? !n : Boolean( e );
+	                    return n !== r && (n ? this.remove( t ) : this.add( t )), r
+	                }, e.prototype._log = function( t, e, n ){
+	                    i.a.log[ t ]( "[Collection Update] " + this.model.prototype.getClassName() + "." + this.getClassName() +
+	                                  ": " + e, n, "Attributes spec:", this.model.prototype._attributes )
+	                }, e.prototype.getClassName = function(){ return t.prototype.getClassName.call( this ) || "Collection" }, e
+	            }( o.a );
+	        w._attribute = s.e, w = A = h( [ n.i( i.h )(
+	            { cidPrefix : "c", model : s.a, _changeEventName : "changes", _aggregationError : null } ) ], w );
+	        var j = function( t ){
+	            function e(){ return null !== t && t.apply( this, arguments ) || this }
+	
+	            return p( e, t ), e
+	        }( s.l );
+	        j.defaultValue = [], n.i( s.c )( w, s.l ), s.a.Collection = w;
+	        var A
+	    }, function( t, e, n ){
+	        "use strict";
+	        function r(){ }
+	
+	        function i( t ){
+	            var e;
+	            if( "function" == typeof t ) e = t.has;
+	            else if( t && t instanceof c ) e = t;
+	            else{
+	                var n = o( t );
+	                e     = n && n.prototype instanceof s.a ? n.shared.value( t ) : new c( { type : n, value : t } )
+	            }
+	            return e.options
+	        }
+	
+	        function o( t ){
+	            switch( typeof t ){
+	                case "number":
+	                    return Number;
+	                case "string":
+	                    return String;
+	                case "boolean":
+	                    return Boolean;
+	                case "undefined":
 	                    return;
-	                }
-	                var next = attr.transform(value, options, prev, _this);
-	                attributes[key] = next;
-	                if (attr.isChanged(next, prev)) {
-	                    changes.push(key);
-	                    attr.handleChange(next, prev, _this);
-	                }
-	            });
-	        }
-	        else {
-	            this._log('error', 'incompatible argument type', values);
-	        }
-	        if (changes.length && markAsDirty(this, options)) {
-	            return new RecordTransaction(this, isRoot, nested, changes);
-	        }
-	        for (var _i = 0, nested_1 = nested; _i < nested_1.length; _i++) {
-	            var pendingTransaction = nested_1[_i];
-	            pendingTransaction.commit(this);
-	        }
-	        isRoot && commit(this);
-	    };
-	    Record.prototype._onChildrenChange = function (child, options) {
-	        var _ownerKey = child._ownerKey, attribute = this._attributes[_ownerKey];
-	        if (!attribute || attribute.propagateChanges)
-	            this.forceAttributeChange(_ownerKey, options);
-	    };
-	    Record.prototype.forceAttributeChange = function (key, options) {
-	        if (options === void 0) { options = {}; }
-	        var isRoot = begin(this);
-	        if (markAsDirty(this, options)) {
-	            trigger3(this, 'change:' + key, this, this.attributes[key], options);
-	        }
-	        isRoot && commit(this);
-	    };
-	    Object.defineProperty(Record.prototype, "collection", {
-	        get: function () {
-	            return this._ownerKey ? null : this._owner;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    Record.prototype.dispose = function () {
-	        var _this = this;
-	        if (this._disposed)
-	            return;
-	        this.forEachAttr(this.attributes, function (value, key, attribute) {
-	            attribute.dispose(_this, value);
-	        });
-	        _super.prototype.dispose.call(this);
-	    };
-	    Record.prototype._log = function (level, text, value) {
-	        object_plus_1.tools.log[level]("[Model Update] " + this.getClassName() + ": " + text, value, 'Attributes spec:', this._attributes);
-	    };
-	    Record.prototype.getClassName = function () {
-	        return _super.prototype.getClassName.call(this) || 'Model';
-	    };
-	    return Record;
-	}(transactions_1.Transactional));
-	Record = Record_1 = __decorate([
-	    object_plus_1.define({
-	        cidPrefix: 'm',
-	        _changeEventName: 'change',
-	        idAttribute: 'id',
-	        _keys: ['id']
-	    })
-	], Record);
-	exports.Record = Record;
-	;
-	function begin(record) {
-	    if (_begin(record)) {
-	        record._previousAttributes = new record.Attributes(record.attributes);
-	        record._changedAttributes = null;
-	        return true;
-	    }
-	    return false;
-	}
-	function markAsDirty(record, options) {
-	    if (record._changedAttributes) {
-	        record._changedAttributes = null;
-	    }
-	    return _markAsDirty(record, options);
-	}
-	function cloneAttributes(record, a_attributes) {
-	    var attributes = new record.Attributes(a_attributes);
-	    record.forEachAttr(attributes, function (value, name, attr) {
-	        attributes[name] = attr.clone(value, record);
-	    });
-	    return attributes;
-	}
-	function setAttribute(record, name, value) {
-	    var isRoot = begin(record), options = {}, attributes = record.attributes, spec = record._attributes[name], prev = attributes[name];
-	    var update;
-	    if (update = spec.canBeUpdated(prev, value, options)) {
-	        var nestedTransaction = prev._createTransaction(update, options);
-	        if (nestedTransaction) {
-	            nestedTransaction.commit(record);
-	            if (spec.propagateChanges) {
-	                markAsDirty(record, options);
-	                trigger3(record, 'change:' + name, record, prev, options);
+	                case "object":
+	                    return t ? t.constructor : void 0
 	            }
 	        }
-	    }
-	    else {
-	        var next = spec.transform(value, options, prev, record);
-	        attributes[name] = next;
-	        if (spec.isChanged(next, prev)) {
-	            spec.handleChange(next, prev, record);
-	            markAsDirty(record, options);
-	            trigger3(record, 'change:' + name, record, next, options);
-	        }
-	    }
-	    isRoot && commit(record);
-	}
-	exports.setAttribute = setAttribute;
-	var RecordTransaction = (function () {
-	    function RecordTransaction(object, isRoot, nested, changes) {
-	        this.object = object;
-	        this.isRoot = isRoot;
-	        this.nested = nested;
-	        this.changes = changes;
-	    }
-	    RecordTransaction.prototype.commit = function (initiator) {
-	        var _a = this, nested = _a.nested, object = _a.object, changes = _a.changes;
-	        for (var _i = 0, nested_2 = nested; _i < nested_2.length; _i++) {
-	            var transaction = nested_2[_i];
-	            transaction.commit(object);
-	        }
-	        var attributes = object.attributes, _isDirty = object._isDirty;
-	        for (var _b = 0, changes_1 = changes; _b < changes_1.length; _b++) {
-	            var key = changes_1[_b];
-	            trigger3(object, 'change:' + key, object, attributes[key], _isDirty);
-	        }
-	        this.isRoot && commit(object, initiator);
-	    };
-	    return RecordTransaction;
-	}());
-	var Record_1;
 	
+	        var s = n( 1 ), a = n( 0 );
+	        n.d( e, "a", function(){ return c } ), e.b = i;
+	        var u = a.a.assign, c = function(){
+	            function t( t ){
+	                this.options = { getHooks : [], transforms : [], changeHandlers : [] }, t && u( this.options, t )
+	            }
 	
-	/***/ }),
-	/* 10 */
-	/***/ (function(module, exports, __webpack_require__) {
+	            return t.prototype.check = function( t, e ){
+	                function n( n, r, i ){
+	                    if( !t.call( n, r, i ) ){
+	                        var o = e || t.error || i + " is not valid";
+	                        return "function" == typeof o ? o.call( n, i ) : o
+	                    }
+	                }
 	
-	"use strict";
+	                var r = this.options.validate;
+	                return this.metadata(
+	                    { validate : r ? function( t, e, i ){ return r( t, e, i ) || n( t, e, i ) } : n } )
+	            }, Object.defineProperty( t.prototype, "isRequired", {
+	                get          : function(){ return this.metadata( { isRequired : !0 } ) },
+	                enumerable   : !0,
+	                configurable : !0
+	            } ), t.prototype.watcher = function( t ){ return this.metadata( { _onChange : t } ) }, t.prototype.parse =
+	                function( t ){ return this.metadata( { parse : t } ) }, t.prototype.toJSON = function( t ){
+	                return this.metadata(
+	                    { toJSON : "function" == typeof t ? t : t ? function( t ){ return t && t.toJSON() } : r } )
+	            }, t.prototype.get = function( t ){
+	                return this.metadata( { getHooks : this.options.getHooks.concat( t ) } )
+	            }, t.prototype.set = function( t ){
+	                function e( e, n, r, i ){
+	                    if( this.isChanged( e, r ) ){
+	                        var o = t.call( i, e, this.name );
+	                        return void 0 === o ? r : this.convert( o, n, r, i )
+	                    }
+	                    return r
+	                }
 	
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var referenceMask = /\^|([^.]+)/g;
-	var CompiledReference = (function () {
-	    function CompiledReference(reference, splitTail) {
-	        if (splitTail === void 0) { splitTail = false; }
-	        var path = reference
-	            .match(referenceMask)
-	            .map(function (key) {
-	            if (key === '^')
-	                return 'getOwner()';
-	            if (key[0] === '~')
-	                return "getStore().get(\"" + key.substr(1) + "\")";
-	            return key;
-	        });
-	        this.tail = splitTail && path.pop();
-	        this.local = !path.length;
-	        path.unshift('self');
-	        this.resolve = new Function('self', "return " + path.join('.') + ";");
-	    }
-	    return CompiledReference;
-	}());
-	exports.CompiledReference = CompiledReference;
-	function resolveReference(root, reference, action) {
-	    var path = reference.match(referenceMask), skip = path.length - 1;
-	    var self = root;
-	    for (var i = 0; i < skip; i++) {
-	        var key = path[i];
-	        switch (key) {
-	            case '~':
-	                self = self.getStore();
-	                break;
-	            case '^':
-	                self = self.getOwner();
-	                break;
-	            default: self = self.get(key);
+	                return this.metadata( { transforms : this.options.transforms.concat( e ) } )
+	            }, t.prototype.changeEvents =
+	                function( t ){ return this.metadata( { changeEvents : t } ) }, t.prototype.events = function( t ){
+	                function e( t, e, r ){
+	                    e && e.trigger && n.unsubscribe( r, e ), t && t.trigger && n.subscribe( r, t )
+	                }
+	
+	                var n = new a.j( t );
+	                return this.metadata( { changeHandlers : this.options.changeHandlers.concat( e ) } )
+	            }, Object.defineProperty( t.prototype, "has",
+	                { get : function(){ return this }, enumerable : !0, configurable : !0 } ), t.prototype.metadata =
+	                function( e ){
+	                    var n = new t( this.options );
+	                    return u( n.options, e ), n
+	                }, t.prototype.value = function( t ){ return this.metadata( { value : t } ) }, t
+	        }();
+	        Function.prototype.value = function( t ){ return new c( { type : this, value : t } ) }, Object.defineProperty(
+	            Function.prototype, "isRequired", {
+	                get : function(){ return this._isRequired || this.has.isRequired },
+	                set : function( t ){ this._isRequired = t }
+	            } ), Object.defineProperty( Function.prototype, "has", {
+	            get : function(){ return this._has || new c( { type : this, value : this._attribute.defaultValue } ) },
+	            set : function( t ){ this._has = t }
+	        } )
+	    }, function( t, e, n ){
+	        "use strict";
+	        function r( t ){
+	            switch( typeof t ){
+	                case "function":
+	                    return function( e ){ return t.call( e ) };
+	                case "object":
+	                    return function(){ return t };
+	                case "string":
+	                    return new i.b( t ).resolve
+	            }
 	        }
-	        if (!self)
-	            return;
-	    }
-	    return action(self, path[skip]);
-	}
-	exports.resolveReference = resolveReference;
 	
+	        var i = n( 10 );
+	        e.a   = r
+	    }, function( t, e, n ){
+	        "use strict";
+	        var r = (n( 25 ), n( 27 ), n( 26 ));
+	        n.d( e, "a", function(){ return r.a } )
+	    }, function( t, e, n ){
+	        "use strict";
+	        function r( t, e, r, o ){
+	            var a = c( t ), h = [], l = s( t, e, h, r, o );
+	            if( l.length || h.length ){
+	                var d = i( t, l, r );
+	                if( p( t, r ) ) return new u.e( t, a, l, [], h, d );
+	                t._aggregationError && n.i( u.f )( t )
+	            }
+	            a && f( t )
+	        }
 	
-	/***/ }),
-	/* 11 */
-	/***/ (function(module, exports, __webpack_require__) {
+	        function i( t, e, r ){
+	            var i = r.at;
+	            if( null != i ){
+	                var s = t.models.length - e.length;
+	                return i = Number( i ), i < 0 && (i += s + 1), i < 0 && (i = 0), i > s && (i = s), o( t.models, i,
+	                    e ), !1
+	            }
+	            return n.i( u.d )( t, r )
+	        }
 	
-	"use strict";
+	        function o( t, e, n ){
+	            for( var r = t.length - 1, i = r - n.length; i >= e; i-- , r-- )t[ r ] = t[ i ];
+	            for( i = 0, r = e; i < n.length; i++ , r++ )t[ r ] = n[ i ]
+	        }
 	
-	var __extends = (this && this.__extends) || (function () {
-	    var extendStatics = Object.setPrototypeOf ||
-	        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-	        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-	    return function (d, b) {
-	        extendStatics(d, b);
-	        function __() { this.constructor = d; }
-	        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	    };
-	})();
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var object_plus_1 = __webpack_require__(0);
-	var transactions_1 = __webpack_require__(1);
-	var record_1 = __webpack_require__(2);
-	var commons_1 = __webpack_require__(4);
-	var add_1 = __webpack_require__(15);
-	var set_1 = __webpack_require__(17);
-	var remove_1 = __webpack_require__(16);
-	var trigger2 = object_plus_1.eventsApi.trigger2, on = object_plus_1.eventsApi.on, off = object_plus_1.eventsApi.off, begin = transactions_1.transactionApi.begin, commit = transactions_1.transactionApi.commit, markAsDirty = transactions_1.transactionApi.markAsDirty, omit = object_plus_1.tools.omit, log = object_plus_1.tools.log, assign = object_plus_1.tools.assign, defaults = object_plus_1.tools.defaults;
-	var _count = 0;
-	var silentOptions = { silent: true };
-	var slice = Array.prototype.slice;
-	var Collection = Collection_1 = (function (_super) {
-	    __extends(Collection, _super);
-	    function Collection(records, options, shared) {
-	        if (options === void 0) { options = {}; }
-	        var _this = _super.call(this, _count++) || this;
-	        _this.models = [];
-	        _this._byId = {};
-	        _this.comparator = _this.comparator;
-	        if (options.comparator !== void 0) {
-	            _this.comparator = options.comparator;
-	            options.comparator = void 0;
+	        function s( t, e, r, i, o ){
+	            for( var s = t._byId, a = t.models, c = (o || i.merge) && !t._shared,
+	                     f = (i.parse, t.model.prototype.idAttribute), p = a.length, h = 0, l = e; h < l.length; h++ ){
+	                var d = l[ h ], v = d ? s[ d[ f ] ] || s[ d.cid ] : null;
+	                if( v ){
+	                    if( c && d !== v ){
+	                        var g = d.attributes || d, y = v._createTransaction( g, i );
+	                        y && r.push( y ), v.hasChanged( f ) && n.i( u.a )( s, v )
+	                    }
+	                }
+	                else v = n.i( u.h )( t, d, i ), a.push( v ), n.i( u.i )( s, v )
+	            }
+	            return a.slice( p )
 	        }
-	        _this.model = _this.model;
-	        if (options.model) {
-	            _this.model = options.model;
-	            options.model = void 0;
+	
+	        var a = n( 1 ), u = n( 4 );
+	        e.a   = r;
+	        var c = a.b.begin, f = a.b.commit, p = a.b.markAsDirty
+	    }, function( t, e, n ){
+	        "use strict";
+	        function r( t, e, r ){
+	            var i = t.get( e );
+	            if( i ){
+	                var o = l( t ), s = t.models;
+	                s.splice( s.indexOf( i ), 1 ), n.i( a.j )( t._byId, i );
+	                var u = h( t, r );
+	                return u && (p( i, "remove", i, t, r ), p( t, "remove", i, t, r )), n.i( a.b )( t, i ), u &&
+	                                                                                                        f( t, "update",
+	                                                                                                            t, r ), o &&
+	                                                                                                                    d( t ), i
+	            }
 	        }
-	        _this.idAttribute = _this.model.prototype.idAttribute;
-	        _this._shared = shared || 0;
-	        if (records) {
-	            var elements = toElements(_this, records, options);
-	            set_1.emptySetTransaction(_this, elements, options, true);
+	
+	        function i( t, e, n ){
+	            var r = o( t, e );
+	            if( r.length ){
+	                var i = l( t );
+	                if( s( t, r.length ), h( t, n ) ){ new a.e( t, i, [], r, [], !1 ).commit() }
+	                else i && d( t )
+	            }
+	            return r
 	        }
-	        _this.initialize.apply(_this, arguments);
-	        if (_this._localEvents)
-	            _this._localEvents.subscribe(_this, _this);
-	        return _this;
-	    }
-	    Collection.prototype.createSubset = function (models, options) {
-	        var SubsetOf = this.constructor.subsetOf(this).options.type, subset = new SubsetOf(models, options);
-	        subset.resolve(this);
-	        return subset;
-	    };
-	    Collection.predefine = function () {
-	        var Ctor = this;
-	        this._SubsetOf = null;
-	        function RefsCollection(a, b, listen) {
-	            Ctor.call(this, a, b, transactions_1.ItemsBehavior.share | (listen ? transactions_1.ItemsBehavior.listen : 0));
+	
+	        function o( t, e ){
+	            for( var r = Array( e.length ), i = t._byId, o = 0, s = 0; o < e.length; o++ ){
+	                var u = t.get( e[ o ] );
+	                u && (r[ s++ ] = u, n.i( a.j )( i, u ), n.i( a.b )( t, u ))
+	            }
+	            return r.length = s, r
 	        }
-	        object_plus_1.Mixable.mixTo(RefsCollection);
-	        RefsCollection.prototype = this.prototype;
-	        RefsCollection._attribute = CollectionRefsType;
-	        this.Refs = this.Subset = RefsCollection;
-	        transactions_1.Transactional.predefine.call(this);
-	        record_1.createSharedTypeSpec(this, record_1.SharedType);
-	        return this;
-	    };
-	    Collection.define = function (protoProps, staticProps) {
-	        if (protoProps === void 0) { protoProps = {}; }
-	        var staticsDefinition = object_plus_1.tools.getChangedStatics(this, 'comparator', 'model', 'itemEvents'), definition = assign(staticsDefinition, protoProps);
-	        var spec = omit(definition, 'itemEvents');
-	        if (definition.itemEvents) {
-	            var eventsMap = new object_plus_1.EventMap(this.prototype._itemEvents);
-	            eventsMap.addEventsMap(definition.itemEvents);
-	            spec._itemEvents = eventsMap;
+	
+	        function s( t, e ){
+	            for( var n = t.models, r = t.models = Array( n.length - e ), i = t._byId, o = 0, s = 0; o < n.length; o++ ){
+	                var a = n[ o ];
+	                i[ a.cid ] && (r[ s++ ] = a)
+	            }
+	            r.length = s
 	        }
-	        return transactions_1.Transactional.define.call(this, spec, staticProps);
-	    };
-	    Object.defineProperty(Collection.prototype, "__inner_state__", {
-	        get: function () { return this.models; },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    Object.defineProperty(Collection.prototype, "comparator", {
-	        get: function () { return this._comparator; },
-	        set: function (x) {
-	            var _this = this;
-	            var compare;
-	            switch (typeof x) {
-	                case 'string':
-	                    this._comparator = function (a, b) {
-	                        var aa = a[x], bb = b[x];
-	                        if (aa === bb)
-	                            return 0;
-	                        return aa < bb ? -1 : +1;
+	
+	        var a = n( 4 ), u = n( 0 ), c = n( 1 );
+	        e.b = r, e.a = i;
+	        var f = u.b.trigger2, p = u.b.trigger3, h = c.b.markAsDirty, l = c.b.begin, d = c.b.commit
+	    }, function( t, e, n ){
+	        "use strict";
+	        function r( t, e, r, i ){
+	            var o = f( t ), s = a( t, e, r );
+	            if( s.length ){
+	                var u = n.i( c.d )( t, r );
+	                if( h( t, i ? l : r ) ) return new c.e( t, o, s.slice(), [], [], u );
+	                t._aggregationError && n.i( c.f )( t )
+	            }
+	            o && p( t )
+	        }
+	
+	        function i( t, e, r ){
+	            var i = f( t ), a = [], u = t.models, l = s( t, e, a, r ), d = t.models.length - l.length,
+	                v = d < u.length ? d ? o( t, u ) : n.i( c.g )( t, u ) : [], g = a.length || l.length,
+	                y = n.i( c.d )( t, r ) && g || l.length || r.sorted;
+	            if( g || v.length || y ){
+	                if( h( t, r ) ) return new c.e( t, i, l, v, a, y );
+	                t._aggregationError && n.i( c.f )( t )
+	            }
+	            i && p( t )
+	        }
+	
+	        function o( t, e ){
+	            for( var r = t._byId, i = [], o = 0, s = e; o < s.length; o++ ){
+	                var a = s[ o ];
+	                r[ a.cid ] || (i.push( a ), n.i( c.b )( t, a ))
+	            }
+	            return i
+	        }
+	
+	        function s( t, e, r, i ){
+	            for( var o = Array( e.length ), s = {}, a = (null == i.merge || i.merge) && !t._shared, u = t._byId,
+	                     f = t.models, p = t.model.prototype.idAttribute, h = [], l = !0, d = 0, v = 0; d < e.length; d++ ){
+	                var g = e[ d ], y = null;
+	                if( g ){
+	                    var b = g[ p ], _ = g.cid;
+	                    if( s[ b ] || s[ _ ] ) continue;
+	                    y = u[ b ] || u[ _ ]
+	                }
+	                if( y ){
+	                    if( a && g !== y ){
+	                        l && f[ v ] !== y && (l = !1);
+	                        var m = g.attributes || g, O = y._createTransaction( m, i );
+	                        O && r.push( O )
+	                    }
+	                }
+	                else y = n.i( c.h )( t, g, i ), h.push( y );
+	                o[ v++ ] = y, n.i( c.i )( s, y )
+	            }
+	            return o.length = v, t.models = o, t._byId = s, l || (i.sorted = !0), h
+	        }
+	
+	        function a( t, e, r ){
+	            for( var i = e ? e.length : 0, o = Array( i ), s = {}, a = t.model.prototype.idAttribute, u = 0, f = 0; u <
+	                                                                                                                    i; u++ ){
+	                var p = e[ u ];
+	                if( !p || !s[ p[ a ] ] && !s[ p.cid ] ){
+	                    var h = n.i( c.h )( t, p, r );
+	                    o[ f++ ] = h, n.i( c.i )( s, h )
+	                }
+	            }
+	            return o.length = f, t._byId = s, t.models = o
+	        }
+	
+	        var u = n( 1 ), c = n( 4 );
+	        e.a = r, e.b = i;
+	        var f = u.b.begin, p = u.b.commit, h = u.b.markAsDirty, l = { silent : !0 }
+	    }, function( t, e, n ){
+	        "use strict";
+	        function r( t ){ return new u.b( { value : t } ) }
+	
+	        function i( t ){
+	            return function(){
+	                for( var e = this, n = [], r = 0; r < arguments.length; r++ )n[ r ] = arguments[ r ];
+	                var i;
+	                return this.transaction( function(){ i = t.apply( e, n ) } ), i
+	            }
+	        }
+	
+	        Object.defineProperty( e, "__esModule", { value : !0 } );
+	        var o = n( 0 );
+	        n.d( e, "tools", function(){ return o.a } ), n.d( e, "eventsApi", function(){ return o.b } ), n.d( e, "Mixable",
+	            function(){ return o.c } ), n.d( e, "mixinRules", function(){ return o.d } ), n.d( e, "mixins",
+	            function(){ return o.e } ), n.d( e, "extendable", function(){ return o.f } ), n.d( e, "predefine",
+	            function(){ return o.g } ), n.d( e, "define", function(){ return o.h } ), n.d( e, "mergeProps",
+	            function(){ return o.i } ), n.d( e, "EventMap", function(){ return o.j } ), n.d( e, "Messenger",
+	            function(){ return o.k } ), n.d( e, "Events", function(){ return o.l } );
+	        var s = n( 11 );
+	        n.d( e, "Collection", function(){ return s.a } );
+	        var a = n( 14 );
+	        n.d( e, "Store", function(){ return a.a } );
+	        var u = n( 2 );
+	        n.d( e, "Record", function(){ return u.a } ), n.d( e, "ChainableAttributeSpec", function(){ return u.b } ), n.d(
+	            e, "createSharedTypeSpec", function(){ return u.c } ), n.d( e, "AnyType", function(){ return u.d } ), n.d(
+	            e, "AggregatedType", function(){ return u.e } ), n.d( e, "DateType", function(){ return u.f } ), n.d( e,
+	            "MSDateType", function(){ return u.g } ), n.d( e, "TimestampType", function(){ return u.h } ), n.d( e,
+	            "PrimitiveType", function(){ return u.i } ), n.d( e, "NumericType", function(){ return u.j } ), n.d( e,
+	            "ArrayType", function(){ return u.k } ), n.d( e, "SharedType", function(){ return u.l } );
+	        var c = n( 0 );
+	        n.d( e, "Model", function(){ return u.a } ), n.d( e, "Class", function(){ return c.c } ), n.d( e, "on",
+	            function(){ return p } ), n.d( e, "off", function(){ return h } ), n.d( e, "trigger",
+	            function(){ return l } ), n.d( e, "once", function(){ return d } ), n.d( e, "listenTo",
+	            function(){ return v } ), n.d( e, "stopListening", function(){ return g } ), n.d( e, "listenToOnce",
+	            function(){ return y } ), e.value = r, e.transaction = i;
+	        var f, p = (f = c.l, f.on), h = f.off, l = f.trigger, d = f.once, v = f.listenTo, g = f.stopListening,
+	            y = f.listenToOnce
+	    }, function( t, e, n ){
+	        "use strict";
+	        function r(){ return "l" + y++ }
+	
+	        function i( t, e ){ (t._listeningTo || (t._listeningTo = Object.create( null )))[ e.cid || (e.cid = r()) ] = e }
+	
+	        var o = n( 7 ), s = n( 5 ), a = n( 6 );
+	        n.d( e, "a", function(){ return a.EventMap } ), n.d( e, "b", function(){ return b } ), n.d( e, "c",
+	            function(){ return m } );
+	        var u = this && this.__decorate || function( t, e, n, r ){
+	                    var i, o = arguments.length,
+	                        s = o < 3 ? e : null === r ? r = Object.getOwnPropertyDescriptor( e, n ) : r;
+	                    if( "object" == typeof Reflect && "function" == typeof Reflect.decorate ) s =
+	                        Reflect.decorate( t, e, n, r );
+	                    else for( var a = t.length - 1; a >= 0; a-- )(i = t[ a ]) && (s =
+	                        (o < 3 ? i( s ) : o > 3 ? i( e, n, s ) : i( e, n )) || s);
+	                    return o > 3 && s && Object.defineProperty( e, n, s ), s
+	                }, c = (o.c, o.f, o.d), f = (a.EventHandler, a.strings), p = a.on, h = a.off, l = a.once, d = a.trigger5,
+	            v = a.trigger2, g = a.trigger3, y = 0, b = _ = function(){
+	                function t(){
+	                    this._events = void 0, this._listeningTo = void 0, this.cid = r(), this.initialize.apply( this,
+	                        arguments )
+	                }
+	
+	                return t.prototype.initialize = function(){ }, t.define = function( t, e ){
+	                    var r = n.i( s.omit )( t || {}, "localEvents" );
+	                    if( t ){
+	                        var i = t.localEvents, u = t._localEvents;
+	                        if( i || u ){
+	                            var c = new a.EventMap( this.prototype._localEvents );
+	                            i && c.addEventsMap( i ), u && c.merge( u ), r._localEvents = c
+	                        }
+	                    }
+	                    return o.a.define.call( this, r, e )
+	                }, t.prototype.on = function( t, e, n ){
+	                    if( "string" == typeof t ) f( p, this, t, e, n );
+	                    else for( var r in t ) f( p, this, r, t[ r ], n || e );
+	                    return this
+	                }, t.prototype.once = function( t, e, n ){
+	                    if( "string" == typeof t ) f( l, this, t, e, n );
+	                    else for( var r in t ) f( l, this, r, t[ r ], n || e );
+	                    return this
+	                }, t.prototype.off = function( t, e, n ){
+	                    if( t ) if( "string" == typeof t ) f( h, this, t, e, n );
+	                    else for( var r in t ) f( h, this, r, t[ r ], n || e );
+	                    else h( this, void 0, e, n );
+	                    return this
+	                }, t.prototype.trigger = function( t, e, n, r, i, o ){
+	                    return void 0 !== i || void 0 !== o ? d( this, t, e, n, r, i, o ) :
+	                           void 0 !== r ? g( this, t, e, n, r ) : v( this, t, e, n ), this
+	                }, t.prototype.listenTo = function( t, e, n ){
+	                    return t && (i( this, t ), t.on( e, n || "object" != typeof e ? n : this, this )), this
+	                }, t.prototype.listenToOnce = function( t, e, n ){
+	                    return t && (i( this, t ), t.once( e, n || "object" != typeof e ? n : this, this )), this
+	                }, t.prototype.stopListening = function( t, e, n ){
+	                    var r = this._listeningTo;
+	                    if( r ){
+	                        var i = !(e || n), o = n || "object" != typeof e ? n : this;
+	                        if( t ){
+	                            var s = r[ t.cid ];
+	                            s && (i && delete r[ t.cid ], s.off( e, o, this ))
+	                        }
+	                        else if( null == t ){
+	                            for( var a in r ) r[ a ].off( e, o, this );
+	                            i && (this._listeningTo = void 0)
+	                        }
+	                    }
+	                    return this
+	                }, t.prototype.dispose =
+	                    function(){ this._disposed || (this.stopListening(), this.off(), this._disposed = !0) }, t
+	            }();
+	        b = _ = u( [ c ], b );
+	        var _, m = (Array.prototype.slice, n.i( s.omit )( b.prototype, "constructor", "initialize" ))
+	    }, function( t, e, n ){
+	        "use strict";
+	        var r = n( 3 );
+	        n.d( e, "a", function(){ return s } ), n.d( e, "b", function(){ return a } ), n.d( e, "c",
+	            function(){ return u } );
+	        var i                         = this && this.__extends || function(){
+	                var t = Object.setPrototypeOf ||
+	                        { __proto__ : [] } instanceof Array && function( t, e ){ t.__proto__ = e } ||
+	                        function( t, e ){ for( var n in e ) e.hasOwnProperty( n ) && (t[ n ] = e[ n ]) };
+	                return function( e, n ){
+	                    function r(){ this.constructor = e }
+	
+	                    t( e, n ), e.prototype = null === n ? Object.create( n ) : (r.prototype = n.prototype, new r)
+	                }
+	            }(), o                    = function( t ){
+	            function e(){ return null !== t && t.apply( this, arguments ) || this }
+	
+	            return i( e, t ), e.prototype.convert = function( t ){
+	                return null == t || t instanceof this.type ? t : new this.type( t )
+	            }, e.prototype.clone =
+	                function( t ){ return t && t.clone ? t.clone() : this.convert( JSON.parse( JSON.stringify( t ) ) ) }, e
+	        }( r.a );
+	        Function.prototype._attribute = o;
+	        var s                         = function( t ){
+	            function e(){
+	                return null !== t && t.apply( this, arguments ) || this
+	            }
+	
+	            return i( e, t ), e.prototype.create = function(){ return this.type() }, e.prototype.toJSON =
+	                function( t ){ return t }, e.prototype.convert =
+	                function( t ){ return null == t ? t : this.type( t ) }, e.prototype.isChanged =
+	                function( t, e ){ return t !== e }, e.prototype.clone = function( t ){ return t }, e
+	        }( r.a );
+	        Boolean._attribute            = String._attribute = s;
+	        var a             = function( t ){
+	            function e(){ return null !== t && t.apply( this, arguments ) || this }
+	
+	            return i( e, t ), e.prototype.convert = function( t, e, n, r ){
+	                var i = null == t ? t : this.type( t );
+	                return i !== i && this._log( "warn", "assigned with Invalid Number", t, r ), i
+	            }, e.prototype.validate =
+	                function( t, e, n ){ if( null != e && !isFinite( e ) ) return n + " is not valid number" }, e
+	        }( s );
+	        Number._attribute = a;
+	        var u             = function( t ){
+	            function e(){ return null !== t && t.apply( this, arguments ) || this }
+	
+	            return i( e, t ), e.prototype.toJSON = function( t ){ return t }, e.prototype.convert =
+	                function( t, e, n, r ){
+	                    return null == t || Array.isArray( t ) ? t :
+	                           (this._log( "warn", "assigned with non-array", t, r ), [])
+	                }, e.prototype.clone = function( t ){ return t && t.slice() }, e
+	        }( r.a );
+	        Array._attribute  = u
+	    }, function( t, e, n ){
+	        "use strict";
+	        function r( t ){ return !isNaN( new Date( t ).getTime() ) }
+	
+	        function i( t ){
+	            var e, n, r = 0;
+	            if( n = h.exec( t ) ){
+	                for( var i, o = 0; i = p[ o ]; ++o )n[ i ] = +n[ i ] || 0;
+	                n[ 2 ] = (+n[ 2 ] || 1) - 1, n[ 3 ] = +n[ 3 ] || 1, "Z" !== n[ 8 ] && void 0 !== n[ 9 ] &&
+	                                                                    (r = 60 * n[ 10 ] + n[ 11 ], "+" === n[ 9 ] &&
+	                                                                    (r = 0 - r)), e =
+	                    Date.UTC( n[ 1 ], n[ 2 ], n[ 3 ], n[ 4 ], n[ 5 ] + r, n[ 6 ], n[ 7 ] )
+	            }
+	            else e = Date.parse( t );
+	            return e
+	        }
+	
+	        var o = n( 3 );
+	        n.d( e, "a", function(){ return a } ), n.d( e, "b", function(){ return c } ), n.d( e, "c",
+	            function(){ return f } );
+	        var s           = this && this.__extends || function(){
+	                var t = Object.setPrototypeOf ||
+	                        { __proto__ : [] } instanceof Array && function( t, e ){ t.__proto__ = e } ||
+	                        function( t, e ){ for( var n in e ) e.hasOwnProperty( n ) && (t[ n ] = e[ n ]) };
+	                return function( e, n ){
+	                    function r(){ this.constructor = e }
+	
+	                    t( e, n ), e.prototype = null === n ? Object.create( n ) : (r.prototype = n.prototype, new r)
+	                }
+	            }(), a      = (Date.prototype, function( t ){
+	            function e(){
+	                return null !== t && t.apply( this, arguments ) || this
+	            }
+	
+	            return s( e, t ), e.prototype.convert = function( t, e, n, r ){
+	                if( null == t || t instanceof Date ) return t;
+	                var i = new Date( t ), o = i.getTime();
+	                return o !== o && this._log( "warn", "assigned with Invalid Date", t, r ), i
+	            }, e.prototype.validate = function( t, e, n ){
+	                if( null != e ){
+	                    var r = e.getTime();
+	                    if( r !== r ) return n + " is Invalid Date"
+	                }
+	            }, e.prototype.toJSON = function( t ){ return t && t.toISOString() }, e.prototype.isChanged =
+	                function( t, e ){ return (t && t.getTime()) !== (e && e.getTime()) }, e.prototype.clone =
+	                function( t ){ return t && new Date( t.getTime() ) }, e
+	        }( o.a ));
+	        Date._attribute = a;
+	        var u           = /\/Date\(([0-9]+)\)\//, c = function( t ){
+	            function e(){ return null !== t && t.apply( this, arguments ) || this }
+	
+	            return s( e, t ), e.prototype.convert = function( t ){
+	                if( "string" == typeof t ){
+	                    var e = u.exec( t );
+	                    if( e ) return new Date( Number( e[ 1 ] ) )
+	                }
+	                return a.prototype.convert.apply( this, arguments )
+	            }, e.prototype.toJSON = function( t ){ return t && "/Date(" + t.getTime() + ")/" }, e
+	        }( a ), f       = function( t ){
+	            function e(){ return null !== t && t.apply( this, arguments ) || this }
+	
+	            return s( e, t ), e.prototype.toJSON = function( t ){ return t.getTime() }, e
+	        }( a );
+	        r( "2011-11-29T15:52:30.5" ) && r( "2011-11-29T15:52:30.52" ) && r( "2011-11-29T15:52:18.867" ) &&
+	        r( "2011-11-29T15:52:18.867Z" ) && r( "2011-11-29T15:52:18.867-03:30" ) ||
+	        (a.prototype.convert = function( t ){ return null == t || t instanceof Date ? t : new Date( i( t ) ) });
+	        var p = [ 1, 4, 5, 6, 7, 10, 11 ],
+	            h = /^(\d{4}|[+\-]\d{6})(?:-(\d{2})(?:-(\d{2}))?)?(?:T(\d{2}):(\d{2})(?::(\d{2})(?:\.(\d{3}))?)?(?:(Z)|([+\-])(\d{2})(?::(\d{2}))?)?)?$/
+	    }, function( t, e, n ){
+	        "use strict";
+	        var r = n( 9 ), i = n( 3 ), o = n( 1 );
+	        n.d( e, "a", function(){ return c } );
+	        var s          = this && this.__extends || function(){
+	                var t = Object.setPrototypeOf ||
+	                        { __proto__ : [] } instanceof Array && function( t, e ){ t.__proto__ = e } ||
+	                        function( t, e ){ for( var n in e ) e.hasOwnProperty( n ) && (t[ n ] = e[ n ]) };
+	                return function( e, n ){
+	                    function r(){ this.constructor = e }
+	
+	                    t( e, n ), e.prototype = null === n ? Object.create( n ) : (r.prototype = n.prototype, new r)
+	                }
+	            }(), a     = o.b.free, u = o.b.aquire, c = function( t ){
+	            function e(){ return null !== t && t.apply( this, arguments ) || this }
+	
+	            return s( e, t ), e.prototype.clone = function( t ){ return t ? t.clone() : t }, e.prototype.toJSON =
+	                function( t ){ return t && t.toJSON() }, e.prototype.canBeUpdated = function( t, e, n ){
+	                if( t && null != e ){
+	                    if( !(e instanceof this.type) ) return e;
+	                    if( n.merge ) return e.__inner_state__
+	                }
+	            }, e.prototype.convert = function( t, e, n, r ){
+	                return null == t ? t : t instanceof this.type ? (!t._shared || t._shared & o.c.persistent ||
+	                                                                 this._log( "error",
+	                                                                     "aggregated attribute is assigned with shared collection type",
+	                                                                     t, r ), e.merge ? t.clone() : t) :
+	                                       this.type.create( t, e )
+	            }, e.prototype.dispose = function( t, e ){ e && (a( t, e ), e.dispose()) }, e.prototype.validate =
+	                function( t, e ){
+	                    var n = e && e.validationError;
+	                    if( n ) return n
+	                }, e.prototype.create = function(){ return this.type.create() }, e.prototype.initialize =
+	                function( t ){ t.changeHandlers.unshift( this._handleChange ) }, e.prototype._handleChange =
+	                function( t, e, n ){
+	                    e && a( n, e ), t && !u( n, t, this.name ) && this._log( "error",
+	                        "aggregated attribute assigned with object which is aggregated somewhere else", t, n )
+	                }, e
+	        }( i.a );
+	        r.a._attribute = c
+	    }, function( t, e, n ){
+	        "use strict";
+	        function r(){ }
+	
+	        var i = n( 3 ), o = n( 1 ), s = n( 0 );
+	        n.d( e, "a", function(){ return l } );
+	        var a      = this && this.__extends || function(){
+	                var t = Object.setPrototypeOf ||
+	                        { __proto__ : [] } instanceof Array && function( t, e ){ t.__proto__ = e } ||
+	                        function( t, e ){ for( var n in e ) e.hasOwnProperty( n ) && (t[ n ] = e[ n ]) };
+	                return function( e, n ){
+	                    function r(){ this.constructor = e }
+	
+	                    t( e, n ), e.prototype = null === n ? Object.create( n ) : (r.prototype = n.prototype, new r)
+	                }
+	            }(), u = s.b.on, c = s.b.off, f = o.b.free, p = o.b.aquire, h = o.c.listen | o.c.share, l = function( t ){
+	            function e(){ return null !== t && t.apply( this, arguments ) || this }
+	
+	            return a( e, t ), e.prototype.clone = function( t, e ){
+	                if( !t || t._owner !== e ) return t;
+	                var n = t.clone();
+	                return p( e, n, this.name ), n
+	            }, e.prototype.toJSON = function(){ }, e.prototype.canBeUpdated = function( t, e, n ){
+	                if( t && null != e && !(e instanceof this.type) ) return e
+	            }, e.prototype.convert = function( t, e, n, r ){
+	                if( null == t || t instanceof this.type ) return t;
+	                var i = new this.type( t, e, h );
+	                return p( r, i, this.name ), i
+	            }, e.prototype.validate = function( t, e, n ){ }, e.prototype.create =
+	                function(){ return null }, e.prototype._handleChange = function( t, e, n ){
+	                e && (e._owner === n ? f( n, e ) : c( e, e._changeEventName, this._onChange, n )), t &&
+	                                                                                                   t._owner !== n &&
+	                                                                                                   u( t,
+	                                                                                                       t._changeEventName,
+	                                                                                                       this._onChange,
+	                                                                                                       n )
+	            }, e.prototype.dispose = function( t, e ){
+	                e && (e._owner === t ? (f( t, e ), e.dispose()) : c( e, e._changeEventName, this._onChange, t ))
+	            }, e.prototype.initialize = function( t ){
+	                var e = this;
+	                this._onChange = this.propagateChanges ?
+	                                 function( t, n, r ){ this === r || this.forceAttributeChange( e.name, n ) } :
+	                                 r, t.changeHandlers.unshift( this._handleChange )
+	            }, e
+	        }( i.a )
+	    }, function( t, e, n ){
+	        "use strict";
+	        function r( t, e ){
+	            var n = _( {}, t, i ), r = y( {}, n, e ), s = c( r ), a = {
+	                Attributes   : s,
+	                _attributes  : new s( r ),
+	                properties   : _( {}, n, function( t ){ return t.createPropertyDescriptor() } ),
+	                defaults     : f( r ),
+	                _toJSON      : h( r ),
+	                _localEvents : o( n ),
+	                _keys        : Object.keys( r )
+	            }, l  = p( n, r );
+	            return l && (a._parse = l), m.level || (a.forEachAttr = u( r )), a
+	        }
+	
+	        function i( t, e ){ return l.a.create( n.i( v.b )( t ), e ) }
+	
+	        function o( t ){
+	            var e;
+	            for( var n in t ){
+	                var r = t[ n ], i = r.options._onChange;
+	                i && (e || (e = new O), e.addEvent( "change:" + n, "string" == typeof i ? a( i, n ) : s( i, n ) ))
+	            }
+	            return e
+	        }
+	
+	        function s( t, e ){ return function( n, r ){ t.call( n, r, e ) } }
+	
+	        function a( t, e ){
+	            var n = new g.b( t, !0 ), r = n.local, i = n.resolve, o = n.tail;
+	            return r ? function( t, n ){ t[ o ]( n, e ) } : function( t, n ){ i( t )[ o ]( n, e ) }
+	        }
+	
+	        function u( t ){
+	            var e = [ "var v, _a=this._attributes;" ];
+	            for( var n in t ) e.push( "( v = a." + n + ' ) === void 0 || f( v, "' + n + '", _a.' + n + " );" );
+	            return new Function( "a", "f", e.join( "" ) )
+	        }
+	
+	        function c( t ){
+	            var e = [];
+	            for( var n in t ) e.push( "this." + n + " = x." + n + ";" );
+	            var r = new Function( "x", e.join( "" ) );
+	            return r.prototype = Object.prototype, r
+	        }
+	
+	        function f( t ){
+	            function e( t, e ){
+	                n.push( "this." + t + " = ( v = a." + t + " ) === void 0 ? " + e + " : v;" ), r.push(
+	                    "this." + t + " = " + e + ";" )
+	            }
+	
+	            var n = [ "var v;" ], r = [];
+	            for( var i in t ){
+	                var o = t[ i ], s = o.value, a = o.type;
+	                void 0 === s && a ? e( i, "i." + i + ".create()" ) :
+	                b( s ) ? e( i, JSON.stringify( s ) ) : void 0 === s ? e( i, "void 0" ) : e( i, "i." + i + ".value" )
+	            }
+	            var u = new Function( "i", r.join( "" ) ), c = new Function( "a", "i", n.join( "" ) );
+	            return u.prototype = c.prototype = Object.prototype, function( t ){
+	                return t ? new c( t, this._attributes ) : new u( this._attributes )
+	            }
+	        }
+	
+	        function p( t, e ){
+	            var n = [ "var a=this._attributes;" ], r = !1;
+	            for( var i in t ){
+	                var o = e[ i ];
+	                if( o && o.parse && (r = !0), t[ i ].parse ){
+	                    var s = "r." + i + " === void 0 ||( r." + i + " = a." + i + ".parse.call( this, r." + i + ', "' +
+	                            i + '") );';
+	                    n.push( s )
+	                }
+	            }
+	            if( r ) return n.push( "return r;" ), new Function( "r", n.join( "" ) )
+	        }
+	
+	        function h( t ){
+	            var e = [ "var json = {},v=this.attributes,a=this._attributes;" ];
+	            for( var n in t ){
+	                t[ n ].toJSON && e.push( "json." + n + " = a." + n + ".toJSON.call( this, v." + n + ", '" + n + "' );" )
+	            }
+	            return e.push( "return json;" ), new Function( e.join( "" ) )
+	        }
+	
+	        var l = n( 8 ), d = n( 0 ), v = n( 12 ), g = n( 10 );
+	        e.a   = r;
+	        var y = d.a.defaults, b = d.a.isValidJSON, _ = d.a.transform, m = d.a.log, O = d.b.EventMap
+	    }, function( t, e, n ){
+	        "use strict";
+	        var r      = n( 2 ), i = n( 13 ), o = this && this.__extends || function(){
+	                var t = Object.setPrototypeOf ||
+	                        { __proto__ : [] } instanceof Array && function( t, e ){ t.__proto__ = e } ||
+	                        function( t, e ){ for( var n in e ) e.hasOwnProperty( n ) && (t[ n ] = e[ n ]) };
+	                return function( e, n ){
+	                    function r(){ this.constructor = e }
+	
+	                    t( e, n ), e.prototype = null === n ? Object.create( n ) : (r.prototype = n.prototype, new r)
+	                }
+	            }(), s = function( t ){
+	            function e(){ return null !== t && t.apply( this, arguments ) || this }
+	
+	            return o( e, t ), e.prototype.toJSON =
+	                function( t ){ return t && "object" == typeof t ? t.id : t }, e.prototype.clone =
+	                function( t ){ return t && "object" == typeof t ? t.id : t }, e.prototype.isChanged = function( t, e ){
+	                return (t && (null == t.id ? t : t.id)) !== (e && (null == e.id ? e : e.id))
+	            }, e.prototype.validate = function( t, e, n ){ }, e
+	        }( r.d );
+	        r.a.from   = function( t ){
+	            var e = n.i( i.a )( t );
+	            return new r.b( { value : null, _attribute : s } ).get( function( t, n ){
+	                if( "object" == typeof t ) return t;
+	                var r = e( this ), i = null;
+	                return r && r.length && (i = r.get( t ) || null, this.attributes[ n ] = i, i &&
+	                       this._attributes[ n ].handleChange( i, null, this )), i
+	            } )
+	        }
+	    }, function( t, e, n ){
+	        "use strict";
+	        var r = n( 2 ), i = n( 1 );
+	        n.d( e, "a", function(){ return a } );
+	        var o      = this && this.__extends || function(){
+	                var t = Object.setPrototypeOf ||
+	                        { __proto__ : [] } instanceof Array && function( t, e ){ t.__proto__ = e } ||
+	                        function( t, e ){ for( var n in e ) e.hasOwnProperty( n ) && (t[ n ] = e[ n ]) };
+	                return function( e, n ){
+	                    function r(){ this.constructor = e }
+	
+	                    t( e, n ), e.prototype = null === n ? Object.create( n ) : (r.prototype = n.prototype, new r)
+	                }
+	            }(), s = null, a = function( t ){
+	            function e(){ return null !== t && t.apply( this, arguments ) || this }
+	
+	            return o( e, t ), e.prototype.getStore = function(){ return this }, e.prototype.get = function( t ){
+	                var e = this[ t ];
+	                return e || this === this._defaultStore ? e :
+	                       this._owner ? this._owner.get( t ) : this._defaultStore.get( t )
+	            }, Object.defineProperty( e, "global", {
+	                get          : function(){ return s },
+	                set          : function( t ){ s && s.dispose(), i.a.prototype._defaultStore = s = t },
+	                enumerable   : !0,
+	                configurable : !0
+	            } ), e
+	        }( r.a );
+	        a.global   = new a
+	    }, function( t, e, n ){
+	        "use strict";
+	        function r( t ){
+	            var e = { parse : !0 };
+	            return t && h( e, t ), e
+	        }
+	
+	        function i( t ){
+	            var e = function( t ){
+	                function e( e, n ){
+	                    var i = t.call( this, e, r( n ), l ) || this;
+	                    return i.resolvedWith = null, i
+	                }
+	
+	                return f( e, t ), Object.defineProperty( e.prototype, "__inner_state__", {
+	                    get          : function(){ return this.refs || this.models },
+	                    enumerable   : !0,
+	                    configurable : !0
+	                } ), e.prototype.add =
+	                    function( e, n ){ return t.prototype.add.call( this, e, r( n ) ) }, e.prototype.reset =
+	                    function( e, n ){
+	                        return t.prototype.reset.call( this, e, r( n ) )
+	                    }, e.prototype._createTransaction = function( e, n ){
+	                    return t.prototype._createTransaction.call( this, e, r( n ) )
+	                }, e.prototype.toJSON = function(){
+	                    return this.refs ? this.refs.map( function( t ){ return t.id || t } ) :
+	                           this.models.map( function( t ){ return t.id } )
+	                }, e.prototype._validateNested = function(){ return 0 }, e.prototype.clone = function( t ){
+	                    var e = this.constructor, n = new e( [], { model : this.model, comparator : this.comparator } );
+	                    return this.resolvedWith ?
+	                           (n.resolvedWith = this.resolvedWith, n.reset( this.models, { silent : !0 } )) :
+	                           n.refs = this.refs, n
+	                }, e.prototype.parse = function( t ){
+	                    var e = this.resolvedWith, n = Array.isArray( t ) ? t : [ t ], r = [];
+	                    if( e ) for( var i = 0, o = n; i < o.length; i++ ){
+	                        var s = o[ i ], a = e.get( s );
+	                        a && r.push( a )
+	                    }
+	                    else n.length && (this.refs = n);
+	                    return r
+	                }, e.prototype.resolve = function( t ){
+	                    return t && t.length && (this.resolvedWith = t, this.refs &&
+	                           (this.reset( this.refs, { silent : !0 } ), this.refs = null)), this
+	                }, e.prototype.getModelIds = function(){ return this.toJSON() }, e.prototype.toggle = function( e, n ){
+	                    return t.prototype.toggle.call( this, this.resolvedWith.get( e ), n )
+	                }, e.prototype.addAll =
+	                    function(){ return this.reset( this.resolvedWith.models ) }, e.prototype.toggleAll =
+	                    function(){ return this.length ? this.reset() : this.addAll() }, e
+	            }( t );
+	            return e = p( [ n.i( s.h )( {} ) ], e )
+	        }
+	
+	        var o = n( 11 ), s = n( 0 ), a = n( 13 ), u = n( 2 ), c = n( 1 ), f = this && this.__extends || function(){
+	                var t = Object.setPrototypeOf || { __proto__ : [] } instanceof Array && function( t, e ){
+	                        t.__proto__ = e
+	                    } || function( t, e ){
+	                        for( var n in e ) e.hasOwnProperty( n ) && (t[ n ] = e[ n ])
 	                    };
-	                    break;
-	                case 'function':
-	                    if (x.length === 1) {
-	                        this._comparator = function (a, b) {
-	                            var aa = x.call(_this, a), bb = x.call(_this, b);
-	                            if (aa === bb)
-	                                return 0;
-	                            return aa < bb ? -1 : +1;
-	                        };
+	                return function( e, n ){
+	                    function r(){
+	                        this.constructor = e
 	                    }
-	                    else {
-	                        this._comparator = function (a, b) { return x.call(_this, a, b); };
-	                    }
-	                    break;
-	                default:
-	                    this._comparator = null;
-	            }
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    Collection.prototype.getStore = function () {
-	        return this._store || (this._store = this._owner ? this._owner.getStore() : this._defaultStore);
-	    };
-	    Collection.prototype._onChildrenChange = function (record, options, initiator) {
-	        if (options === void 0) { options = {}; }
-	        if (initiator === this)
-	            return;
-	        var idAttribute = this.idAttribute;
-	        if (record.hasChanged(idAttribute)) {
-	            commons_1.updateIndex(this._byId, record);
-	        }
-	        var isRoot = begin(this);
-	        if (markAsDirty(this, options)) {
-	            trigger2(this, 'change', record, options);
-	        }
-	        isRoot && commit(this);
-	    };
-	    Collection.prototype.get = function (objOrId) {
-	        if (objOrId == null)
-	            return;
-	        if (typeof objOrId === 'object') {
-	            var id = objOrId[this.idAttribute];
-	            return (id !== void 0 && this._byId[id]) || this._byId[objOrId.cid];
-	        }
-	        else {
-	            return this._byId[objOrId];
-	        }
-	    };
-	    Collection.prototype.each = function (iteratee, context) {
-	        var fun = context !== void 0 ? function (v, k) { return iteratee.call(context, v, k); } : iteratee, models = this.models;
-	        for (var i = 0; i < models.length; i++) {
-	            fun(models[i], i);
-	        }
-	    };
-	    Collection.prototype.every = function (iteratee, context) {
-	        var fun = context !== void 0 ? function (v, k) { return iteratee.call(context, v, k); } : iteratee, models = this.models;
-	        for (var i = 0; i < models.length; i++) {
-	            if (!fun(models[i], i))
-	                return false;
-	        }
-	        return true;
-	    };
-	    Collection.prototype.filter = function (iteratee, context) {
-	        var fun = context !== void 0 ? function (v, k) { return iteratee.call(context, v, k); } : iteratee, models = this.models;
-	        return this.map(function (x, i) { return fun(x, i) ? x : void 0; });
-	    };
-	    Collection.prototype.some = function (iteratee, context) {
-	        var fun = context !== void 0 ? function (v, k) { return iteratee.call(context, v, k); } : iteratee, models = this.models;
-	        for (var i = 0; i < models.length; i++) {
-	            if (fun(models[i], i))
-	                return true;
-	        }
-	        return false;
-	    };
-	    Collection.prototype.map = function (iteratee, context) {
-	        var fun = context !== void 0 ? function (v, k) { return iteratee.call(context, v, k); } : iteratee, models = this.models, mapped = Array(models.length);
-	        var j = 0;
-	        for (var i = 0; i < models.length; i++) {
-	            var x = fun(models[i], i);
-	            x === void 0 || (mapped[j++] = x);
-	        }
-	        mapped.length = j;
-	        return mapped;
-	    };
-	    Collection.prototype._validateNested = function (errors) {
-	        if (this._shared)
-	            return 0;
-	        var count = 0;
-	        this.each(function (record) {
-	            var error = record.validationError;
-	            if (error) {
-	                errors[record.cid] = error;
-	                count++;
-	            }
-	        });
-	        return count;
-	    };
-	    Collection.prototype.initialize = function () { };
-	    Object.defineProperty(Collection.prototype, "length", {
-	        get: function () { return this.models.length; },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    Collection.prototype.first = function () { return this.models[0]; };
-	    Collection.prototype.last = function () { return this.models[this.models.length - 1]; };
-	    Collection.prototype.at = function (a_index) {
-	        var index = a_index < 0 ? a_index + this.models.length : a_index;
-	        return this.models[index];
-	    };
-	    Collection.prototype.clone = function (options) {
-	        if (options === void 0) { options = {}; }
-	        var models = this._shared & transactions_1.ItemsBehavior.share ? this.models : this.map(function (model) { return model.clone(); }), copy = new this.constructor(models, { model: this.model, comparator: this.comparator }, this._shared);
-	        if (options.pinStore)
-	            copy._defaultStore = this.getStore();
-	        return copy;
-	    };
-	    Collection.prototype.toJSON = function () {
-	        return this.models.map(function (model) { return model.toJSON(); });
-	    };
-	    Collection.prototype.set = function (elements, options) {
-	        if (elements === void 0) { elements = []; }
-	        if (options === void 0) { options = {}; }
-	        if (options.add !== void 0) {
-	            this._log('warn', "Collection.set doesn't support 'add' option, behaving as if options.add === true.", options);
-	        }
-	        if (options.reset) {
-	            this.reset(elements, options);
-	        }
-	        else {
-	            var transaction = this._createTransaction(elements, options);
-	            transaction && transaction.commit();
-	        }
-	        return this;
-	    };
-	    Collection.prototype.dispose = function () {
-	        if (this._disposed)
-	            return;
-	        var aggregated = !this._shared;
-	        for (var _i = 0, _a = this.models; _i < _a.length; _i++) {
-	            var record = _a[_i];
-	            commons_1.free(this, record);
-	            if (aggregated)
-	                record.dispose();
-	        }
-	        _super.prototype.dispose.call(this);
-	    };
-	    Collection.prototype.reset = function (a_elements, options) {
-	        if (options === void 0) { options = {}; }
-	        var isRoot = begin(this), previousModels = commons_1.dispose(this);
-	        if (a_elements) {
-	            set_1.emptySetTransaction(this, toElements(this, a_elements, options), options, true);
-	        }
-	        markAsDirty(this, options);
-	        options.silent || trigger2(this, 'reset', this, defaults({ previousModels: previousModels }, options));
-	        isRoot && commit(this);
-	        return this.models;
-	    };
-	    Collection.prototype.add = function (a_elements, options) {
-	        if (options === void 0) { options = {}; }
-	        var elements = toElements(this, a_elements, options), transaction = this.models.length ?
-	            add_1.addTransaction(this, elements, options) :
-	            set_1.emptySetTransaction(this, elements, options);
-	        if (transaction) {
-	            transaction.commit();
-	            return transaction.added;
-	        }
-	    };
-	    Collection.prototype.remove = function (recordsOrIds, options) {
-	        if (options === void 0) { options = {}; }
-	        if (recordsOrIds) {
-	            return Array.isArray(recordsOrIds) ?
-	                remove_1.removeMany(this, recordsOrIds, options) :
-	                remove_1.removeOne(this, recordsOrIds, options);
-	        }
-	        return [];
-	    };
-	    Collection.prototype._createTransaction = function (a_elements, options) {
-	        if (options === void 0) { options = {}; }
-	        var elements = toElements(this, a_elements, options);
-	        if (this.models.length) {
-	            return options.remove === false ?
-	                add_1.addTransaction(this, elements, options, true) :
-	                set_1.setTransaction(this, elements, options);
-	        }
-	        else {
-	            return set_1.emptySetTransaction(this, elements, options);
-	        }
-	    };
-	    Collection.prototype.pluck = function (key) {
-	        return this.models.map(function (model) { return model[key]; });
-	    };
-	    Collection.prototype.sort = function (options) {
-	        if (options === void 0) { options = {}; }
-	        if (commons_1.sortElements(this, options)) {
-	            var isRoot = begin(this);
-	            if (markAsDirty(this, options)) {
-	                trigger2(this, 'sort', this, options);
-	            }
-	            isRoot && commit(this);
-	        }
-	        return this;
-	    };
-	    Collection.prototype.push = function (model, options) {
-	        return this.add(model, assign({ at: this.length }, options));
-	    };
-	    Collection.prototype.pop = function (options) {
-	        var model = this.at(this.length - 1);
-	        this.remove(model, options);
-	        return model;
-	    };
-	    Collection.prototype.unshift = function (model, options) {
-	        return this.add(model, assign({ at: 0 }, options));
-	    };
-	    Collection.prototype.shift = function (options) {
-	        var model = this.at(0);
-	        this.remove(model, options);
-	        return model;
-	    };
-	    Collection.prototype.slice = function () {
-	        return slice.apply(this.models, arguments);
-	    };
-	    Collection.prototype.indexOf = function (modelOrId) {
-	        var record = this.get(modelOrId);
-	        return this.models.indexOf(record);
-	    };
-	    Collection.prototype.modelId = function (attrs) {
-	        return attrs[this.model.prototype.idAttribute];
-	    };
-	    Collection.prototype.toggle = function (model, a_next) {
-	        var prev = Boolean(this.get(model)), next = a_next === void 0 ? !prev : Boolean(a_next);
-	        if (prev !== next) {
-	            if (prev) {
-	                this.remove(model);
-	            }
-	            else {
-	                this.add(model);
-	            }
-	        }
-	        return next;
-	    };
-	    Collection.prototype._log = function (level, text, value) {
-	        object_plus_1.tools.log[level]("[Collection Update] " + this.model.prototype.getClassName() + "." + this.getClassName() + ": " + text, value, 'Attributes spec:', this.model.prototype._attributes);
-	    };
-	    Collection.prototype.getClassName = function () {
-	        return _super.prototype.getClassName.call(this) || 'Collection';
-	    };
-	    return Collection;
-	}(transactions_1.Transactional));
-	Collection._attribute = record_1.AggregatedType;
-	Collection = Collection_1 = __decorate([
-	    object_plus_1.define({
-	        cidPrefix: 'c',
-	        model: record_1.Record,
-	        _changeEventName: 'changes',
-	        _aggregationError: null
-	    })
-	], Collection);
-	exports.Collection = Collection;
-	function toElements(collection, elements, options) {
-	    var parsed = options.parse ? collection.parse(elements, options) : elements;
-	    return Array.isArray(parsed) ? parsed : [parsed];
-	}
-	var CollectionRefsType = (function (_super) {
-	    __extends(CollectionRefsType, _super);
-	    function CollectionRefsType() {
-	        return _super !== null && _super.apply(this, arguments) || this;
-	    }
-	    return CollectionRefsType;
-	}(record_1.SharedType));
-	CollectionRefsType.defaultValue = [];
-	record_1.createSharedTypeSpec(Collection, record_1.SharedType);
-	record_1.Record.Collection = Collection;
-	var Collection_1;
 	
-	
-	/***/ }),
-	/* 12 */
-	/***/ (function(module, exports, __webpack_require__) {
-	
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var transactions_1 = __webpack_require__(1);
-	var object_plus_1 = __webpack_require__(0);
-	var assign = object_plus_1.tools.assign;
-	var ChainableAttributeSpec = (function () {
-	    function ChainableAttributeSpec(options) {
-	        this.options = { getHooks: [], transforms: [], changeHandlers: [] };
-	        if (options)
-	            assign(this.options, options);
-	    }
-	    ChainableAttributeSpec.prototype.check = function (check, error) {
-	        function validate(model, value, name) {
-	            if (!check.call(model, value, name)) {
-	                var msg = error || check.error || name + ' is not valid';
-	                return typeof msg === 'function' ? msg.call(model, name) : msg;
-	            }
-	        }
-	        var prev = this.options.validate;
-	        return this.metadata({
-	            validate: prev ? (function (model, value, name) {
-	                return prev(model, value, name) || validate(model, value, name);
-	            }) : validate
-	        });
-	    };
-	    Object.defineProperty(ChainableAttributeSpec.prototype, "isRequired", {
-	        get: function () {
-	            return this.metadata({ isRequired: true });
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    ChainableAttributeSpec.prototype.watcher = function (ref) {
-	        return this.metadata({ _onChange: ref });
-	    };
-	    ChainableAttributeSpec.prototype.parse = function (fun) {
-	        return this.metadata({ parse: fun });
-	    };
-	    ChainableAttributeSpec.prototype.toJSON = function (fun) {
-	        return this.metadata({
-	            toJSON: typeof fun === 'function' ? fun : (fun ? function (x) { return x && x.toJSON(); } : emptyFunction)
-	        });
-	    };
-	    ChainableAttributeSpec.prototype.get = function (fun) {
-	        return this.metadata({
-	            getHooks: this.options.getHooks.concat(fun)
-	        });
-	    };
-	    ChainableAttributeSpec.prototype.set = function (fun) {
-	        function handleSetHook(next, options, prev, model) {
-	            if (this.isChanged(next, prev)) {
-	                var changed = fun.call(model, next, this.name);
-	                return changed === void 0 ? prev : this.convert(changed, options, prev, model);
-	            }
-	            return prev;
-	        }
-	        return this.metadata({
-	            transforms: this.options.transforms.concat(handleSetHook)
-	        });
-	    };
-	    ChainableAttributeSpec.prototype.changeEvents = function (events) {
-	        return this.metadata({ changeEvents: events });
-	    };
-	    ChainableAttributeSpec.prototype.events = function (map) {
-	        var eventMap = new object_plus_1.EventMap(map);
-	        function handleEventsSubscribtion(next, prev, record) {
-	            prev && prev.trigger && eventMap.unsubscribe(record, prev);
-	            next && next.trigger && eventMap.subscribe(record, next);
-	        }
-	        return this.metadata({
-	            changeHandlers: this.options.changeHandlers.concat(handleEventsSubscribtion)
-	        });
-	    };
-	    Object.defineProperty(ChainableAttributeSpec.prototype, "has", {
-	        get: function () {
-	            return this;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    ChainableAttributeSpec.prototype.metadata = function (options) {
-	        var cloned = new ChainableAttributeSpec(this.options);
-	        assign(cloned.options, options);
-	        return cloned;
-	    };
-	    ChainableAttributeSpec.prototype.value = function (x) {
-	        return this.metadata({ value: x });
-	    };
-	    return ChainableAttributeSpec;
-	}());
-	exports.ChainableAttributeSpec = ChainableAttributeSpec;
-	function emptyFunction() { }
-	Function.prototype.value = function (x) {
-	    return new ChainableAttributeSpec({ type: this, value: x });
-	};
-	Object.defineProperty(Function.prototype, 'isRequired', {
-	    get: function () { return this._isRequired || this.has.isRequired; },
-	    set: function (x) { this._isRequired = x; }
-	});
-	Object.defineProperty(Function.prototype, 'has', {
-	    get: function () {
-	        return this._has || new ChainableAttributeSpec({ type: this, value: this._attribute.defaultValue });
-	    },
-	    set: function (value) { this._has = value; }
-	});
-	function toAttributeDescriptor(spec) {
-	    var attrSpec;
-	    if (typeof spec === 'function') {
-	        attrSpec = spec.has;
-	    }
-	    else if (spec && spec instanceof ChainableAttributeSpec) {
-	        attrSpec = spec;
-	    }
-	    else {
-	        var type = inferType(spec);
-	        if (type && type.prototype instanceof transactions_1.Transactional) {
-	            attrSpec = type.shared.value(spec);
-	        }
-	        else {
-	            attrSpec = new ChainableAttributeSpec({ type: type, value: spec });
-	        }
-	    }
-	    return attrSpec.options;
-	}
-	exports.toAttributeDescriptor = toAttributeDescriptor;
-	function inferType(value) {
-	    switch (typeof value) {
-	        case 'number':
-	            return Number;
-	        case 'string':
-	            return String;
-	        case 'boolean':
-	            return Boolean;
-	        case 'undefined':
-	            return void 0;
-	        case 'object':
-	            return value ? value.constructor : void 0;
-	    }
-	}
-	
-	
-	/***/ }),
-	/* 13 */
-	/***/ (function(module, exports, __webpack_require__) {
-	
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var traversable_1 = __webpack_require__(10);
-	function parseReference(collectionRef) {
-	    switch (typeof collectionRef) {
-	        case 'function':
-	            return function (root) { return collectionRef.call(root); };
-	        case 'object':
-	            return function () { return collectionRef; };
-	        case 'string':
-	            var resolve = new traversable_1.CompiledReference(collectionRef).resolve;
-	            return resolve;
-	    }
-	}
-	exports.parseReference = parseReference;
-	
-	
-	/***/ }),
-	/* 14 */
-	/***/ (function(module, exports, __webpack_require__) {
-	
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", { value: true });
-	__webpack_require__(24);
-	__webpack_require__(26);
-	var store_1 = __webpack_require__(25);
-	exports.Store = store_1.Store;
-	
-	
-	/***/ }),
-	/* 15 */
-	/***/ (function(module, exports, __webpack_require__) {
-	
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var transactions_1 = __webpack_require__(1);
-	var commons_1 = __webpack_require__(4);
-	var begin = transactions_1.transactionApi.begin, commit = transactions_1.transactionApi.commit, markAsDirty = transactions_1.transactionApi.markAsDirty;
-	function addTransaction(collection, items, options, merge) {
-	    var isRoot = begin(collection), nested = [];
-	    var added = appendElements(collection, items, nested, options, merge);
-	    if (added.length || nested.length) {
-	        var needSort = sortOrMoveElements(collection, added, options);
-	        if (markAsDirty(collection, options)) {
-	            return new commons_1.CollectionTransaction(collection, isRoot, added, [], nested, needSort);
-	        }
-	        if (collection._aggregationError)
-	            commons_1.logAggregationError(collection);
-	    }
-	    isRoot && commit(collection);
-	}
-	exports.addTransaction = addTransaction;
-	;
-	function sortOrMoveElements(collection, added, options) {
-	    var at = options.at;
-	    if (at != null) {
-	        var length_1 = collection.models.length - added.length;
-	        at = Number(at);
-	        if (at < 0)
-	            at += length_1 + 1;
-	        if (at < 0)
-	            at = 0;
-	        if (at > length_1)
-	            at = length_1;
-	        moveElements(collection.models, at, added);
-	        return false;
-	    }
-	    return commons_1.sortElements(collection, options);
-	}
-	function moveElements(source, at, added) {
-	    for (var j = source.length - 1, i = j - added.length; i >= at; i--, j--) {
-	        source[j] = source[i];
-	    }
-	    for (i = 0, j = at; i < added.length; i++, j++) {
-	        source[j] = added[i];
-	    }
-	}
-	function appendElements(collection, a_items, nested, a_options, forceMerge) {
-	    var _byId = collection._byId, models = collection.models, merge = (forceMerge || a_options.merge) && !collection._shared, parse = a_options.parse, idAttribute = collection.model.prototype.idAttribute, prevLength = models.length;
-	    for (var _i = 0, a_items_1 = a_items; _i < a_items_1.length; _i++) {
-	        var item = a_items_1[_i];
-	        var model = item ? _byId[item[idAttribute]] || _byId[item.cid] : null;
-	        if (model) {
-	            if (merge && item !== model) {
-	                var attrs = item.attributes || item;
-	                var transaction = model._createTransaction(attrs, a_options);
-	                transaction && nested.push(transaction);
-	                if (model.hasChanged(idAttribute)) {
-	                    commons_1.updateIndex(_byId, model);
+	                    t( e, n ), e.prototype = null === n ? Object.create( n ) : (r.prototype = n.prototype, new r)
 	                }
-	            }
-	        }
-	        else {
-	            model = commons_1.convertAndAquire(collection, item, a_options);
-	            models.push(model);
-	            commons_1.addIndex(_byId, model);
-	        }
-	    }
-	    return models.slice(prevLength);
-	}
-	
-	
-	/***/ }),
-	/* 16 */
-	/***/ (function(module, exports, __webpack_require__) {
-	
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var commons_1 = __webpack_require__(4);
-	var object_plus_1 = __webpack_require__(0);
-	var transactions_1 = __webpack_require__(1);
-	var trigger2 = object_plus_1.eventsApi.trigger2, trigger3 = object_plus_1.eventsApi.trigger3, markAsDirty = transactions_1.transactionApi.markAsDirty, begin = transactions_1.transactionApi.begin, commit = transactions_1.transactionApi.commit;
-	function removeOne(collection, el, options) {
-	    var model = collection.get(el);
-	    if (model) {
-	        var isRoot = begin(collection), models = collection.models;
-	        models.splice(models.indexOf(model), 1);
-	        commons_1.removeIndex(collection._byId, model);
-	        var notify = markAsDirty(collection, options);
-	        if (notify) {
-	            trigger3(model, 'remove', model, collection, options);
-	            trigger3(collection, 'remove', model, collection, options);
-	        }
-	        commons_1.free(collection, model);
-	        notify && trigger2(collection, 'update', collection, options);
-	        isRoot && commit(collection);
-	        return model;
-	    }
-	}
-	exports.removeOne = removeOne;
-	;
-	function removeMany(collection, toRemove, options) {
-	    var removed = _removeFromIndex(collection, toRemove);
-	    if (removed.length) {
-	        var isRoot = begin(collection);
-	        _reallocate(collection, removed.length);
-	        if (markAsDirty(collection, options)) {
-	            var transaction = new commons_1.CollectionTransaction(collection, isRoot, [], removed, [], false);
-	            transaction.commit();
-	        }
-	        else {
-	            isRoot && commit(collection);
-	        }
-	    }
-	    return removed;
-	}
-	exports.removeMany = removeMany;
-	;
-	function _removeFromIndex(collection, toRemove) {
-	    var removed = Array(toRemove.length), _byId = collection._byId;
-	    for (var i = 0, j = 0; i < toRemove.length; i++) {
-	        var model = collection.get(toRemove[i]);
-	        if (model) {
-	            removed[j++] = model;
-	            commons_1.removeIndex(_byId, model);
-	            commons_1.free(collection, model);
-	        }
-	    }
-	    removed.length = j;
-	    return removed;
-	}
-	function _reallocate(collection, removed) {
-	    var prev = collection.models, models = collection.models = Array(prev.length - removed), _byId = collection._byId;
-	    for (var i = 0, j = 0; i < prev.length; i++) {
-	        var model = prev[i];
-	        if (_byId[model.cid]) {
-	            models[j++] = model;
-	        }
-	    }
-	    models.length = j;
-	}
-	
-	
-	/***/ }),
-	/* 17 */
-	/***/ (function(module, exports, __webpack_require__) {
-	
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var transactions_1 = __webpack_require__(1);
-	var commons_1 = __webpack_require__(4);
-	var begin = transactions_1.transactionApi.begin, commit = transactions_1.transactionApi.commit, markAsDirty = transactions_1.transactionApi.markAsDirty;
-	var silentOptions = { silent: true };
-	function emptySetTransaction(collection, items, options, silent) {
-	    var isRoot = begin(collection);
-	    var added = _reallocateEmpty(collection, items, options);
-	    if (added.length) {
-	        var needSort = commons_1.sortElements(collection, options);
-	        if (markAsDirty(collection, silent ? silentOptions : options)) {
-	            return new commons_1.CollectionTransaction(collection, isRoot, added.slice(), [], [], needSort);
-	        }
-	        if (collection._aggregationError)
-	            commons_1.logAggregationError(collection);
-	    }
-	    isRoot && commit(collection);
-	}
-	exports.emptySetTransaction = emptySetTransaction;
-	;
-	function setTransaction(collection, items, options) {
-	    var isRoot = begin(collection), nested = [];
-	    var previous = collection.models, added = _reallocate(collection, items, nested, options);
-	    var reusedCount = collection.models.length - added.length, removed = reusedCount < previous.length ? (reusedCount ? _garbageCollect(collection, previous) :
-	        commons_1.freeAll(collection, previous)) : [];
-	    var addedOrChanged = nested.length || added.length, sorted = (commons_1.sortElements(collection, options) && addedOrChanged) || added.length || options.sorted;
-	    if (addedOrChanged || removed.length || sorted) {
-	        if (markAsDirty(collection, options)) {
-	            return new commons_1.CollectionTransaction(collection, isRoot, added, removed, nested, sorted);
-	        }
-	        if (collection._aggregationError)
-	            commons_1.logAggregationError(collection);
-	    }
-	    isRoot && commit(collection);
-	}
-	exports.setTransaction = setTransaction;
-	;
-	function _garbageCollect(collection, previous) {
-	    var _byId = collection._byId, removed = [];
-	    for (var _i = 0, previous_1 = previous; _i < previous_1.length; _i++) {
-	        var record = previous_1[_i];
-	        if (!_byId[record.cid]) {
-	            removed.push(record);
-	            commons_1.free(collection, record);
-	        }
-	    }
-	    return removed;
-	}
-	function _reallocate(collection, source, nested, options) {
-	    var models = Array(source.length), _byId = {}, merge = (options.merge == null ? true : options.merge) && !collection._shared, _prevById = collection._byId, prevModels = collection.models, idAttribute = collection.model.prototype.idAttribute, toAdd = [], orderKept = true;
-	    for (var i = 0, j = 0; i < source.length; i++) {
-	        var item = source[i], model = null;
-	        if (item) {
-	            var id = item[idAttribute], cid = item.cid;
-	            if (_byId[id] || _byId[cid])
-	                continue;
-	            model = _prevById[id] || _prevById[cid];
-	        }
-	        if (model) {
-	            if (merge && item !== model) {
-	                if (orderKept && prevModels[j] !== model)
-	                    orderKept = false;
-	                var attrs = item.attributes || item;
-	                var transaction = model._createTransaction(attrs, options);
-	                transaction && nested.push(transaction);
-	            }
-	        }
-	        else {
-	            model = commons_1.convertAndAquire(collection, item, options);
-	            toAdd.push(model);
-	        }
-	        models[j++] = model;
-	        commons_1.addIndex(_byId, model);
-	    }
-	    models.length = j;
-	    collection.models = models;
-	    collection._byId = _byId;
-	    if (!orderKept)
-	        options.sorted = true;
-	    return toAdd;
-	}
-	function _reallocateEmpty(self, source, options) {
-	    var len = source ? source.length : 0, models = Array(len), _byId = {}, idAttribute = self.model.prototype.idAttribute;
-	    for (var i = 0, j = 0; i < len; i++) {
-	        var src = source[i];
-	        if (src && (_byId[src[idAttribute]] || _byId[src.cid])) {
-	            continue;
-	        }
-	        var model = commons_1.convertAndAquire(self, src, options);
-	        models[j++] = model;
-	        commons_1.addIndex(_byId, model);
-	    }
-	    models.length = j;
-	    self._byId = _byId;
-	    return self.models = models;
-	}
-	
-	
-	/***/ }),
-	/* 18 */
-	/***/ (function(module, exports, __webpack_require__) {
-	
-	"use strict";
-	
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var Mixins = __webpack_require__(7);
-	var tools_1 = __webpack_require__(5);
-	var eventsource_1 = __webpack_require__(6);
-	exports.EventMap = eventsource_1.EventMap;
-	var _eventsApi = __webpack_require__(6);
-	var mixins = Mixins.mixins, define = Mixins.define, extendable = Mixins.extendable, EventHandler = _eventsApi.EventHandler, strings = _eventsApi.strings, on = _eventsApi.on, off = _eventsApi.off, once = _eventsApi.once, trigger5 = _eventsApi.trigger5, trigger2 = _eventsApi.trigger2, trigger3 = _eventsApi.trigger3;
-	var eventSplitter = /\s+/;
-	var _idCount = 0;
-	function uniqueId() {
-	    return 'l' + _idCount++;
-	}
-	var Messenger = Messenger_1 = (function () {
-	    function Messenger() {
-	        this._events = void 0;
-	        this._listeningTo = void 0;
-	        this.cid = uniqueId();
-	        this.initialize.apply(this, arguments);
-	    }
-	    Messenger.prototype.initialize = function () { };
-	    Messenger.define = function (protoProps, staticProps) {
-	        var spec = tools_1.omit(protoProps || {}, 'localEvents');
-	        if (protoProps) {
-	            var localEvents = protoProps.localEvents, _localEvents = protoProps._localEvents;
-	            if (localEvents || _localEvents) {
-	                var eventsMap = new eventsource_1.EventMap(this.prototype._localEvents);
-	                localEvents && eventsMap.addEventsMap(localEvents);
-	                _localEvents && eventsMap.merge(_localEvents);
-	                spec._localEvents = eventsMap;
-	            }
-	        }
-	        return Mixins.Mixable.define.call(this, spec, staticProps);
-	    };
-	    Messenger.prototype.on = function (events, callback, context) {
-	        if (typeof events === 'string')
-	            strings(on, this, events, callback, context);
-	        else
-	            for (var name_1 in events)
-	                strings(on, this, name_1, events[name_1], context || callback);
-	        return this;
-	    };
-	    Messenger.prototype.once = function (events, callback, context) {
-	        if (typeof events === 'string')
-	            strings(once, this, events, callback, context);
-	        else
-	            for (var name_2 in events)
-	                strings(once, this, name_2, events[name_2], context || callback);
-	        return this;
-	    };
-	    Messenger.prototype.off = function (events, callback, context) {
-	        if (!events)
-	            off(this, void 0, callback, context);
-	        else if (typeof events === 'string')
-	            strings(off, this, events, callback, context);
-	        else
-	            for (var name_3 in events)
-	                strings(off, this, name_3, events[name_3], context || callback);
-	        return this;
-	    };
-	    Messenger.prototype.trigger = function (name, a, b, c, d, e) {
-	        if (d !== void 0 || e !== void 0)
-	            trigger5(this, name, a, b, c, d, e);
-	        else if (c !== void 0)
-	            trigger3(this, name, a, b, c);
-	        else
-	            trigger2(this, name, a, b);
-	        return this;
-	    };
-	    Messenger.prototype.listenTo = function (source, a, b) {
-	        if (source) {
-	            addReference(this, source);
-	            source.on(a, !b && typeof a === 'object' ? this : b, this);
-	        }
-	        return this;
-	    };
-	    Messenger.prototype.listenToOnce = function (source, a, b) {
-	        if (source) {
-	            addReference(this, source);
-	            source.once(a, !b && typeof a === 'object' ? this : b, this);
-	        }
-	        return this;
-	    };
-	    Messenger.prototype.stopListening = function (a_source, a, b) {
-	        var _listeningTo = this._listeningTo;
-	        if (_listeningTo) {
-	            var removeAll = !(a || b), second = !b && typeof a === 'object' ? this : b;
-	            if (a_source) {
-	                var source = _listeningTo[a_source.cid];
-	                if (source) {
-	                    if (removeAll)
-	                        delete _listeningTo[a_source.cid];
-	                    source.off(a, second, this);
-	                }
-	            }
-	            else if (a_source == null) {
-	                for (var cid in _listeningTo)
-	                    _listeningTo[cid].off(a, second, this);
-	                if (removeAll)
-	                    (this._listeningTo = void 0);
-	            }
-	        }
-	        return this;
-	    };
-	    Messenger.prototype.dispose = function () {
-	        if (this._disposed)
-	            return;
-	        this.stopListening();
-	        this.off();
-	        this._disposed = true;
-	    };
-	    return Messenger;
-	}());
-	Messenger = Messenger_1 = __decorate([
-	    extendable
-	], Messenger);
-	exports.Messenger = Messenger;
-	var slice = Array.prototype.slice;
-	exports.Events = tools_1.omit(Messenger.prototype, 'constructor', 'initialize');
-	function addReference(listener, source) {
-	    var listeningTo = listener._listeningTo || (listener._listeningTo = Object.create(null)), cid = source.cid || (source.cid = uniqueId());
-	    listeningTo[cid] = source;
-	}
-	var Messenger_1;
-	
-	
-	/***/ }),
-	/* 19 */
-	/***/ (function(module, exports, __webpack_require__) {
-	
-	"use strict";
-	
-	var __extends = (this && this.__extends) || (function () {
-	    var extendStatics = Object.setPrototypeOf ||
-	        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-	        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-	    return function (d, b) {
-	        extendStatics(d, b);
-	        function __() { this.constructor = d; }
-	        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	    };
-	})();
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var generic_1 = __webpack_require__(3);
-	var ConstructorType = (function (_super) {
-	    __extends(ConstructorType, _super);
-	    function ConstructorType() {
-	        return _super !== null && _super.apply(this, arguments) || this;
-	    }
-	    ConstructorType.prototype.convert = function (value) {
-	        return value == null || value instanceof this.type ? value : new this.type(value);
-	    };
-	    ConstructorType.prototype.clone = function (value) {
-	        return value && value.clone ? value.clone() : this.convert(JSON.parse(JSON.stringify(value)));
-	    };
-	    return ConstructorType;
-	}(generic_1.AnyType));
-	Function.prototype._attribute = ConstructorType;
-	var PrimitiveType = (function (_super) {
-	    __extends(PrimitiveType, _super);
-	    function PrimitiveType() {
-	        return _super !== null && _super.apply(this, arguments) || this;
-	    }
-	    PrimitiveType.prototype.create = function () { return this.type(); };
-	    PrimitiveType.prototype.toJSON = function (value) { return value; };
-	    PrimitiveType.prototype.convert = function (value) { return value == null ? value : this.type(value); };
-	    PrimitiveType.prototype.isChanged = function (a, b) { return a !== b; };
-	    PrimitiveType.prototype.clone = function (value) { return value; };
-	    return PrimitiveType;
-	}(generic_1.AnyType));
-	exports.PrimitiveType = PrimitiveType;
-	Boolean._attribute = String._attribute = PrimitiveType;
-	var NumericType = (function (_super) {
-	    __extends(NumericType, _super);
-	    function NumericType() {
-	        return _super !== null && _super.apply(this, arguments) || this;
-	    }
-	    NumericType.prototype.convert = function (value, a, b, record) {
-	        var num = value == null ? value : this.type(value);
-	        if (num !== num) {
-	            this._log('warn', 'assigned with Invalid Number', value, record);
-	        }
-	        return num;
-	    };
-	    NumericType.prototype.validate = function (model, value, name) {
-	        if (value != null && !isFinite(value)) {
-	            return name + ' is not valid number';
-	        }
-	    };
-	    return NumericType;
-	}(PrimitiveType));
-	exports.NumericType = NumericType;
-	Number._attribute = NumericType;
-	var ArrayType = (function (_super) {
-	    __extends(ArrayType, _super);
-	    function ArrayType() {
-	        return _super !== null && _super.apply(this, arguments) || this;
-	    }
-	    ArrayType.prototype.toJSON = function (value) { return value; };
-	    ArrayType.prototype.convert = function (value, a, b, record) {
-	        if (value == null || Array.isArray(value))
-	            return value;
-	        this._log('warn', 'assigned with non-array', value, record);
-	        return [];
-	    };
-	    ArrayType.prototype.clone = function (value) { return value && value.slice(); };
-	    return ArrayType;
-	}(generic_1.AnyType));
-	exports.ArrayType = ArrayType;
-	Array._attribute = ArrayType;
-	
-	
-	/***/ }),
-	/* 20 */
-	/***/ (function(module, exports, __webpack_require__) {
-	
-	"use strict";
-	
-	var __extends = (this && this.__extends) || (function () {
-	    var extendStatics = Object.setPrototypeOf ||
-	        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-	        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-	    return function (d, b) {
-	        extendStatics(d, b);
-	        function __() { this.constructor = d; }
-	        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	    };
-	})();
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var generic_1 = __webpack_require__(3);
-	var DateProto = Date.prototype;
-	var DateType = (function (_super) {
-	    __extends(DateType, _super);
-	    function DateType() {
-	        return _super !== null && _super.apply(this, arguments) || this;
-	    }
-	    DateType.prototype.convert = function (value, a, b, record) {
-	        if (value == null || value instanceof Date)
-	            return value;
-	        var date = new Date(value), timestamp = date.getTime();
-	        if (timestamp !== timestamp) {
-	            this._log('warn', 'assigned with Invalid Date', value, record);
-	        }
-	        return date;
-	    };
-	    DateType.prototype.validate = function (model, value, name) {
-	        if (value != null) {
-	            var timestamp = value.getTime();
-	            if (timestamp !== timestamp)
-	                return name + ' is Invalid Date';
-	        }
-	    };
-	    DateType.prototype.toJSON = function (value) { return value && value.toISOString(); };
-	    DateType.prototype.isChanged = function (a, b) { return (a && a.getTime()) !== (b && b.getTime()); };
-	    DateType.prototype.clone = function (value) { return value && new Date(value.getTime()); };
-	    return DateType;
-	}(generic_1.AnyType));
-	exports.DateType = DateType;
-	Date._attribute = DateType;
-	var msDatePattern = /\/Date\(([0-9]+)\)\//;
-	var MSDateType = (function (_super) {
-	    __extends(MSDateType, _super);
-	    function MSDateType() {
-	        return _super !== null && _super.apply(this, arguments) || this;
-	    }
-	    MSDateType.prototype.convert = function (value) {
-	        if (typeof value === 'string') {
-	            var msDate = msDatePattern.exec(value);
-	            if (msDate) {
-	                return new Date(Number(msDate[1]));
-	            }
-	        }
-	        return DateType.prototype.convert.apply(this, arguments);
-	    };
-	    MSDateType.prototype.toJSON = function (value) { return value && "/Date(" + value.getTime() + ")/"; };
-	    return MSDateType;
-	}(DateType));
-	exports.MSDateType = MSDateType;
-	var TimestampType = (function (_super) {
-	    __extends(TimestampType, _super);
-	    function TimestampType() {
-	        return _super !== null && _super.apply(this, arguments) || this;
-	    }
-	    TimestampType.prototype.toJSON = function (value) { return value.getTime(); };
-	    return TimestampType;
-	}(DateType));
-	exports.TimestampType = TimestampType;
-	function supportsDate(date) {
-	    return !isNaN((new Date(date)).getTime());
-	}
-	if (!supportsDate('2011-11-29T15:52:30.5') ||
-	    !supportsDate('2011-11-29T15:52:30.52') ||
-	    !supportsDate('2011-11-29T15:52:18.867') ||
-	    !supportsDate('2011-11-29T15:52:18.867Z') ||
-	    !supportsDate('2011-11-29T15:52:18.867-03:30')) {
-	    DateType.prototype.convert = function (value) {
-	        return value == null || value instanceof Date ? value : new Date(safeParseDate(value));
-	    };
-	}
-	var numericKeys = [1, 4, 5, 6, 7, 10, 11], isoDatePattern = /^(\d{4}|[+\-]\d{6})(?:-(\d{2})(?:-(\d{2}))?)?(?:T(\d{2}):(\d{2})(?::(\d{2})(?:\.(\d{3}))?)?(?:(Z)|([+\-])(\d{2})(?::(\d{2}))?)?)?$/;
-	function safeParseDate(date) {
-	    var timestamp, struct, minutesOffset = 0;
-	    if ((struct = isoDatePattern.exec(date))) {
-	        for (var i = 0, k; (k = numericKeys[i]); ++i) {
-	            struct[k] = +struct[k] || 0;
-	        }
-	        struct[2] = (+struct[2] || 1) - 1;
-	        struct[3] = +struct[3] || 1;
-	        if (struct[8] !== 'Z' && struct[9] !== undefined) {
-	            minutesOffset = struct[10] * 60 + struct[11];
-	            if (struct[9] === '+') {
-	                minutesOffset = 0 - minutesOffset;
-	            }
-	        }
-	        timestamp =
-	            Date.UTC(struct[1], struct[2], struct[3], struct[4], struct[5] + minutesOffset, struct[6], struct[7]);
-	    }
-	    else {
-	        timestamp = Date.parse(date);
-	    }
-	    return timestamp;
-	}
-	
-	
-	/***/ }),
-	/* 21 */
-	/***/ (function(module, exports, __webpack_require__) {
-	
-	"use strict";
-	
-	var __extends = (this && this.__extends) || (function () {
-	    var extendStatics = Object.setPrototypeOf ||
-	        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-	        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-	    return function (d, b) {
-	        extendStatics(d, b);
-	        function __() { this.constructor = d; }
-	        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	    };
-	})();
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var transaction_1 = __webpack_require__(9);
-	var generic_1 = __webpack_require__(3);
-	var transactions_1 = __webpack_require__(1);
-	var free = transactions_1.transactionApi.free, aquire = transactions_1.transactionApi.aquire;
-	var AggregatedType = (function (_super) {
-	    __extends(AggregatedType, _super);
-	    function AggregatedType() {
-	        return _super !== null && _super.apply(this, arguments) || this;
-	    }
-	    AggregatedType.prototype.clone = function (value) {
-	        return value ? value.clone() : value;
-	    };
-	    AggregatedType.prototype.toJSON = function (x) { return x && x.toJSON(); };
-	    AggregatedType.prototype.canBeUpdated = function (prev, next, options) {
-	        if (prev && next != null) {
-	            if (next instanceof this.type) {
-	                if (options.merge)
-	                    return next.__inner_state__;
-	            }
-	            else {
-	                return next;
-	            }
-	        }
-	    };
-	    AggregatedType.prototype.convert = function (value, options, prev, record) {
-	        if (value == null)
-	            return value;
-	        if (value instanceof this.type) {
-	            if (value._shared && !(value._shared & transactions_1.ItemsBehavior.persistent)) {
-	                this._log('error', 'aggregated attribute is assigned with shared collection type', value, record);
-	            }
-	            return options.merge ? value.clone() : value;
-	        }
-	        return this.type.create(value, options);
-	    };
-	    AggregatedType.prototype.dispose = function (record, value) {
-	        if (value) {
-	            free(record, value);
-	            value.dispose();
-	        }
-	    };
-	    AggregatedType.prototype.validate = function (record, value) {
-	        var error = value && value.validationError;
-	        if (error)
-	            return error;
-	    };
-	    AggregatedType.prototype.create = function () {
-	        return this.type.create();
-	    };
-	    AggregatedType.prototype.initialize = function (options) {
-	        options.changeHandlers.unshift(this._handleChange);
-	    };
-	    AggregatedType.prototype._handleChange = function (next, prev, record) {
-	        prev && free(record, prev);
-	        if (next && !aquire(record, next, this.name)) {
-	            this._log('error', 'aggregated attribute assigned with object which is aggregated somewhere else', next, record);
-	        }
-	    };
-	    return AggregatedType;
-	}(generic_1.AnyType));
-	exports.AggregatedType = AggregatedType;
-	transaction_1.Record._attribute = AggregatedType;
-	
-	
-	/***/ }),
-	/* 22 */
-	/***/ (function(module, exports, __webpack_require__) {
-	
-	"use strict";
-	
-	var __extends = (this && this.__extends) || (function () {
-	    var extendStatics = Object.setPrototypeOf ||
-	        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-	        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-	    return function (d, b) {
-	        extendStatics(d, b);
-	        function __() { this.constructor = d; }
-	        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	    };
-	})();
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var generic_1 = __webpack_require__(3);
-	var transactions_1 = __webpack_require__(1);
-	var object_plus_1 = __webpack_require__(0);
-	var on = object_plus_1.eventsApi.on, off = object_plus_1.eventsApi.off, free = transactions_1.transactionApi.free, aquire = transactions_1.transactionApi.aquire;
-	var shareAndListen = transactions_1.ItemsBehavior.listen | transactions_1.ItemsBehavior.share;
-	var SharedType = (function (_super) {
-	    __extends(SharedType, _super);
-	    function SharedType() {
-	        return _super !== null && _super.apply(this, arguments) || this;
-	    }
-	    SharedType.prototype.clone = function (value, record) {
-	        if (!value || value._owner !== record)
-	            return value;
-	        var clone = value.clone();
-	        aquire(record, clone, this.name);
-	        return clone;
-	    };
-	    SharedType.prototype.toJSON = function () { };
-	    SharedType.prototype.canBeUpdated = function (prev, next, options) {
-	        if (prev && next != null) {
-	            if (next instanceof this.type) {
-	                if (options.merge)
-	                    return next.__inner_state__;
-	            }
-	            else {
-	                return next;
-	            }
-	        }
-	    };
-	    SharedType.prototype.convert = function (value, options, prev, record) {
-	        if (value == null || value instanceof this.type)
-	            return value;
-	        var implicitObject = new this.type(value, options, shareAndListen);
-	        aquire(record, implicitObject, this.name);
-	        return implicitObject;
-	    };
-	    SharedType.prototype.validate = function (model, value, name) { };
-	    SharedType.prototype.create = function () {
-	        return null;
-	    };
-	    SharedType.prototype._handleChange = function (next, prev, record) {
-	        if (prev) {
-	            if (prev._owner === record) {
-	                free(record, prev);
-	            }
-	            else {
-	                off(prev, prev._changeEventName, this._onChange, record);
-	            }
-	        }
-	        if (next) {
-	            if (next._owner !== record) {
-	                on(next, next._changeEventName, this._onChange, record);
-	            }
-	        }
-	    };
-	    SharedType.prototype.dispose = function (record, value) {
-	        if (value) {
-	            if (value._owner === record) {
-	                free(record, value);
-	                value.dispose();
-	            }
-	            else {
-	                off(value, value._changeEventName, this._onChange, record);
-	            }
-	        }
-	    };
-	    SharedType.prototype.initialize = function (options) {
-	        var attribute = this;
-	        this._onChange = this.propagateChanges ? function (child, options, initiator) {
-	            this === initiator || this.forceAttributeChange(attribute.name, options);
-	        } : ignore;
-	        options.changeHandlers.unshift(this._handleChange);
-	    };
-	    return SharedType;
-	}(generic_1.AnyType));
-	exports.SharedType = SharedType;
-	function ignore() { }
-	
-	
-	/***/ }),
-	/* 23 */
-	/***/ (function(module, exports, __webpack_require__) {
-	
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var attributes_1 = __webpack_require__(8);
-	var object_plus_1 = __webpack_require__(0);
-	var typespec_1 = __webpack_require__(12);
-	var traversable_1 = __webpack_require__(10);
-	var defaults = object_plus_1.tools.defaults, isValidJSON = object_plus_1.tools.isValidJSON, transform = object_plus_1.tools.transform, log = object_plus_1.tools.log, EventMap = object_plus_1.eventsApi.EventMap;
-	function compile(rawSpecs, baseAttributes) {
-	    var myAttributes = transform({}, rawSpecs, createAttribute), allAttributes = defaults({}, myAttributes, baseAttributes), Attributes = createCloneCtor(allAttributes), mixin = {
-	        Attributes: Attributes,
-	        _attributes: new Attributes(allAttributes),
-	        properties: transform({}, myAttributes, function (x) { return x.createPropertyDescriptor(); }),
-	        defaults: createDefaults(allAttributes),
-	        _toJSON: createToJSON(allAttributes),
-	        _localEvents: createEventMap(myAttributes),
-	        _keys: Object.keys(allAttributes)
-	    };
-	    var _parse = createParse(myAttributes, allAttributes);
-	    if (_parse) {
-	        mixin._parse = _parse;
-	    }
-	    if (!log.level) {
-	        mixin.forEachAttr = createForEach(allAttributes);
-	    }
-	    return mixin;
-	}
-	exports.compile = compile;
-	function createAttribute(spec, name) {
-	    return attributes_1.AnyType.create(typespec_1.toAttributeDescriptor(spec), name);
-	}
-	function createEventMap(attrSpecs) {
-	    var events;
-	    for (var key in attrSpecs) {
-	        var attribute = attrSpecs[key], _onChange = attribute.options._onChange;
-	        if (_onChange) {
-	            events || (events = new EventMap());
-	            events.addEvent('change:' + key, typeof _onChange === 'string' ?
-	                createWatcherFromRef(_onChange, key) :
-	                wrapWatcher(_onChange, key));
-	        }
-	    }
-	    return events;
-	}
-	function wrapWatcher(watcher, key) {
-	    return function (record, value) {
-	        watcher.call(record, value, key);
-	    };
-	}
-	function createWatcherFromRef(ref, key) {
-	    var _a = new traversable_1.CompiledReference(ref, true), local = _a.local, resolve = _a.resolve, tail = _a.tail;
-	    return local ?
-	        function (record, value) {
-	            record[tail](value, key);
-	        } :
-	        function (record, value) {
-	            resolve(record)[tail](value, key);
+	            }(), p = this && this.__decorate || function( t, e, n, r ){
+	                var i, o = arguments.length,
+	                    s = o < 3 ? e : null === r ? r = Object.getOwnPropertyDescriptor( e, n ) : r;
+	                if( "object" == typeof Reflect && "function" == typeof Reflect.decorate ) s =
+	                    Reflect.decorate( t, e, n, r );
+	                else for( var a = t.length - 1; a >= 0; a-- )(i = t[ a ]) && (s =
+	                    (o < 3 ? i( s ) : o > 3 ? i( e, n, s ) : i( e, n )) || s);
+	                return o > 3 && s && Object.defineProperty( e, n, s ), s
+	            }, h = s.a.fastDefaults;
+	        o.a.subsetOf = function( t ){
+	            var e = this._SubsetOf || (this._SubsetOf = i( this )), r = n.i( a.a )( t );
+	            return new u.b( { type : e } ).get(
+	                function( t ){ return !t || t.resolvedWith || t.resolve( r( this ) ), t } )
 	        };
-	}
-	function createForEach(attrSpecs) {
-	    var statements = ['var v, _a=this._attributes;'];
-	    for (var name_1 in attrSpecs) {
-	        statements.push("( v = a." + name_1 + " ) === void 0 || f( v, \"" + name_1 + "\", _a." + name_1 + " );");
-	    }
-	    return new Function('a', 'f', statements.join(''));
-	}
-	exports.createForEach = createForEach;
-	function createCloneCtor(attrSpecs) {
-	    var statements = [];
-	    for (var name_2 in attrSpecs) {
-	        statements.push("this." + name_2 + " = x." + name_2 + ";");
-	    }
-	    var CloneCtor = new Function("x", statements.join(''));
-	    CloneCtor.prototype = Object.prototype;
-	    return CloneCtor;
-	}
-	exports.createCloneCtor = createCloneCtor;
-	function createDefaults(attrSpecs) {
-	    var assign_f = ['var v;'], create_f = [];
-	    function appendExpr(name, expr) {
-	        assign_f.push("this." + name + " = ( v = a." + name + " ) === void 0 ? " + expr + " : v;");
-	        create_f.push("this." + name + " = " + expr + ";");
-	    }
-	    for (var name_3 in attrSpecs) {
-	        var attrSpec = attrSpecs[name_3], value = attrSpec.value, type = attrSpec.type;
-	        if (value === void 0 && type) {
-	            appendExpr(name_3, "i." + name_3 + ".create()");
-	        }
-	        else {
-	            if (isValidJSON(value)) {
-	                appendExpr(name_3, JSON.stringify(value));
+	        var l = c.c.share | c.c.persistent
+	    }, function( t, e, n ){
+	        "use strict";
+	        n.d( e, "a", function(){ return r } );
+	        var r = function(){
+	            function t( t ){
+	                this.length = t._validateNested( this.nested = {} ), (this.error = t.validate( t )) && this.length++
 	            }
-	            else if (value === void 0) {
-	                appendExpr(name_3, 'void 0');
-	            }
-	            else {
-	                appendExpr(name_3, "i." + name_3 + ".value");
-	            }
-	        }
-	    }
-	    var CreateDefaults = new Function('i', create_f.join('')), AssignDefaults = new Function('a', 'i', assign_f.join(''));
-	    CreateDefaults.prototype = AssignDefaults.prototype = Object.prototype;
-	    return function (attrs) {
-	        return attrs ? new AssignDefaults(attrs, this._attributes) : new CreateDefaults(this._attributes);
-	    };
-	}
-	function createParse(allAttrSpecs, attrSpecs) {
-	    var statements = ['var a=this._attributes;'], create = false;
-	    for (var name_4 in allAttrSpecs) {
-	        var local = attrSpecs[name_4];
-	        if (local && local.parse)
-	            create = true;
-	        if (allAttrSpecs[name_4].parse) {
-	            var s = "r." + name_4 + " === void 0 ||( r." + name_4 + " = a." + name_4 + ".parse.call( this, r." + name_4 + ", \"" + name_4 + "\") );";
-	            statements.push(s);
-	        }
-	    }
-	    if (create) {
-	        statements.push('return r;');
-	        return new Function('r', statements.join(''));
-	    }
-	}
-	function createToJSON(attrSpecs) {
-	    var statements = ["var json = {},v=this.attributes,a=this._attributes;"];
-	    for (var key in attrSpecs) {
-	        var toJSON = attrSpecs[key].toJSON;
-	        if (toJSON) {
-	            statements.push("json." + key + " = a." + key + ".toJSON.call( this, v." + key + ", '" + key + "' );");
-	        }
-	    }
-	    statements.push("return json;");
-	    return new Function(statements.join(''));
-	}
 	
-	
-	/***/ }),
-	/* 24 */
-	/***/ (function(module, exports, __webpack_require__) {
-	
-	"use strict";
-	
-	var __extends = (this && this.__extends) || (function () {
-	    var extendStatics = Object.setPrototypeOf ||
-	        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-	        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-	    return function (d, b) {
-	        extendStatics(d, b);
-	        function __() { this.constructor = d; }
-	        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	    };
-	})();
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var record_1 = __webpack_require__(2);
-	var commons_1 = __webpack_require__(13);
-	var record_2 = __webpack_require__(2);
-	var record_3 = __webpack_require__(2);
-	var RecordRefType = (function (_super) {
-	    __extends(RecordRefType, _super);
-	    function RecordRefType() {
-	        return _super !== null && _super.apply(this, arguments) || this;
-	    }
-	    RecordRefType.prototype.toJSON = function (value) {
-	        return value && typeof value === 'object' ? value.id : value;
-	    };
-	    RecordRefType.prototype.clone = function (value) {
-	        return value && typeof value === 'object' ? value.id : value;
-	    };
-	    RecordRefType.prototype.isChanged = function (a, b) {
-	        var aId = a && (a.id == null ? a : a.id), bId = b && (b.id == null ? b : b.id);
-	        return aId !== bId;
-	    };
-	    RecordRefType.prototype.validate = function (model, value, name) { };
-	    return RecordRefType;
-	}(record_1.AnyType));
-	record_2.Record.from = function from(masterCollection) {
-	    var getMasterCollection = commons_1.parseReference(masterCollection);
-	    var typeSpec = new record_3.ChainableAttributeSpec({
-	        value: null,
-	        _attribute: RecordRefType
-	    });
-	    return typeSpec
-	        .get(function (objOrId, name) {
-	        if (typeof objOrId === 'object')
-	            return objOrId;
-	        var collection = getMasterCollection(this);
-	        var record = null;
-	        if (collection && collection.length) {
-	            record = collection.get(objOrId) || null;
-	            this.attributes[name] = record;
-	            record && this._attributes[name].handleChange(record, null, this);
-	        }
-	        return record;
-	    });
-	};
-	
-	
-	/***/ }),
-	/* 25 */
-	/***/ (function(module, exports, __webpack_require__) {
-	
-	"use strict";
-	
-	var __extends = (this && this.__extends) || (function () {
-	    var extendStatics = Object.setPrototypeOf ||
-	        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-	        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-	    return function (d, b) {
-	        extendStatics(d, b);
-	        function __() { this.constructor = d; }
-	        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	    };
-	})();
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var record_1 = __webpack_require__(2);
-	var transactions_1 = __webpack_require__(1);
-	var _store = null;
-	var Store = (function (_super) {
-	    __extends(Store, _super);
-	    function Store() {
-	        return _super !== null && _super.apply(this, arguments) || this;
-	    }
-	    Store.prototype.getStore = function () { return this; };
-	    Store.prototype.get = function (name) {
-	        var local = this[name];
-	        if (local || this === this._defaultStore)
-	            return local;
-	        return this._owner ? this._owner.get(name) : this._defaultStore.get(name);
-	    };
-	    Object.defineProperty(Store, "global", {
-	        get: function () { return _store; },
-	        set: function (store) {
-	            if (_store) {
-	                _store.dispose();
-	            }
-	            transactions_1.Transactional.prototype._defaultStore = _store = store;
-	        },
-	        enumerable: true,
-	        configurable: true
-	    });
-	    return Store;
-	}(record_1.Record));
-	exports.Store = Store;
-	Store.global = new Store();
-	
-	
-	/***/ }),
-	/* 26 */
-	/***/ (function(module, exports, __webpack_require__) {
-	
-	"use strict";
-	
-	var __extends = (this && this.__extends) || (function () {
-	    var extendStatics = Object.setPrototypeOf ||
-	        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-	        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-	    return function (d, b) {
-	        extendStatics(d, b);
-	        function __() { this.constructor = d; }
-	        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	    };
-	})();
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var collection_1 = __webpack_require__(11);
-	var object_plus_1 = __webpack_require__(0);
-	var commons_1 = __webpack_require__(13);
-	var record_1 = __webpack_require__(2);
-	var transactions_1 = __webpack_require__(1);
-	var fastDefaults = object_plus_1.tools.fastDefaults;
-	collection_1.Collection.subsetOf = function subsetOf(masterCollection) {
-	    var SubsetOf = this._SubsetOf || (this._SubsetOf = defineSubsetCollection(this)), getMasterCollection = commons_1.parseReference(masterCollection), typeSpec = new record_1.ChainableAttributeSpec({
-	        type: SubsetOf
-	    });
-	    return typeSpec.get(function (refs) {
-	        !refs || refs.resolvedWith || refs.resolve(getMasterCollection(this));
-	        return refs;
-	    });
-	};
-	function subsetOptions(options) {
-	    var subsetOptions = { parse: true };
-	    if (options)
-	        fastDefaults(subsetOptions, options);
-	    return subsetOptions;
-	}
-	var subsetOfBehavior = transactions_1.ItemsBehavior.share | transactions_1.ItemsBehavior.persistent;
-	function defineSubsetCollection(CollectionConstructor) {
-	    var SubsetOfCollection = (function (_super) {
-	        __extends(SubsetOfCollection, _super);
-	        function SubsetOfCollection(recordsOrIds, options) {
-	            var _this = _super.call(this, recordsOrIds, subsetOptions(options), subsetOfBehavior) || this;
-	            _this.resolvedWith = null;
-	            return _this;
-	        }
-	        Object.defineProperty(SubsetOfCollection.prototype, "__inner_state__", {
-	            get: function () { return this.refs || this.models; },
-	            enumerable: true,
-	            configurable: true
-	        });
-	        SubsetOfCollection.prototype.add = function (elements, options) {
-	            return _super.prototype.add.call(this, elements, subsetOptions(options));
-	        };
-	        SubsetOfCollection.prototype.reset = function (elements, options) {
-	            return _super.prototype.reset.call(this, elements, subsetOptions(options));
-	        };
-	        SubsetOfCollection.prototype._createTransaction = function (elements, options) {
-	            return _super.prototype._createTransaction.call(this, elements, subsetOptions(options));
-	        };
-	        SubsetOfCollection.prototype.toJSON = function () {
-	            return this.refs ?
-	                this.refs.map(function (objOrId) { return objOrId.id || objOrId; }) :
-	                this.models.map(function (model) { return model.id; });
-	        };
-	        SubsetOfCollection.prototype._validateNested = function () { return 0; };
-	        SubsetOfCollection.prototype.clone = function (owner) {
-	            var Ctor = this.constructor, copy = new Ctor([], {
-	                model: this.model,
-	                comparator: this.comparator
-	            });
-	            if (this.resolvedWith) {
-	                copy.resolvedWith = this.resolvedWith;
-	                copy.reset(this.models, { silent: true });
-	            }
-	            else {
-	                copy.refs = this.refs;
-	            }
-	            return copy;
-	        };
-	        SubsetOfCollection.prototype.parse = function (raw) {
-	            var resolvedWith = this.resolvedWith, elements = Array.isArray(raw) ? raw : [raw], records = [];
-	            if (resolvedWith) {
-	                for (var _i = 0, elements_1 = elements; _i < elements_1.length; _i++) {
-	                    var element = elements_1[_i];
-	                    var record = resolvedWith.get(element);
-	                    if (record)
-	                        records.push(record);
-	                }
-	            }
-	            else if (elements.length) {
-	                this.refs = elements;
-	            }
-	            return records;
-	        };
-	        SubsetOfCollection.prototype.resolve = function (collection) {
-	            if (collection && collection.length) {
-	                this.resolvedWith = collection;
-	                if (this.refs) {
-	                    this.reset(this.refs, { silent: true });
-	                    this.refs = null;
-	                }
-	            }
-	            return this;
-	        };
-	        SubsetOfCollection.prototype.getModelIds = function () { return this.toJSON(); };
-	        SubsetOfCollection.prototype.toggle = function (modelOrId, val) {
-	            return _super.prototype.toggle.call(this, this.resolvedWith.get(modelOrId), val);
-	        };
-	        SubsetOfCollection.prototype.addAll = function () {
-	            return this.reset(this.resolvedWith.models);
-	        };
-	        SubsetOfCollection.prototype.toggleAll = function () {
-	            return this.length ? this.reset() : this.addAll();
-	        };
-	        return SubsetOfCollection;
-	    }(CollectionConstructor));
-	    SubsetOfCollection = __decorate([
-	        object_plus_1.define({})
-	    ], SubsetOfCollection);
-	    return SubsetOfCollection;
-	}
-	
-	
-	/***/ }),
-	/* 27 */
-	/***/ (function(module, exports, __webpack_require__) {
-	
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var ValidationError = (function () {
-	    function ValidationError(obj) {
-	        this.length = obj._validateNested(this.nested = {});
-	        if (this.error = obj.validate(obj)) {
-	            this.length++;
-	        }
-	    }
-	    ValidationError.prototype.each = function (iteratee) {
-	        var _a = this, error = _a.error, nested = _a.nested;
-	        if (error)
-	            iteratee(error, null);
-	        for (var key in nested) {
-	            iteratee(nested[key], key);
-	        }
-	    };
-	    ValidationError.prototype.eachError = function (iteratee, object) {
-	        this.each(function (value, key) {
-	            if (value instanceof ValidationError) {
-	                value.eachError(iteratee, object.get(key));
-	            }
-	            else {
-	                iteratee(value, key, object);
-	            }
-	        });
-	    };
-	    return ValidationError;
-	}());
-	exports.ValidationError = ValidationError;
-	
-	
-	/***/ }),
-	/* 28 */
-	/***/ (function(module, exports, __webpack_require__) {
-	
-	"use strict";
-	
-	function __export(m) {
-	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-	}
-	Object.defineProperty(exports, "__esModule", { value: true });
-	__export(__webpack_require__(0));
-	__export(__webpack_require__(11));
-	__export(__webpack_require__(14));
-	__export(__webpack_require__(2));
-	var _1 = __webpack_require__(0);
-	exports.on = (_a = _1.Events, _a.on), exports.off = _a.off, exports.trigger = _a.trigger, exports.once = _a.once, exports.listenTo = _a.listenTo, exports.stopListening = _a.stopListening, exports.listenToOnce = _a.listenToOnce;
-	var record_1 = __webpack_require__(2);
-	exports.Model = record_1.Record;
-	var _2 = __webpack_require__(0);
-	exports.Class = _2.Mixable;
-	var record_2 = __webpack_require__(2);
-	function value(x) {
-	    return new record_2.ChainableAttributeSpec({ value: x });
-	}
-	exports.value = value;
-	function transaction(method) {
-	    return function () {
-	        var _this = this;
-	        var args = [];
-	        for (var _i = 0; _i < arguments.length; _i++) {
-	            args[_i] = arguments[_i];
-	        }
-	        var result;
-	        this.transaction(function () {
-	            result = method.apply(_this, args);
-	        });
-	        return result;
-	    };
-	}
-	exports.transaction = transaction;
-	var _a;
-	
-	
-	/***/ })
-	/******/ ]);
-	});
-	//# sourceMappingURL=index.js.map
+	            return t.prototype.each = function( t ){
+	                var e = this, n = e.error, r = e.nested;
+	                n && t( n, null );
+	                for( var i in r ) t( r[ i ], i )
+	            }, t.prototype.eachError = function( e, n ){
+	                this.each( function( r, i ){ r instanceof t ? r.eachError( e, n.get( i ) ) : e( r, i, n ) } )
+	            }, t
+	        }()
+	    } ] )
+	} );
 
-/***/ },
+
+/***/ }),
 /* 37 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	module.exports = __webpack_require__(38);
 
 
-/***/ },
+/***/ }),
 /* 38 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -5957,9 +4399,9 @@
 	var ReactDOMFactories = __webpack_require__(60);
 	var ReactElement = __webpack_require__(45);
 	var ReactPropTypes = __webpack_require__(65);
-	var ReactVersion = __webpack_require__(66);
+	var ReactVersion = __webpack_require__(70);
 	
-	var onlyChild = __webpack_require__(67);
+	var onlyChild = __webpack_require__(71);
 	var warning = __webpack_require__(47);
 	
 	var createElement = ReactElement.createElement;
@@ -5967,7 +4409,9 @@
 	var cloneElement = ReactElement.cloneElement;
 	
 	if (process.env.NODE_ENV !== 'production') {
+	  var canDefineProperty = __webpack_require__(49);
 	  var ReactElementValidator = __webpack_require__(61);
+	  var didWarnPropTypesDeprecated = false;
 	  createElement = ReactElementValidator.createElement;
 	  createFactory = ReactElementValidator.createFactory;
 	  cloneElement = ReactElementValidator.cloneElement;
@@ -6023,12 +4467,25 @@
 	  __spread: __spread
 	};
 	
+	// TODO: Fix tests so that this deprecation warning doesn't cause failures.
+	if (process.env.NODE_ENV !== 'production') {
+	  if (canDefineProperty) {
+	    Object.defineProperty(React, 'PropTypes', {
+	      get: function () {
+	        process.env.NODE_ENV !== 'production' ? warning(didWarnPropTypesDeprecated, 'Accessing PropTypes via the main React package is deprecated. Use ' + 'the prop-types package from npm instead.') : void 0;
+	        didWarnPropTypesDeprecated = true;
+	        return ReactPropTypes;
+	      }
+	    });
+	  }
+	}
+	
 	module.exports = React;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
+/***/ }),
 /* 39 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	// shim for using process in browser
 	var process = module.exports = {};
@@ -6212,9 +4669,9 @@
 	process.umask = function() { return 0; };
 
 
-/***/ },
+/***/ }),
 /* 40 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/*
 	object-assign
@@ -6308,9 +4765,9 @@
 	};
 
 
-/***/ },
+/***/ }),
 /* 41 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -6503,9 +4960,9 @@
 	
 	module.exports = ReactChildren;
 
-/***/ },
+/***/ }),
 /* 42 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -6620,9 +5077,9 @@
 	module.exports = PooledClass;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
+/***/ }),
 /* 43 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright (c) 2013-present, Facebook, Inc.
@@ -6663,9 +5120,9 @@
 	
 	module.exports = reactProdInvariant;
 
-/***/ },
+/***/ }),
 /* 44 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright (c) 2013-present, Facebook, Inc.
@@ -6724,9 +5181,9 @@
 	module.exports = invariant;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
+/***/ }),
 /* 45 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2014-present, Facebook, Inc.
@@ -7070,9 +5527,9 @@
 	module.exports = ReactElement;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
+/***/ }),
 /* 46 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -7105,9 +5562,9 @@
 	
 	module.exports = ReactCurrentOwner;
 
-/***/ },
+/***/ }),
 /* 47 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2014-2015, Facebook, Inc.
@@ -7177,9 +5634,9 @@
 	module.exports = warning;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
+/***/ }),
 /* 48 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	"use strict";
 	
@@ -7220,9 +5677,9 @@
 	
 	module.exports = emptyFunction;
 
-/***/ },
+/***/ }),
 /* 49 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -7251,9 +5708,9 @@
 	module.exports = canDefineProperty;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
+/***/ }),
 /* 50 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2014-present, Facebook, Inc.
@@ -7275,9 +5732,9 @@
 	
 	module.exports = REACT_ELEMENT_TYPE;
 
-/***/ },
+/***/ }),
 /* 51 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -7456,9 +5913,9 @@
 	module.exports = traverseAllChildren;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
+/***/ }),
 /* 52 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -7501,9 +5958,9 @@
 	
 	module.exports = getIteratorFn;
 
-/***/ },
+/***/ }),
 /* 53 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -7564,9 +6021,9 @@
 	
 	module.exports = KeyEscapeUtils;
 
-/***/ },
+/***/ }),
 /* 54 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -7687,9 +6144,9 @@
 	module.exports = ReactComponent;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
+/***/ }),
 /* 55 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2015-present, Facebook, Inc.
@@ -7788,9 +6245,9 @@
 	module.exports = ReactNoopUpdateQueue;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
+/***/ }),
 /* 56 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright (c) 2013-present, Facebook, Inc.
@@ -7813,9 +6270,9 @@
 	module.exports = emptyObject;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
+/***/ }),
 /* 57 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -7859,9 +6316,9 @@
 	
 	module.exports = ReactPureComponent;
 
-/***/ },
+/***/ }),
 /* 58 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -8016,7 +6473,6 @@
 	   *   }
 	   *
 	   * @return {ReactComponent}
-	   * @nosideeffects
 	   * @required
 	   */
 	  render: 'DEFINE_ONCE',
@@ -8472,6 +6928,8 @@
 	var ReactClassComponent = function () {};
 	_assign(ReactClassComponent.prototype, ReactComponent.prototype, ReactClassMixin);
 	
+	var didWarnDeprecated = false;
+	
 	/**
 	 * Module for creating composite components.
 	 *
@@ -8488,6 +6946,11 @@
 	   * @public
 	   */
 	  createClass: function (spec) {
+	    if (process.env.NODE_ENV !== 'production') {
+	      process.env.NODE_ENV !== 'production' ? warning(didWarnDeprecated, '%s: React.createClass is deprecated and will be removed in version 16. ' + 'Use plain JavaScript classes instead. If you\'re not yet ready to ' + 'migrate, create-react-class is available on npm as a ' + 'drop-in replacement.', spec && spec.displayName || 'A Component') : void 0;
+	      didWarnDeprecated = true;
+	    }
+	
 	    // To keep our warnings more understandable, we'll use a little hack here to
 	    // ensure that Constructor.name !== 'Constructor'. This makes sure we don't
 	    // unnecessarily identify a class without displayName as 'Constructor'.
@@ -8581,9 +7044,9 @@
 	module.exports = ReactClass;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
+/***/ }),
 /* 59 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -8611,9 +7074,9 @@
 	module.exports = ReactPropTypeLocationNames;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
+/***/ }),
 /* 60 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -8786,9 +7249,9 @@
 	module.exports = ReactDOMFactories;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
+/***/ }),
 /* 61 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2014-present, Facebook, Inc.
@@ -8825,6 +7288,16 @@
 	    if (name) {
 	      return ' Check the render method of `' + name + '`.';
 	    }
+	  }
+	  return '';
+	}
+	
+	function getSourceInfoErrorAddendum(elementProps) {
+	  if (elementProps !== null && elementProps !== undefined && elementProps.__source !== undefined) {
+	    var source = elementProps.__source;
+	    var fileName = source.fileName.replace(/^.*[\\\/]/, '');
+	    var lineNumber = source.lineNumber;
+	    return ' Check your code at ' + fileName + ':' + lineNumber + '.';
 	  }
 	  return '';
 	}
@@ -8959,7 +7432,16 @@
 	        if (type === undefined || typeof type === 'object' && type !== null && Object.keys(type).length === 0) {
 	          info += ' You likely forgot to export your component from the file ' + 'it\'s defined in.';
 	        }
-	        info += getDeclarationErrorAddendum();
+	
+	        var sourceInfo = getSourceInfoErrorAddendum(props);
+	        if (sourceInfo) {
+	          info += sourceInfo;
+	        } else {
+	          info += getDeclarationErrorAddendum();
+	        }
+	
+	        info += ReactComponentTreeHook.getCurrentStackAddendum();
+	
 	        process.env.NODE_ENV !== 'production' ? warning(false, 'React.createElement: type is invalid -- expected a string (for ' + 'built-in components) or a class/function (for composite ' + 'components) but got: %s.%s', type == null ? type : typeof type, info) : void 0;
 	      }
 	    }
@@ -9025,9 +7507,9 @@
 	module.exports = ReactElementValidator;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
+/***/ }),
 /* 62 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2016-present, Facebook, Inc.
@@ -9364,9 +7846,9 @@
 	module.exports = ReactComponentTreeHook;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
+/***/ }),
 /* 63 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -9456,9 +7938,9 @@
 	module.exports = checkReactTypeSpec;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
+/***/ }),
 /* 64 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -9477,9 +7959,59 @@
 	
 	module.exports = ReactPropTypesSecret;
 
-/***/ },
+/***/ }),
 /* 65 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2013-present, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 */
+	
+	'use strict';
+	
+	var _require = __webpack_require__(45),
+	    isValidElement = _require.isValidElement;
+	
+	var factory = __webpack_require__(66);
+	
+	module.exports = factory(isValidElement);
+
+/***/ }),
+/* 66 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2013-present, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 */
+	
+	'use strict';
+	
+	// React 15.5 references this module, and assumes PropTypes are still callable in production.
+	// Therefore we re-export development-only version with all the PropTypes checks here.
+	// However if one is migrating to the `prop-types` npm library, they will go through the
+	// `index.js` entry point, and it will branch depending on the environment.
+	var factory = __webpack_require__(67);
+	module.exports = function(isValidElement) {
+	  // It is still allowed in 15.5.
+	  var throwOnDirectAccess = false;
+	  return factory(isValidElement, throwOnDirectAccess);
+	};
+
+
+/***/ }),
+/* 67 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -9488,437 +8020,571 @@
 	 * This source code is licensed under the BSD-style license found in the
 	 * LICENSE file in the root directory of this source tree. An additional grant
 	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
 	 */
 	
 	'use strict';
 	
-	var ReactElement = __webpack_require__(45);
-	var ReactPropTypeLocationNames = __webpack_require__(59);
-	var ReactPropTypesSecret = __webpack_require__(64);
-	
 	var emptyFunction = __webpack_require__(48);
-	var getIteratorFn = __webpack_require__(52);
+	var invariant = __webpack_require__(44);
 	var warning = __webpack_require__(47);
 	
-	/**
-	 * Collection of methods that allow declaration and validation of props that are
-	 * supplied to React components. Example usage:
-	 *
-	 *   var Props = require('ReactPropTypes');
-	 *   var MyArticle = React.createClass({
-	 *     propTypes: {
-	 *       // An optional string prop named "description".
-	 *       description: Props.string,
-	 *
-	 *       // A required enum prop named "category".
-	 *       category: Props.oneOf(['News','Photos']).isRequired,
-	 *
-	 *       // A prop named "dialog" that requires an instance of Dialog.
-	 *       dialog: Props.instanceOf(Dialog).isRequired
-	 *     },
-	 *     render: function() { ... }
-	 *   });
-	 *
-	 * A more formal specification of how these methods are used:
-	 *
-	 *   type := array|bool|func|object|number|string|oneOf([...])|instanceOf(...)
-	 *   decl := ReactPropTypes.{type}(.isRequired)?
-	 *
-	 * Each and every declaration produces a function with the same signature. This
-	 * allows the creation of custom validation functions. For example:
-	 *
-	 *  var MyLink = React.createClass({
-	 *    propTypes: {
-	 *      // An optional string or URI prop named "href".
-	 *      href: function(props, propName, componentName) {
-	 *        var propValue = props[propName];
-	 *        if (propValue != null && typeof propValue !== 'string' &&
-	 *            !(propValue instanceof URI)) {
-	 *          return new Error(
-	 *            'Expected a string or an URI for ' + propName + ' in ' +
-	 *            componentName
-	 *          );
-	 *        }
-	 *      }
-	 *    },
-	 *    render: function() {...}
-	 *  });
-	 *
-	 * @internal
-	 */
+	var ReactPropTypesSecret = __webpack_require__(68);
+	var checkPropTypes = __webpack_require__(69);
 	
-	var ANONYMOUS = '<<anonymous>>';
+	module.exports = function(isValidElement, throwOnDirectAccess) {
+	  /* global Symbol */
+	  var ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
+	  var FAUX_ITERATOR_SYMBOL = '@@iterator'; // Before Symbol spec.
 	
-	var ReactPropTypes = {
-	  array: createPrimitiveTypeChecker('array'),
-	  bool: createPrimitiveTypeChecker('boolean'),
-	  func: createPrimitiveTypeChecker('function'),
-	  number: createPrimitiveTypeChecker('number'),
-	  object: createPrimitiveTypeChecker('object'),
-	  string: createPrimitiveTypeChecker('string'),
-	  symbol: createPrimitiveTypeChecker('symbol'),
-	
-	  any: createAnyTypeChecker(),
-	  arrayOf: createArrayOfTypeChecker,
-	  element: createElementTypeChecker(),
-	  instanceOf: createInstanceTypeChecker,
-	  node: createNodeChecker(),
-	  objectOf: createObjectOfTypeChecker,
-	  oneOf: createEnumTypeChecker,
-	  oneOfType: createUnionTypeChecker,
-	  shape: createShapeTypeChecker
-	};
-	
-	/**
-	 * inlined Object.is polyfill to avoid requiring consumers ship their own
-	 * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
-	 */
-	/*eslint-disable no-self-compare*/
-	function is(x, y) {
-	  // SameValue algorithm
-	  if (x === y) {
-	    // Steps 1-5, 7-10
-	    // Steps 6.b-6.e: +0 != -0
-	    return x !== 0 || 1 / x === 1 / y;
-	  } else {
-	    // Step 6.a: NaN == NaN
-	    return x !== x && y !== y;
+	  /**
+	   * Returns the iterator method function contained on the iterable object.
+	   *
+	   * Be sure to invoke the function with the iterable as context:
+	   *
+	   *     var iteratorFn = getIteratorFn(myIterable);
+	   *     if (iteratorFn) {
+	   *       var iterator = iteratorFn.call(myIterable);
+	   *       ...
+	   *     }
+	   *
+	   * @param {?object} maybeIterable
+	   * @return {?function}
+	   */
+	  function getIteratorFn(maybeIterable) {
+	    var iteratorFn = maybeIterable && (ITERATOR_SYMBOL && maybeIterable[ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL]);
+	    if (typeof iteratorFn === 'function') {
+	      return iteratorFn;
+	    }
 	  }
-	}
-	/*eslint-enable no-self-compare*/
 	
-	/**
-	 * We use an Error-like object for backward compatibility as people may call
-	 * PropTypes directly and inspect their output. However we don't use real
-	 * Errors anymore. We don't inspect their stack anyway, and creating them
-	 * is prohibitively expensive if they are created too often, such as what
-	 * happens in oneOfType() for any type before the one that matched.
-	 */
-	function PropTypeError(message) {
-	  this.message = message;
-	  this.stack = '';
-	}
-	// Make `instanceof Error` still work for returned errors.
-	PropTypeError.prototype = Error.prototype;
+	  /**
+	   * Collection of methods that allow declaration and validation of props that are
+	   * supplied to React components. Example usage:
+	   *
+	   *   var Props = require('ReactPropTypes');
+	   *   var MyArticle = React.createClass({
+	   *     propTypes: {
+	   *       // An optional string prop named "description".
+	   *       description: Props.string,
+	   *
+	   *       // A required enum prop named "category".
+	   *       category: Props.oneOf(['News','Photos']).isRequired,
+	   *
+	   *       // A prop named "dialog" that requires an instance of Dialog.
+	   *       dialog: Props.instanceOf(Dialog).isRequired
+	   *     },
+	   *     render: function() { ... }
+	   *   });
+	   *
+	   * A more formal specification of how these methods are used:
+	   *
+	   *   type := array|bool|func|object|number|string|oneOf([...])|instanceOf(...)
+	   *   decl := ReactPropTypes.{type}(.isRequired)?
+	   *
+	   * Each and every declaration produces a function with the same signature. This
+	   * allows the creation of custom validation functions. For example:
+	   *
+	   *  var MyLink = React.createClass({
+	   *    propTypes: {
+	   *      // An optional string or URI prop named "href".
+	   *      href: function(props, propName, componentName) {
+	   *        var propValue = props[propName];
+	   *        if (propValue != null && typeof propValue !== 'string' &&
+	   *            !(propValue instanceof URI)) {
+	   *          return new Error(
+	   *            'Expected a string or an URI for ' + propName + ' in ' +
+	   *            componentName
+	   *          );
+	   *        }
+	   *      }
+	   *    },
+	   *    render: function() {...}
+	   *  });
+	   *
+	   * @internal
+	   */
 	
-	function createChainableTypeChecker(validate) {
-	  if (process.env.NODE_ENV !== 'production') {
-	    var manualPropTypeCallCache = {};
+	  var ANONYMOUS = '<<anonymous>>';
+	
+	  // Important!
+	  // Keep this list in sync with production version in `./factoryWithThrowingShims.js`.
+	  var ReactPropTypes = {
+	    array: createPrimitiveTypeChecker('array'),
+	    bool: createPrimitiveTypeChecker('boolean'),
+	    func: createPrimitiveTypeChecker('function'),
+	    number: createPrimitiveTypeChecker('number'),
+	    object: createPrimitiveTypeChecker('object'),
+	    string: createPrimitiveTypeChecker('string'),
+	    symbol: createPrimitiveTypeChecker('symbol'),
+	
+	    any: createAnyTypeChecker(),
+	    arrayOf: createArrayOfTypeChecker,
+	    element: createElementTypeChecker(),
+	    instanceOf: createInstanceTypeChecker,
+	    node: createNodeChecker(),
+	    objectOf: createObjectOfTypeChecker,
+	    oneOf: createEnumTypeChecker,
+	    oneOfType: createUnionTypeChecker,
+	    shape: createShapeTypeChecker
+	  };
+	
+	  /**
+	   * inlined Object.is polyfill to avoid requiring consumers ship their own
+	   * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
+	   */
+	  /*eslint-disable no-self-compare*/
+	  function is(x, y) {
+	    // SameValue algorithm
+	    if (x === y) {
+	      // Steps 1-5, 7-10
+	      // Steps 6.b-6.e: +0 != -0
+	      return x !== 0 || 1 / x === 1 / y;
+	    } else {
+	      // Step 6.a: NaN == NaN
+	      return x !== x && y !== y;
+	    }
 	  }
-	  function checkType(isRequired, props, propName, componentName, location, propFullName, secret) {
-	    componentName = componentName || ANONYMOUS;
-	    propFullName = propFullName || propName;
+	  /*eslint-enable no-self-compare*/
+	
+	  /**
+	   * We use an Error-like object for backward compatibility as people may call
+	   * PropTypes directly and inspect their output. However, we don't use real
+	   * Errors anymore. We don't inspect their stack anyway, and creating them
+	   * is prohibitively expensive if they are created too often, such as what
+	   * happens in oneOfType() for any type before the one that matched.
+	   */
+	  function PropTypeError(message) {
+	    this.message = message;
+	    this.stack = '';
+	  }
+	  // Make `instanceof Error` still work for returned errors.
+	  PropTypeError.prototype = Error.prototype;
+	
+	  function createChainableTypeChecker(validate) {
 	    if (process.env.NODE_ENV !== 'production') {
-	      if (secret !== ReactPropTypesSecret && typeof console !== 'undefined') {
-	        var cacheKey = componentName + ':' + propName;
-	        if (!manualPropTypeCallCache[cacheKey]) {
-	          process.env.NODE_ENV !== 'production' ? warning(false, 'You are manually calling a React.PropTypes validation ' + 'function for the `%s` prop on `%s`. This is deprecated ' + 'and will not work in production with the next major version. ' + 'You may be seeing this warning due to a third-party PropTypes ' + 'library. See https://fb.me/react-warning-dont-call-proptypes ' + 'for details.', propFullName, componentName) : void 0;
-	          manualPropTypeCallCache[cacheKey] = true;
+	      var manualPropTypeCallCache = {};
+	      var manualPropTypeWarningCount = 0;
+	    }
+	    function checkType(isRequired, props, propName, componentName, location, propFullName, secret) {
+	      componentName = componentName || ANONYMOUS;
+	      propFullName = propFullName || propName;
+	
+	      if (secret !== ReactPropTypesSecret) {
+	        if (throwOnDirectAccess) {
+	          // New behavior only for users of `prop-types` package
+	          invariant(
+	            false,
+	            'Calling PropTypes validators directly is not supported by the `prop-types` package. ' +
+	            'Use `PropTypes.checkPropTypes()` to call them. ' +
+	            'Read more at http://fb.me/use-check-prop-types'
+	          );
+	        } else if (process.env.NODE_ENV !== 'production' && typeof console !== 'undefined') {
+	          // Old behavior for people using React.PropTypes
+	          var cacheKey = componentName + ':' + propName;
+	          if (
+	            !manualPropTypeCallCache[cacheKey] &&
+	            // Avoid spamming the console because they are often not actionable except for lib authors
+	            manualPropTypeWarningCount < 3
+	          ) {
+	            warning(
+	              false,
+	              'You are manually calling a React.PropTypes validation ' +
+	              'function for the `%s` prop on `%s`. This is deprecated ' +
+	              'and will throw in the standalone `prop-types` package. ' +
+	              'You may be seeing this warning due to a third-party PropTypes ' +
+	              'library. See https://fb.me/react-warning-dont-call-proptypes ' + 'for details.',
+	              propFullName,
+	              componentName
+	            );
+	            manualPropTypeCallCache[cacheKey] = true;
+	            manualPropTypeWarningCount++;
+	          }
 	        }
 	      }
-	    }
-	    if (props[propName] == null) {
-	      var locationName = ReactPropTypeLocationNames[location];
-	      if (isRequired) {
-	        if (props[propName] === null) {
-	          return new PropTypeError('The ' + locationName + ' `' + propFullName + '` is marked as required ' + ('in `' + componentName + '`, but its value is `null`.'));
+	      if (props[propName] == null) {
+	        if (isRequired) {
+	          if (props[propName] === null) {
+	            return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required ' + ('in `' + componentName + '`, but its value is `null`.'));
+	          }
+	          return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required in ' + ('`' + componentName + '`, but its value is `undefined`.'));
 	        }
-	        return new PropTypeError('The ' + locationName + ' `' + propFullName + '` is marked as required in ' + ('`' + componentName + '`, but its value is `undefined`.'));
+	        return null;
+	      } else {
+	        return validate(props, propName, componentName, location, propFullName);
+	      }
+	    }
+	
+	    var chainedCheckType = checkType.bind(null, false);
+	    chainedCheckType.isRequired = checkType.bind(null, true);
+	
+	    return chainedCheckType;
+	  }
+	
+	  function createPrimitiveTypeChecker(expectedType) {
+	    function validate(props, propName, componentName, location, propFullName, secret) {
+	      var propValue = props[propName];
+	      var propType = getPropType(propValue);
+	      if (propType !== expectedType) {
+	        // `propValue` being instance of, say, date/regexp, pass the 'object'
+	        // check, but we can offer a more precise error message here rather than
+	        // 'of type `object`'.
+	        var preciseType = getPreciseType(propValue);
+	
+	        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + preciseType + '` supplied to `' + componentName + '`, expected ') + ('`' + expectedType + '`.'));
 	      }
 	      return null;
-	    } else {
-	      return validate(props, propName, componentName, location, propFullName);
 	    }
+	    return createChainableTypeChecker(validate);
 	  }
 	
-	  var chainedCheckType = checkType.bind(null, false);
-	  chainedCheckType.isRequired = checkType.bind(null, true);
-	
-	  return chainedCheckType;
-	}
-	
-	function createPrimitiveTypeChecker(expectedType) {
-	  function validate(props, propName, componentName, location, propFullName, secret) {
-	    var propValue = props[propName];
-	    var propType = getPropType(propValue);
-	    if (propType !== expectedType) {
-	      var locationName = ReactPropTypeLocationNames[location];
-	      // `propValue` being instance of, say, date/regexp, pass the 'object'
-	      // check, but we can offer a more precise error message here rather than
-	      // 'of type `object`'.
-	      var preciseType = getPreciseType(propValue);
-	
-	      return new PropTypeError('Invalid ' + locationName + ' `' + propFullName + '` of type ' + ('`' + preciseType + '` supplied to `' + componentName + '`, expected ') + ('`' + expectedType + '`.'));
-	    }
-	    return null;
+	  function createAnyTypeChecker() {
+	    return createChainableTypeChecker(emptyFunction.thatReturnsNull);
 	  }
-	  return createChainableTypeChecker(validate);
-	}
 	
-	function createAnyTypeChecker() {
-	  return createChainableTypeChecker(emptyFunction.thatReturns(null));
-	}
-	
-	function createArrayOfTypeChecker(typeChecker) {
-	  function validate(props, propName, componentName, location, propFullName) {
-	    if (typeof typeChecker !== 'function') {
-	      return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside arrayOf.');
-	    }
-	    var propValue = props[propName];
-	    if (!Array.isArray(propValue)) {
-	      var locationName = ReactPropTypeLocationNames[location];
-	      var propType = getPropType(propValue);
-	      return new PropTypeError('Invalid ' + locationName + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an array.'));
-	    }
-	    for (var i = 0; i < propValue.length; i++) {
-	      var error = typeChecker(propValue, i, componentName, location, propFullName + '[' + i + ']', ReactPropTypesSecret);
-	      if (error instanceof Error) {
-	        return error;
+	  function createArrayOfTypeChecker(typeChecker) {
+	    function validate(props, propName, componentName, location, propFullName) {
+	      if (typeof typeChecker !== 'function') {
+	        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside arrayOf.');
 	      }
-	    }
-	    return null;
-	  }
-	  return createChainableTypeChecker(validate);
-	}
-	
-	function createElementTypeChecker() {
-	  function validate(props, propName, componentName, location, propFullName) {
-	    var propValue = props[propName];
-	    if (!ReactElement.isValidElement(propValue)) {
-	      var locationName = ReactPropTypeLocationNames[location];
-	      var propType = getPropType(propValue);
-	      return new PropTypeError('Invalid ' + locationName + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement.'));
-	    }
-	    return null;
-	  }
-	  return createChainableTypeChecker(validate);
-	}
-	
-	function createInstanceTypeChecker(expectedClass) {
-	  function validate(props, propName, componentName, location, propFullName) {
-	    if (!(props[propName] instanceof expectedClass)) {
-	      var locationName = ReactPropTypeLocationNames[location];
-	      var expectedClassName = expectedClass.name || ANONYMOUS;
-	      var actualClassName = getClassName(props[propName]);
-	      return new PropTypeError('Invalid ' + locationName + ' `' + propFullName + '` of type ' + ('`' + actualClassName + '` supplied to `' + componentName + '`, expected ') + ('instance of `' + expectedClassName + '`.'));
-	    }
-	    return null;
-	  }
-	  return createChainableTypeChecker(validate);
-	}
-	
-	function createEnumTypeChecker(expectedValues) {
-	  if (!Array.isArray(expectedValues)) {
-	    process.env.NODE_ENV !== 'production' ? warning(false, 'Invalid argument supplied to oneOf, expected an instance of array.') : void 0;
-	    return emptyFunction.thatReturnsNull;
-	  }
-	
-	  function validate(props, propName, componentName, location, propFullName) {
-	    var propValue = props[propName];
-	    for (var i = 0; i < expectedValues.length; i++) {
-	      if (is(propValue, expectedValues[i])) {
-	        return null;
+	      var propValue = props[propName];
+	      if (!Array.isArray(propValue)) {
+	        var propType = getPropType(propValue);
+	        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an array.'));
 	      }
-	    }
-	
-	    var locationName = ReactPropTypeLocationNames[location];
-	    var valuesString = JSON.stringify(expectedValues);
-	    return new PropTypeError('Invalid ' + locationName + ' `' + propFullName + '` of value `' + propValue + '` ' + ('supplied to `' + componentName + '`, expected one of ' + valuesString + '.'));
-	  }
-	  return createChainableTypeChecker(validate);
-	}
-	
-	function createObjectOfTypeChecker(typeChecker) {
-	  function validate(props, propName, componentName, location, propFullName) {
-	    if (typeof typeChecker !== 'function') {
-	      return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside objectOf.');
-	    }
-	    var propValue = props[propName];
-	    var propType = getPropType(propValue);
-	    if (propType !== 'object') {
-	      var locationName = ReactPropTypeLocationNames[location];
-	      return new PropTypeError('Invalid ' + locationName + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an object.'));
-	    }
-	    for (var key in propValue) {
-	      if (propValue.hasOwnProperty(key)) {
-	        var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+	      for (var i = 0; i < propValue.length; i++) {
+	        var error = typeChecker(propValue, i, componentName, location, propFullName + '[' + i + ']', ReactPropTypesSecret);
 	        if (error instanceof Error) {
 	          return error;
 	        }
 	      }
+	      return null;
 	    }
-	    return null;
-	  }
-	  return createChainableTypeChecker(validate);
-	}
-	
-	function createUnionTypeChecker(arrayOfTypeCheckers) {
-	  if (!Array.isArray(arrayOfTypeCheckers)) {
-	    process.env.NODE_ENV !== 'production' ? warning(false, 'Invalid argument supplied to oneOfType, expected an instance of array.') : void 0;
-	    return emptyFunction.thatReturnsNull;
+	    return createChainableTypeChecker(validate);
 	  }
 	
-	  function validate(props, propName, componentName, location, propFullName) {
-	    for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
-	      var checker = arrayOfTypeCheckers[i];
-	      if (checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret) == null) {
-	        return null;
+	  function createElementTypeChecker() {
+	    function validate(props, propName, componentName, location, propFullName) {
+	      var propValue = props[propName];
+	      if (!isValidElement(propValue)) {
+	        var propType = getPropType(propValue);
+	        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement.'));
 	      }
+	      return null;
 	    }
-	
-	    var locationName = ReactPropTypeLocationNames[location];
-	    return new PropTypeError('Invalid ' + locationName + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`.'));
+	    return createChainableTypeChecker(validate);
 	  }
-	  return createChainableTypeChecker(validate);
-	}
 	
-	function createNodeChecker() {
-	  function validate(props, propName, componentName, location, propFullName) {
-	    if (!isNode(props[propName])) {
-	      var locationName = ReactPropTypeLocationNames[location];
-	      return new PropTypeError('Invalid ' + locationName + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`, expected a ReactNode.'));
+	  function createInstanceTypeChecker(expectedClass) {
+	    function validate(props, propName, componentName, location, propFullName) {
+	      if (!(props[propName] instanceof expectedClass)) {
+	        var expectedClassName = expectedClass.name || ANONYMOUS;
+	        var actualClassName = getClassName(props[propName]);
+	        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + actualClassName + '` supplied to `' + componentName + '`, expected ') + ('instance of `' + expectedClassName + '`.'));
+	      }
+	      return null;
 	    }
-	    return null;
+	    return createChainableTypeChecker(validate);
 	  }
-	  return createChainableTypeChecker(validate);
-	}
 	
-	function createShapeTypeChecker(shapeTypes) {
-	  function validate(props, propName, componentName, location, propFullName) {
-	    var propValue = props[propName];
-	    var propType = getPropType(propValue);
-	    if (propType !== 'object') {
-	      var locationName = ReactPropTypeLocationNames[location];
-	      return new PropTypeError('Invalid ' + locationName + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
+	  function createEnumTypeChecker(expectedValues) {
+	    if (!Array.isArray(expectedValues)) {
+	      process.env.NODE_ENV !== 'production' ? warning(false, 'Invalid argument supplied to oneOf, expected an instance of array.') : void 0;
+	      return emptyFunction.thatReturnsNull;
 	    }
-	    for (var key in shapeTypes) {
-	      var checker = shapeTypes[key];
-	      if (!checker) {
-	        continue;
+	
+	    function validate(props, propName, componentName, location, propFullName) {
+	      var propValue = props[propName];
+	      for (var i = 0; i < expectedValues.length; i++) {
+	        if (is(propValue, expectedValues[i])) {
+	          return null;
+	        }
 	      }
-	      var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
-	      if (error) {
-	        return error;
-	      }
+	
+	      var valuesString = JSON.stringify(expectedValues);
+	      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of value `' + propValue + '` ' + ('supplied to `' + componentName + '`, expected one of ' + valuesString + '.'));
 	    }
-	    return null;
+	    return createChainableTypeChecker(validate);
 	  }
-	  return createChainableTypeChecker(validate);
-	}
 	
-	function isNode(propValue) {
-	  switch (typeof propValue) {
-	    case 'number':
-	    case 'string':
-	    case 'undefined':
-	      return true;
-	    case 'boolean':
-	      return !propValue;
-	    case 'object':
-	      if (Array.isArray(propValue)) {
-	        return propValue.every(isNode);
+	  function createObjectOfTypeChecker(typeChecker) {
+	    function validate(props, propName, componentName, location, propFullName) {
+	      if (typeof typeChecker !== 'function') {
+	        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside objectOf.');
 	      }
-	      if (propValue === null || ReactElement.isValidElement(propValue)) {
-	        return true;
+	      var propValue = props[propName];
+	      var propType = getPropType(propValue);
+	      if (propType !== 'object') {
+	        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an object.'));
 	      }
-	
-	      var iteratorFn = getIteratorFn(propValue);
-	      if (iteratorFn) {
-	        var iterator = iteratorFn.call(propValue);
-	        var step;
-	        if (iteratorFn !== propValue.entries) {
-	          while (!(step = iterator.next()).done) {
-	            if (!isNode(step.value)) {
-	              return false;
-	            }
+	      for (var key in propValue) {
+	        if (propValue.hasOwnProperty(key)) {
+	          var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+	          if (error instanceof Error) {
+	            return error;
 	          }
-	        } else {
-	          // Iterator will provide entry [k,v] tuples rather than values.
-	          while (!(step = iterator.next()).done) {
-	            var entry = step.value;
-	            if (entry) {
-	              if (!isNode(entry[1])) {
+	        }
+	      }
+	      return null;
+	    }
+	    return createChainableTypeChecker(validate);
+	  }
+	
+	  function createUnionTypeChecker(arrayOfTypeCheckers) {
+	    if (!Array.isArray(arrayOfTypeCheckers)) {
+	      process.env.NODE_ENV !== 'production' ? warning(false, 'Invalid argument supplied to oneOfType, expected an instance of array.') : void 0;
+	      return emptyFunction.thatReturnsNull;
+	    }
+	
+	    function validate(props, propName, componentName, location, propFullName) {
+	      for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
+	        var checker = arrayOfTypeCheckers[i];
+	        if (checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret) == null) {
+	          return null;
+	        }
+	      }
+	
+	      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`.'));
+	    }
+	    return createChainableTypeChecker(validate);
+	  }
+	
+	  function createNodeChecker() {
+	    function validate(props, propName, componentName, location, propFullName) {
+	      if (!isNode(props[propName])) {
+	        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`, expected a ReactNode.'));
+	      }
+	      return null;
+	    }
+	    return createChainableTypeChecker(validate);
+	  }
+	
+	  function createShapeTypeChecker(shapeTypes) {
+	    function validate(props, propName, componentName, location, propFullName) {
+	      var propValue = props[propName];
+	      var propType = getPropType(propValue);
+	      if (propType !== 'object') {
+	        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
+	      }
+	      for (var key in shapeTypes) {
+	        var checker = shapeTypes[key];
+	        if (!checker) {
+	          continue;
+	        }
+	        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+	        if (error) {
+	          return error;
+	        }
+	      }
+	      return null;
+	    }
+	    return createChainableTypeChecker(validate);
+	  }
+	
+	  function isNode(propValue) {
+	    switch (typeof propValue) {
+	      case 'number':
+	      case 'string':
+	      case 'undefined':
+	        return true;
+	      case 'boolean':
+	        return !propValue;
+	      case 'object':
+	        if (Array.isArray(propValue)) {
+	          return propValue.every(isNode);
+	        }
+	        if (propValue === null || isValidElement(propValue)) {
+	          return true;
+	        }
+	
+	        var iteratorFn = getIteratorFn(propValue);
+	        if (iteratorFn) {
+	          var iterator = iteratorFn.call(propValue);
+	          var step;
+	          if (iteratorFn !== propValue.entries) {
+	            while (!(step = iterator.next()).done) {
+	              if (!isNode(step.value)) {
 	                return false;
 	              }
 	            }
+	          } else {
+	            // Iterator will provide entry [k,v] tuples rather than values.
+	            while (!(step = iterator.next()).done) {
+	              var entry = step.value;
+	              if (entry) {
+	                if (!isNode(entry[1])) {
+	                  return false;
+	                }
+	              }
+	            }
 	          }
+	        } else {
+	          return false;
 	        }
-	      } else {
+	
+	        return true;
+	      default:
 	        return false;
-	      }
-	
-	      return true;
-	    default:
-	      return false;
-	  }
-	}
-	
-	function isSymbol(propType, propValue) {
-	  // Native Symbol.
-	  if (propType === 'symbol') {
-	    return true;
-	  }
-	
-	  // 19.4.3.5 Symbol.prototype[@@toStringTag] === 'Symbol'
-	  if (propValue['@@toStringTag'] === 'Symbol') {
-	    return true;
-	  }
-	
-	  // Fallback for non-spec compliant Symbols which are polyfilled.
-	  if (typeof Symbol === 'function' && propValue instanceof Symbol) {
-	    return true;
-	  }
-	
-	  return false;
-	}
-	
-	// Equivalent of `typeof` but with special handling for array and regexp.
-	function getPropType(propValue) {
-	  var propType = typeof propValue;
-	  if (Array.isArray(propValue)) {
-	    return 'array';
-	  }
-	  if (propValue instanceof RegExp) {
-	    // Old webkits (at least until Android 4.0) return 'function' rather than
-	    // 'object' for typeof a RegExp. We'll normalize this here so that /bla/
-	    // passes PropTypes.object.
-	    return 'object';
-	  }
-	  if (isSymbol(propType, propValue)) {
-	    return 'symbol';
-	  }
-	  return propType;
-	}
-	
-	// This handles more types than `getPropType`. Only used for error messages.
-	// See `createPrimitiveTypeChecker`.
-	function getPreciseType(propValue) {
-	  var propType = getPropType(propValue);
-	  if (propType === 'object') {
-	    if (propValue instanceof Date) {
-	      return 'date';
-	    } else if (propValue instanceof RegExp) {
-	      return 'regexp';
 	    }
 	  }
-	  return propType;
-	}
 	
-	// Returns class name of the object, if any.
-	function getClassName(propValue) {
-	  if (!propValue.constructor || !propValue.constructor.name) {
-	    return ANONYMOUS;
+	  function isSymbol(propType, propValue) {
+	    // Native Symbol.
+	    if (propType === 'symbol') {
+	      return true;
+	    }
+	
+	    // 19.4.3.5 Symbol.prototype[@@toStringTag] === 'Symbol'
+	    if (propValue['@@toStringTag'] === 'Symbol') {
+	      return true;
+	    }
+	
+	    // Fallback for non-spec compliant Symbols which are polyfilled.
+	    if (typeof Symbol === 'function' && propValue instanceof Symbol) {
+	      return true;
+	    }
+	
+	    return false;
 	  }
-	  return propValue.constructor.name;
-	}
 	
-	module.exports = ReactPropTypes;
+	  // Equivalent of `typeof` but with special handling for array and regexp.
+	  function getPropType(propValue) {
+	    var propType = typeof propValue;
+	    if (Array.isArray(propValue)) {
+	      return 'array';
+	    }
+	    if (propValue instanceof RegExp) {
+	      // Old webkits (at least until Android 4.0) return 'function' rather than
+	      // 'object' for typeof a RegExp. We'll normalize this here so that /bla/
+	      // passes PropTypes.object.
+	      return 'object';
+	    }
+	    if (isSymbol(propType, propValue)) {
+	      return 'symbol';
+	    }
+	    return propType;
+	  }
+	
+	  // This handles more types than `getPropType`. Only used for error messages.
+	  // See `createPrimitiveTypeChecker`.
+	  function getPreciseType(propValue) {
+	    var propType = getPropType(propValue);
+	    if (propType === 'object') {
+	      if (propValue instanceof Date) {
+	        return 'date';
+	      } else if (propValue instanceof RegExp) {
+	        return 'regexp';
+	      }
+	    }
+	    return propType;
+	  }
+	
+	  // Returns class name of the object, if any.
+	  function getClassName(propValue) {
+	    if (!propValue.constructor || !propValue.constructor.name) {
+	      return ANONYMOUS;
+	    }
+	    return propValue.constructor.name;
+	  }
+	
+	  ReactPropTypes.checkPropTypes = checkPropTypes;
+	  ReactPropTypes.PropTypes = ReactPropTypes;
+	
+	  return ReactPropTypes;
+	};
+	
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 66 */
-/***/ function(module, exports) {
+/***/ }),
+/* 68 */
+/***/ (function(module, exports) {
+
+	/**
+	 * Copyright 2013-present, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 */
+	
+	'use strict';
+	
+	var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
+	
+	module.exports = ReactPropTypesSecret;
+
+
+/***/ }),
+/* 69 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {/**
+	 * Copyright 2013-present, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 */
+	
+	'use strict';
+	
+	if (process.env.NODE_ENV !== 'production') {
+	  var invariant = __webpack_require__(44);
+	  var warning = __webpack_require__(47);
+	  var ReactPropTypesSecret = __webpack_require__(68);
+	  var loggedTypeFailures = {};
+	}
+	
+	/**
+	 * Assert that the values match with the type specs.
+	 * Error messages are memorized and will only be shown once.
+	 *
+	 * @param {object} typeSpecs Map of name to a ReactPropType
+	 * @param {object} values Runtime values that need to be type-checked
+	 * @param {string} location e.g. "prop", "context", "child context"
+	 * @param {string} componentName Name of the component for error messages.
+	 * @param {?Function} getStack Returns the component stack.
+	 * @private
+	 */
+	function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
+	  if (process.env.NODE_ENV !== 'production') {
+	    for (var typeSpecName in typeSpecs) {
+	      if (typeSpecs.hasOwnProperty(typeSpecName)) {
+	        var error;
+	        // Prop type validation may throw. In case they do, we don't want to
+	        // fail the render phase where it didn't fail before. So we log it.
+	        // After these have been cleaned up, we'll let them throw.
+	        try {
+	          // This is intentionally an invariant that gets caught. It's the same
+	          // behavior as without this statement except with a better message.
+	          invariant(typeof typeSpecs[typeSpecName] === 'function', '%s: %s type `%s` is invalid; it must be a function, usually from ' + 'React.PropTypes.', componentName || 'React class', location, typeSpecName);
+	          error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret);
+	        } catch (ex) {
+	          error = ex;
+	        }
+	        warning(!error || error instanceof Error, '%s: type specification of %s `%s` is invalid; the type checker ' + 'function must return `null` or an `Error` but returned a %s. ' + 'You may have forgotten to pass an argument to the type checker ' + 'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' + 'shape all require an argument).', componentName || 'React class', location, typeSpecName, typeof error);
+	        if (error instanceof Error && !(error.message in loggedTypeFailures)) {
+	          // Only monitor this failure once because there tends to be a lot of the
+	          // same error.
+	          loggedTypeFailures[error.message] = true;
+	
+	          var stack = getStack ? getStack() : '';
+	
+	          warning(false, 'Failed %s type: %s%s', location, error.message, stack != null ? stack : '');
+	        }
+	      }
+	    }
+	  }
+	}
+	
+	module.exports = checkPropTypes;
+	
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
+
+/***/ }),
+/* 70 */
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -9932,11 +8598,11 @@
 	
 	'use strict';
 	
-	module.exports = '15.4.2';
+	module.exports = '15.5.4';
 
-/***/ },
-/* 67 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 71 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -9977,18 +8643,18 @@
 	module.exports = onlyChild;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 68 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 72 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	module.exports = __webpack_require__(69);
+	module.exports = __webpack_require__(73);
 
 
-/***/ },
-/* 69 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 73 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -10004,16 +8670,16 @@
 	
 	'use strict';
 	
-	var ReactDOMComponentTree = __webpack_require__(70);
-	var ReactDefaultInjection = __webpack_require__(74);
-	var ReactMount = __webpack_require__(202);
-	var ReactReconciler = __webpack_require__(95);
-	var ReactUpdates = __webpack_require__(92);
-	var ReactVersion = __webpack_require__(207);
+	var ReactDOMComponentTree = __webpack_require__(74);
+	var ReactDefaultInjection = __webpack_require__(78);
+	var ReactMount = __webpack_require__(206);
+	var ReactReconciler = __webpack_require__(99);
+	var ReactUpdates = __webpack_require__(96);
+	var ReactVersion = __webpack_require__(211);
 	
-	var findDOMNode = __webpack_require__(208);
-	var getHostComponentFromComposite = __webpack_require__(209);
-	var renderSubtreeIntoContainer = __webpack_require__(210);
+	var findDOMNode = __webpack_require__(212);
+	var getHostComponentFromComposite = __webpack_require__(213);
+	var renderSubtreeIntoContainer = __webpack_require__(214);
 	var warning = __webpack_require__(47);
 	
 	ReactDefaultInjection.inject();
@@ -10053,7 +8719,7 @@
 	}
 	
 	if (process.env.NODE_ENV !== 'production') {
-	  var ExecutionEnvironment = __webpack_require__(84);
+	  var ExecutionEnvironment = __webpack_require__(88);
 	  if (ExecutionEnvironment.canUseDOM && window.top === window.self) {
 	
 	    // First check if devtools is not installed
@@ -10089,10 +8755,10 @@
 	}
 	
 	if (process.env.NODE_ENV !== 'production') {
-	  var ReactInstrumentation = __webpack_require__(98);
-	  var ReactDOMUnknownPropertyHook = __webpack_require__(211);
-	  var ReactDOMNullInputValuePropHook = __webpack_require__(212);
-	  var ReactDOMInvalidARIAHook = __webpack_require__(213);
+	  var ReactInstrumentation = __webpack_require__(102);
+	  var ReactDOMUnknownPropertyHook = __webpack_require__(215);
+	  var ReactDOMNullInputValuePropHook = __webpack_require__(216);
+	  var ReactDOMInvalidARIAHook = __webpack_require__(217);
 	
 	  ReactInstrumentation.debugTool.addHook(ReactDOMUnknownPropertyHook);
 	  ReactInstrumentation.debugTool.addHook(ReactDOMNullInputValuePropHook);
@@ -10102,9 +8768,9 @@
 	module.exports = ReactDOM;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 70 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 74 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -10118,10 +8784,10 @@
 	
 	'use strict';
 	
-	var _prodInvariant = __webpack_require__(71);
+	var _prodInvariant = __webpack_require__(75);
 	
-	var DOMProperty = __webpack_require__(72);
-	var ReactDOMComponentFlags = __webpack_require__(73);
+	var DOMProperty = __webpack_require__(76);
+	var ReactDOMComponentFlags = __webpack_require__(77);
 	
 	var invariant = __webpack_require__(44);
 	
@@ -10302,9 +8968,9 @@
 	module.exports = ReactDOMComponentTree;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 71 */
-/***/ function(module, exports) {
+/***/ }),
+/* 75 */
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright (c) 2013-present, Facebook, Inc.
@@ -10345,9 +9011,9 @@
 	
 	module.exports = reactProdInvariant;
 
-/***/ },
-/* 72 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 76 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -10361,7 +9027,7 @@
 	
 	'use strict';
 	
-	var _prodInvariant = __webpack_require__(71);
+	var _prodInvariant = __webpack_require__(75);
 	
 	var invariant = __webpack_require__(44);
 	
@@ -10560,9 +9226,9 @@
 	module.exports = DOMProperty;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 73 */
-/***/ function(module, exports) {
+/***/ }),
+/* 77 */
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2015-present, Facebook, Inc.
@@ -10582,9 +9248,9 @@
 	
 	module.exports = ReactDOMComponentFlags;
 
-/***/ },
-/* 74 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 78 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -10598,25 +9264,25 @@
 	
 	'use strict';
 	
-	var ARIADOMPropertyConfig = __webpack_require__(75);
-	var BeforeInputEventPlugin = __webpack_require__(76);
-	var ChangeEventPlugin = __webpack_require__(91);
-	var DefaultEventPluginOrder = __webpack_require__(108);
-	var EnterLeaveEventPlugin = __webpack_require__(109);
-	var HTMLDOMPropertyConfig = __webpack_require__(114);
-	var ReactComponentBrowserEnvironment = __webpack_require__(115);
-	var ReactDOMComponent = __webpack_require__(128);
-	var ReactDOMComponentTree = __webpack_require__(70);
-	var ReactDOMEmptyComponent = __webpack_require__(173);
-	var ReactDOMTreeTraversal = __webpack_require__(174);
-	var ReactDOMTextComponent = __webpack_require__(175);
-	var ReactDefaultBatchingStrategy = __webpack_require__(176);
-	var ReactEventListener = __webpack_require__(177);
-	var ReactInjection = __webpack_require__(180);
-	var ReactReconcileTransaction = __webpack_require__(181);
-	var SVGDOMPropertyConfig = __webpack_require__(189);
-	var SelectEventPlugin = __webpack_require__(190);
-	var SimpleEventPlugin = __webpack_require__(191);
+	var ARIADOMPropertyConfig = __webpack_require__(79);
+	var BeforeInputEventPlugin = __webpack_require__(80);
+	var ChangeEventPlugin = __webpack_require__(95);
+	var DefaultEventPluginOrder = __webpack_require__(112);
+	var EnterLeaveEventPlugin = __webpack_require__(113);
+	var HTMLDOMPropertyConfig = __webpack_require__(118);
+	var ReactComponentBrowserEnvironment = __webpack_require__(119);
+	var ReactDOMComponent = __webpack_require__(132);
+	var ReactDOMComponentTree = __webpack_require__(74);
+	var ReactDOMEmptyComponent = __webpack_require__(177);
+	var ReactDOMTreeTraversal = __webpack_require__(178);
+	var ReactDOMTextComponent = __webpack_require__(179);
+	var ReactDefaultBatchingStrategy = __webpack_require__(180);
+	var ReactEventListener = __webpack_require__(181);
+	var ReactInjection = __webpack_require__(184);
+	var ReactReconcileTransaction = __webpack_require__(185);
+	var SVGDOMPropertyConfig = __webpack_require__(193);
+	var SelectEventPlugin = __webpack_require__(194);
+	var SimpleEventPlugin = __webpack_require__(195);
 	
 	var alreadyInjected = false;
 	
@@ -10672,9 +9338,9 @@
 	  inject: inject
 	};
 
-/***/ },
-/* 75 */
-/***/ function(module, exports) {
+/***/ }),
+/* 79 */
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -10750,9 +9416,9 @@
 	
 	module.exports = ARIADOMPropertyConfig;
 
-/***/ },
-/* 76 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 80 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present Facebook, Inc.
@@ -10766,11 +9432,11 @@
 	
 	'use strict';
 	
-	var EventPropagators = __webpack_require__(77);
-	var ExecutionEnvironment = __webpack_require__(84);
-	var FallbackCompositionState = __webpack_require__(85);
-	var SyntheticCompositionEvent = __webpack_require__(88);
-	var SyntheticInputEvent = __webpack_require__(90);
+	var EventPropagators = __webpack_require__(81);
+	var ExecutionEnvironment = __webpack_require__(88);
+	var FallbackCompositionState = __webpack_require__(89);
+	var SyntheticCompositionEvent = __webpack_require__(92);
+	var SyntheticInputEvent = __webpack_require__(94);
 	
 	var END_KEYCODES = [9, 13, 27, 32]; // Tab, Return, Esc, Space
 	var START_KEYCODE = 229;
@@ -11139,9 +9805,9 @@
 	
 	module.exports = BeforeInputEventPlugin;
 
-/***/ },
-/* 77 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 81 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -11155,11 +9821,11 @@
 	
 	'use strict';
 	
-	var EventPluginHub = __webpack_require__(78);
-	var EventPluginUtils = __webpack_require__(80);
+	var EventPluginHub = __webpack_require__(82);
+	var EventPluginUtils = __webpack_require__(84);
 	
-	var accumulateInto = __webpack_require__(82);
-	var forEachAccumulated = __webpack_require__(83);
+	var accumulateInto = __webpack_require__(86);
+	var forEachAccumulated = __webpack_require__(87);
 	var warning = __webpack_require__(47);
 	
 	var getListener = EventPluginHub.getListener;
@@ -11278,9 +9944,9 @@
 	module.exports = EventPropagators;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 78 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 82 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -11294,14 +9960,14 @@
 	
 	'use strict';
 	
-	var _prodInvariant = __webpack_require__(71);
+	var _prodInvariant = __webpack_require__(75);
 	
-	var EventPluginRegistry = __webpack_require__(79);
-	var EventPluginUtils = __webpack_require__(80);
-	var ReactErrorUtils = __webpack_require__(81);
+	var EventPluginRegistry = __webpack_require__(83);
+	var EventPluginUtils = __webpack_require__(84);
+	var ReactErrorUtils = __webpack_require__(85);
 	
-	var accumulateInto = __webpack_require__(82);
-	var forEachAccumulated = __webpack_require__(83);
+	var accumulateInto = __webpack_require__(86);
+	var forEachAccumulated = __webpack_require__(87);
 	var invariant = __webpack_require__(44);
 	
 	/**
@@ -11561,9 +10227,9 @@
 	module.exports = EventPluginHub;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 79 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 83 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -11578,7 +10244,7 @@
 	
 	'use strict';
 	
-	var _prodInvariant = __webpack_require__(71);
+	var _prodInvariant = __webpack_require__(75);
 	
 	var invariant = __webpack_require__(44);
 	
@@ -11821,9 +10487,9 @@
 	module.exports = EventPluginRegistry;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 80 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 84 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -11837,9 +10503,9 @@
 	
 	'use strict';
 	
-	var _prodInvariant = __webpack_require__(71);
+	var _prodInvariant = __webpack_require__(75);
 	
-	var ReactErrorUtils = __webpack_require__(81);
+	var ReactErrorUtils = __webpack_require__(85);
 	
 	var invariant = __webpack_require__(44);
 	var warning = __webpack_require__(47);
@@ -12052,9 +10718,9 @@
 	module.exports = EventPluginUtils;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 81 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 85 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -12123,7 +10789,6 @@
 	      var evtType = 'react-' + name;
 	      fakeNode.addEventListener(evtType, boundFunc, false);
 	      var evt = document.createEvent('Event');
-	      // $FlowFixMe https://github.com/facebook/flow/issues/2336
 	      evt.initEvent(evtType, false, false);
 	      fakeNode.dispatchEvent(evt);
 	      fakeNode.removeEventListener(evtType, boundFunc, false);
@@ -12134,9 +10799,9 @@
 	module.exports = ReactErrorUtils;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 82 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 86 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2014-present, Facebook, Inc.
@@ -12151,7 +10816,7 @@
 	
 	'use strict';
 	
-	var _prodInvariant = __webpack_require__(71);
+	var _prodInvariant = __webpack_require__(75);
 	
 	var invariant = __webpack_require__(44);
 	
@@ -12197,9 +10862,9 @@
 	module.exports = accumulateInto;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 83 */
-/***/ function(module, exports) {
+/***/ }),
+/* 87 */
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -12232,9 +10897,9 @@
 	
 	module.exports = forEachAccumulated;
 
-/***/ },
-/* 84 */
-/***/ function(module, exports) {
+/***/ }),
+/* 88 */
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright (c) 2013-present, Facebook, Inc.
@@ -12272,9 +10937,9 @@
 	
 	module.exports = ExecutionEnvironment;
 
-/***/ },
-/* 85 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 89 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -12290,9 +10955,9 @@
 	
 	var _assign = __webpack_require__(40);
 	
-	var PooledClass = __webpack_require__(86);
+	var PooledClass = __webpack_require__(90);
 	
-	var getTextContentAccessor = __webpack_require__(87);
+	var getTextContentAccessor = __webpack_require__(91);
 	
 	/**
 	 * This helper class stores information about text content of a target node,
@@ -12371,9 +11036,9 @@
 	
 	module.exports = FallbackCompositionState;
 
-/***/ },
-/* 86 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 90 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -12388,7 +11053,7 @@
 	
 	'use strict';
 	
-	var _prodInvariant = __webpack_require__(71);
+	var _prodInvariant = __webpack_require__(75);
 	
 	var invariant = __webpack_require__(44);
 	
@@ -12488,9 +11153,9 @@
 	module.exports = PooledClass;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 87 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 91 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -12504,7 +11169,7 @@
 	
 	'use strict';
 	
-	var ExecutionEnvironment = __webpack_require__(84);
+	var ExecutionEnvironment = __webpack_require__(88);
 	
 	var contentKey = null;
 	
@@ -12525,9 +11190,9 @@
 	
 	module.exports = getTextContentAccessor;
 
-/***/ },
-/* 88 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 92 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -12541,7 +11206,7 @@
 	
 	'use strict';
 	
-	var SyntheticEvent = __webpack_require__(89);
+	var SyntheticEvent = __webpack_require__(93);
 	
 	/**
 	 * @interface Event
@@ -12565,9 +11230,9 @@
 	
 	module.exports = SyntheticCompositionEvent;
 
-/***/ },
-/* 89 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 93 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -12583,7 +11248,7 @@
 	
 	var _assign = __webpack_require__(40);
 	
-	var PooledClass = __webpack_require__(86);
+	var PooledClass = __webpack_require__(90);
 	
 	var emptyFunction = __webpack_require__(48);
 	var warning = __webpack_require__(47);
@@ -12838,9 +11503,9 @@
 	}
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 90 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 94 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -12854,7 +11519,7 @@
 	
 	'use strict';
 	
-	var SyntheticEvent = __webpack_require__(89);
+	var SyntheticEvent = __webpack_require__(93);
 	
 	/**
 	 * @interface Event
@@ -12879,9 +11544,9 @@
 	
 	module.exports = SyntheticInputEvent;
 
-/***/ },
-/* 91 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 95 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -12895,16 +11560,16 @@
 	
 	'use strict';
 	
-	var EventPluginHub = __webpack_require__(78);
-	var EventPropagators = __webpack_require__(77);
-	var ExecutionEnvironment = __webpack_require__(84);
-	var ReactDOMComponentTree = __webpack_require__(70);
-	var ReactUpdates = __webpack_require__(92);
-	var SyntheticEvent = __webpack_require__(89);
+	var EventPluginHub = __webpack_require__(82);
+	var EventPropagators = __webpack_require__(81);
+	var ExecutionEnvironment = __webpack_require__(88);
+	var ReactDOMComponentTree = __webpack_require__(74);
+	var ReactUpdates = __webpack_require__(96);
+	var SyntheticEvent = __webpack_require__(93);
 	
-	var getEventTarget = __webpack_require__(105);
-	var isEventSupported = __webpack_require__(106);
-	var isTextInputElement = __webpack_require__(107);
+	var getEventTarget = __webpack_require__(109);
+	var isEventSupported = __webpack_require__(110);
+	var isTextInputElement = __webpack_require__(111);
 	
 	var eventTypes = {
 	  change: {
@@ -13150,6 +11815,26 @@
 	  }
 	}
 	
+	function handleControlledInputBlur(inst, node) {
+	  // TODO: In IE, inst is occasionally null. Why?
+	  if (inst == null) {
+	    return;
+	  }
+	
+	  // Fiber and ReactDOM keep wrapper state in separate places
+	  var state = inst._wrapperState || node._wrapperState;
+	
+	  if (!state || !state.controlled || node.type !== 'number') {
+	    return;
+	  }
+	
+	  // If controlled, assign the value attribute to the current value on blur
+	  var value = '' + node.value;
+	  if (node.getAttribute('value') !== value) {
+	    node.setAttribute('value', value);
+	  }
+	}
+	
 	/**
 	 * This plugin creates an `onChange` event that normalizes change events
 	 * across form elements. This event fires at a time when it's possible to
@@ -13198,15 +11883,20 @@
 	    if (handleEventFunc) {
 	      handleEventFunc(topLevelType, targetNode, targetInst);
 	    }
+	
+	    // When blurring, set the value attribute for number inputs
+	    if (topLevelType === 'topBlur') {
+	      handleControlledInputBlur(targetInst, targetNode);
+	    }
 	  }
 	
 	};
 	
 	module.exports = ChangeEventPlugin;
 
-/***/ },
-/* 92 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 96 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -13220,14 +11910,14 @@
 	
 	'use strict';
 	
-	var _prodInvariant = __webpack_require__(71),
+	var _prodInvariant = __webpack_require__(75),
 	    _assign = __webpack_require__(40);
 	
-	var CallbackQueue = __webpack_require__(93);
-	var PooledClass = __webpack_require__(86);
-	var ReactFeatureFlags = __webpack_require__(94);
-	var ReactReconciler = __webpack_require__(95);
-	var Transaction = __webpack_require__(104);
+	var CallbackQueue = __webpack_require__(97);
+	var PooledClass = __webpack_require__(90);
+	var ReactFeatureFlags = __webpack_require__(98);
+	var ReactReconciler = __webpack_require__(99);
+	var Transaction = __webpack_require__(108);
 	
 	var invariant = __webpack_require__(44);
 	
@@ -13460,9 +12150,9 @@
 	module.exports = ReactUpdates;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 93 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 97 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -13477,11 +12167,11 @@
 	
 	'use strict';
 	
-	var _prodInvariant = __webpack_require__(71);
+	var _prodInvariant = __webpack_require__(75);
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
-	var PooledClass = __webpack_require__(86);
+	var PooledClass = __webpack_require__(90);
 	
 	var invariant = __webpack_require__(44);
 	
@@ -13584,9 +12274,9 @@
 	module.exports = PooledClass.addPoolingTo(CallbackQueue);
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 94 */
-/***/ function(module, exports) {
+/***/ }),
+/* 98 */
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -13610,9 +12300,9 @@
 	
 	module.exports = ReactFeatureFlags;
 
-/***/ },
-/* 95 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 99 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -13626,8 +12316,8 @@
 	
 	'use strict';
 	
-	var ReactRef = __webpack_require__(96);
-	var ReactInstrumentation = __webpack_require__(98);
+	var ReactRef = __webpack_require__(100);
+	var ReactInstrumentation = __webpack_require__(102);
 	
 	var warning = __webpack_require__(47);
 	
@@ -13783,9 +12473,9 @@
 	module.exports = ReactReconciler;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 96 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 100 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -13800,7 +12490,7 @@
 	
 	'use strict';
 	
-	var ReactOwner = __webpack_require__(97);
+	var ReactOwner = __webpack_require__(101);
 	
 	var ReactRef = {};
 	
@@ -13876,9 +12566,9 @@
 	
 	module.exports = ReactRef;
 
-/***/ },
-/* 97 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 101 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -13893,7 +12583,7 @@
 	
 	'use strict';
 	
-	var _prodInvariant = __webpack_require__(71);
+	var _prodInvariant = __webpack_require__(75);
 	
 	var invariant = __webpack_require__(44);
 	
@@ -13975,9 +12665,9 @@
 	module.exports = ReactOwner;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 98 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 102 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2016-present, Facebook, Inc.
@@ -13997,16 +12687,16 @@
 	var debugTool = null;
 	
 	if (process.env.NODE_ENV !== 'production') {
-	  var ReactDebugTool = __webpack_require__(99);
+	  var ReactDebugTool = __webpack_require__(103);
 	  debugTool = ReactDebugTool;
 	}
 	
 	module.exports = { debugTool: debugTool };
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 99 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 103 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2016-present, Facebook, Inc.
@@ -14021,12 +12711,12 @@
 	
 	'use strict';
 	
-	var ReactInvalidSetStateWarningHook = __webpack_require__(100);
-	var ReactHostOperationHistoryHook = __webpack_require__(101);
+	var ReactInvalidSetStateWarningHook = __webpack_require__(104);
+	var ReactHostOperationHistoryHook = __webpack_require__(105);
 	var ReactComponentTreeHook = __webpack_require__(62);
-	var ExecutionEnvironment = __webpack_require__(84);
+	var ExecutionEnvironment = __webpack_require__(88);
 	
-	var performanceNow = __webpack_require__(102);
+	var performanceNow = __webpack_require__(106);
 	var warning = __webpack_require__(47);
 	
 	var hooks = [];
@@ -14188,9 +12878,7 @@
 	}
 	
 	var lastMarkTimeStamp = 0;
-	var canUsePerformanceMeasure =
-	// $FlowFixMe https://github.com/facebook/flow/issues/2345
-	typeof performance !== 'undefined' && typeof performance.mark === 'function' && typeof performance.clearMarks === 'function' && typeof performance.measure === 'function' && typeof performance.clearMeasures === 'function';
+	var canUsePerformanceMeasure = typeof performance !== 'undefined' && typeof performance.mark === 'function' && typeof performance.clearMarks === 'function' && typeof performance.measure === 'function' && typeof performance.clearMeasures === 'function';
 	
 	function shouldMark(debugID) {
 	  if (!isProfiling || !canUsePerformanceMeasure) {
@@ -14370,9 +13058,9 @@
 	module.exports = ReactDebugTool;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 100 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 104 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2016-present, Facebook, Inc.
@@ -14412,9 +13100,9 @@
 	module.exports = ReactInvalidSetStateWarningHook;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 101 */
-/***/ function(module, exports) {
+/***/ }),
+/* 105 */
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2016-present, Facebook, Inc.
@@ -14450,9 +13138,9 @@
 	
 	module.exports = ReactHostOperationHistoryHook;
 
-/***/ },
-/* 102 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 106 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -14467,7 +13155,7 @@
 	 * @typechecks
 	 */
 	
-	var performance = __webpack_require__(103);
+	var performance = __webpack_require__(107);
 	
 	var performanceNow;
 	
@@ -14488,9 +13176,9 @@
 	
 	module.exports = performanceNow;
 
-/***/ },
-/* 103 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 107 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright (c) 2013-present, Facebook, Inc.
@@ -14505,7 +13193,7 @@
 	
 	'use strict';
 	
-	var ExecutionEnvironment = __webpack_require__(84);
+	var ExecutionEnvironment = __webpack_require__(88);
 	
 	var performance;
 	
@@ -14515,9 +13203,9 @@
 	
 	module.exports = performance || {};
 
-/***/ },
-/* 104 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 108 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -14532,7 +13220,7 @@
 	
 	'use strict';
 	
-	var _prodInvariant = __webpack_require__(71);
+	var _prodInvariant = __webpack_require__(75);
 	
 	var invariant = __webpack_require__(44);
 	
@@ -14745,9 +13433,9 @@
 	module.exports = TransactionImpl;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 105 */
-/***/ function(module, exports) {
+/***/ }),
+/* 109 */
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -14784,9 +13472,9 @@
 	
 	module.exports = getEventTarget;
 
-/***/ },
-/* 106 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 110 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -14800,7 +13488,7 @@
 	
 	'use strict';
 	
-	var ExecutionEnvironment = __webpack_require__(84);
+	var ExecutionEnvironment = __webpack_require__(88);
 	
 	var useHasFeature;
 	if (ExecutionEnvironment.canUseDOM) {
@@ -14848,9 +13536,9 @@
 	
 	module.exports = isEventSupported;
 
-/***/ },
-/* 107 */
-/***/ function(module, exports) {
+/***/ }),
+/* 111 */
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -14903,9 +13591,9 @@
 	
 	module.exports = isTextInputElement;
 
-/***/ },
-/* 108 */
-/***/ function(module, exports) {
+/***/ }),
+/* 112 */
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -14933,9 +13621,9 @@
 	
 	module.exports = DefaultEventPluginOrder;
 
-/***/ },
-/* 109 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 113 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -14949,9 +13637,9 @@
 	
 	'use strict';
 	
-	var EventPropagators = __webpack_require__(77);
-	var ReactDOMComponentTree = __webpack_require__(70);
-	var SyntheticMouseEvent = __webpack_require__(110);
+	var EventPropagators = __webpack_require__(81);
+	var ReactDOMComponentTree = __webpack_require__(74);
+	var SyntheticMouseEvent = __webpack_require__(114);
 	
 	var eventTypes = {
 	  mouseEnter: {
@@ -15037,9 +13725,9 @@
 	
 	module.exports = EnterLeaveEventPlugin;
 
-/***/ },
-/* 110 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 114 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -15053,10 +13741,10 @@
 	
 	'use strict';
 	
-	var SyntheticUIEvent = __webpack_require__(111);
-	var ViewportMetrics = __webpack_require__(112);
+	var SyntheticUIEvent = __webpack_require__(115);
+	var ViewportMetrics = __webpack_require__(116);
 	
-	var getEventModifierState = __webpack_require__(113);
+	var getEventModifierState = __webpack_require__(117);
 	
 	/**
 	 * @interface MouseEvent
@@ -15113,9 +13801,9 @@
 	
 	module.exports = SyntheticMouseEvent;
 
-/***/ },
-/* 111 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 115 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -15129,9 +13817,9 @@
 	
 	'use strict';
 	
-	var SyntheticEvent = __webpack_require__(89);
+	var SyntheticEvent = __webpack_require__(93);
 	
-	var getEventTarget = __webpack_require__(105);
+	var getEventTarget = __webpack_require__(109);
 	
 	/**
 	 * @interface UIEvent
@@ -15176,9 +13864,9 @@
 	
 	module.exports = SyntheticUIEvent;
 
-/***/ },
-/* 112 */
-/***/ function(module, exports) {
+/***/ }),
+/* 116 */
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -15207,9 +13895,9 @@
 	
 	module.exports = ViewportMetrics;
 
-/***/ },
-/* 113 */
-/***/ function(module, exports) {
+/***/ }),
+/* 117 */
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -15254,9 +13942,9 @@
 	
 	module.exports = getEventModifierState;
 
-/***/ },
-/* 114 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 118 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -15270,7 +13958,7 @@
 	
 	'use strict';
 	
-	var DOMProperty = __webpack_require__(72);
+	var DOMProperty = __webpack_require__(76);
 	
 	var MUST_USE_PROPERTY = DOMProperty.injection.MUST_USE_PROPERTY;
 	var HAS_BOOLEAN_VALUE = DOMProperty.injection.HAS_BOOLEAN_VALUE;
@@ -15465,14 +14153,38 @@
 	    htmlFor: 'for',
 	    httpEquiv: 'http-equiv'
 	  },
-	  DOMPropertyNames: {}
+	  DOMPropertyNames: {},
+	  DOMMutationMethods: {
+	    value: function (node, value) {
+	      if (value == null) {
+	        return node.removeAttribute('value');
+	      }
+	
+	      // Number inputs get special treatment due to some edge cases in
+	      // Chrome. Let everything else assign the value attribute as normal.
+	      // https://github.com/facebook/react/issues/7253#issuecomment-236074326
+	      if (node.type !== 'number' || node.hasAttribute('value') === false) {
+	        node.setAttribute('value', '' + value);
+	      } else if (node.validity && !node.validity.badInput && node.ownerDocument.activeElement !== node) {
+	        // Don't assign an attribute if validation reports bad
+	        // input. Chrome will clear the value. Additionally, don't
+	        // operate on inputs that have focus, otherwise Chrome might
+	        // strip off trailing decimal places and cause the user's
+	        // cursor position to jump to the beginning of the input.
+	        //
+	        // In ReactDOMInput, we have an onBlur event that will trigger
+	        // this function again when focus is lost.
+	        node.setAttribute('value', '' + value);
+	      }
+	    }
+	  }
 	};
 	
 	module.exports = HTMLDOMPropertyConfig;
 
-/***/ },
-/* 115 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 119 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -15486,8 +14198,8 @@
 	
 	'use strict';
 	
-	var DOMChildrenOperations = __webpack_require__(116);
-	var ReactDOMIDOperations = __webpack_require__(127);
+	var DOMChildrenOperations = __webpack_require__(120);
+	var ReactDOMIDOperations = __webpack_require__(131);
 	
 	/**
 	 * Abstracts away all functionality of the reconciler that requires knowledge of
@@ -15504,9 +14216,9 @@
 	
 	module.exports = ReactComponentBrowserEnvironment;
 
-/***/ },
-/* 116 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 120 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -15520,14 +14232,14 @@
 	
 	'use strict';
 	
-	var DOMLazyTree = __webpack_require__(117);
-	var Danger = __webpack_require__(123);
-	var ReactDOMComponentTree = __webpack_require__(70);
-	var ReactInstrumentation = __webpack_require__(98);
+	var DOMLazyTree = __webpack_require__(121);
+	var Danger = __webpack_require__(127);
+	var ReactDOMComponentTree = __webpack_require__(74);
+	var ReactInstrumentation = __webpack_require__(102);
 	
-	var createMicrosoftUnsafeLocalFunction = __webpack_require__(120);
-	var setInnerHTML = __webpack_require__(119);
-	var setTextContent = __webpack_require__(121);
+	var createMicrosoftUnsafeLocalFunction = __webpack_require__(124);
+	var setInnerHTML = __webpack_require__(123);
+	var setTextContent = __webpack_require__(125);
 	
 	function getNodeAfter(parentNode, node) {
 	  // Special case for text components, which return [open, close] comments
@@ -15734,9 +14446,9 @@
 	module.exports = DOMChildrenOperations;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 117 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 121 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2015-present, Facebook, Inc.
@@ -15750,11 +14462,11 @@
 	
 	'use strict';
 	
-	var DOMNamespaces = __webpack_require__(118);
-	var setInnerHTML = __webpack_require__(119);
+	var DOMNamespaces = __webpack_require__(122);
+	var setInnerHTML = __webpack_require__(123);
 	
-	var createMicrosoftUnsafeLocalFunction = __webpack_require__(120);
-	var setTextContent = __webpack_require__(121);
+	var createMicrosoftUnsafeLocalFunction = __webpack_require__(124);
+	var setTextContent = __webpack_require__(125);
 	
 	var ELEMENT_NODE_TYPE = 1;
 	var DOCUMENT_FRAGMENT_NODE_TYPE = 11;
@@ -15856,9 +14568,9 @@
 	
 	module.exports = DOMLazyTree;
 
-/***/ },
-/* 118 */
-/***/ function(module, exports) {
+/***/ }),
+/* 122 */
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -15880,9 +14592,9 @@
 	
 	module.exports = DOMNamespaces;
 
-/***/ },
-/* 119 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 123 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -15896,13 +14608,13 @@
 	
 	'use strict';
 	
-	var ExecutionEnvironment = __webpack_require__(84);
-	var DOMNamespaces = __webpack_require__(118);
+	var ExecutionEnvironment = __webpack_require__(88);
+	var DOMNamespaces = __webpack_require__(122);
 	
 	var WHITESPACE_TEST = /^[ \r\n\t\f]/;
 	var NONVISIBLE_TEST = /<(!--|link|noscript|meta|script|style)[ \r\n\t\f\/>]/;
 	
-	var createMicrosoftUnsafeLocalFunction = __webpack_require__(120);
+	var createMicrosoftUnsafeLocalFunction = __webpack_require__(124);
 	
 	// SVG temp container for IE lacking innerHTML
 	var reusableSVGContainer;
@@ -15982,9 +14694,9 @@
 	
 	module.exports = setInnerHTML;
 
-/***/ },
-/* 120 */
-/***/ function(module, exports) {
+/***/ }),
+/* 124 */
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -16018,9 +14730,9 @@
 	
 	module.exports = createMicrosoftUnsafeLocalFunction;
 
-/***/ },
-/* 121 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 125 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -16034,9 +14746,9 @@
 	
 	'use strict';
 	
-	var ExecutionEnvironment = __webpack_require__(84);
-	var escapeTextContentForBrowser = __webpack_require__(122);
-	var setInnerHTML = __webpack_require__(119);
+	var ExecutionEnvironment = __webpack_require__(88);
+	var escapeTextContentForBrowser = __webpack_require__(126);
+	var setInnerHTML = __webpack_require__(123);
 	
 	/**
 	 * Set the textContent property of a node, ensuring that whitespace is preserved
@@ -16074,9 +14786,9 @@
 	
 	module.exports = setTextContent;
 
-/***/ },
-/* 122 */
-/***/ function(module, exports) {
+/***/ }),
+/* 126 */
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2016-present, Facebook, Inc.
@@ -16201,9 +14913,9 @@
 	
 	module.exports = escapeTextContentForBrowser;
 
-/***/ },
-/* 123 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 127 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -16217,12 +14929,12 @@
 	
 	'use strict';
 	
-	var _prodInvariant = __webpack_require__(71);
+	var _prodInvariant = __webpack_require__(75);
 	
-	var DOMLazyTree = __webpack_require__(117);
-	var ExecutionEnvironment = __webpack_require__(84);
+	var DOMLazyTree = __webpack_require__(121);
+	var ExecutionEnvironment = __webpack_require__(88);
 	
-	var createNodesFromMarkup = __webpack_require__(124);
+	var createNodesFromMarkup = __webpack_require__(128);
 	var emptyFunction = __webpack_require__(48);
 	var invariant = __webpack_require__(44);
 	
@@ -16254,9 +14966,9 @@
 	module.exports = Danger;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 124 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 128 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 	
@@ -16273,10 +14985,10 @@
 	
 	/*eslint-disable fb-www/unsafe-html*/
 	
-	var ExecutionEnvironment = __webpack_require__(84);
+	var ExecutionEnvironment = __webpack_require__(88);
 	
-	var createArrayFromMixed = __webpack_require__(125);
-	var getMarkupWrap = __webpack_require__(126);
+	var createArrayFromMixed = __webpack_require__(129);
+	var getMarkupWrap = __webpack_require__(130);
 	var invariant = __webpack_require__(44);
 	
 	/**
@@ -16343,9 +15055,9 @@
 	module.exports = createNodesFromMarkup;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 125 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 129 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 	
@@ -16475,9 +15187,9 @@
 	module.exports = createArrayFromMixed;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 126 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 130 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 	
@@ -16493,7 +15205,7 @@
 	
 	/*eslint-disable fb-www/unsafe-html */
 	
-	var ExecutionEnvironment = __webpack_require__(84);
+	var ExecutionEnvironment = __webpack_require__(88);
 	
 	var invariant = __webpack_require__(44);
 	
@@ -16575,9 +15287,9 @@
 	module.exports = getMarkupWrap;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 127 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 131 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -16591,8 +15303,8 @@
 	
 	'use strict';
 	
-	var DOMChildrenOperations = __webpack_require__(116);
-	var ReactDOMComponentTree = __webpack_require__(70);
+	var DOMChildrenOperations = __webpack_require__(120);
+	var ReactDOMComponentTree = __webpack_require__(74);
 	
 	/**
 	 * Operations used to process updates to DOM nodes.
@@ -16613,9 +15325,9 @@
 	
 	module.exports = ReactDOMIDOperations;
 
-/***/ },
-/* 128 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 132 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -16631,34 +15343,34 @@
 	
 	'use strict';
 	
-	var _prodInvariant = __webpack_require__(71),
+	var _prodInvariant = __webpack_require__(75),
 	    _assign = __webpack_require__(40);
 	
-	var AutoFocusUtils = __webpack_require__(129);
-	var CSSPropertyOperations = __webpack_require__(131);
-	var DOMLazyTree = __webpack_require__(117);
-	var DOMNamespaces = __webpack_require__(118);
-	var DOMProperty = __webpack_require__(72);
-	var DOMPropertyOperations = __webpack_require__(139);
-	var EventPluginHub = __webpack_require__(78);
-	var EventPluginRegistry = __webpack_require__(79);
-	var ReactBrowserEventEmitter = __webpack_require__(141);
-	var ReactDOMComponentFlags = __webpack_require__(73);
-	var ReactDOMComponentTree = __webpack_require__(70);
-	var ReactDOMInput = __webpack_require__(144);
-	var ReactDOMOption = __webpack_require__(147);
-	var ReactDOMSelect = __webpack_require__(148);
-	var ReactDOMTextarea = __webpack_require__(149);
-	var ReactInstrumentation = __webpack_require__(98);
-	var ReactMultiChild = __webpack_require__(150);
-	var ReactServerRenderingTransaction = __webpack_require__(169);
+	var AutoFocusUtils = __webpack_require__(133);
+	var CSSPropertyOperations = __webpack_require__(135);
+	var DOMLazyTree = __webpack_require__(121);
+	var DOMNamespaces = __webpack_require__(122);
+	var DOMProperty = __webpack_require__(76);
+	var DOMPropertyOperations = __webpack_require__(143);
+	var EventPluginHub = __webpack_require__(82);
+	var EventPluginRegistry = __webpack_require__(83);
+	var ReactBrowserEventEmitter = __webpack_require__(145);
+	var ReactDOMComponentFlags = __webpack_require__(77);
+	var ReactDOMComponentTree = __webpack_require__(74);
+	var ReactDOMInput = __webpack_require__(148);
+	var ReactDOMOption = __webpack_require__(151);
+	var ReactDOMSelect = __webpack_require__(152);
+	var ReactDOMTextarea = __webpack_require__(153);
+	var ReactInstrumentation = __webpack_require__(102);
+	var ReactMultiChild = __webpack_require__(154);
+	var ReactServerRenderingTransaction = __webpack_require__(173);
 	
 	var emptyFunction = __webpack_require__(48);
-	var escapeTextContentForBrowser = __webpack_require__(122);
+	var escapeTextContentForBrowser = __webpack_require__(126);
 	var invariant = __webpack_require__(44);
-	var isEventSupported = __webpack_require__(106);
-	var shallowEqual = __webpack_require__(159);
-	var validateDOMNesting = __webpack_require__(172);
+	var isEventSupported = __webpack_require__(110);
+	var shallowEqual = __webpack_require__(163);
+	var validateDOMNesting = __webpack_require__(176);
 	var warning = __webpack_require__(47);
 	
 	var Flags = ReactDOMComponentFlags;
@@ -17619,9 +16331,9 @@
 	module.exports = ReactDOMComponent;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 129 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 133 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -17635,9 +16347,9 @@
 	
 	'use strict';
 	
-	var ReactDOMComponentTree = __webpack_require__(70);
+	var ReactDOMComponentTree = __webpack_require__(74);
 	
-	var focusNode = __webpack_require__(130);
+	var focusNode = __webpack_require__(134);
 	
 	var AutoFocusUtils = {
 	  focusDOMComponent: function () {
@@ -17647,9 +16359,9 @@
 	
 	module.exports = AutoFocusUtils;
 
-/***/ },
-/* 130 */
-/***/ function(module, exports) {
+/***/ }),
+/* 134 */
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright (c) 2013-present, Facebook, Inc.
@@ -17678,9 +16390,9 @@
 	
 	module.exports = focusNode;
 
-/***/ },
-/* 131 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 135 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -17694,14 +16406,14 @@
 	
 	'use strict';
 	
-	var CSSProperty = __webpack_require__(132);
-	var ExecutionEnvironment = __webpack_require__(84);
-	var ReactInstrumentation = __webpack_require__(98);
+	var CSSProperty = __webpack_require__(136);
+	var ExecutionEnvironment = __webpack_require__(88);
+	var ReactInstrumentation = __webpack_require__(102);
 	
-	var camelizeStyleName = __webpack_require__(133);
-	var dangerousStyleValue = __webpack_require__(135);
-	var hyphenateStyleName = __webpack_require__(136);
-	var memoizeStringOnly = __webpack_require__(138);
+	var camelizeStyleName = __webpack_require__(137);
+	var dangerousStyleValue = __webpack_require__(139);
+	var hyphenateStyleName = __webpack_require__(140);
+	var memoizeStringOnly = __webpack_require__(142);
 	var warning = __webpack_require__(47);
 	
 	var processStyleName = memoizeStringOnly(function (styleName) {
@@ -17892,9 +16604,9 @@
 	module.exports = CSSPropertyOperations;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 132 */
-/***/ function(module, exports) {
+/***/ }),
+/* 136 */
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -18044,9 +16756,9 @@
 	
 	module.exports = CSSProperty;
 
-/***/ },
-/* 133 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 137 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright (c) 2013-present, Facebook, Inc.
@@ -18061,7 +16773,7 @@
 	
 	'use strict';
 	
-	var camelize = __webpack_require__(134);
+	var camelize = __webpack_require__(138);
 	
 	var msPattern = /^-ms-/;
 	
@@ -18088,9 +16800,9 @@
 	
 	module.exports = camelizeStyleName;
 
-/***/ },
-/* 134 */
-/***/ function(module, exports) {
+/***/ }),
+/* 138 */
+/***/ (function(module, exports) {
 
 	"use strict";
 	
@@ -18124,9 +16836,9 @@
 	
 	module.exports = camelize;
 
-/***/ },
-/* 135 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 139 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -18140,7 +16852,7 @@
 	
 	'use strict';
 	
-	var CSSProperty = __webpack_require__(132);
+	var CSSProperty = __webpack_require__(136);
 	var warning = __webpack_require__(47);
 	
 	var isUnitlessNumber = CSSProperty.isUnitlessNumber;
@@ -18208,9 +16920,9 @@
 	module.exports = dangerousStyleValue;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 136 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 140 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright (c) 2013-present, Facebook, Inc.
@@ -18225,7 +16937,7 @@
 	
 	'use strict';
 	
-	var hyphenate = __webpack_require__(137);
+	var hyphenate = __webpack_require__(141);
 	
 	var msPattern = /^ms-/;
 	
@@ -18251,9 +16963,9 @@
 	
 	module.exports = hyphenateStyleName;
 
-/***/ },
-/* 137 */
-/***/ function(module, exports) {
+/***/ }),
+/* 141 */
+/***/ (function(module, exports) {
 
 	'use strict';
 	
@@ -18288,9 +17000,9 @@
 	
 	module.exports = hyphenate;
 
-/***/ },
-/* 138 */
-/***/ function(module, exports) {
+/***/ }),
+/* 142 */
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright (c) 2013-present, Facebook, Inc.
@@ -18322,9 +17034,9 @@
 	
 	module.exports = memoizeStringOnly;
 
-/***/ },
-/* 139 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 143 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -18338,11 +17050,11 @@
 	
 	'use strict';
 	
-	var DOMProperty = __webpack_require__(72);
-	var ReactDOMComponentTree = __webpack_require__(70);
-	var ReactInstrumentation = __webpack_require__(98);
+	var DOMProperty = __webpack_require__(76);
+	var ReactDOMComponentTree = __webpack_require__(74);
+	var ReactInstrumentation = __webpack_require__(102);
 	
-	var quoteAttributeValueForBrowser = __webpack_require__(140);
+	var quoteAttributeValueForBrowser = __webpack_require__(144);
 	var warning = __webpack_require__(47);
 	
 	var VALID_ATTRIBUTE_NAME_REGEX = new RegExp('^[' + DOMProperty.ATTRIBUTE_NAME_START_CHAR + '][' + DOMProperty.ATTRIBUTE_NAME_CHAR + ']*$');
@@ -18564,9 +17276,9 @@
 	module.exports = DOMPropertyOperations;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 140 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 144 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -18580,7 +17292,7 @@
 	
 	'use strict';
 	
-	var escapeTextContentForBrowser = __webpack_require__(122);
+	var escapeTextContentForBrowser = __webpack_require__(126);
 	
 	/**
 	 * Escapes attribute value to prevent scripting attacks.
@@ -18594,9 +17306,9 @@
 	
 	module.exports = quoteAttributeValueForBrowser;
 
-/***/ },
-/* 141 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 145 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -18612,12 +17324,12 @@
 	
 	var _assign = __webpack_require__(40);
 	
-	var EventPluginRegistry = __webpack_require__(79);
-	var ReactEventEmitterMixin = __webpack_require__(142);
-	var ViewportMetrics = __webpack_require__(112);
+	var EventPluginRegistry = __webpack_require__(83);
+	var ReactEventEmitterMixin = __webpack_require__(146);
+	var ViewportMetrics = __webpack_require__(116);
 	
-	var getVendorPrefixedEventName = __webpack_require__(143);
-	var isEventSupported = __webpack_require__(106);
+	var getVendorPrefixedEventName = __webpack_require__(147);
+	var isEventSupported = __webpack_require__(110);
 	
 	/**
 	 * Summary of `ReactBrowserEventEmitter` event handling:
@@ -18926,9 +17638,9 @@
 	
 	module.exports = ReactBrowserEventEmitter;
 
-/***/ },
-/* 142 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 146 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -18942,7 +17654,7 @@
 	
 	'use strict';
 	
-	var EventPluginHub = __webpack_require__(78);
+	var EventPluginHub = __webpack_require__(82);
 	
 	function runEventQueueInBatch(events) {
 	  EventPluginHub.enqueueEvents(events);
@@ -18963,9 +17675,9 @@
 	
 	module.exports = ReactEventEmitterMixin;
 
-/***/ },
-/* 143 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 147 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -18979,7 +17691,7 @@
 	
 	'use strict';
 	
-	var ExecutionEnvironment = __webpack_require__(84);
+	var ExecutionEnvironment = __webpack_require__(88);
 	
 	/**
 	 * Generate a mapping of standard vendor prefixes using the defined style property and event name.
@@ -19068,9 +17780,9 @@
 	
 	module.exports = getVendorPrefixedEventName;
 
-/***/ },
-/* 144 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 148 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -19084,13 +17796,13 @@
 	
 	'use strict';
 	
-	var _prodInvariant = __webpack_require__(71),
+	var _prodInvariant = __webpack_require__(75),
 	    _assign = __webpack_require__(40);
 	
-	var DOMPropertyOperations = __webpack_require__(139);
-	var LinkedValueUtils = __webpack_require__(145);
-	var ReactDOMComponentTree = __webpack_require__(70);
-	var ReactUpdates = __webpack_require__(92);
+	var DOMPropertyOperations = __webpack_require__(143);
+	var LinkedValueUtils = __webpack_require__(149);
+	var ReactDOMComponentTree = __webpack_require__(74);
+	var ReactUpdates = __webpack_require__(96);
 	
 	var invariant = __webpack_require__(44);
 	var warning = __webpack_require__(47);
@@ -19186,12 +17898,9 @@
 	      initialChecked: props.checked != null ? props.checked : props.defaultChecked,
 	      initialValue: props.value != null ? props.value : defaultValue,
 	      listeners: null,
-	      onChange: _handleChange.bind(inst)
+	      onChange: _handleChange.bind(inst),
+	      controlled: isControlled(props)
 	    };
-	
-	    if (process.env.NODE_ENV !== 'production') {
-	      inst._wrapperState.controlled = isControlled(props);
-	    }
 	  },
 	
 	  updateWrapper: function (inst) {
@@ -19220,14 +17929,24 @@
 	    var node = ReactDOMComponentTree.getNodeFromInstance(inst);
 	    var value = LinkedValueUtils.getValue(props);
 	    if (value != null) {
+	      if (value === 0 && node.value === '') {
+	        node.value = '0';
+	        // Note: IE9 reports a number inputs as 'text', so check props instead.
+	      } else if (props.type === 'number') {
+	        // Simulate `input.valueAsNumber`. IE9 does not support it
+	        var valueAsNumber = parseFloat(node.value, 10) || 0;
 	
-	      // Cast `value` to a string to ensure the value is set correctly. While
-	      // browsers typically do this as necessary, jsdom doesn't.
-	      var newValue = '' + value;
-	
-	      // To avoid side effects (such as losing text selection), only set value if changed
-	      if (newValue !== node.value) {
-	        node.value = newValue;
+	        // eslint-disable-next-line
+	        if (value != valueAsNumber) {
+	          // Cast `value` to a string to ensure the value is set correctly. While
+	          // browsers typically do this as necessary, jsdom doesn't.
+	          node.value = '' + value;
+	        }
+	        // eslint-disable-next-line
+	      } else if (value != node.value) {
+	        // Cast `value` to a string to ensure the value is set correctly. While
+	        // browsers typically do this as necessary, jsdom doesn't.
+	        node.value = '' + value;
 	      }
 	    } else {
 	      if (props.value == null && props.defaultValue != null) {
@@ -19351,9 +18070,9 @@
 	module.exports = ReactDOMInput;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 145 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 149 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -19367,10 +18086,13 @@
 	
 	'use strict';
 	
-	var _prodInvariant = __webpack_require__(71);
+	var _prodInvariant = __webpack_require__(75);
+	
+	var ReactPropTypesSecret = __webpack_require__(150);
+	var propTypesFactory = __webpack_require__(66);
 	
 	var React = __webpack_require__(38);
-	var ReactPropTypesSecret = __webpack_require__(146);
+	var PropTypes = propTypesFactory(React.isValidElement);
 	
 	var invariant = __webpack_require__(44);
 	var warning = __webpack_require__(47);
@@ -19411,7 +18133,7 @@
 	    }
 	    return new Error('You provided a `checked` prop to a form field without an ' + '`onChange` handler. This will render a read-only field. If ' + 'the field should be mutable use `defaultChecked`. Otherwise, ' + 'set either `onChange` or `readOnly`.');
 	  },
-	  onChange: React.PropTypes.func
+	  onChange: PropTypes.func
 	};
 	
 	var loggedTypeFailures = {};
@@ -19491,9 +18213,9 @@
 	module.exports = LinkedValueUtils;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 146 */
-/***/ function(module, exports) {
+/***/ }),
+/* 150 */
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -19512,9 +18234,9 @@
 	
 	module.exports = ReactPropTypesSecret;
 
-/***/ },
-/* 147 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 151 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -19531,8 +18253,8 @@
 	var _assign = __webpack_require__(40);
 	
 	var React = __webpack_require__(38);
-	var ReactDOMComponentTree = __webpack_require__(70);
-	var ReactDOMSelect = __webpack_require__(148);
+	var ReactDOMComponentTree = __webpack_require__(74);
+	var ReactDOMSelect = __webpack_require__(152);
 	
 	var warning = __webpack_require__(47);
 	var didWarnInvalidOptionChildren = false;
@@ -19640,9 +18362,9 @@
 	module.exports = ReactDOMOption;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 148 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 152 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -19658,9 +18380,9 @@
 	
 	var _assign = __webpack_require__(40);
 	
-	var LinkedValueUtils = __webpack_require__(145);
-	var ReactDOMComponentTree = __webpack_require__(70);
-	var ReactUpdates = __webpack_require__(92);
+	var LinkedValueUtils = __webpack_require__(149);
+	var ReactDOMComponentTree = __webpack_require__(74);
+	var ReactUpdates = __webpack_require__(96);
 	
 	var warning = __webpack_require__(47);
 	
@@ -19845,9 +18567,9 @@
 	module.exports = ReactDOMSelect;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 149 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 153 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -19861,12 +18583,12 @@
 	
 	'use strict';
 	
-	var _prodInvariant = __webpack_require__(71),
+	var _prodInvariant = __webpack_require__(75),
 	    _assign = __webpack_require__(40);
 	
-	var LinkedValueUtils = __webpack_require__(145);
-	var ReactDOMComponentTree = __webpack_require__(70);
-	var ReactUpdates = __webpack_require__(92);
+	var LinkedValueUtils = __webpack_require__(149);
+	var ReactDOMComponentTree = __webpack_require__(74);
+	var ReactUpdates = __webpack_require__(96);
 	
 	var invariant = __webpack_require__(44);
 	var warning = __webpack_require__(47);
@@ -20010,9 +18732,9 @@
 	module.exports = ReactDOMTextarea;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 150 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 154 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -20026,18 +18748,18 @@
 	
 	'use strict';
 	
-	var _prodInvariant = __webpack_require__(71);
+	var _prodInvariant = __webpack_require__(75);
 	
-	var ReactComponentEnvironment = __webpack_require__(151);
-	var ReactInstanceMap = __webpack_require__(152);
-	var ReactInstrumentation = __webpack_require__(98);
+	var ReactComponentEnvironment = __webpack_require__(155);
+	var ReactInstanceMap = __webpack_require__(156);
+	var ReactInstrumentation = __webpack_require__(102);
 	
 	var ReactCurrentOwner = __webpack_require__(46);
-	var ReactReconciler = __webpack_require__(95);
-	var ReactChildReconciler = __webpack_require__(153);
+	var ReactReconciler = __webpack_require__(99);
+	var ReactChildReconciler = __webpack_require__(157);
 	
 	var emptyFunction = __webpack_require__(48);
-	var flattenChildren = __webpack_require__(168);
+	var flattenChildren = __webpack_require__(172);
 	var invariant = __webpack_require__(44);
 	
 	/**
@@ -20465,9 +19187,9 @@
 	module.exports = ReactMultiChild;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 151 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 155 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2014-present, Facebook, Inc.
@@ -20482,7 +19204,7 @@
 	
 	'use strict';
 	
-	var _prodInvariant = __webpack_require__(71);
+	var _prodInvariant = __webpack_require__(75);
 	
 	var invariant = __webpack_require__(44);
 	
@@ -20516,9 +19238,9 @@
 	module.exports = ReactComponentEnvironment;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 152 */
-/***/ function(module, exports) {
+/***/ }),
+/* 156 */
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -20568,9 +19290,9 @@
 	
 	module.exports = ReactInstanceMap;
 
-/***/ },
-/* 153 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 157 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2014-present, Facebook, Inc.
@@ -20584,12 +19306,12 @@
 	
 	'use strict';
 	
-	var ReactReconciler = __webpack_require__(95);
+	var ReactReconciler = __webpack_require__(99);
 	
-	var instantiateReactComponent = __webpack_require__(154);
-	var KeyEscapeUtils = __webpack_require__(164);
-	var shouldUpdateReactComponent = __webpack_require__(160);
-	var traverseAllChildren = __webpack_require__(165);
+	var instantiateReactComponent = __webpack_require__(158);
+	var KeyEscapeUtils = __webpack_require__(168);
+	var shouldUpdateReactComponent = __webpack_require__(164);
+	var traverseAllChildren = __webpack_require__(169);
 	var warning = __webpack_require__(47);
 	
 	var ReactComponentTreeHook;
@@ -20727,9 +19449,9 @@
 	module.exports = ReactChildReconciler;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 154 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 158 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -20743,14 +19465,14 @@
 	
 	'use strict';
 	
-	var _prodInvariant = __webpack_require__(71),
+	var _prodInvariant = __webpack_require__(75),
 	    _assign = __webpack_require__(40);
 	
-	var ReactCompositeComponent = __webpack_require__(155);
-	var ReactEmptyComponent = __webpack_require__(161);
-	var ReactHostComponent = __webpack_require__(162);
+	var ReactCompositeComponent = __webpack_require__(159);
+	var ReactEmptyComponent = __webpack_require__(165);
+	var ReactHostComponent = __webpack_require__(166);
 	
-	var getNextDebugID = __webpack_require__(163);
+	var getNextDebugID = __webpack_require__(167);
 	var invariant = __webpack_require__(44);
 	var warning = __webpack_require__(47);
 	
@@ -20758,9 +19480,6 @@
 	var ReactCompositeComponentWrapper = function (element) {
 	  this.construct(element);
 	};
-	_assign(ReactCompositeComponentWrapper.prototype, ReactCompositeComponent, {
-	  _instantiateReactComponent: instantiateReactComponent
-	});
 	
 	function getDeclarationErrorAddendum(owner) {
 	  if (owner) {
@@ -20857,12 +19576,16 @@
 	  return instance;
 	}
 	
+	_assign(ReactCompositeComponentWrapper.prototype, ReactCompositeComponent, {
+	  _instantiateReactComponent: instantiateReactComponent
+	});
+	
 	module.exports = instantiateReactComponent;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 155 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 159 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -20876,26 +19599,26 @@
 	
 	'use strict';
 	
-	var _prodInvariant = __webpack_require__(71),
+	var _prodInvariant = __webpack_require__(75),
 	    _assign = __webpack_require__(40);
 	
 	var React = __webpack_require__(38);
-	var ReactComponentEnvironment = __webpack_require__(151);
+	var ReactComponentEnvironment = __webpack_require__(155);
 	var ReactCurrentOwner = __webpack_require__(46);
-	var ReactErrorUtils = __webpack_require__(81);
-	var ReactInstanceMap = __webpack_require__(152);
-	var ReactInstrumentation = __webpack_require__(98);
-	var ReactNodeTypes = __webpack_require__(156);
-	var ReactReconciler = __webpack_require__(95);
+	var ReactErrorUtils = __webpack_require__(85);
+	var ReactInstanceMap = __webpack_require__(156);
+	var ReactInstrumentation = __webpack_require__(102);
+	var ReactNodeTypes = __webpack_require__(160);
+	var ReactReconciler = __webpack_require__(99);
 	
 	if (process.env.NODE_ENV !== 'production') {
-	  var checkReactTypeSpec = __webpack_require__(157);
+	  var checkReactTypeSpec = __webpack_require__(161);
 	}
 	
 	var emptyObject = __webpack_require__(56);
 	var invariant = __webpack_require__(44);
-	var shallowEqual = __webpack_require__(159);
-	var shouldUpdateReactComponent = __webpack_require__(160);
+	var shallowEqual = __webpack_require__(163);
+	var shouldUpdateReactComponent = __webpack_require__(164);
 	var warning = __webpack_require__(47);
 	
 	var CompositeTypes = {
@@ -21380,7 +20103,7 @@
 	    if (childContext) {
 	      !(typeof Component.childContextTypes === 'object') ? process.env.NODE_ENV !== 'production' ? invariant(false, '%s.getChildContext(): childContextTypes must be defined in order to use getChildContext().', this.getName() || 'ReactCompositeComponent') : _prodInvariant('107', this.getName() || 'ReactCompositeComponent') : void 0;
 	      if (process.env.NODE_ENV !== 'production') {
-	        this._checkContextTypes(Component.childContextTypes, childContext, 'childContext');
+	        this._checkContextTypes(Component.childContextTypes, childContext, 'child context');
 	      }
 	      for (var name in childContext) {
 	        !(name in Component.childContextTypes) ? process.env.NODE_ENV !== 'production' ? invariant(false, '%s.getChildContext(): key "%s" is not defined in childContextTypes.', this.getName() || 'ReactCompositeComponent', name) : _prodInvariant('108', this.getName() || 'ReactCompositeComponent', name) : void 0;
@@ -21767,9 +20490,9 @@
 	module.exports = ReactCompositeComponent;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 156 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 160 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -21784,7 +20507,7 @@
 	
 	'use strict';
 	
-	var _prodInvariant = __webpack_require__(71);
+	var _prodInvariant = __webpack_require__(75);
 	
 	var React = __webpack_require__(38);
 	
@@ -21812,9 +20535,9 @@
 	module.exports = ReactNodeTypes;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 157 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 161 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -21828,10 +20551,10 @@
 	
 	'use strict';
 	
-	var _prodInvariant = __webpack_require__(71);
+	var _prodInvariant = __webpack_require__(75);
 	
-	var ReactPropTypeLocationNames = __webpack_require__(158);
-	var ReactPropTypesSecret = __webpack_require__(146);
+	var ReactPropTypeLocationNames = __webpack_require__(162);
+	var ReactPropTypesSecret = __webpack_require__(150);
 	
 	var invariant = __webpack_require__(44);
 	var warning = __webpack_require__(47);
@@ -21904,9 +20627,9 @@
 	module.exports = checkReactTypeSpec;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 158 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 162 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -21934,9 +20657,9 @@
 	module.exports = ReactPropTypeLocationNames;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 159 */
-/***/ function(module, exports) {
+/***/ }),
+/* 163 */
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright (c) 2013-present, Facebook, Inc.
@@ -22006,9 +20729,9 @@
 	
 	module.exports = shallowEqual;
 
-/***/ },
-/* 160 */
-/***/ function(module, exports) {
+/***/ }),
+/* 164 */
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -22052,9 +20775,9 @@
 	
 	module.exports = shouldUpdateReactComponent;
 
-/***/ },
-/* 161 */
-/***/ function(module, exports) {
+/***/ }),
+/* 165 */
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2014-present, Facebook, Inc.
@@ -22086,9 +20809,9 @@
 	
 	module.exports = ReactEmptyComponent;
 
-/***/ },
-/* 162 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 166 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2014-present, Facebook, Inc.
@@ -22102,7 +20825,7 @@
 	
 	'use strict';
 	
-	var _prodInvariant = __webpack_require__(71);
+	var _prodInvariant = __webpack_require__(75);
 	
 	var invariant = __webpack_require__(44);
 	
@@ -22159,9 +20882,9 @@
 	module.exports = ReactHostComponent;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 163 */
-/***/ function(module, exports) {
+/***/ }),
+/* 167 */
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -22184,9 +20907,9 @@
 	
 	module.exports = getNextDebugID;
 
-/***/ },
-/* 164 */
-/***/ function(module, exports) {
+/***/ }),
+/* 168 */
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -22247,9 +20970,9 @@
 	
 	module.exports = KeyEscapeUtils;
 
-/***/ },
-/* 165 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 169 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -22263,14 +20986,14 @@
 	
 	'use strict';
 	
-	var _prodInvariant = __webpack_require__(71);
+	var _prodInvariant = __webpack_require__(75);
 	
 	var ReactCurrentOwner = __webpack_require__(46);
-	var REACT_ELEMENT_TYPE = __webpack_require__(166);
+	var REACT_ELEMENT_TYPE = __webpack_require__(170);
 	
-	var getIteratorFn = __webpack_require__(167);
+	var getIteratorFn = __webpack_require__(171);
 	var invariant = __webpack_require__(44);
-	var KeyEscapeUtils = __webpack_require__(164);
+	var KeyEscapeUtils = __webpack_require__(168);
 	var warning = __webpack_require__(47);
 	
 	var SEPARATOR = '.';
@@ -22428,9 +21151,9 @@
 	module.exports = traverseAllChildren;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 166 */
-/***/ function(module, exports) {
+/***/ }),
+/* 170 */
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2014-present, Facebook, Inc.
@@ -22452,9 +21175,9 @@
 	
 	module.exports = REACT_ELEMENT_TYPE;
 
-/***/ },
-/* 167 */
-/***/ function(module, exports) {
+/***/ }),
+/* 171 */
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -22497,9 +21220,9 @@
 	
 	module.exports = getIteratorFn;
 
-/***/ },
-/* 168 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 172 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -22514,8 +21237,8 @@
 	
 	'use strict';
 	
-	var KeyEscapeUtils = __webpack_require__(164);
-	var traverseAllChildren = __webpack_require__(165);
+	var KeyEscapeUtils = __webpack_require__(168);
+	var traverseAllChildren = __webpack_require__(169);
 	var warning = __webpack_require__(47);
 	
 	var ReactComponentTreeHook;
@@ -22578,9 +21301,9 @@
 	module.exports = flattenChildren;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 169 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 173 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2014-present, Facebook, Inc.
@@ -22596,10 +21319,10 @@
 	
 	var _assign = __webpack_require__(40);
 	
-	var PooledClass = __webpack_require__(86);
-	var Transaction = __webpack_require__(104);
-	var ReactInstrumentation = __webpack_require__(98);
-	var ReactServerUpdateQueue = __webpack_require__(170);
+	var PooledClass = __webpack_require__(90);
+	var Transaction = __webpack_require__(108);
+	var ReactInstrumentation = __webpack_require__(102);
+	var ReactServerUpdateQueue = __webpack_require__(174);
 	
 	/**
 	 * Executed within the scope of the `Transaction` instance. Consider these as
@@ -22673,9 +21396,9 @@
 	module.exports = ReactServerRenderingTransaction;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 170 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 174 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2015-present, Facebook, Inc.
@@ -22692,7 +21415,7 @@
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
-	var ReactUpdateQueue = __webpack_require__(171);
+	var ReactUpdateQueue = __webpack_require__(175);
 	
 	var warning = __webpack_require__(47);
 	
@@ -22817,9 +21540,9 @@
 	module.exports = ReactServerUpdateQueue;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 171 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 175 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2015-present, Facebook, Inc.
@@ -22833,12 +21556,12 @@
 	
 	'use strict';
 	
-	var _prodInvariant = __webpack_require__(71);
+	var _prodInvariant = __webpack_require__(75);
 	
 	var ReactCurrentOwner = __webpack_require__(46);
-	var ReactInstanceMap = __webpack_require__(152);
-	var ReactInstrumentation = __webpack_require__(98);
-	var ReactUpdates = __webpack_require__(92);
+	var ReactInstanceMap = __webpack_require__(156);
+	var ReactInstrumentation = __webpack_require__(102);
+	var ReactUpdates = __webpack_require__(96);
 	
 	var invariant = __webpack_require__(44);
 	var warning = __webpack_require__(47);
@@ -22991,7 +21714,7 @@
 	   * @param {object} completeState Next state.
 	   * @internal
 	   */
-	  enqueueReplaceState: function (publicInstance, completeState) {
+	  enqueueReplaceState: function (publicInstance, completeState, callback) {
 	    var internalInstance = getInternalInstanceReadyForUpdate(publicInstance, 'replaceState');
 	
 	    if (!internalInstance) {
@@ -23000,6 +21723,16 @@
 	
 	    internalInstance._pendingStateQueue = [completeState];
 	    internalInstance._pendingReplaceState = true;
+	
+	    // Future-proof 15.5
+	    if (callback !== undefined && callback !== null) {
+	      ReactUpdateQueue.validateCallback(callback, 'replaceState');
+	      if (internalInstance._pendingCallbacks) {
+	        internalInstance._pendingCallbacks.push(callback);
+	      } else {
+	        internalInstance._pendingCallbacks = [callback];
+	      }
+	    }
 	
 	    enqueueUpdate(internalInstance);
 	  },
@@ -23048,9 +21781,9 @@
 	module.exports = ReactUpdateQueue;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 172 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 176 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2015-present, Facebook, Inc.
@@ -23278,16 +22011,11 @@
 	      case 'section':
 	      case 'summary':
 	      case 'ul':
-	
 	      case 'pre':
 	      case 'listing':
-	
 	      case 'table':
-	
 	      case 'hr':
-	
 	      case 'xmp':
-	
 	      case 'h1':
 	      case 'h2':
 	      case 'h3':
@@ -23435,9 +22163,9 @@
 	module.exports = validateDOMNesting;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 173 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 177 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2014-present, Facebook, Inc.
@@ -23453,8 +22181,8 @@
 	
 	var _assign = __webpack_require__(40);
 	
-	var DOMLazyTree = __webpack_require__(117);
-	var ReactDOMComponentTree = __webpack_require__(70);
+	var DOMLazyTree = __webpack_require__(121);
+	var ReactDOMComponentTree = __webpack_require__(74);
 	
 	var ReactDOMEmptyComponent = function (instantiate) {
 	  // ReactCompositeComponent uses this:
@@ -23499,9 +22227,9 @@
 	
 	module.exports = ReactDOMEmptyComponent;
 
-/***/ },
-/* 174 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 178 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2015-present, Facebook, Inc.
@@ -23515,7 +22243,7 @@
 	
 	'use strict';
 	
-	var _prodInvariant = __webpack_require__(71);
+	var _prodInvariant = __webpack_require__(75);
 	
 	var invariant = __webpack_require__(44);
 	
@@ -23640,9 +22368,9 @@
 	};
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 175 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 179 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -23656,16 +22384,16 @@
 	
 	'use strict';
 	
-	var _prodInvariant = __webpack_require__(71),
+	var _prodInvariant = __webpack_require__(75),
 	    _assign = __webpack_require__(40);
 	
-	var DOMChildrenOperations = __webpack_require__(116);
-	var DOMLazyTree = __webpack_require__(117);
-	var ReactDOMComponentTree = __webpack_require__(70);
+	var DOMChildrenOperations = __webpack_require__(120);
+	var DOMLazyTree = __webpack_require__(121);
+	var ReactDOMComponentTree = __webpack_require__(74);
 	
-	var escapeTextContentForBrowser = __webpack_require__(122);
+	var escapeTextContentForBrowser = __webpack_require__(126);
 	var invariant = __webpack_require__(44);
-	var validateDOMNesting = __webpack_require__(172);
+	var validateDOMNesting = __webpack_require__(176);
 	
 	/**
 	 * Text nodes violate a couple assumptions that React makes about components:
@@ -23809,9 +22537,9 @@
 	module.exports = ReactDOMTextComponent;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 176 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 180 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -23827,8 +22555,8 @@
 	
 	var _assign = __webpack_require__(40);
 	
-	var ReactUpdates = __webpack_require__(92);
-	var Transaction = __webpack_require__(104);
+	var ReactUpdates = __webpack_require__(96);
+	var Transaction = __webpack_require__(108);
 	
 	var emptyFunction = __webpack_require__(48);
 	
@@ -23881,9 +22609,9 @@
 	
 	module.exports = ReactDefaultBatchingStrategy;
 
-/***/ },
-/* 177 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 181 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -23899,14 +22627,14 @@
 	
 	var _assign = __webpack_require__(40);
 	
-	var EventListener = __webpack_require__(178);
-	var ExecutionEnvironment = __webpack_require__(84);
-	var PooledClass = __webpack_require__(86);
-	var ReactDOMComponentTree = __webpack_require__(70);
-	var ReactUpdates = __webpack_require__(92);
+	var EventListener = __webpack_require__(182);
+	var ExecutionEnvironment = __webpack_require__(88);
+	var PooledClass = __webpack_require__(90);
+	var ReactDOMComponentTree = __webpack_require__(74);
+	var ReactUpdates = __webpack_require__(96);
 	
-	var getEventTarget = __webpack_require__(105);
-	var getUnboundedScrollPosition = __webpack_require__(179);
+	var getEventTarget = __webpack_require__(109);
+	var getUnboundedScrollPosition = __webpack_require__(183);
 	
 	/**
 	 * Find the deepest React component completely containing the root of the
@@ -24040,9 +22768,9 @@
 	
 	module.exports = ReactEventListener;
 
-/***/ },
-/* 178 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 182 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 	
@@ -24129,9 +22857,9 @@
 	module.exports = EventListener;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 179 */
-/***/ function(module, exports) {
+/***/ }),
+/* 183 */
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright (c) 2013-present, Facebook, Inc.
@@ -24158,10 +22886,10 @@
 	 */
 	
 	function getUnboundedScrollPosition(scrollable) {
-	  if (scrollable === window) {
+	  if (scrollable.Window && scrollable instanceof scrollable.Window) {
 	    return {
-	      x: window.pageXOffset || document.documentElement.scrollLeft,
-	      y: window.pageYOffset || document.documentElement.scrollTop
+	      x: scrollable.pageXOffset || scrollable.document.documentElement.scrollLeft,
+	      y: scrollable.pageYOffset || scrollable.document.documentElement.scrollTop
 	    };
 	  }
 	  return {
@@ -24172,9 +22900,9 @@
 	
 	module.exports = getUnboundedScrollPosition;
 
-/***/ },
-/* 180 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 184 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -24188,14 +22916,14 @@
 	
 	'use strict';
 	
-	var DOMProperty = __webpack_require__(72);
-	var EventPluginHub = __webpack_require__(78);
-	var EventPluginUtils = __webpack_require__(80);
-	var ReactComponentEnvironment = __webpack_require__(151);
-	var ReactEmptyComponent = __webpack_require__(161);
-	var ReactBrowserEventEmitter = __webpack_require__(141);
-	var ReactHostComponent = __webpack_require__(162);
-	var ReactUpdates = __webpack_require__(92);
+	var DOMProperty = __webpack_require__(76);
+	var EventPluginHub = __webpack_require__(82);
+	var EventPluginUtils = __webpack_require__(84);
+	var ReactComponentEnvironment = __webpack_require__(155);
+	var ReactEmptyComponent = __webpack_require__(165);
+	var ReactBrowserEventEmitter = __webpack_require__(145);
+	var ReactHostComponent = __webpack_require__(166);
+	var ReactUpdates = __webpack_require__(96);
 	
 	var ReactInjection = {
 	  Component: ReactComponentEnvironment.injection,
@@ -24210,9 +22938,9 @@
 	
 	module.exports = ReactInjection;
 
-/***/ },
-/* 181 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 185 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -24228,13 +22956,13 @@
 	
 	var _assign = __webpack_require__(40);
 	
-	var CallbackQueue = __webpack_require__(93);
-	var PooledClass = __webpack_require__(86);
-	var ReactBrowserEventEmitter = __webpack_require__(141);
-	var ReactInputSelection = __webpack_require__(182);
-	var ReactInstrumentation = __webpack_require__(98);
-	var Transaction = __webpack_require__(104);
-	var ReactUpdateQueue = __webpack_require__(171);
+	var CallbackQueue = __webpack_require__(97);
+	var PooledClass = __webpack_require__(90);
+	var ReactBrowserEventEmitter = __webpack_require__(145);
+	var ReactInputSelection = __webpack_require__(186);
+	var ReactInstrumentation = __webpack_require__(102);
+	var Transaction = __webpack_require__(108);
+	var ReactUpdateQueue = __webpack_require__(175);
 	
 	/**
 	 * Ensures that, when possible, the selection range (currently selected text
@@ -24393,9 +23121,9 @@
 	module.exports = ReactReconcileTransaction;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 182 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 186 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -24409,11 +23137,11 @@
 	
 	'use strict';
 	
-	var ReactDOMSelection = __webpack_require__(183);
+	var ReactDOMSelection = __webpack_require__(187);
 	
-	var containsNode = __webpack_require__(185);
-	var focusNode = __webpack_require__(130);
-	var getActiveElement = __webpack_require__(188);
+	var containsNode = __webpack_require__(189);
+	var focusNode = __webpack_require__(134);
+	var getActiveElement = __webpack_require__(192);
 	
 	function isInDocument(node) {
 	  return containsNode(document.documentElement, node);
@@ -24521,9 +23249,9 @@
 	
 	module.exports = ReactInputSelection;
 
-/***/ },
-/* 183 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 187 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -24537,10 +23265,10 @@
 	
 	'use strict';
 	
-	var ExecutionEnvironment = __webpack_require__(84);
+	var ExecutionEnvironment = __webpack_require__(88);
 	
-	var getNodeForCharacterOffset = __webpack_require__(184);
-	var getTextContentAccessor = __webpack_require__(87);
+	var getNodeForCharacterOffset = __webpack_require__(188);
+	var getTextContentAccessor = __webpack_require__(91);
 	
 	/**
 	 * While `isCollapsed` is available on the Selection object and `collapsed`
@@ -24737,9 +23465,9 @@
 	
 	module.exports = ReactDOMSelection;
 
-/***/ },
-/* 184 */
-/***/ function(module, exports) {
+/***/ }),
+/* 188 */
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -24815,9 +23543,9 @@
 	
 	module.exports = getNodeForCharacterOffset;
 
-/***/ },
-/* 185 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 189 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -24832,7 +23560,7 @@
 	 * 
 	 */
 	
-	var isTextNode = __webpack_require__(186);
+	var isTextNode = __webpack_require__(190);
 	
 	/*eslint-disable no-bitwise */
 	
@@ -24859,9 +23587,9 @@
 	
 	module.exports = containsNode;
 
-/***/ },
-/* 186 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 190 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -24876,7 +23604,7 @@
 	 * @typechecks
 	 */
 	
-	var isNode = __webpack_require__(187);
+	var isNode = __webpack_require__(191);
 	
 	/**
 	 * @param {*} object The object to check.
@@ -24888,9 +23616,9 @@
 	
 	module.exports = isTextNode;
 
-/***/ },
-/* 187 */
-/***/ function(module, exports) {
+/***/ }),
+/* 191 */
+/***/ (function(module, exports) {
 
 	'use strict';
 	
@@ -24910,14 +23638,16 @@
 	 * @return {boolean} Whether or not the object is a DOM node.
 	 */
 	function isNode(object) {
-	  return !!(object && (typeof Node === 'function' ? object instanceof Node : typeof object === 'object' && typeof object.nodeType === 'number' && typeof object.nodeName === 'string'));
+	  var doc = object ? object.ownerDocument || object : document;
+	  var defaultView = doc.defaultView || window;
+	  return !!(object && (typeof defaultView.Node === 'function' ? object instanceof defaultView.Node : typeof object === 'object' && typeof object.nodeType === 'number' && typeof object.nodeName === 'string'));
 	}
 	
 	module.exports = isNode;
 
-/***/ },
-/* 188 */
-/***/ function(module, exports) {
+/***/ }),
+/* 192 */
+/***/ (function(module, exports) {
 
 	'use strict';
 	
@@ -24940,23 +23670,27 @@
 	 *
 	 * The activeElement will be null only if the document or document body is not
 	 * yet defined.
+	 *
+	 * @param {?DOMDocument} doc Defaults to current document.
+	 * @return {?DOMElement}
 	 */
-	function getActiveElement() /*?DOMElement*/{
-	  if (typeof document === 'undefined') {
+	function getActiveElement(doc) /*?DOMElement*/{
+	  doc = doc || (typeof document !== 'undefined' ? document : undefined);
+	  if (typeof doc === 'undefined') {
 	    return null;
 	  }
 	  try {
-	    return document.activeElement || document.body;
+	    return doc.activeElement || doc.body;
 	  } catch (e) {
-	    return document.body;
+	    return doc.body;
 	  }
 	}
 	
 	module.exports = getActiveElement;
 
-/***/ },
-/* 189 */
-/***/ function(module, exports) {
+/***/ }),
+/* 193 */
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -25260,9 +23994,9 @@
 	
 	module.exports = SVGDOMPropertyConfig;
 
-/***/ },
-/* 190 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 194 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -25276,15 +24010,15 @@
 	
 	'use strict';
 	
-	var EventPropagators = __webpack_require__(77);
-	var ExecutionEnvironment = __webpack_require__(84);
-	var ReactDOMComponentTree = __webpack_require__(70);
-	var ReactInputSelection = __webpack_require__(182);
-	var SyntheticEvent = __webpack_require__(89);
+	var EventPropagators = __webpack_require__(81);
+	var ExecutionEnvironment = __webpack_require__(88);
+	var ReactDOMComponentTree = __webpack_require__(74);
+	var ReactInputSelection = __webpack_require__(186);
+	var SyntheticEvent = __webpack_require__(93);
 	
-	var getActiveElement = __webpack_require__(188);
-	var isTextInputElement = __webpack_require__(107);
-	var shallowEqual = __webpack_require__(159);
+	var getActiveElement = __webpack_require__(192);
+	var isTextInputElement = __webpack_require__(111);
+	var shallowEqual = __webpack_require__(163);
 	
 	var skipSelectionChangeEvent = ExecutionEnvironment.canUseDOM && 'documentMode' in document && document.documentMode <= 11;
 	
@@ -25455,9 +24189,9 @@
 	
 	module.exports = SelectEventPlugin;
 
-/***/ },
-/* 191 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 195 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -25472,25 +24206,25 @@
 	
 	'use strict';
 	
-	var _prodInvariant = __webpack_require__(71);
+	var _prodInvariant = __webpack_require__(75);
 	
-	var EventListener = __webpack_require__(178);
-	var EventPropagators = __webpack_require__(77);
-	var ReactDOMComponentTree = __webpack_require__(70);
-	var SyntheticAnimationEvent = __webpack_require__(192);
-	var SyntheticClipboardEvent = __webpack_require__(193);
-	var SyntheticEvent = __webpack_require__(89);
-	var SyntheticFocusEvent = __webpack_require__(194);
-	var SyntheticKeyboardEvent = __webpack_require__(195);
-	var SyntheticMouseEvent = __webpack_require__(110);
-	var SyntheticDragEvent = __webpack_require__(198);
-	var SyntheticTouchEvent = __webpack_require__(199);
-	var SyntheticTransitionEvent = __webpack_require__(200);
-	var SyntheticUIEvent = __webpack_require__(111);
-	var SyntheticWheelEvent = __webpack_require__(201);
+	var EventListener = __webpack_require__(182);
+	var EventPropagators = __webpack_require__(81);
+	var ReactDOMComponentTree = __webpack_require__(74);
+	var SyntheticAnimationEvent = __webpack_require__(196);
+	var SyntheticClipboardEvent = __webpack_require__(197);
+	var SyntheticEvent = __webpack_require__(93);
+	var SyntheticFocusEvent = __webpack_require__(198);
+	var SyntheticKeyboardEvent = __webpack_require__(199);
+	var SyntheticMouseEvent = __webpack_require__(114);
+	var SyntheticDragEvent = __webpack_require__(202);
+	var SyntheticTouchEvent = __webpack_require__(203);
+	var SyntheticTransitionEvent = __webpack_require__(204);
+	var SyntheticUIEvent = __webpack_require__(115);
+	var SyntheticWheelEvent = __webpack_require__(205);
 	
 	var emptyFunction = __webpack_require__(48);
-	var getEventCharCode = __webpack_require__(196);
+	var getEventCharCode = __webpack_require__(200);
 	var invariant = __webpack_require__(44);
 	
 	/**
@@ -25688,9 +24422,9 @@
 	module.exports = SimpleEventPlugin;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 192 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 196 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -25704,7 +24438,7 @@
 	
 	'use strict';
 	
-	var SyntheticEvent = __webpack_require__(89);
+	var SyntheticEvent = __webpack_require__(93);
 	
 	/**
 	 * @interface Event
@@ -25731,9 +24465,9 @@
 	
 	module.exports = SyntheticAnimationEvent;
 
-/***/ },
-/* 193 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 197 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -25747,7 +24481,7 @@
 	
 	'use strict';
 	
-	var SyntheticEvent = __webpack_require__(89);
+	var SyntheticEvent = __webpack_require__(93);
 	
 	/**
 	 * @interface Event
@@ -25773,9 +24507,9 @@
 	
 	module.exports = SyntheticClipboardEvent;
 
-/***/ },
-/* 194 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 198 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -25789,7 +24523,7 @@
 	
 	'use strict';
 	
-	var SyntheticUIEvent = __webpack_require__(111);
+	var SyntheticUIEvent = __webpack_require__(115);
 	
 	/**
 	 * @interface FocusEvent
@@ -25813,9 +24547,9 @@
 	
 	module.exports = SyntheticFocusEvent;
 
-/***/ },
-/* 195 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 199 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -25829,11 +24563,11 @@
 	
 	'use strict';
 	
-	var SyntheticUIEvent = __webpack_require__(111);
+	var SyntheticUIEvent = __webpack_require__(115);
 	
-	var getEventCharCode = __webpack_require__(196);
-	var getEventKey = __webpack_require__(197);
-	var getEventModifierState = __webpack_require__(113);
+	var getEventCharCode = __webpack_require__(200);
+	var getEventKey = __webpack_require__(201);
+	var getEventModifierState = __webpack_require__(117);
 	
 	/**
 	 * @interface KeyboardEvent
@@ -25901,9 +24635,9 @@
 	
 	module.exports = SyntheticKeyboardEvent;
 
-/***/ },
-/* 196 */
-/***/ function(module, exports) {
+/***/ }),
+/* 200 */
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -25955,9 +24689,9 @@
 	
 	module.exports = getEventCharCode;
 
-/***/ },
-/* 197 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 201 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -25971,7 +24705,7 @@
 	
 	'use strict';
 	
-	var getEventCharCode = __webpack_require__(196);
+	var getEventCharCode = __webpack_require__(200);
 	
 	/**
 	 * Normalization of deprecated HTML5 `key` values
@@ -26061,9 +24795,9 @@
 	
 	module.exports = getEventKey;
 
-/***/ },
-/* 198 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 202 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -26077,7 +24811,7 @@
 	
 	'use strict';
 	
-	var SyntheticMouseEvent = __webpack_require__(110);
+	var SyntheticMouseEvent = __webpack_require__(114);
 	
 	/**
 	 * @interface DragEvent
@@ -26101,9 +24835,9 @@
 	
 	module.exports = SyntheticDragEvent;
 
-/***/ },
-/* 199 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 203 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -26117,9 +24851,9 @@
 	
 	'use strict';
 	
-	var SyntheticUIEvent = __webpack_require__(111);
+	var SyntheticUIEvent = __webpack_require__(115);
 	
-	var getEventModifierState = __webpack_require__(113);
+	var getEventModifierState = __webpack_require__(117);
 	
 	/**
 	 * @interface TouchEvent
@@ -26150,9 +24884,9 @@
 	
 	module.exports = SyntheticTouchEvent;
 
-/***/ },
-/* 200 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 204 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -26166,7 +24900,7 @@
 	
 	'use strict';
 	
-	var SyntheticEvent = __webpack_require__(89);
+	var SyntheticEvent = __webpack_require__(93);
 	
 	/**
 	 * @interface Event
@@ -26193,9 +24927,9 @@
 	
 	module.exports = SyntheticTransitionEvent;
 
-/***/ },
-/* 201 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 205 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -26209,7 +24943,7 @@
 	
 	'use strict';
 	
-	var SyntheticMouseEvent = __webpack_require__(110);
+	var SyntheticMouseEvent = __webpack_require__(114);
 	
 	/**
 	 * @interface WheelEvent
@@ -26251,9 +24985,9 @@
 	
 	module.exports = SyntheticWheelEvent;
 
-/***/ },
-/* 202 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 206 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -26267,29 +25001,29 @@
 	
 	'use strict';
 	
-	var _prodInvariant = __webpack_require__(71);
+	var _prodInvariant = __webpack_require__(75);
 	
-	var DOMLazyTree = __webpack_require__(117);
-	var DOMProperty = __webpack_require__(72);
+	var DOMLazyTree = __webpack_require__(121);
+	var DOMProperty = __webpack_require__(76);
 	var React = __webpack_require__(38);
-	var ReactBrowserEventEmitter = __webpack_require__(141);
+	var ReactBrowserEventEmitter = __webpack_require__(145);
 	var ReactCurrentOwner = __webpack_require__(46);
-	var ReactDOMComponentTree = __webpack_require__(70);
-	var ReactDOMContainerInfo = __webpack_require__(203);
-	var ReactDOMFeatureFlags = __webpack_require__(204);
-	var ReactFeatureFlags = __webpack_require__(94);
-	var ReactInstanceMap = __webpack_require__(152);
-	var ReactInstrumentation = __webpack_require__(98);
-	var ReactMarkupChecksum = __webpack_require__(205);
-	var ReactReconciler = __webpack_require__(95);
-	var ReactUpdateQueue = __webpack_require__(171);
-	var ReactUpdates = __webpack_require__(92);
+	var ReactDOMComponentTree = __webpack_require__(74);
+	var ReactDOMContainerInfo = __webpack_require__(207);
+	var ReactDOMFeatureFlags = __webpack_require__(208);
+	var ReactFeatureFlags = __webpack_require__(98);
+	var ReactInstanceMap = __webpack_require__(156);
+	var ReactInstrumentation = __webpack_require__(102);
+	var ReactMarkupChecksum = __webpack_require__(209);
+	var ReactReconciler = __webpack_require__(99);
+	var ReactUpdateQueue = __webpack_require__(175);
+	var ReactUpdates = __webpack_require__(96);
 	
 	var emptyObject = __webpack_require__(56);
-	var instantiateReactComponent = __webpack_require__(154);
+	var instantiateReactComponent = __webpack_require__(158);
 	var invariant = __webpack_require__(44);
-	var setInnerHTML = __webpack_require__(119);
-	var shouldUpdateReactComponent = __webpack_require__(160);
+	var setInnerHTML = __webpack_require__(123);
+	var shouldUpdateReactComponent = __webpack_require__(164);
 	var warning = __webpack_require__(47);
 	
 	var ATTR_NAME = DOMProperty.ID_ATTRIBUTE_NAME;
@@ -26794,9 +25528,9 @@
 	module.exports = ReactMount;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 203 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 207 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -26810,7 +25544,7 @@
 	
 	'use strict';
 	
-	var validateDOMNesting = __webpack_require__(172);
+	var validateDOMNesting = __webpack_require__(176);
 	
 	var DOC_NODE_TYPE = 9;
 	
@@ -26832,9 +25566,9 @@
 	module.exports = ReactDOMContainerInfo;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 204 */
-/***/ function(module, exports) {
+/***/ }),
+/* 208 */
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -26855,9 +25589,9 @@
 	
 	module.exports = ReactDOMFeatureFlags;
 
-/***/ },
-/* 205 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 209 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -26871,7 +25605,7 @@
 	
 	'use strict';
 	
-	var adler32 = __webpack_require__(206);
+	var adler32 = __webpack_require__(210);
 	
 	var TAG_END = /\/?>/;
 	var COMMENT_START = /^<\!\-\-/;
@@ -26909,9 +25643,9 @@
 	
 	module.exports = ReactMarkupChecksum;
 
-/***/ },
-/* 206 */
-/***/ function(module, exports) {
+/***/ }),
+/* 210 */
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -26957,9 +25691,9 @@
 	
 	module.exports = adler32;
 
-/***/ },
-/* 207 */
-/***/ function(module, exports) {
+/***/ }),
+/* 211 */
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -26973,11 +25707,11 @@
 	
 	'use strict';
 	
-	module.exports = '15.4.2';
+	module.exports = '15.5.4';
 
-/***/ },
-/* 208 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 212 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -26991,13 +25725,13 @@
 	
 	'use strict';
 	
-	var _prodInvariant = __webpack_require__(71);
+	var _prodInvariant = __webpack_require__(75);
 	
 	var ReactCurrentOwner = __webpack_require__(46);
-	var ReactDOMComponentTree = __webpack_require__(70);
-	var ReactInstanceMap = __webpack_require__(152);
+	var ReactDOMComponentTree = __webpack_require__(74);
+	var ReactInstanceMap = __webpack_require__(156);
 	
-	var getHostComponentFromComposite = __webpack_require__(209);
+	var getHostComponentFromComposite = __webpack_require__(213);
 	var invariant = __webpack_require__(44);
 	var warning = __webpack_require__(47);
 	
@@ -27040,9 +25774,9 @@
 	module.exports = findDOMNode;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 209 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 213 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -27056,7 +25790,7 @@
 	
 	'use strict';
 	
-	var ReactNodeTypes = __webpack_require__(156);
+	var ReactNodeTypes = __webpack_require__(160);
 	
 	function getHostComponentFromComposite(inst) {
 	  var type;
@@ -27074,9 +25808,9 @@
 	
 	module.exports = getHostComponentFromComposite;
 
-/***/ },
-/* 210 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 214 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -27090,13 +25824,13 @@
 	
 	'use strict';
 	
-	var ReactMount = __webpack_require__(202);
+	var ReactMount = __webpack_require__(206);
 	
 	module.exports = ReactMount.renderSubtreeIntoContainer;
 
-/***/ },
-/* 211 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 215 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -27110,8 +25844,8 @@
 	
 	'use strict';
 	
-	var DOMProperty = __webpack_require__(72);
-	var EventPluginRegistry = __webpack_require__(79);
+	var DOMProperty = __webpack_require__(76);
+	var EventPluginRegistry = __webpack_require__(83);
 	var ReactComponentTreeHook = __webpack_require__(62);
 	
 	var warning = __webpack_require__(47);
@@ -27211,9 +25945,9 @@
 	module.exports = ReactDOMUnknownPropertyHook;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 212 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 216 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -27259,9 +25993,9 @@
 	module.exports = ReactDOMNullInputValuePropHook;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 213 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 217 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -27275,7 +26009,7 @@
 	
 	'use strict';
 	
-	var DOMProperty = __webpack_require__(72);
+	var DOMProperty = __webpack_require__(76);
 	var ReactComponentTreeHook = __webpack_require__(62);
 	
 	var warning = __webpack_require__(47);
@@ -27357,9 +26091,9 @@
 	module.exports = ReactDOMInvalidARIAHook;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
 
-/***/ },
-/* 214 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 218 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Linked React components for building forms implementing React 0.14 valueLink semantic.
@@ -27644,9 +26378,9 @@
 	exports.Checkbox = Checkbox;
 
 
-/***/ },
-/* 215 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 219 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	// Data objects are defined in nestedtypes package.
 	'use strict';
@@ -27665,18 +26399,8 @@
 	
 	var _typeR = __webpack_require__(36);
 	
-	/**
-	 * Data layer is described as models and collections, which can contains each other.
-	 * Model is represented as an object in JSON, Collection - as an array of objects.
-	 *
-	 * We're going to define the structure for checklist as a tree formed of Checklist
-	 * collection and ChecklistItem model.
-	 *
-	 * Every definition must be preceeded with @define decorator.
-	 */
-	
-	var Checklist = (function (_Model$Collection) {
-	    _inherits(Checklist, _Model$Collection);
+	var Checklist = (function (_Record$Collection) {
+	    _inherits(Checklist, _Record$Collection);
 	
 	    function Checklist() {
 	        _classCallCheck(this, _Checklist);
@@ -27684,29 +26408,15 @@
 	        _get(Object.getPrototypeOf(_Checklist.prototype), 'constructor', this).apply(this, arguments);
 	    }
 	
-	    /**
-	     * Think of the models as of the class like in statically typed languages.
-	     * Such as Java or C++. Difference here is that types are being checked and coerced _dynamically_.
-	     * And - every model is serializable and observable by default.
-	     */
-	
 	    _createClass(Checklist, [{
 	        key: 'checked',
-	
-	        // This is the boolean calculated property we're using for convenience.
-	        // True, whenever all subitems are selected.
 	        get: function get() {
 	            return this.every(function (item) {
 	                return item.checked;
 	            });
 	        },
-	
-	        // And it's writable property.
 	        set: function set(checked) {
 	            if (checked !== this.checked) {
-	                // 'updateEach' works as each, but wrap the changes in transaction.
-	                // Simply speaking, it means that just one change event will be fired from subitems,
-	                // despite the fact that there is a bulk change.
 	                this.updateEach(function (item) {
 	                    item.checked = checked;
 	                });
@@ -27717,10 +26427,10 @@
 	    var _Checklist = Checklist;
 	    Checklist = (0, _typeR.define)(Checklist) || Checklist;
 	    return Checklist;
-	})(_typeR.Model.Collection);
+	})(_typeR.Record.Collection);
 	
-	var ChecklistItem = (function (_Model) {
-	    _inherits(ChecklistItem, _Model);
+	var ChecklistItem = (function (_Record) {
+	    _inherits(ChecklistItem, _Record);
 	
 	    function ChecklistItem() {
 	        _classCallCheck(this, _ChecklistItem);
@@ -27730,13 +26440,9 @@
 	
 	    _createClass(ChecklistItem, [{
 	        key: 'checkedWatcher',
-	
-	        // This is going to be the watcher function for 'checked' attribute.
 	        value: function checkedWatcher(checked) {
 	            this.subitems.checked = checked;
 	        }
-	
-	        // And this one - for 'subitems', which is nested checklist attribute.
 	    }, {
 	        key: 'subitemsWatcher',
 	        value: function subitemsWatcher(subitems) {
@@ -27744,11 +26450,6 @@
 	                this.checked = this.subitems.checked;
 	            }
 	        }
-	
-	        // Helper method to delete model from collection, without reference to the collection.
-	        // In NestedTypes, aggregation is distinguished from references to the shared objects.
-	        // By default, all attributes and collection elements are aggregated.
-	        // And model.collection points to the owner collection (if any).
 	    }, {
 	        key: 'remove',
 	        value: function remove() {
@@ -27756,31 +26457,14 @@
 	        }
 	    }], [{
 	        key: 'Collection',
-	
-	        // Link Checklist collection with its model definition, overriding the default collection.
-	        // Once it's linked, it becomes the collection of the ChecklistItem models.
-	        // It's useful in our case as we can reference Checklist in attributes spec, creating recursive definition.
 	        value: Checklist,
 	        enumerable: true
 	    }, {
 	        key: 'attributes',
 	        value: { // <- Here's an attribute spec. Think of it as a type spec.
 	            name: String,
-	
-	            // Basic type spec form is just mentioning the constructor function.
-	            // New Date class instance will be automatically created for this attribute.
 	            created: Date,
-	
-	            // checked - it's boolean value, which has watcher. Watcher is model's function which
-	            // is called whenever attribute value is changed.
-	            // Watchers reacts on every change inside of the attribute structure, no matter how deep it happened.
-	            // All changes made to the model inside of the watcher won't trigger any
-	            // additional 'change' events and won't cause extra renders. They are executed in the scope
-	            // of transaction.
 	            checked: Boolean.has.watcher('checkedWatcher'),
-	
-	            // Now it's interesting. subitems - is a collection of checklist items.
-	            // And, it has watcher. Which will be called whenever anything inside will be changed.
 	            subitems: Checklist.has.watcher('subitemsWatcher')
 	        },
 	        enumerable: true
@@ -27789,10 +26473,10 @@
 	    var _ChecklistItem = ChecklistItem;
 	    ChecklistItem = (0, _typeR.define)(ChecklistItem) || ChecklistItem;
 	    return ChecklistItem;
-	})(_typeR.Model);
+	})(_typeR.Record);
 
 	exports.ChecklistItem = ChecklistItem;
 
-/***/ }
+/***/ })
 /******/ ]);
 //# sourceMappingURL=app.js.map

@@ -1,4 +1,5 @@
 import { define, mixins, mixinRules, ChainableAttributeSpec } from 'type-r';
+import { Node, Element } from './define';
 import Link from './link';
 import { Component, createClass } from './component';
 interface ReactMVx {
@@ -11,7 +12,9 @@ interface ReactMVx {
     Link: typeof Link;
     Node: ChainableAttributeSpec;
     Element: ChainableAttributeSpec;
-    assignToState: typeof Component.prototype.assignToState;
+    assignToState(key: string): any;
 }
 declare const ReactMVx: ReactMVx;
+declare const assignToState: (key: string) => (prop: any) => void;
 export default ReactMVx;
+export { createClass, define, mixins, Node, Element, Link, Component, assignToState };
