@@ -18,6 +18,7 @@ export declare abstract class Component<P> extends React.Component<P, Record> {
     private static defaultProps;
     private static contextTypes;
     private static childContextTypes;
+    static extend: (spec: object) => Component<any>;
     linkAt(key: string): Link<any>;
     linkAll(...keys: string[]): {
         [key: string]: Link<any>;
@@ -30,4 +31,4 @@ export declare abstract class Component<P> extends React.Component<P, Record> {
 /**
  * ES5 components definition factory
  */
-export declare function createClass(a_spec: any): React.ClassicComponentClass<{}>;
+export declare function createClass(a_spec: any): Component<any>;
