@@ -19,7 +19,7 @@
   "scripts": {
     "postinstall": "npm run pull",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "pull": "git submodule update --remote && cp ./submodules/NestedLink/tags.* . && cp -R ./submodules/NestedLink/src ./src/valuelink",
+    "pull": "git submodule update --remote && cp ./submodules/NestedLink/tags.* . && cp ./submodules/NestedLink/src/* ./src/valuelink",
     "compile": "./node_modules/.bin/tsc",
     "deploy": "./node_modules/.bin/webpack -p && cp -R ./dist ./examples/*/node_modules/react-mvx",
     "build": "npm run pull && npm run compile && npm run deploy"
