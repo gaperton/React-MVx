@@ -3,11 +3,11 @@
  */
 
 import * as React from 'react'
-import { Record, Store, extendable, mergeProps, mixinRules, tools, Mixable, MixinRules } from 'type-r'
+import { Record, Store, extendable, mergeProps, mixinRules, tools, Mixable } from 'type-r'
 import Link from './Link'
 import processSpec, { TypeSpecs } from './define'
 
-const reactMixinRules : MixinRules = {
+const reactMixinRules : any = { // Can't type it precisely because of weird type problem in NestedReact and NestedTypes
     componentWillMount        : 'reverse',
     componentDidMount         : 'reverse',
     componentWillReceiveProps : 'reverse',
