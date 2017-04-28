@@ -27,7 +27,9 @@ export const StateMixin = {
     state : null,
 
     componentWillMount(){
-        const state = this.state = new this.State();
+        // props.__keepState is used to workaround issues in Backbone intergation layer
+        const state = this.state = this.props.__keepState || new this.State();
+        
         // Take ownership on state...
         state._owner = this;
         state._ownerKey = 'state';

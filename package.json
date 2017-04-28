@@ -13,16 +13,14 @@
     "dist",
     "lib",
     "tags.jsx",
-    "tags.js",
-    "submodules"
+    "tags.js"
   ],
   "scripts": {
-    "postinstall": "npm run pull",
     "test": "echo \"Error: no test specified\" && exit 1",
     "pull": "git submodule update --remote && cp ./submodules/NestedLink/tags.* . && cp ./submodules/NestedLink/src/* ./src/valuelink",
-    "compile": "./node_modules/.bin/tsc",
-    "deploy": "./node_modules/.bin/webpack -p && cp -R ./dist ./examples/*/node_modules/react-mvx",
-    "build": "npm run pull && npm run compile && npm run deploy"
+    "compile": "./node_modules/.bin/tsc && ./node_modules/.bin/webpack -p",
+    "deploy": "cp -R ./dist ./examples/*/node_modules/react-mvx",
+    "build": "npm run pull && npm run compile"
   },
   "keywords": [
     "react",
@@ -34,17 +32,20 @@
   "author": "Vlad Balin",
   "license": "MIT",
   "devDependencies": {
-    "@types/prop-types": "^15.5.1",
-    "@types/react": "^15.0.0",
-    "prop-types": "^15.5.8",
-    "react-dom": "^15.0.0",
-    "source-map-loader": "^0.2.0",
-    "ts-loader": "^2.0.2",
-    "typescript": "^2.2.1",
-    "webpack": "^2.2.1"
+    "@types/prop-types": "*",
+    "@types/react": "*",
+    "prop-types": "*",
+    "react-dom": "*",
+    "source-map-loader": "*",
+    "ts-loader": "*",
+    "typescript": "*",
+    "webpack": "*",
+    "react": "*",
+    "type-r": "^1.0.0-rc6"
   },
-  "dependencies": {
-    "react": "^15.0.0",
+  "peerDependencies": {
+    "prop-types": "*",
+    "react": "*",
     "type-r": "^1.0.0-rc6"
   }
 }
