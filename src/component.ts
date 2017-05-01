@@ -86,7 +86,7 @@ export function createClass( a_spec ){
     // Gather all methods to pin them to `this` later.
     const methods = [];
     for( let key in a_spec ){
-        if( a_spec.hasOwnProperty( key ) && typeof a_spec[ key ] === 'function' ){
+        if( a_spec.hasOwnProperty( key ) && typeof a_spec[ key ] === 'function' && a_spec[ key ].prototype === Object.prototype ){
             methods.push( key );
         }
     }
@@ -96,7 +96,7 @@ export function createClass( a_spec ){
         constructor(){
             Component.apply( this, this.arguments );
 
-            for( let method in methods ){
+            for( let method of methods ){
                 this[ method ] = this[ method ].bind( this );
             }
         },
