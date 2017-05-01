@@ -94,7 +94,7 @@ export function createClass( a_spec ){
     const Subclass = Component.extend({
         // Override constructor to autobind all the methods...
         constructor(){
-            Component.apply( this.arguments );
+            Component.apply( this, this.arguments );
 
             for( let method in methods ){
                 this[ method ] = this[ method ].bind( this );
