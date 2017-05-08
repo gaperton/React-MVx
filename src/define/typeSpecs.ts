@@ -54,7 +54,7 @@ export function compileSpecs( props : TypeSpecs ){
             }
 
             // Handle listening to event maps...
-            if( options.changeHandlers ){
+            if( options.changeHandlers && options.changeHandlers.length ){
                 changeHandlers || ( changeHandlers = {} );
                 changeHandlers[ name ] = options.changeHandlers;
             }
