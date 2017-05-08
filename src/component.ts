@@ -79,6 +79,8 @@ export abstract class Component<P> extends React.Component<P, Record> {
     }
 }
 
+const dontAutobind = [ 'state', 'store' ];
+
 /**
  * ES5 components definition factory
  */
@@ -86,7 +88,7 @@ export function createClass( a_spec ){
     // Gather all methods to pin them to `this` later.
     const methods = [];
     for( let key in a_spec ){
-        if( a_spec.hasOwnProperty( key ) && typeof a_spec[ key ] === 'function' && !( a_spec[ key ] in Component.prototype ) ){
+        if( a_spec.hasOwnProperty( key ) && dontAutobind.indexOf( key ) === -1 && typeof a_spec[ key ] === 'function' && !( a_spec[ key ] in Component.prototype ) ){
             methods.push( key );
         }
     }
