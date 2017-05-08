@@ -39,7 +39,7 @@ export abstract class Component<P> extends React.Component<P, Record> {
     private static contextTypes : any;
     private static childContextTypes : any;
     
-    static extend : ( spec : object ) => Component< any >
+    static extend : ( spec : object, statics? : object ) => Component< any >
 
     linkAt( key : string ) : Link< any> {
         // Quick and dirty hack to suppres type error - refactor later.
@@ -84,7 +84,7 @@ const dontAutobind = [ 'state', 'store' ];
 /**
  * ES5 components definition factory
  */
-export function createClass( a_spec ){
+export function createClass( { statics, ...a_spec } ){
     // Gather all methods to pin them to `this` later.
     const methods = [];
     for( let key in a_spec ){
@@ -103,7 +103,7 @@ export function createClass( a_spec ){
             }
         },
         ...a_spec
-    });
+    }, statics );
 
     return Subclass;
 }
