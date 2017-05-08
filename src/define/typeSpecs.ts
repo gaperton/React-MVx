@@ -66,7 +66,7 @@ export function compileSpecs( props : TypeSpecs ){
                     changeEvents = typeof options.changeEvents === 'string' ? options.changeEvents : null;
 
                 handlers.push( 
-                    function( prev, next, component ){
+                    function( next, prev, component ){
                         prev && component.stopListening( prev );
                         next && component.listenTo( next, changeEvents || next._changeEventName, component.asyncUpdate );
                     }
