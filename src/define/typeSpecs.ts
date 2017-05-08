@@ -63,7 +63,7 @@ export function compileSpecs( props : TypeSpecs ){
             if( options.changeEvents ){
                 changeHandlers || ( changeHandlers = {} );
                 const handlers = changeHandlers[ name ] || ( changeHandlers[ name ] = [] ),
-                    changeEvents = options.changeEvents === 'string' ? options.changeEvents : null;
+                    changeEvents = typeof options.changeEvents === 'string' ? options.changeEvents : null;
 
                 handlers.push( 
                     function( prev, next, component ){
