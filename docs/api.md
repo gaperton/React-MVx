@@ -15,7 +15,7 @@ This document describes an extended API only.
 - [define]() decorator - must precede all components, records, and collections definition.
 - [mixin]() decorator - React mixins on ES6 classes.
 
-## Component
+### Component
 
 Every component definition in React-MVx must start with `@define` decorator.
 
@@ -121,3 +121,15 @@ Create the [value links]() for all (or specified) the state members. All records
 Safe version of the `forceUpdate()`. Gracefully handles component disposal and UI update transactions.
 
 Shall be used in place of every manual call to `forceUpdate()`.
+
+### Link
+
+Reference to [NestedLink]()'s Link class.
+
+### assignToState( key )
+
+Create props watcher which assign the property content to the given local state member.
+
+### @mixin( A, B, ... )
+
+Old good React mixins.
