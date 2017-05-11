@@ -17,7 +17,7 @@ React-MVx application architecture follows scalable MVVM architecture pattern. I
 - It doesn't rely on singletons (unless you _really_ need some data to be shared across pages)
 - It assists and encourages usage of _locally encapsulated state_ and _OO decomposition_.
 
-THIS IS THE BETA. NOT PRODUCTION READY YET. WE'RE WORKING ON IT.
+THIS IS PUBLIC THE BETA. NOT PRODUCTION READY YET.
 
 ## Examples
 
