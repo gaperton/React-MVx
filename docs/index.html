@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>API Reference</title>
+    <link href="stylesheets/screen.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" type="text/css" media="print" />
+    <link href="stylesheets/highlight-monokai.css" rel="stylesheet" type="text/css" media="screen, print" />
+    <script src="javascripts/all.js" type="text/javascript"></script>
+  </head>
+
+  <body class="" data-languages="[]">
+    <a href="#" id="nav-button"> <span>
+        NAV
+        <img alt="undefined" class="undefined" src="images/navbar.png">
+      </span> </a>
+    <div class="tocify-wrapper"> <img alt="undefined" class="undefined" src="images/volicon_verizon_dm.png">
+      <div class="lang-selector"> </div>
+      <div class="search"> <input type="text" class="search" id="input-search" placeholder="Search"> </div>
+      <ul class="search-results"></ul>
+      <div id="toc"> </div>
+      <ul class="toc-footer">
+        <li><a href='#'>Sign Up for a Developer Key</a></li>
+        <li><a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a></li>
+      </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id="component-api">Component API</h1>
+        <pre class="highlight javascript"><code><span class="hljs-keyword">import</span> React, { define } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-mvx'</span>
+
+@define <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyComponent</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+    render(){
+        <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello World<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span>;
+    }
+}</code></pre>
+        <p>The universal Component base class.</p>
+        <h2 id="-static-props-name-annotation-"><code>static</code> props = { name : Annotation }</h2>
+        <p>Component props declaration. Replaces standard <code>PropTypes</code>. Type annotation syntax:</p>
+        <ul>
+          <li><code>Constructor</code> - puts the instanceOf constraint on props type. Use <code>Number</code>, <code>String</code>, and <code>Boolean</code> for primitive types.</li>
+          <li><code>Constructor.value( val )</code> or just <code>val</code> - property has the default value.</li>
+          <li><code>Constructor.isRequired</code> - property is mandatory.</li>
+          <li><code>RecordOrCollection.has.changeEvents( true )</code> - update the component on any inner change in the property.</li>
+          <li><code>EventSource.has.changeEvents( &#39;event1 event2 ...&#39; )</code> - update the component on any of the specified events triggered by the property.</li>
+          <li><code>EventSource.has.events({ [ events ] : handlerFunction | &#39;methodName&#39; })</code> - subscribe for events from the property.</li>
+          <li><code>Constructor.has.watcher( watcherFunction | &#39;methodName&#39; )</code> - call the watcher when new prop value is received.</li>
+        </ul>
+        <p>Type annotations listed above may be chained.</p>
+        <h2 id="-static-purerender-true"><code>static</code> pureRender = true</h2>
+        <p>Generate and attach the &quot;pure render&quot; optimization mixin. Mixin prevents the subsequent render calls in case if props were unchanged. Mixin <em>detects and takes into account inner changes</em> of records and collections as well.</p>
+        <p><code>static props</code> declaration is required for <code>pureRender</code> to work. Only declared props will be compared.</p>
+        <h2 id="-static-state-name-annotation-recordconstructor"><code>static</code> state = { name : Annotation } | RecordConstructor</h2>
+        <p>Component state declaration. State is modeled as <code>Record</code> either referenced by Constructor or imlicitly defined with a given attributes declaration. <code>state</code> Record is created before the component mount, and is disposed when
+          component is unmounted.</p>
+        <ul>
+          <li><code>Constructor</code> - initialize attribute with the default value of the given constructor.</li>
+          <li><code>Constructor.value( val )</code> or just <code>val</code> - provide different default value.</li>
+          <li><code>Constructor.isRequired</code> - put &#39;not empty&#39; validation check on the attribute.</li>
+          <li><code>Constructor.has.check( predicate )</code> - put custom validation check on the attribute.</li>
+          <li><code>RecordOrCollection.has.changeEvents( false )</code> - <em>do not update</em> the component on any inner changes of the attribute.</li>
+          <li><code>EventSource.has.events({ [ events ] : handlerFunction | &#39;methodName&#39; })</code> - subscribe for events from the attribute.</li>
+          <li><code>Constructor.has.watcher( watcherFunction | &#39;methodName&#39; )</code> - call the watcher when the attribute is changed.</li>
+        </ul>
+        <p>Type annotations listed above may be chained. Please, refer to the [Type-R] type annotations reference for the complete list of options.</p>
+        <h2 id="state-record">state : Record</h2>
+        <p>Replaces standard React&#39;s <code>state</code> and <code>setState</code>. Holds an object of the <code>Record</code> subclass.</p>
+        <p>Use direct assignments to modify the state:</p>
+        <pre class="highlight undefined"><code>this.<span class="hljs-keyword">state</span>.x = <span class="hljs-number">5</span>;</code></pre>
+        <p>Use <code>transaction()</code> call to groupe the sequence of changes in single UI update transaction.</p>
+        <h2 id="transaction-fun-">transaction( fun )</h2>
+        <p>Group the sequence of state (and props) updates in the single transaction leading to single UI update.</p>
+        <pre class="highlight javascript"><code><span class="hljs-keyword">this</span>.transaction( <span class="hljs-function"><span class="hljs-params">state</span> =&gt;</span> {
+    state.a++;
+    state.b++;
+    <span class="hljs-keyword">this</span>.props.collection.reset();
+});</code></pre>
+        <p>Read more about transactions in Type-R manual.</p>
+        <h2 id="-static-store-name-annotation-store-storeconstructor"><code>static</code> store = { name : Annotation } | Store | StoreConstructor</h2>
+        <p>Stores in Type-R are internally similar to the Record and used to resolve one-to-many and many-to-many relationships by id. Stores <em>must not</em> be used to store UI state; they are intended to hold the shared domain state which is cross-referenced
+          by id.</p>
+        <p>There may be many stores in Rect-MVx. There is the single <em>default store</em> (<code>Store.global</code>) which is used to cache the data which must be accessible across the pages.</p>
+        <p>Specifying the store for the top-level component sets this store as the primary one for all the internal state of the current component subtree.</p>
+        <ul>
+          <li><code>static store = referenceToTheExistingStore</code>. Update the UI on store changes.</li>
+          <li><code>static store = StoreConstructor</code>. Creates the local store with the lifetime bound to the component&#39;s one.</li>
+          <li><code>static store = { attributes }</code>. Implicitly create the Store subclass from the given attribute spec.</li>
+        </ul>
+        <h2 id="store-store">store : Store</h2>
+        <p>When the <code>static store</code> is defined, provide the access to the store in component.</p>
+        <p>Store <em>is not</em> directly accessible to the subcomponents; you have to pass values down as props.</p>
+        <h2 id="-static-context-name-annotation-"><code>static</code> context = { name : Annotation }</h2>
+        <p>Replacement for standard <code>contextTypes</code>. Just <code>Constructor</code> may be used as type annotation.</p>
+        <h2 id="-static-childcontext-name-annotation-"><code>static</code> childContext = { name : Annotation }</h2>
+        <p>Replacement for standard <code>childContextTypes</code>. Just <code>Constructor</code> may be used as type annotation.</p>
+        <p><code>getChildContext()</code> function is required to create the context as in raw React.</p>
+        <h2 id="linkat-key-link">linkAt( &#39;key&#39; ) : Link</h2>
+        <p>Create the <a href="">value link</a> for the state member <code>key</code>. All records support <code>linkAt()</code> method as well.</p>
+        <h2 id="linkall-name-link-">linkAll() : { [ name ] : Link }</h2>
+        <p>Create the <a href="">value links</a> for all (or specified) the state members. All records support <code>linkAll()</code> method as well.</p>
+        <h2 id="asyncupdate-">asyncUpdate()</h2>
+        <p>Safe version of the <code>forceUpdate()</code>. Gracefully handles component disposal and UI update transactions.</p>
+        <p>Shall be used in place of every manual call to <code>forceUpdate()</code>.</p>
+        <h1 id="two-way-data-binding">Two-way data binding</h1>
+        <p>An essense of the &quot;data binding&quot; pattern is that the inner state of the UI control is mapped to some value in the application data layer. Whenever the value change, it&#39;s synchronized in both directions. Almost all modern JS frontend
+          application frameworks supports two-way data binding out of box.</p>
+        <p>React-MVx has the first-class support for the two-way data binding though the concept of <a href="https://github.com/volicon/NestedLink">value links</a>. It&#39;s best to understand it on the example.</p>
+        <h2 id="data-bound-controlled-input-component">Data-bound controlled input component</h2>
+        <p>In this example we will bind the state member to the <code>input</code> control. In order to use data binding you need to import data bound input controls from <code>react-mvx/tags</code> module first.</p>
+        <pre class="highlight javascript"><code><span class="hljs-keyword">import</span> { Component, define } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-mvx'</span>
+<span class="hljs-keyword">import</span> { Input } <span class="hljs-keyword">from</span> <span class="hljs-string">'nestedreact/tags'</span></code></pre>
+        <p>Then, you can create the controlled input component like this:</p>
+        <pre class="highlight javascript"><code>@define
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyComponent</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
+    <span class="hljs-keyword">static</span> state = {
+        <span class="hljs-attr">text</span> : <span class="hljs-string">''</span>
+    }
+
+    render(){
+        <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Input</span> <span class="hljs-attr">valueLink</span>=<span class="hljs-string">{</span> <span class="hljs-attr">this.linkAt</span>( '<span class="hljs-attr">text</span>' ) } /&gt;</span>;
+    }
+}</span></code></pre>
+        <p>If you have a form with a lot of controls, you can create links in a bulk with a single line using <code>model.linkAll()</code> method. This is the preferable way of dealing with the complex forms.</p>
+        <pre class="highlight javascript"><code>@define <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyComponent</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
+    <span class="hljs-keyword">static</span> state = {
+        <span class="hljs-attr">a</span> : <span class="hljs-string">''</span>,
+        <span class="hljs-attr">b</span> : <span class="hljs-string">''</span>,
+        <span class="hljs-attr">c</span> : <span class="hljs-string">''</span>
+    }
+
+    render(){
+        <span class="hljs-keyword">const</span> links = <span class="hljs-keyword">this</span>.linkAll();
+        <span class="hljs-keyword">return</span> (
+            &lt;form&gt;
+                &lt;Input valueLink={ links.a } /&gt;
+                &lt;Input valueLink={ links.b } /&gt;
+                &lt;Input valueLink={ links.c } /&gt;
+            &lt;/form&gt;
+        );
+    }
+}</code></pre>
+        <h2 id="under-the-hood">Under the hood</h2>
+        <p><a href="https://medium.com/@gaperton/managing-state-and-forms-with-react-part-1-12eacb647112#.6mqtojilu">To explain <code>valuelink</code> pattern simply</a>, is an object holding the <em>value</em> and the <em>callback to update the value</em>.
+          It is something close to this:</p>
+        <pre class="highlight javascript"><code>render(){
+    <span class="hljs-keyword">const</span> link = {
+        <span class="hljs-attr">value</span> : <span class="hljs-keyword">this</span>.state.text,
+        <span class="hljs-attr">set</span>   : <span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> <span class="hljs-keyword">this</span>.state.text = x
+    };
+
+    <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Input</span> <span class="hljs-attr">valueLink</span>=<span class="hljs-string">{</span> <span class="hljs-attr">link</span> } /&gt;</span>;
+}</span></code></pre>
+        <p>And, an Input control which consumes such a link would look like this:</p>
+        <pre class="highlight javascript"><code><span class="hljs-keyword">const</span> Input = <span class="hljs-function">(<span class="hljs-params">{ valueLink }</span>) =&gt;</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">value</span>=<span class="hljs-string">{</span> <span class="hljs-attr">valueLink.value</span> }
+           <span class="hljs-attr">onChange</span>=<span class="hljs-string">{</span> <span class="hljs-attr">e</span> =&gt;</span> valueLink.set( e.target.value ) /&gt;
+);</span></code></pre>
+        <p>React-MVx link implementation works close to the code above but is way more advanced. Refer to the <a href="https://github.com/Volicon/NestedLink">NestedLink</a> package documentation for more information about the data binding capabilities.</p>
+      </div>
+      <div class="dark-box">
+        <div class="lang-selector"> </div>
+      </div>
+    </div>
+  </body>
+
+</html>

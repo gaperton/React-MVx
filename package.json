@@ -20,7 +20,8 @@
     "pull": "git submodule update --remote && cp ./submodules/NestedLink/tags.* . && cp ./submodules/NestedLink/src/* ./src/valuelink",
     "compile": "./node_modules/.bin/tsc && ./node_modules/.bin/webpack -p",
     "deploy": "cp -R ./dist ./examples/*/node_modules/react-mvx",
-    "build": "npm run pull && npm run compile"
+    "build": "npm run pull && npm run compile",
+    "docs" : "rm -rf ./docs/* && cd ./documentation && npm run build && cd .. && mv ./documentation/build/* ./docs"
   },
   "keywords": [
     "react",

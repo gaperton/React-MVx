@@ -1,4 +1,4 @@
-# React-MVx API Reference
+# Component API
 
 React-MVx requires React as peer dependency and exports extended React namespace, which is supposed
 to be used in place you would normally use React.
@@ -9,17 +9,11 @@ to be used in place you would normally use React.
 
 This document describes an extended API only.
 
-- [Component]() - React-MVx component with universal state management.
-- [Link]() - two-way data binding base class.
-- [assignToState( key )]() - props watcher to synchronize state with props.
-- [define]() decorator - must precede all components, records, and collections definition.
-- [mixin]() decorator - React mixins on ES6 classes.
-
-### Component
+## Component
 
 Every component definition in React-MVx must start with `@define` decorator.
 
-#### `static` props : { [ name ] : TypeAnnotation }
+### `static` props : { [ name ] : TypeAnnotation }
 
 Component props declaration. Replaces standard `PropTypes`. Type annotation syntax:
 
@@ -33,14 +27,14 @@ Component props declaration. Replaces standard `PropTypes`. Type annotation synt
 
 Type annotations listed above may be chained.
 
-#### `static` pureRender : true
+### `static` pureRender : true
 
 Generate and attach the "pure render" optimization mixin. Mixin prevents the subsequent render calls in case if props were unchanged.
 Mixin *detects and takes into account inner changes* of records and collections as well.
 
 `static props` declaration is required for `pureRender` to work. Only declared props will be compared.
 
-#### `static` state : { [ name ] : TypeAnnotation } | RecordConstructor
+### `static` state : { [ name ] : TypeAnnotation } | RecordConstructor
 
 Component state declaration. State is modeled as `Record` either referenced by Constructor or imlicitly defined with a given attributes declaration.
 `state` Record is created before the component mount, and is disposed when component is unmounted.
@@ -55,7 +49,7 @@ Component state declaration. State is modeled as `Record` either referenced by C
 
 Type annotations listed above may be chained. Please, refer to the [Type-R] type annotations reference for the complete list of options.
 
-#### state : Record
+### state : Record
 
 Replaces standard React's `state` and `setState`. Holds an object of the `Record` subclass.
 
@@ -65,7 +59,7 @@ Use direct assignments to modify the state:
 
 Use `transaction()` call to groupe the sequence of changes in single UI update transaction.
 
-#### transaction( fun )
+### transaction( fun )
 
 Group the sequence of state (and props) updates in the single transaction leading to single UI update.
 
@@ -79,7 +73,7 @@ this.transaction( state => {
 
 Read more about transactions in Type-R manual.
 
-#### `static` store : { [ name ] : TypeAnnotation } | Store | StoreConstructor
+### `static` store : { [ name ] : TypeAnnotation } | Store | StoreConstructor
 
 Stores in Type-R are internally similar to the Record and used to resolve one-to-many and many-to-many relationships by id.
 Stores *must not* be used to store UI state; they are intended to hold the shared domain state which is cross-referenced by id.
@@ -92,44 +86,44 @@ Specifying the store for the top-level component sets this store as the primary 
 - `static store = StoreConstructor`. Creates the local store with the lifetime bound to the component's one.
 - `static store = { attributes }`. Implicitly create the Store subclass from the given attribute spec.
 
-#### store : Store
+### store : Store
 
 When the `static store` is defined, provide the access to the store in component.
 
 Store *is not* directly accessible to the subcomponents; you have to pass values down as props.
 
-#### `static` context : { [ name ] : TypeAnnotation }
+### `static` context : { [ name ] : TypeAnnotation }
 
 Replacement for standard `contextTypes`. Just `Constructor` may be used as type annotation.
 
-#### `static` childContext : { [ name ] : TypeAnnotation }
+### `static` childContext : { [ name ] : TypeAnnotation }
 
 Replacement for standard `childContextTypes`. Just `Constructor` may be used as type annotation.
 
 `getChildContext()` function is required to create the context as in raw React.
 
-#### linkAt( 'key' ) : Link
+### linkAt( 'key' ) : Link
 
 Create the [value link]() for the state member `key`. All records support `linkAt()` method as well.
 
-#### linkAll() : { [ name ] : Link }
+### linkAll() : { [ name ] : Link }
 
 Create the [value links]() for all (or specified) the state members. All records support `linkAll()` method as well.
 
-#### asyncUpdate()
+### asyncUpdate()
 
 Safe version of the `forceUpdate()`. Gracefully handles component disposal and UI update transactions.
 
 Shall be used in place of every manual call to `forceUpdate()`.
 
-### Link
+## Link
 
 Reference to [NestedLink]()'s Link class.
 
-### assignToState( key )
+## assignToState( key )
 
 Create props watcher which assign the property content to the given local state member.
 
-### @mixin( A, B, ... )
+## @mixin( A, B, ... )
 
 Old good React mixins.
