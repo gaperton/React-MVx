@@ -1,87 +1,147 @@
-# Two-way data binding
-
-An essense of the "data binding" pattern is that the inner state of the UI control is
-mapped to some value in the application data layer. Whenever the value change, it's 
-synchronized in both directions. Almost all modern JS frontend application frameworks 
-supports two-way data binding out of box.
-
-React-MVx has the first-class support for the two-way data binding though the concept of
-[value links](https://github.com/volicon/NestedLink). It's best to understand it on 
-the example.
-
-## Data-bound controlled input component
-
-In this example we will bind the state member to the `input` control.
-In order to use data binding you need to import data bound input controls from `react-mvx/tags` module first.
+# Data-bound controls
 
 ```javascript
-import { Component, define } from 'react-mvx'
-import { Input } from 'nestedreact/tags'
+// Ad-hoc data binding for standard controls
+<input {...link.props} />
 ```
 
-Then, you can create the controlled input component like this:
+Link can be bound to the standard form control consuming `value` and `onChange` props like this:
 
 ```javascript
-@define
-export class MyComponent extends Component {
-	static state = {
-		text : ''
-	}
+// Custom data-bound control
+const Input = ({ link, ...props }) => (
+    <div className={`form-row ${ link.error ? 'has-error' : '' } `}>
+        <input type="text" {...props} { ...link.props } />
+        <div className="error-placeholder">{ link.error || '' } </div>
+    </div>
+);
 
-	render(){
-		return <Input valueLink={ this.linkAt( 'text' ) } />;
-	}
-}
-```
-
-If you have a form with a lot of controls, you can create links in a bulk with a single line
-using `model.linkAll()` method. This is the preferable way of dealing with the complex forms.
-
-```javascript
-@define export class MyComponent extends Component {
-	static state = {
-		a : '',
-        b : '',
-        c : ''
-	}
-
-	render(){
-        const links = this.linkAll();
-        return (
-            <form>
-                <Input valueLink={ links.a } />
-                <Input valueLink={ links.b } />
-                <Input valueLink={ links.c } />
-            </form>
-        );
-	}
-}
-```
-
-## Under the hood
-
-[To explain `valuelink` pattern simply](https://medium.com/@gaperton/managing-state-and-forms-with-react-part-1-12eacb647112#.6mqtojilu), is an object holding the *value* and the *callback to update the value*. It is something
-close to this:
-
-```javascript
-render(){
-    const link = {
-        value : this.state.text,
-        set   : x => this.state.text = x
-    };
-
-    return <Input valueLink={ link } />;
-}
-```
-
-And, an Input control which consumes such a link would look like this:
-
-```javascript
-const Input = ({ valueLink }) => (
-    <input value={ valueLink.value }
-           onChange={ e => valueLink.set( e.target.value ) />
+// Another simple data bound control
+const Input = ({ link, ...props }) => (
+    <input {...props}
+            value={ link.value }
+            onChange={ e => link.set( e.target.value ) } />
 );
 ```
 
-React-MVx link implementation works close to the code above but is way more advanced. Refer to the [NestedLink](https://github.com/Volicon/NestedLink) package documentation for more information
-about the data binding capabilities.
+However, in order to take the full advantage of the value link pattern you're encouraged to create
+the semantic form control wrappers, encapsulating the markup for inline validation errors indication
+and form layout.
+
+The general pattern you're using for defining the data bound controls is shown on the right.
+
+Here's the reference for data bound tags from [react-mvx/tags](/tags.jsx) which illustrates the technique 
+and might be used as starting boilerplate for your custom controls.
+
+## Text input controls
+
+```javascript
+import { Input, TextArea } from 'react-mvx/tags'
+...
+<Input type="text" valueLink={ link } />
+<TextArea valueLink={ link } />
+```
+
+`tags.jsx` contains wrappers for standard `<input>` and `<textarea>` tags,
+  which consume linked strings.
+
+These wrappers will add `invalid` class to enclosed HTML element if an error is present in the link.
+
+## Numeric input
+
+```jsx
+import { NumberInput } from 'react-mvx/tags'
+
+<NumberInput valueLink={ link } />
+<NumberInput valueLink={ link } integer={ true }/>
+<NumberInput valueLink={ link } positive={ true }/>
+```
+
+The proper implementation of wrong input rejection for numberic input controls may be tough.
+Therefore, `tags.jsx` has the cross-browser implementation of *numeric input* tag. It has following differences compared to the regular `<Input>`:
+
+- Keyboard input which obviously leads to invalid values (e.g. letters) is rejected.
+- Value is always being converted to valid number.
+- There are `integer` and `positive` boolean props controlling input rejection. They can be combined.
+
+`<NumberInput>` validates its intermediate state and adds `invalid` class to enclosed input element if it's not a number.
+
+## Checkboxes
+
+There are different ways how you can handle the checkbox components.
+
+### `<Input type="checkbox" valueLink={ link }/>`
+
+```jsx
+import { Input } from 'react-mvx/tags'
+...
+<Input type="text" checkedLink={ booleanLink } />
+<Input type="text" checkedLink={ arrayLink.contains( 'option' ) } />
+```
+
+Directly binds linked boolean value to the standard input tag.
+
+### `<Checkbox/>`
+
+Internally, it's `<div>` element which toggles `selected` class on click.
+Thus, it can be easily styled.
+
+By default, it has `checkbox` CSS class, which can be overridden by passing `className` prop.
+
+It passes through anything else, including `children`.
+ 
+```jsx
+<Checkbox checkedLink={ booleanLink } />
+<Checkbox checkedLink={ arrayLink.contains( 'option' ) } />
+```
+
+## Radio Groups and Select list
+
+### `<Select/>`
+
+Wrapper for standard `<select/>`. Regular `<option/>` tags must be used. All props are passed through.
+
+```jsx
+<Select valueLink={ linkToSelectedValue }>
+    <option value="a">A</option>
+    <option value="b">B</option>
+</Select>
+```
+
+### `<Input type="radio"/>`
+      
+Wrapper for the standard `<input>`. Directly binds boolean value with `checkedLink` property.
+
+Can be directly bound to the state member using `valueLink` property.
+
+```jsx
+<label>
+    A:
+    <Input type="radio" valueLink={ flagLink } value="a" />
+</label>
+<label>
+    B:
+    <Input type="radio" valueLink={ flagLink } value="b" />
+</label>
+```
+
+### `<Radio/>`
+
+Internally, it's `<div>` element which always sets `selected` class on click. Thus,
+it can be easily styled. 
+
+By default, it has `radio` CSS class, which can be overridden by passing `className` prop.
+It passes through anything else, including `children`.
+
+It *must* be used in conjunction with `link.equals( 'value' )` method.
+
+```jsx
+<label>
+    A:
+    <Radio checkedLink={ flagLink.equals( 'a' ) } />
+</label>
+<label>
+    B:
+    <Radio checkedLink={ flagLink.equals( 'b' ) } />
+</label>
+```

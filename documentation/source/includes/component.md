@@ -12,7 +12,9 @@ import React, { define } from 'react-mvx'
 
 The universal Component base class.
 
-## `static` props = { name : Annotation }
+## props
+
+### `static` props = { name : Annotation }
 
 Component props declaration. Replaces standard `PropTypes`. Type annotation syntax:
 
@@ -26,14 +28,8 @@ Component props declaration. Replaces standard `PropTypes`. Type annotation synt
 
 Type annotations listed above may be chained.
 
-## `static` pureRender = true
-
-Generate and attach the "pure render" optimization mixin. Mixin prevents the subsequent render calls in case if props were unchanged.
-Mixin *detects and takes into account inner changes* of records and collections as well.
-
-`static props` declaration is required for `pureRender` to work. Only declared props will be compared.
-
-## `static` state = { name : Annotation } | RecordConstructor
+## state 
+### `static` state = { name : Annotation } | RecordConstructor
 
 Component state declaration. State is modeled as `Record` either referenced by Constructor or imlicitly defined with a given attributes declaration.
 `state` Record is created before the component mount, and is disposed when component is unmounted.
@@ -48,7 +44,7 @@ Component state declaration. State is modeled as `Record` either referenced by C
 
 Type annotations listed above may be chained. Please, refer to the [Type-R] type annotations reference for the complete list of options.
 
-## state : Record
+### state : Record
 
 Replaces standard React's `state` and `setState`. Holds an object of the `Record` subclass.
 
@@ -58,7 +54,51 @@ Use direct assignments to modify the state:
 
 Use `transaction()` call to groupe the sequence of changes in single UI update transaction.
 
-## transaction( fun )
+## store
+### `static` store = { name : Annotation } | Store | StoreConstructor
+
+Stores in Type-R are internally similar to the Record and used to resolve one-to-many and many-to-many relationships by id.
+Stores *must not* be used to store UI state; they are intended to hold the shared domain state which is cross-referenced by id.
+
+There may be many stores in Rect-MVx. There is the single _default store_ (`Store.global`) which is used to cache the data which must be accessible across the pages.
+
+Specifying the store for the top-level component sets this store as the primary one for all the internal state of the current component subtree.
+
+- `static store = referenceToTheExistingStore`. Update the UI on store changes.
+- `static store = StoreConstructor`. Creates the local store with the lifetime bound to the component's one.
+- `static store = { attributes }`. Implicitly create the Store subclass from the given attribute spec.
+
+### store : Store
+
+When the `static store` is defined, provide the access to the store in component.
+
+Store *is not* directly accessible to the subcomponents; you have to pass values down as props.
+
+## context
+
+### `static` context = { name : Annotation }
+
+Replacement for standard `contextTypes`. Just `Constructor` may be used as type annotation.
+
+### `static` childContext = { name : Annotation }
+
+Replacement for standard `childContextTypes`. Just `Constructor` may be used as type annotation.
+
+`getChildContext()` function is required to create the context as in raw React.
+
+## links
+
+### linkAt( 'key' ) : Link
+
+Create the [value link]() for the state member `key`. All records support `linkAt()` method as well.
+
+### linkAll() : { [ name ] : Link }
+
+Create the [value links]() for all (or specified) the state members. All records support `linkAll()` method as well.
+
+## Rendering control
+
+### transaction( fun )
 
 Group the sequence of state (and props) updates in the single transaction leading to single UI update.
 
@@ -72,44 +112,15 @@ this.transaction( state => {
 
 Read more about transactions in Type-R manual.
 
-## `static` store = { name : Annotation } | Store | StoreConstructor
+### `static` pureRender = true
 
-Stores in Type-R are internally similar to the Record and used to resolve one-to-many and many-to-many relationships by id.
-Stores *must not* be used to store UI state; they are intended to hold the shared domain state which is cross-referenced by id.
+Generate and attach the "pure render" optimization mixin. Mixin prevents the subsequent render calls in case if props were unchanged.
+Mixin *detects and takes into account inner changes* of records and collections as well.
 
-There may be many stores in Rect-MVx. There is the single _default store_ (`Store.global`) which is used to cache the data which must be accessible across the pages.
+`static props` declaration is required for `pureRender` to work. Only declared props will be compared.
 
-Specifying the store for the top-level component sets this store as the primary one for all the internal state of the current component subtree.
 
-- `static store = referenceToTheExistingStore`. Update the UI on store changes.
-- `static store = StoreConstructor`. Creates the local store with the lifetime bound to the component's one.
-- `static store = { attributes }`. Implicitly create the Store subclass from the given attribute spec.
-
-## store : Store
-
-When the `static store` is defined, provide the access to the store in component.
-
-Store *is not* directly accessible to the subcomponents; you have to pass values down as props.
-
-## `static` context = { name : Annotation }
-
-Replacement for standard `contextTypes`. Just `Constructor` may be used as type annotation.
-
-## `static` childContext = { name : Annotation }
-
-Replacement for standard `childContextTypes`. Just `Constructor` may be used as type annotation.
-
-`getChildContext()` function is required to create the context as in raw React.
-
-## linkAt( 'key' ) : Link
-
-Create the [value link]() for the state member `key`. All records support `linkAt()` method as well.
-
-## linkAll() : { [ name ] : Link }
-
-Create the [value links]() for all (or specified) the state members. All records support `linkAll()` method as well.
-
-## asyncUpdate()
+### asyncUpdate()
 
 Safe version of the `forceUpdate()`. Gracefully handles component disposal and UI update transactions.
 

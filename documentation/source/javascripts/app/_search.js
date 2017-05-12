@@ -45,7 +45,7 @@
 
     if (this.value) {
       var results = index.search(this.value).filter(function(r) {
-        return r.score > 0.0001;
+        return r.score > 0.00001;
       });
 
       if (results.length) {
