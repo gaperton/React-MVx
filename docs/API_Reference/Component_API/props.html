@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>       <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>          <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>          <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->  <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+    <title>props - React-MVx</title>
+    <meta name="description" content="MVVM Architecture Framework for React" />
+    <meta name="author" content="Vlad Balin">
+    <meta charset="UTF-8">
+    <link rel="icon" href="../../themes/daux/img/favicon-navy.png" type="image/x-icon">
+    <!-- Mobile -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Font -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700&subset=latin,cyrillic-ext,cyrillic' rel='stylesheet' type='text/css'>
+    <!-- CSS -->
+    <link href='../../themes/daux/css/theme-navy.min.css' rel='stylesheet' type='text/css'>
+            <!-- Tipue Search -->
+        <link href="../../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body class="with-float">
+    
+<header class="Navbar hidden-print">
+    <a class="Navbar__brand" href="../../index.html">React-MVx</a>
+
+    <div class="Search">
+        <svg class="Search__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 451 451"><path d="M447.05 428l-109.6-109.6c29.4-33.8 47.2-77.9 47.2-126.1C384.65 86.2 298.35 0 192.35 0 86.25 0 .05 86.3.05 192.3s86.3 192.3 192.3 192.3c48.2 0 92.3-17.8 126.1-47.2L428.05 447c2.6 2.6 6.1 4 9.5 4s6.9-1.3 9.5-4c5.2-5.2 5.2-13.8 0-19zM26.95 192.3c0-91.2 74.2-165.3 165.3-165.3 91.2 0 165.3 74.2 165.3 165.3s-74.1 165.4-165.3 165.4c-91.1 0-165.3-74.2-165.3-165.4z"/></svg>
+        <input type="search" id="tipue_search_input" class="Search__field" placeholder="Search..." autocomplete="on" results=25 autosave=text_search>
+    </div>
+</header>
+<div class="Columns content">
+    <aside class="Columns__left Collapsible">
+        <div class="Collapsible__container">
+            <button type="button" class="Button Collapsible__trigger">
+                <span class="Collapsible__trigger--bar"></span>
+                <span class="Collapsible__trigger--bar"></span>
+                <span class="Collapsible__trigger--bar"></span>
+            </button>
+        </div>
+
+        <div class="Collapsible__content">
+            <!-- Navigation -->
+            <ul class='Nav'><li class='Nav__item Nav__item--open has-children'><a href="../../API_Reference/Overview.html" class="folder"><i class="Nav__arrow">&nbsp;</i>API Reference</a><ul class='Nav'><li class='Nav__item '><a href="../../API_Reference/Overview.html">Overview</a></li><li class='Nav__item Nav__item--open has-children'><a href="../../API_Reference/Component_API/props.html" class="folder"><i class="Nav__arrow">&nbsp;</i>Component API</a><ul class='Nav'><li class='Nav__item Nav__item--active'><a href="../../API_Reference/Component_API/props.html">props</a></li><li class='Nav__item '><a href="../../API_Reference/Component_API/state.html">state</a></li><li class='Nav__item '><a href="../../API_Reference/Component_API/store.html">store</a></li><li class='Nav__item '><a href="../../API_Reference/Component_API/context.html">context</a></li><li class='Nav__item '><a href="../../API_Reference/Component_API/links.html">links</a></li><li class='Nav__item '><a href="../../API_Reference/Component_API/Rendering.html">Rendering</a></li></ul></li><li class='Nav__item  has-children'><a href="../../API_Reference/Link_API/link.html" class="folder"><i class="Nav__arrow">&nbsp;</i>Link API</a><ul class='Nav'><li class='Nav__item '><a href="../../API_Reference/Link_API/link.html">link</a></li></ul></li></ul></li><li class='Nav__item  has-children'><a href="../../Data-bound_controls/databinding.html" class="folder"><i class="Nav__arrow">&nbsp;</i>Data-bound controls</a><ul class='Nav'><li class='Nav__item '><a href="../../Data-bound_controls/databinding.html">databinding</a></li></ul></li><li class='Nav__item  has-children'><a href="../../includes/api.html" class="folder"><i class="Nav__arrow">&nbsp;</i>includes</a><ul class='Nav'><li class='Nav__item '><a href="../../includes/api.html">api</a></li><li class='Nav__item '><a href="../../includes/complex-state.html">complex-state</a></li><li class='Nav__item '><a href="../../includes/databinding.1.html">databinding.1</a></li><li class='Nav__item '><a href="../../includes/overview.html">overview</a></li><li class='Nav__item '><a href="../../includes/simple.html">simple</a></li><li class='Nav__item '><a href="../../includes/state.html">state</a></li><li class='Nav__item '><a href="../../includes/store.html">store</a></li><li class='Nav__item '><a href="../../includes/tools.html">tools</a></li></ul></li></ul>
+
+            <div class="Links">
+                                    <hr/>
+                                            <a href="https://github.com/Volicon/React-MVx/issues" target="_blank">Help/Support/Bugs</a>
+                        <br />
+                                            <a href="http://volicon.com" target="_blank">Made by Volicon (a Verizon company)</a>
+                        <br />
+                                    
+                                    <div class="CodeToggler">
+                        <hr/>
+                                                    <span class="CodeToggler__text">Code blocks</span>
+                            <div class="ButtonGroup" role="group">
+                                <button class="Button Button--default Button--small CodeToggler__button CodeToggler__button--hide">No</button>
+                                <button class="Button Button--default Button--small CodeToggler__button CodeToggler__button--below">Below</button>
+                                <button class="Button Button--default Button--small CodeToggler__button CodeToggler__button--float">Inline</button>
+                            </div>
+                                            </div>
+                
+                                    <hr/>
+                    <div class="Twitter">
+                                                    <iframe allowtransparency="true" frameborder="0" scrolling="no" style="width:162px; height:20px;" src="https://platform.twitter.com/widgets/follow_button.html?screen_name=gaperton&amp;show_count=false"></iframe>
+                            <br />
+                            <br />
+                                            </div>
+                            </div>
+        </div>
+    </aside>
+    <div class="Columns__right Columns__right--float">
+        <div class="Columns__right__content">
+            <div class="doc_content">
+                <article class="Page">
+
+    <div class="Page__header">
+        <h1>props</h1>
+                <span style="float: left; font-size: 10px; color: gray;">
+            Friday, May 12, 2017 3:21 PM        </span>
+                        <span style="float: right; font-size: 10px; color: gray;">
+            <a href="https://github.com/Volicon/React-MVx/blob/develop/docs/02_API_Reference/02_Component_API/01_props.md" target="_blank">Edit on GitHub</a>
+        </span>
+            </div>
+
+
+    <div class="s-content">
+        <p>Component props declaration replaces standard React's <code>propTypes</code> and <code>defaultProps</code>.</p>
+<pre><code class="language-javascript">import React, { define } from 'react-mvx'
+
+@define class PropsDemo extends React.Component {
+    static props = {
+        propName : TypeAnnotation,
+        ...
+    }
+}
+</code></pre>
+<ul class="TableOfContents">
+<li>
+<p><a href="#page_Type+assertions">Type assertions</a></p>
+</li>
+<li>
+<p><a href="#page_Default+values+%28.value%28...%29%29">Default values (.value(...))</a></p>
+</li>
+<li>
+<p><a href="#page_Watchers">Watchers</a></p>
+</li>
+<li>
+<p><a href="#page_UI+updates+on+internal+props+changes+%28.has.changeEvents%28...%29%29">UI updates on internal props changes (.has.changeEvents(...))</a></p>
+</li>
+<li>
+<p><a href="#page_Subscribe+for+events+from+props+%28.has.events%28...%29%29">Subscribe for events from props (.has.events(...))</a></p>
+</li>
+</ul>
+<h2 id="page_Type+assertions">Type assertions</h2>
+<p>Use <code>Constructor</code> functions for optional props. Add <code>Constuctor.isRequired</code> for required props.</p>
+<p><code>static props</code> declaration will be compiled to corresponding <code>propTypes</code> and will produce the run-time
+type asserts and warnings.</p>
+<pre><code class="language-javascript">import React, { define } from 'react-mvx'
+@define class PropsDemo extends React.Component {
+    static props = {
+        // Simple form of annotation is just the constructor function designating the type.
+        optionalArray: Array,
+        optionalBool: Boolean,
+        optionalFunc: Function,
+        optionalNumber: Number,
+        optionalObject: Object,
+        optionalString: String,
+        optionalSymbol: Symbol,   
+        
+        // Anything that can be rendered: numbers, strings, elements or an array
+        // (or fragment) containing these types.
+        optionalNode: React.Node,
+
+        // A React element.
+        optionalElement: React.Element,
+
+        // You can also declare that a prop is an instance of a class.
+        optionalMessage: Message,
+
+        // You can chain any of the above with `isRequired` to make sure a warning
+        // is shown if the prop isn't provided.
+        requiredFunction : Function.isRequired
+    };
+    ...
+}
+</code></pre>
+<h2 id="page_Default+values+%28.value%28...%29%29">Default values (.value(...))</h2>
+<p><code>Constructor.value( defaultValue )</code> or just <code>defaultValue</code> is used to specify the default value. In the last case
+the type will be inferred from the <code>defaultValue</code>.</p>
+<pre><code class="language-javascript">import React, { define } from 'react-mvx'
+
+@define class PropsDemo extends React.Component {
+    static props = {
+        withDefault : String.value( 'defaultValue' ),
+        anotherDefault : 'defaultValue'
+    }
+}
+</code></pre>
+<p>Any function in props annotation is treated as a constructor. Thus, <code>Function.value( defaultValue )</code> must be used to specify the defaults for functions.</p>
+<h2 id="page_Watchers">Watchers</h2>
+<p>Component can track changes of individual props through <em>watchers</em> attached to the props.
+Watcher is the function taking the new prop value, which is called first time after the component is
+mounted and every time component receives the new props and this particular prop is changed.</p>
+<pre><code class="language-javascript">import React, { define } from 'react-mvx'
+
+@define class PropsDemo extends React.Component {
+    static props = {
+        first : String.has.watcher( 'onFirstChange' ),
+        // Render when record is added to or removed from the collection
+        second : Number.has.watcher( second =&gt; console.log( 'Received new prop:', second ) )
+    }
+
+    onFirstChange( newValue, propName ){
+        console.log( 'First prop is about to change:', newValue );
+    }
+}
+</code></pre>
+<h2 id="page_UI+updates+on+internal+props+changes+%28.has.changeEvents%28...%29%29">UI updates on internal props changes (.has.changeEvents(...))</h2>
+<p>Component can observe changes <em>inside of the records and collections</em> and trigger the local UI update.</p>
+<pre><code class="language-javascript">import React, { define } from 'react-mvx'
+import { Record } from 'react-mvx'
+
+@define class PropsDemo extends React.Component {
+    static props = {
+        // Render on every change
+        trackInnerChanges : Record.has.changeEvents( true ),
+        // Render when record is added to or removed from the collection
+        anotherDefault : Collection.has.changeEvents( 'add remove' )
+    }
+}
+</code></pre>
+<h2 id="page_Subscribe+for+events+from+props+%28.has.events%28...%29%29">Subscribe for events from props (.has.events(...))</h2>
+<p>Type annotation syntax:</p>
+<ul>
+<li>
+<code>EventSource.has.events({ [ events ] : handlerFunction | 'methodName' })</code> - subscribe for events from the property.</li>
+</ul>
+    </div>
+
+        <nav>
+        <ul class="Pager">
+            <li class=Pager--prev><a href="../../API_Reference/Overview.html">Previous</a></li>            <li class=Pager--next><a href="../../API_Reference/Component_API/state.html">Next</a></li>        </ul>
+    </nav>
+    </article>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+    <!-- jQuery -->
+    <script src="../../themes/daux/js/jquery-1.11.3.min.js"></script>
+
+    <!-- hightlight.js -->
+    <script src="../../themes/daux/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <!-- JS -->
+    
+    <script src="../../themes/daux/js/daux.js"></script>
+
+            <!-- Tipue Search -->
+        <script type="text/javascript" src="../../tipuesearch/tipuesearch.js"></script>
+
+        <script>
+            window.onunload = function(){}; // force $(document).ready to be called on back/forward navigation in firefox
+            $(function() {
+                tipuesearch({
+                    'base_url': '../../'
+                });
+            });
+        </script>
+    
+</body>
+</html>

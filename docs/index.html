@@ -1,341 +1,159 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<!--[if lt IE 7]>       <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>          <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>          <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->  <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+    <title>React-MVx </title>
+    <meta name="description" content="MVVM Architecture Framework for React" />
+    <meta name="author" content="Vlad Balin">
+    <meta charset="UTF-8">
+    <link rel="icon" href="themes/daux/img/favicon-navy.png" type="image/x-icon">
+    <!-- Mobile -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <head>
-    <meta charset="utf-8">
-    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
-    <link href="stylesheets/screen.css" rel="stylesheet" type="text/css" media="screen" />
-    <link href="stylesheets/print.css" rel="stylesheet" type="text/css" media="print" />
-    <link href="stylesheets/highlight-monokai.css" rel="stylesheet" type="text/css" media="screen, print" />
-    <script src="javascripts/all.js" type="text/javascript"></script>
-  </head>
+    <!-- Font -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700&subset=latin,cyrillic-ext,cyrillic' rel='stylesheet' type='text/css'>
+    <!-- CSS -->
+    <link href='themes/daux/css/theme-navy.min.css' rel='stylesheet' type='text/css'>
+            <!-- Tipue Search -->
+        <link href="tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body class="with-float">
+    <div class="Navbar hidden-print">
+    <div class="container">
+        <a class="Navbar__brand" href="index.html">React-MVx</a>
 
-  <body class="" data-languages="[]">
-    <a href="#" id="nav-button"> <span>
-        NAV
-        <img alt="undefined" class="undefined" src="images/navbar.png">
-      </span> </a>
-    <div class="tocify-wrapper"> <img alt="undefined" class="undefined" src="images/volicon_verizon_dm.png">
-      <div class="lang-selector"> </div>
-      <div class="search"> <input type="text" class="search" id="input-search" placeholder="Search"> </div>
-      <ul class="search-results"></ul>
-      <div id="toc"> </div>
-      <ul class="toc-footer">
-        <li><a href='#'>Sign Up for a Developer Key</a></li>
-        <li><a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a></li>
-      </ul>
+    <div class="Search">
+        <svg class="Search__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 451 451"><path d="M447.05 428l-109.6-109.6c29.4-33.8 47.2-77.9 47.2-126.1C384.65 86.2 298.35 0 192.35 0 86.25 0 .05 86.3.05 192.3s86.3 192.3 192.3 192.3c48.2 0 92.3-17.8 126.1-47.2L428.05 447c2.6 2.6 6.1 4 9.5 4s6.9-1.3 9.5-4c5.2-5.2 5.2-13.8 0-19zM26.95 192.3c0-91.2 74.2-165.3 165.3-165.3 91.2 0 165.3 74.2 165.3 165.3s-74.1 165.4-165.3 165.4c-91.1 0-165.3-74.2-165.3-165.4z"/></svg>
+        <input type="search" id="tipue_search_input" class="Search__field" placeholder="Search..." autocomplete="on" results=25 autosave=text_search>
     </div>
-    <div class="page-wrapper">
-      <div class="dark-box"></div>
-      <div class="content">
-        <h1 id="getting-started">Getting started</h1>
-        <h1 id="state-management-basics">State Management Basics</h1>
-        <h1 id="stores-and-relations">Stores and Relations</h1>
-        <h1 id="component-api">Component API</h1>
-        <pre class="highlight javascript"><code><span class="hljs-keyword">import</span> React, { define } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-mvx'</span>
-
-@define <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyComponent</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
-    render(){
-        <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello World<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span>;
-    }
-}</code></pre>
-        <p>The universal Component base class.</p>
-        <h2 id="props">props</h2>
-        <h3 id="-static-props-name-annotation-"><code>static</code> props = { name : Annotation }</h3>
-        <p>Component props declaration. Replaces standard <code>PropTypes</code>. Type annotation syntax:</p>
-        <ul>
-          <li><code>Constructor</code> - puts the instanceOf constraint on props type. Use <code>Number</code>, <code>String</code>, and <code>Boolean</code> for primitive types.</li>
-          <li><code>Constructor.value( val )</code> or just <code>val</code> - property has the default value.</li>
-          <li><code>Constructor.isRequired</code> - property is mandatory.</li>
-          <li><code>RecordOrCollection.has.changeEvents( true )</code> - update the component on any inner change in the property.</li>
-          <li><code>EventSource.has.changeEvents( &#39;event1 event2 ...&#39; )</code> - update the component on any of the specified events triggered by the property.</li>
-          <li><code>EventSource.has.events({ [ events ] : handlerFunction | &#39;methodName&#39; })</code> - subscribe for events from the property.</li>
-          <li><code>Constructor.has.watcher( watcherFunction | &#39;methodName&#39; )</code> - call the watcher when new prop value is received.</li>
-        </ul>
-        <p>Type annotations listed above may be chained.</p>
-        <h2 id="state">state</h2>
-        <h3 id="-static-state-name-annotation-recordconstructor"><code>static</code> state = { name : Annotation } | RecordConstructor</h3>
-        <p>Component state declaration. State is modeled as <code>Record</code> either referenced by Constructor or imlicitly defined with a given attributes declaration. <code>state</code> Record is created before the component mount, and is disposed when
-          component is unmounted.</p>
-        <ul>
-          <li><code>Constructor</code> - initialize attribute with the default value of the given constructor.</li>
-          <li><code>Constructor.value( val )</code> or just <code>val</code> - provide different default value.</li>
-          <li><code>Constructor.isRequired</code> - put &#39;not empty&#39; validation check on the attribute.</li>
-          <li><code>Constructor.has.check( predicate )</code> - put custom validation check on the attribute.</li>
-          <li><code>RecordOrCollection.has.changeEvents( false )</code> - <em>do not update</em> the component on any inner changes of the attribute.</li>
-          <li><code>EventSource.has.events({ [ events ] : handlerFunction | &#39;methodName&#39; })</code> - subscribe for events from the attribute.</li>
-          <li><code>Constructor.has.watcher( watcherFunction | &#39;methodName&#39; )</code> - call the watcher when the attribute is changed.</li>
-        </ul>
-        <p>Type annotations listed above may be chained. Please, refer to the [Type-R] type annotations reference for the complete list of options.</p>
-        <h3 id="state-record">state : Record</h3>
-        <p>Replaces standard React&#39;s <code>state</code> and <code>setState</code>. Holds an object of the <code>Record</code> subclass.</p>
-        <p>Use direct assignments to modify the state:</p>
-        <pre class="highlight undefined"><code>this.<span class="hljs-keyword">state</span>.x = <span class="hljs-number">5</span>;</code></pre>
-        <p>Use <code>transaction()</code> call to groupe the sequence of changes in single UI update transaction.</p>
-        <h2 id="store">store</h2>
-        <h3 id="-static-store-name-annotation-store-storeconstructor"><code>static</code> store = { name : Annotation } | Store | StoreConstructor</h3>
-        <p>Stores in Type-R are internally similar to the Record and used to resolve one-to-many and many-to-many relationships by id. Stores <em>must not</em> be used to store UI state; they are intended to hold the shared domain state which is cross-referenced
-          by id.</p>
-        <p>There may be many stores in Rect-MVx. There is the single <em>default store</em> (<code>Store.global</code>) which is used to cache the data which must be accessible across the pages.</p>
-        <p>Specifying the store for the top-level component sets this store as the primary one for all the internal state of the current component subtree.</p>
-        <ul>
-          <li><code>static store = referenceToTheExistingStore</code>. Update the UI on store changes.</li>
-          <li><code>static store = StoreConstructor</code>. Creates the local store with the lifetime bound to the component&#39;s one.</li>
-          <li><code>static store = { attributes }</code>. Implicitly create the Store subclass from the given attribute spec.</li>
-        </ul>
-        <h3 id="store-store">store : Store</h3>
-        <p>When the <code>static store</code> is defined, provide the access to the store in component.</p>
-        <p>Store <em>is not</em> directly accessible to the subcomponents; you have to pass values down as props.</p>
-        <h2 id="context">context</h2>
-        <h3 id="-static-context-name-annotation-"><code>static</code> context = { name : Annotation }</h3>
-        <p>Replacement for standard <code>contextTypes</code>. Just <code>Constructor</code> may be used as type annotation.</p>
-        <h3 id="-static-childcontext-name-annotation-"><code>static</code> childContext = { name : Annotation }</h3>
-        <p>Replacement for standard <code>childContextTypes</code>. Just <code>Constructor</code> may be used as type annotation.</p>
-        <p><code>getChildContext()</code> function is required to create the context as in raw React.</p>
-        <h2 id="links">links</h2>
-        <h3 id="linkat-key-link">linkAt( &#39;key&#39; ) : Link</h3>
-        <p>Create the <a href="">value link</a> for the state member <code>key</code>. All records support <code>linkAt()</code> method as well.</p>
-        <h3 id="linkall-name-link-">linkAll() : { [ name ] : Link }</h3>
-        <p>Create the <a href="">value links</a> for all (or specified) the state members. All records support <code>linkAll()</code> method as well.</p>
-        <h2 id="rendering-control">Rendering control</h2>
-        <h3 id="transaction-fun-">transaction( fun )</h3>
-        <p>Group the sequence of state (and props) updates in the single transaction leading to single UI update.</p>
-        <pre class="highlight javascript"><code><span class="hljs-keyword">this</span>.transaction( <span class="hljs-function"><span class="hljs-params">state</span> =&gt;</span> {
-    state.a++;
-    state.b++;
-    <span class="hljs-keyword">this</span>.props.collection.reset();
-});</code></pre>
-        <p>Read more about transactions in Type-R manual.</p>
-        <h3 id="-static-purerender-true"><code>static</code> pureRender = true</h3>
-        <p>Generate and attach the &quot;pure render&quot; optimization mixin. Mixin prevents the subsequent render calls in case if props were unchanged. Mixin <em>detects and takes into account inner changes</em> of records and collections as well.</p>
-        <p><code>static props</code> declaration is required for <code>pureRender</code> to work. Only declared props will be compared.</p>
-        <h3 id="asyncupdate-">asyncUpdate()</h3>
-        <p>Safe version of the <code>forceUpdate()</code>. Gracefully handles component disposal and UI update transactions.</p>
-        <p>Shall be used in place of every manual call to <code>forceUpdate()</code>.</p>
-        <h1 id="link-api">Link API</h1>
-        <pre class="highlight javascript"><code><span class="hljs-comment">// Data bound control for the semantic form markup</span>
-<span class="hljs-keyword">const</span> Input = <span class="hljs-function">(<span class="hljs-params">{ valueLink, ...props }</span>) =&gt;</span> (
-    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">{</span>`<span class="hljs-attr">form-control</span> ${ <span class="hljs-attr">valueLink.error</span> ? '<span class="hljs-attr">error</span>' <span class="hljs-attr">:</span> '' }`}&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> {<span class="hljs-attr">...props</span>}
-            <span class="hljs-attr">value</span>=<span class="hljs-string">{</span> <span class="hljs-attr">valueLink.value</span> }
-            <span class="hljs-attr">onChange</span>=<span class="hljs-string">{</span> <span class="hljs-attr">e</span> =&gt;</span> valueLink.set( e.target.value ) }
-        /&gt;
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"validation-error"</span>&gt;</span>{ valueLink.error || '' }<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-);</span></code></pre>
-        <p>Link is an intermediate object used to implement the two-way data binding. It acts like a transport for the value, the callback to modify it, its validation error, abstracting out UI controls from the data representation in the state container
-          and from the state container per se.</p>
-        <p>Links to the record&#39;s attributes are commonly created with <code>linkAt</code> and <code>linkAll</code> methods of records. Record is automatically validated upon the links creation, and link encloses the validation error related to the particuler
-          attribute.</p>
-        <p>Links makes it possible to create the semantic markup for the form elements, encapsulating the all the required styles and validation error indication.</p>
-        <h2 id="link-s-structure">Link&#39;s structure</h2>
-        <pre class="highlight javascript"><code><span class="hljs-comment">// Link's shape</span>
-{
-    <span class="hljs-attr">value</span> : <span class="hljs-comment">/* the value */</span>,
-    set( newValue ){ <span class="hljs-comment">/* the function to change it */</span>},
-    <span class="hljs-attr">error</span> : <span class="hljs-comment">/* validation error */</span>
-}</code></pre>
-        <p>Here are the most important link members.</p>
-        <h3 id="value">value</h3>
-        <p>Holds linked value. This value is immutable.</p>
-        <h3 id="error">error</h3>
-        <p>Holds the validation error (typically the text error message) which might be consumed and displayed by data-bound countrol.</p>
-        <h3 id="set-newvalue-">set( newValue )</h3>
-        <pre class="highlight javascript"><code>&lt;button onClick={ () =&gt; boolLink.set( !boolLink.value ) } /&gt;</code></pre>
-        <p>Tells the state container to update the value (<code>link.value</code> is not changed).</p>
-        <h3 id="update-prevvalue-newvalue-">update( prevValue =&gt; newValue )</h3>
-        <pre class="highlight javascript"><code>&lt;button onClick={ () =&gt; boolLink.update( <span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> !x ) } /&gt;</code></pre>
-        <p>Update link value using the given value transform function.</p>
-        <h2 id="create-the-link">Create the link</h2>
-        <p>All records and collections may create links to its elements. Component has the shorthand methods to create links to its state record elements.</p>
-        <p>You can create custom link object encapsulating complex data binding logic with <code>Link.value</code>.</p>
-        <h3 id="linkat-key-">linkAt( key )</h3>
-        <pre class="highlight javascript"><code><span class="hljs-keyword">const</span> nameLink = user.linkAt( <span class="hljs-string">'name'</span> );</code></pre>
-        <ul>
-          <li><code>record.linkAt( attr )</code> links the record&#39;s attribute. Semantically it&#39;s the reference to the attribute.</li>
-          <li><code>collection.linkAt( prop )</code> links the custom collection property. Property&#39;s setter <em>must</em> modify some record&#39;s attributes or change collections.</li>
-          <li><code>component.linkAt( key )</code> works similar to <code>component.state.linkAt( key )</code>.</li>
-        </ul>
-        <h3 id="linkall-">linkAll()</h3>
-        <pre class="highlight javascript"><code><span class="hljs-comment">// Link all attributes...</span>
-<span class="hljs-keyword">const</span> { name, email, age } = user.linkAll();
-
-<span class="hljs-comment">// Link specified attributes...</span>
-<span class="hljs-keyword">const</span> { name, email } = user.linkAll( <span class="hljs-string">'name'</span>, <span class="hljs-string">'email'</span> );</code></pre>
-        <ul>
-          <li><code>record.linkAll()</code> links all records attributes.</li>
-          <li><code>component.linkAll()</code> works similar to <code>component.state.linkAll()</code>.</li>
-        </ul>
-        <h3 id="collection-linkcontains-record-">collection.linkContains( record )</h3>
-        <p>Create the boolean link which is <code>true</code> whenever the record is contained in the collection.</p>
-        <p>Setting the link to <code>false</code> will remove record from the collection, setting it to true will add it.</p>
-        <h3 id="link-value-value-set-">Link.value( value, set )</h3>
-        <p>Create custom link with the given <code>value</code> and <code>set</code> function. Use the <code>link.check</code> method to populate the validation error.</p>
-        <h2 id="links-transformations">Links transformations</h2>
-        <h3 id="link-equals-value-">link.equals( value )</h3>
-        <pre class="highlight javascript"><code>&lt;Checkbox checkedLink={ stringLink.equals( <span class="hljs-string">'optionX'</span> ) } /&gt;
-<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Checkbox</span> <span class="hljs-attr">checkedLink</span>=<span class="hljs-string">{</span> <span class="hljs-attr">stringLink.equals</span>( '<span class="hljs-attr">optionY</span>' ) } /&gt;</span></span></code></pre>
-        <p>Create boolean equality link which value is <code>true</code> whenever <code>link.value === value</code>, and <code>false</code> otherwise.</p>
-        <p>When an equality link is assigned with <code>true</code> the parent link value is set with <code>value</code>, and with <code>null</code> otherwise.</p>
-        <p>Useful for radio groups.</p>
-        <h3 id="link-props">link.props</h3>
-        <pre class="highlight javascript"><code>&lt;input type=<span class="hljs-string">"text"</span> {...nameLink.props} /&gt;</code></pre>
-        <p>Converts the link to the standard <code>{ value, onChange }</code> props to be easily consumed by standard <code>&lt;input /&gt;</code> control.</p>
-        <h3 id="link-action-prevvalue-event-newvalue-">link.action( ( prevValue, event ) =&gt; newValue )</h3>
-        <pre class="highlight javascript"><code><span class="hljs-comment">// simple click event handler...</span>
-&lt;button onClick={ boolLink.action( <span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> !x ) } /&gt;
-
-<span class="hljs-comment">// manual binding to input control:</span>
-<span class="hljs-keyword">const</span> setValue = <span class="hljs-function">(<span class="hljs-params"> x, e </span>) =&gt;</span> e.target.value;
-...
-&lt;input  value={ link.value }
-        onChange={ link.action( setValue ) } /&gt;</code></pre>
-        <p>Convert the link to the UI event handler <code>event =&gt; void</code> which will transform the link using the given function.</p>
-        <p><code>link.action</code> takes transform function, and produce a new function which takes single <code>event</code> argument. When it&#39;s called, <code>event</code> and link <code>value</code> are passes as transform parameters, and link will
-          be updated with returned value.</p>
-        <p>This is particularly useful in (but not restricted to) UI event handlers.</p>
-        <h3 id="link-check-predicate-value-boolean-errormsg-">link.check( predicate : value =&gt; boolean, errorMsg? )</h3>
-        <p>Checks whenever the predicate is truthy on linked value, and if it&#39;s not, assigns <code>link.error</code> with <code>errorMsg</code>. Does nothing if <code>link.error</code> is already populated.</p>
-        <p>This method may be used for additional validation in <code>render()</code>, and to populate the validation error for the custom links created with <code>Link.value()</code>.</p>
-        <p>You typically don&#39;t need <code>link.check</code> for links created with <code>linkAt()</code> methods, because the validation happens inside of records.</p>
-        <h2 id="links-to-objects-and-arrays">Links to objects and arrays</h2>
-        <p>It&#39;s rather unusual scenario that you hold complex raw JS data as a part of your state, because typically the state is defined as a superposition of nested records and collections.</p>
-        <p>Links can be used to make purely functional updates of the objects and arrays in records attributes. It&#39;s done with the help of <em>at-links</em>, which points to the elements of linked objects and arrays.</p>
-        <h3 id="link-at-key-">link.at( key )</h3>
-        <pre class="highlight javascript"><code><span class="hljs-comment">// Update this.state.array[ 0 ].name</span>
-<span class="hljs-keyword">this</span>.linkAt( <span class="hljs-string">'array'</span> ).at( <span class="hljs-number">0</span> ).at( <span class="hljs-string">'name'</span> ).set( <span class="hljs-string">'Joe'</span> );</code></pre>
-        <p>Create an <em>at-link</em> to the member of array or object.</p>
-        <p>Whenever an <em>at-link</em> is updated, it will lead to proper purely functional update (with shallow copying) of the container (array or object).</p>
-        <h3 id="link-pick-key1-key2-">link.pick( key1, key2, ... )</h3>
-        <pre class="highlight javascript"><code><span class="hljs-comment">// Bulk create at-links for the linked object</span>
-<span class="hljs-keyword">const</span> { name, email } = objLink.pick( <span class="hljs-string">'name'</span>, <span class="hljs-string">'email'</span> );</code></pre>
-        <p>Create <em>at-links</em> to the object&#39;s members with designated keys, and wrap them in an object.</p>
-        <h3 id="link-map-itemlink-itemkey-any-void-">link.map( ( itemLink, itemKey ) =&gt; any | void )</h3>
-        <pre class="highlight javascript"><code><span class="hljs-comment">// Render the linked array...</span>
-<span class="hljs-keyword">var</span> list = stringArrayLink.map( <span class="hljs-function">(<span class="hljs-params"> itemLink, index </span>) =&gt;</span> {
-    <span class="hljs-keyword">if</span>( itemLink.value ){ <span class="hljs-comment">// Skip empty elements</span>
-        <span class="hljs-keyword">return</span> (
-            <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">key</span>=<span class="hljs-string">{</span> <span class="hljs-attr">index</span> }&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">Input</span> <span class="hljs-attr">valueLink</span>=<span class="hljs-string">{</span> <span class="hljs-attr">itemLink</span> } /&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-        );
-    }
-});</span></code></pre>
-        <p>Map and filter through the linked array or object to produce an array. Mapping function receives <em>at-link</em> to the corresponding element. Whenever it returns <code>undefined</code>, the corresponding element is be skipped.</p>
-        <h3 id="link-update-clonedobject-modifiedobject-">link.update( clonedObject =&gt; modifiedObject )</h3>
-        <pre class="highlight javascript"><code><span class="hljs-comment">// Update the linked object</span>
-&lt;button onClick={ () =&gt; objLink.update( <span class="hljs-function"><span class="hljs-params">obj</span> =&gt;</span> {
-                                obj.a = <span class="hljs-number">1</span>;
-                                <span class="hljs-keyword">return</span> obj;
-                            }) } /&gt;</code></pre>
-        <p>Update linked object or array.</p>
-        <p>Plain objects and arrays are shallow copied already, thus it&#39;s safe just to update the value in place.</p>
-        <h3 id="link-action-clonedobject-event-object-">link.action( ( clonedObject, event ) =&gt; Object )</h3>
-        <p>Creates action to update enclosed object or array.</p>
-        <p>Plain objects and arrays are shallow copied already, thus it&#39;s safe just to update the value in place.</p>
-        <h3 id="link-removeat-key-">link.removeAt( key )</h3>
-        <p>Remove element with a given key from the linked object or array.</p>
-        <h3 id="atlink-remove-">atLink.remove()</h3>
-        <p>Remove element with a given key from the linked object or array.</p>
-        <h3 id="array-specific-link-methods">Array-specific link methods</h3>
-        <p>Link to arrays proxies Array&#39;s <code>splice()</code>, <code>push()</code>, and <code>unshift()</code> methods.</p>
-        <p>They works in the same way and accepts the same parameters as corresponding Array methods, but returns <code>undefined</code> and leads to the proper purely functional update of the parent object chain.</p>
-        <h4 id="-linktoarray-contains-element-link-"><code>linkToArray.contains( element ) : Link</code></h4>
-        <p>Creates the boolean link to the presence of value in array.</p>
-        <p>Resulting link value is <code>true</code> whenever element is present in array, and <code>false</code> otherwise. Whenever resulting link is assigned with new value, it will flip <code>element</code> in the array.</p>
-        <p>Useful for the large checkbox groups.</p>
-        <h1 id="data-bound-controls">Data-bound controls</h1>
-        <pre class="highlight javascript"><code><span class="hljs-comment">// Ad-hoc data binding for standard controls</span>
-&lt;input {...link.props} /&gt;</code></pre>
-        <p>Link can be bound to the standard form control consuming <code>value</code> and <code>onChange</code> props like this:</p>
-        <pre class="highlight javascript"><code><span class="hljs-comment">// Custom data-bound control</span>
-<span class="hljs-keyword">const</span> Input = <span class="hljs-function">(<span class="hljs-params">{ link, ...props }</span>) =&gt;</span> (
-    &lt;div className={`form-row ${ link.error ? 'has-error' : '' } `}&gt;
-        &lt;input type="text" {...props} { ...link.props } /&gt;
-        &lt;div className="error-placeholder"&gt;{ link.error || '' } &lt;/div&gt;
-    &lt;/div&gt;
-);
-
-// Another simple data bound control
-const Input = ({ link, ...props }) =&gt; (
-    &lt;input {...props}
-            value={ link.value }
-            onChange={ e =&gt; link.set( e.target.value ) } /&gt;
-);</code></pre>
-        <p>However, in order to take the full advantage of the value link pattern you&#39;re encouraged to create the semantic form control wrappers, encapsulating the markup for inline validation errors indication and form layout.</p>
-        <p>The general pattern you&#39;re using for defining the data bound controls is shown on the right.</p>
-        <p>Here&#39;s the reference for data bound tags from <a href="/tags.jsx">react-mvx/tags</a> which illustrates the technique and might be used as starting boilerplate for your custom controls.</p>
-        <h2 id="text-input-controls">Text input controls</h2>
-        <pre class="highlight javascript"><code><span class="hljs-keyword">import</span> { Input, TextArea } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-mvx/tags'</span>
-...
-&lt;Input type=<span class="hljs-string">"text"</span> valueLink={ link } /&gt;
-<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">TextArea</span> <span class="hljs-attr">valueLink</span>=<span class="hljs-string">{</span> <span class="hljs-attr">link</span> } /&gt;</span></span></code></pre>
-        <p><code>tags.jsx</code> contains wrappers for standard <code>&lt;input&gt;</code> and <code>&lt;textarea&gt;</code> tags, which consume linked strings.</p>
-        <p>These wrappers will add <code>invalid</code> class to enclosed HTML element if an error is present in the link.</p>
-        <h2 id="numeric-input">Numeric input</h2>
-        <pre class="highlight jsx"><code><span class="hljs-keyword">import</span> { NumberInput } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-mvx/tags'</span>
-
-&lt;NumberInput valueLink={ link } /&gt;
-&lt;NumberInput valueLink={ link } integer={ true }/&gt;
-&lt;NumberInput valueLink={ link } positive={ true }/&gt;</code></pre>
-        <p>The proper implementation of wrong input rejection for numberic input controls may be tough. Therefore, <code>tags.jsx</code> has the cross-browser implementation of <em>numeric input</em> tag. It has following differences compared to the regular
-          <code>&lt;Input&gt;</code>:</p>
-        <ul>
-          <li>Keyboard input which obviously leads to invalid values (e.g. letters) is rejected.</li>
-          <li>Value is always being converted to valid number.</li>
-          <li>There are <code>integer</code> and <code>positive</code> boolean props controlling input rejection. They can be combined.</li>
-        </ul>
-        <p><code>&lt;NumberInput&gt;</code> validates its intermediate state and adds <code>invalid</code> class to enclosed input element if it&#39;s not a number.</p>
-        <h2 id="checkboxes">Checkboxes</h2>
-        <p>There are different ways how you can handle the checkbox components.</p>
-        <h3 id="-input-type-checkbox-valuelink-link-"><code>&lt;Input type=&quot;checkbox&quot; valueLink={ link }/&gt;</code></h3>
-        <pre class="highlight jsx"><code><span class="hljs-keyword">import</span> { Input } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-mvx/tags'</span>
-...
-&lt;Input type=<span class="hljs-string">"text"</span> checkedLink={ booleanLink } /&gt;
-<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">checkedLink</span>=<span class="hljs-string">{</span> <span class="hljs-attr">arrayLink.contains</span>( '<span class="hljs-attr">option</span>' ) } /&gt;</span></span></code></pre>
-        <p>Directly binds linked boolean value to the standard input tag.</p>
-        <h3 id="-checkbox-"><code>&lt;Checkbox/&gt;</code></h3>
-        <p>Internally, it&#39;s <code>&lt;div&gt;</code> element which toggles <code>selected</code> class on click. Thus, it can be easily styled.</p>
-        <p>By default, it has <code>checkbox</code> CSS class, which can be overridden by passing <code>className</code> prop.</p>
-        <p>It passes through anything else, including <code>children</code>.</p>
-        <pre class="highlight jsx"><code>&lt;Checkbox checkedLink={ booleanLink } /&gt;
-<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Checkbox</span> <span class="hljs-attr">checkedLink</span>=<span class="hljs-string">{</span> <span class="hljs-attr">arrayLink.contains</span>( '<span class="hljs-attr">option</span>' ) } /&gt;</span></span></code></pre>
-        <h2 id="radio-groups-and-select-list">Radio Groups and Select list</h2>
-        <h3 id="-select-"><code>&lt;Select/&gt;</code></h3>
-        <p>Wrapper for standard <code>&lt;select/&gt;</code>. Regular <code>&lt;option/&gt;</code> tags must be used. All props are passed through.</p>
-        <pre class="highlight jsx"><code>&lt;Select valueLink={ linkToSelectedValue }&gt;
-    &lt;option value="a"&gt;A&lt;/option&gt;
-    &lt;option value="b"&gt;B&lt;/option&gt;
-&lt;/Select&gt;</code></pre>
-        <h3 id="-input-type-radio-"><code>&lt;Input type=&quot;radio&quot;/&gt;</code></h3>
-        <p>Wrapper for the standard <code>&lt;input&gt;</code>. Directly binds boolean value with <code>checkedLink</code> property.</p>
-        <p>Can be directly bound to the state member using <code>valueLink</code> property.</p>
-        <pre class="highlight jsx"><code>&lt;label&gt;
-    A:
-    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> <span class="hljs-attr">valueLink</span>=<span class="hljs-string">{</span> <span class="hljs-attr">flagLink</span> } <span class="hljs-attr">value</span>=<span class="hljs-string">"a"</span> /&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span></span>
-&lt;label&gt;
-    B:
-    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> <span class="hljs-attr">valueLink</span>=<span class="hljs-string">{</span> <span class="hljs-attr">flagLink</span> } <span class="hljs-attr">value</span>=<span class="hljs-string">"b"</span> /&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span></span></code></pre>
-        <h3 id="-radio-"><code>&lt;Radio/&gt;</code></h3>
-        <p>Internally, it&#39;s <code>&lt;div&gt;</code> element which always sets <code>selected</code> class on click. Thus, it can be easily styled. </p>
-        <p>By default, it has <code>radio</code> CSS class, which can be overridden by passing <code>className</code> prop. It passes through anything else, including <code>children</code>.</p>
-        <p>It <em>must</em> be used in conjunction with <code>link.equals( &#39;value&#39; )</code> method.</p>
-        <pre class="highlight jsx"><code>&lt;label&gt;
-    A:
-    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Radio</span> <span class="hljs-attr">checkedLink</span>=<span class="hljs-string">{</span> <span class="hljs-attr">flagLink.equals</span>( '<span class="hljs-attr">a</span>' ) } /&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span></span>
-&lt;label&gt;
-    B:
-    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Radio</span> <span class="hljs-attr">checkedLink</span>=<span class="hljs-string">{</span> <span class="hljs-attr">flagLink.equals</span>( '<span class="hljs-attr">b</span>' ) } /&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span></span></code></pre> </div>
-      <div class="dark-box">
-        <div class="lang-selector"> </div>
-      </div>
     </div>
-  </body>
+</div>
 
+<div class="Homepage">
+    <div class="HomepageTitle container">
+        <h2>MVVM Architecture Framework for React</h2>    </div>
+
+    <div class="HomepageImage container">
+            </div>
+
+    <div class="HomepageButtons">
+        <div class="container">
+            <a href="https://github.com/Volicon/React-MVx" class="Button Button--secondary Button--hero">View On GitHub</a><a href="API_Reference/Overview.html" class="Button Button--primary Button--hero">View Documentation</a>            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+
+<div class="HomepageContent">
+    <div class="container">
+        <div class="container--inner">
+            <div class="doc_content s-content">
+                <p class="lead">
+	<strong>NestedReact</strong> bridges the gap between React and traditional MVC frameworks,
+	combining familiar OO state management and two-way data binding with all the benefits of true unidirectional data flow.
+</p>
+<p class="lead">
+    It's MVC framework taking <a src="https://facebook.github.io/react/">React</a> for "V" and <a href="https://github.com/Volicon/NestedTypes">NestedTypes</a> for "M", while being unopinionated on "C". 
+</p>
+<hr/>
+<br/>
+<div class=row>
+<div class=col-third>
+<h4 id="page_NestedTypes+for+%22M%22">NestedTypes for &quot;M&quot;</h4>
+<p>Does to your data the same as React does to the DOM.</p>
+<ul>
+<li>Observable (reactive) data structures</li>
+<li>Easy state synchronization</li>
+<li>Automatic serialization and REST</li>
+<li>Aggregation, &quot;to-one&quot;, and &quot;to-many&quot; relashionships.</li>
+<li>Type annotations and assertions</li>
+<li>10 times faster than BackboneJS.</li>
+</ul>
+</div>
+<div class=col-third>
+<h4 id="page_React+for+%22V%22">React for &quot;V&quot;</h4>
+<p>React. Extended to play well with MVC.</p>
+<ul>
+<li>Simple technique to manage all application state
+<ul>
+<li>Handle complex UI state with NestedTypes</li>
+<li>Unidirectional data flow</li>
+<li>Automatic &quot;pure render&quot; optimization</li>
+</ul>
+</li>
+<li>Handle forms naturally
+<ul>
+<li>Two-way data binding</li>
+<li>Declarative form validation</li>
+</ul>
+</li>
+<li>
+<em>React mixins</em> with ES6 classes.</li>
+<li>Cuts your code 2-5x compared to React/Redux.</li>
+</ul>
+</div>
+<div class=col-third>
+<h4 id="page_Choose+your+%22C%22">Choose your &quot;C&quot;</h4>
+<ul>
+<li>
+<a href="https://github.com/ReactTraining/react-router" class="external">react-router</a>
+</li>
+<li>No router</li>
+<li>Whatever-you-like router</li>
+</ul>
+</div>
+</div>
+<hr/>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="HomepageFooter">
+    <div class="container">
+        <div class="container--inner">
+                            <ul class="HomepageFooter__links">
+                    <li><a href="https://github.com/Volicon/React-MVx/issues" target="_blank">Help/Support/Bugs</a></li><li><a href="http://volicon.com" target="_blank">Made by Volicon (a Verizon company)</a></li>                </ul>
+            
+                            <div class="HomepageFooter__twitter">
+                                        <div class="Twitter">
+                        <iframe allowtransparency="true" frameborder="0" scrolling="no" style="width:162px; height:20px;" src="https://platform.twitter.com/widgets/follow_button.html?screen_name=gaperton&amp;show_count=false"></iframe>
+                    </div>
+                                    </div>
+                    </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+    
+    <!-- jQuery -->
+    <script src="themes/daux/js/jquery-1.11.3.min.js"></script>
+
+    <!-- hightlight.js -->
+    <script src="themes/daux/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <!-- JS -->
+    
+    <script src="themes/daux/js/daux.js"></script>
+
+            <!-- Tipue Search -->
+        <script type="text/javascript" src="tipuesearch/tipuesearch.js"></script>
+
+        <script>
+            window.onunload = function(){}; // force $(document).ready to be called on back/forward navigation in firefox
+            $(function() {
+                tipuesearch({
+                    'base_url': ''
+                });
+            });
+        </script>
+    
+</body>
 </html>

@@ -21,7 +21,7 @@
     "compile": "./node_modules/.bin/tsc && ./node_modules/.bin/webpack -p",
     "deploy": "cp -R ./dist ./examples/*/node_modules/react-mvx",
     "build": "npm run pull && npm run compile",
-    "docs" : "rm -rf ./docs/* && cd ./documentation && npm run build && cd .. && mv ./documentation/build/* ./docs"
+    "docs" : "~/.composer/vendor/bin/daux --source=documentation --destination=docs "
   },
   "keywords": [
     "react",
@@ -42,7 +42,10 @@
     "typescript": "*",
     "webpack": "*",
     "react": "*",
-    "type-r": "^1.0.0-rc6"
+    "type-r": "^1.0.0-rc6",
+    "marked": "^0.3.5",
+    "handlebars": "^3.0.3",
+    "highlight.js": "^8.7.0"
   },
   "peerDependencies": {
     "prop-types": "*",

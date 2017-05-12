@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>       <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>          <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>          <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->  <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+    <title>api - My Project</title>
+    <meta name="description" content="My Stylish Documentation" />
+    <meta name="author" content="I, Me & Myself">
+    <meta charset="UTF-8">
+    <link rel="icon" href="../themes/daux/img/favicon-blue.png" type="image/x-icon">
+    <!-- Mobile -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Font -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700&subset=latin,cyrillic-ext,cyrillic' rel='stylesheet' type='text/css'>
+    <!-- CSS -->
+    <link href='../themes/daux/css/theme-blue.min.css' rel='stylesheet' type='text/css'>
+            <!-- Tipue Search -->
+        <link href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body class="">
+    
+<header class="Navbar hidden-print">
+    <a class="Navbar__brand" href="../index.html">My Project</a>
+
+    <div class="Search">
+        <svg class="Search__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 451 451"><path d="M447.05 428l-109.6-109.6c29.4-33.8 47.2-77.9 47.2-126.1C384.65 86.2 298.35 0 192.35 0 86.25 0 .05 86.3.05 192.3s86.3 192.3 192.3 192.3c48.2 0 92.3-17.8 126.1-47.2L428.05 447c2.6 2.6 6.1 4 9.5 4s6.9-1.3 9.5-4c5.2-5.2 5.2-13.8 0-19zM26.95 192.3c0-91.2 74.2-165.3 165.3-165.3 91.2 0 165.3 74.2 165.3 165.3s-74.1 165.4-165.3 165.4c-91.1 0-165.3-74.2-165.3-165.4z"/></svg>
+        <input type="search" id="tipue_search_input" class="Search__field" placeholder="Search..." autocomplete="on" results=25 autosave=text_search>
+    </div>
+</header>
+<div class="Columns content">
+    <aside class="Columns__left Collapsible">
+        <div class="Collapsible__container">
+            <button type="button" class="Button Collapsible__trigger">
+                <span class="Collapsible__trigger--bar"></span>
+                <span class="Collapsible__trigger--bar"></span>
+                <span class="Collapsible__trigger--bar"></span>
+            </button>
+        </div>
+
+        <div class="Collapsible__content">
+            <!-- Navigation -->
+            <ul class='Nav'><li class='Nav__item Nav__item--open has-children'><a href="#" class="aj-nav folder"><i class="Nav__arrow">&nbsp;</i>includes</a><ul class='Nav'><li class='Nav__item Nav__item--active'><a href="../includes/api.html">api</a></li><li class='Nav__item '><a href="../includes/complex-state.html">complex-state</a></li><li class='Nav__item '><a href="../includes/component.html">component</a></li><li class='Nav__item '><a href="../includes/databinding.html">databinding</a></li><li class='Nav__item '><a href="../includes/databinding.1.html">databinding.1</a></li><li class='Nav__item '><a href="../includes/link.html">link</a></li><li class='Nav__item '><a href="../includes/overview.html">overview</a></li><li class='Nav__item '><a href="../includes/simple.html">simple</a></li><li class='Nav__item '><a href="../includes/state.html">state</a></li><li class='Nav__item '><a href="../includes/store.html">store</a></li><li class='Nav__item '><a href="../includes/tools.html">tools</a></li></ul></li><li class='Nav__item '><a href="../indexTravisCI.html">Travis CI - API Reference</a></li></ul>
+
+            <div class="Links">
+                
+                                    <div class="CodeToggler">
+                        <hr/>
+                                                    <a class="CodeToggler__button CodeToggler__button--main" href="#">Show Code Blocks Inline</a><br>
+                                            </div>
+                
+                            </div>
+        </div>
+    </aside>
+    <div class="Columns__right ">
+        <div class="Columns__right__content">
+            <div class="doc_content">
+                <article class="Page">
+
+    <div class="Page__header">
+        <h1><a href="../includes/api.html">includes</a> <svg class="Page__header--separator" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 477.175 477.175"><path d="M360.73 229.075l-225.1-225.1c-5.3-5.3-13.8-5.3-19.1 0s-5.3 13.8 0 19.1l215.5 215.5-215.5 215.5c-5.3 5.3-5.3 13.8 0 19.1 2.6 2.6 6.1 4 9.5 4 3.4 0 6.9-1.3 9.5-4l225.1-225.1c5.3-5.2 5.3-13.8.1-19z"/></svg> <a href="../includes/api.html">api</a></h1>
+                    </div>
+
+
+    <div class="s-content">
+        <h1 id="page_Component+API">Component API</h1>
+<p>React-MVx requires React as peer dependency and exports extended React namespace, which is supposed
+to be used in place you would normally use React.</p>
+<pre><code class="language-javascript">    import React from 'react-mvx'
+</code></pre>
+<p>This document describes an extended API only.</p>
+<h2 id="page_Component">Component</h2>
+<p>Every component definition in React-MVx must start with <code>@define</code> decorator.</p>
+<h3 id="page_props+%3A+%7B++%5B++name+%5D+%3A+TypeAnnotation+%7D"><code>static</code> props : { [ name ] : TypeAnnotation }</h3>
+<p>Component props declaration. Replaces standard <code>PropTypes</code>. Type annotation syntax:</p>
+<ul>
+<li>
+<code>Constructor</code> - puts the instanceOf constraint on props type. Use <code>Number</code>, <code>String</code>, and <code>Boolean</code> for primitive types.</li>
+<li>
+<code>Constructor.value( val )</code> or just <code>val</code> - property has the default value.</li>
+<li>
+<code>Constructor.isRequired</code> - property is mandatory.</li>
+<li>
+<code>RecordOrCollection.has.changeEvents( true )</code> - update the component on any inner change in the property.</li>
+<li>
+<code>EventSource.has.changeEvents( 'event1 event2 ...' )</code> - update the component on any of the specified events triggered by the property.</li>
+<li>
+<code>EventSource.has.events({ [ events ] : handlerFunction | 'methodName' })</code> - subscribe for events from the property.</li>
+<li>
+<code>Constructor.has.watcher( watcherFunction | 'methodName' )</code> - call the watcher when new prop value is received.</li>
+</ul>
+<p>Type annotations listed above may be chained.</p>
+<h3 id="page_pureRender+%3A+true"><code>static</code> pureRender : true</h3>
+<p>Generate and attach the &quot;pure render&quot; optimization mixin. Mixin prevents the subsequent render calls in case if props were unchanged.
+Mixin <em>detects and takes into account inner changes</em> of records and collections as well.</p>
+<p><code>static props</code> declaration is required for <code>pureRender</code> to work. Only declared props will be compared.</p>
+<h3 id="page_state+%3A+%7B++%5B++name+%5D+%3A+TypeAnnotation+%7D+%7C+RecordConstructor"><code>static</code> state : { [ name ] : TypeAnnotation } | RecordConstructor</h3>
+<p>Component state declaration. State is modeled as <code>Record</code> either referenced by Constructor or imlicitly defined with a given attributes declaration.
+<code>state</code> Record is created before the component mount, and is disposed when component is unmounted.</p>
+<ul>
+<li>
+<code>Constructor</code> - initialize attribute with the default value of the given constructor.</li>
+<li>
+<code>Constructor.value( val )</code> or just <code>val</code> - provide different default value.</li>
+<li>
+<code>Constructor.isRequired</code> - put 'not empty' validation check on the attribute.</li>
+<li>
+<code>Constructor.has.check( predicate )</code> - put custom validation check on the attribute.</li>
+<li>
+<code>RecordOrCollection.has.changeEvents( false )</code> - <em>do not update</em> the component on any inner changes of the attribute.</li>
+<li>
+<code>EventSource.has.events({ [ events ] : handlerFunction | 'methodName' })</code> - subscribe for events from the attribute.</li>
+<li>
+<code>Constructor.has.watcher( watcherFunction | 'methodName' )</code> - call the watcher when the attribute is changed.</li>
+</ul>
+<p>Type annotations listed above may be chained. Please, refer to the [Type-R] type annotations reference for the complete list of options.</p>
+<h3 id="page_state+%3A+Record">state : Record</h3>
+<p>Replaces standard React's <code>state</code> and <code>setState</code>. Holds an object of the <code>Record</code> subclass.</p>
+<p>Use direct assignments to modify the state:</p>
+<pre><code>this.state.x = 5;
+</code></pre>
+<p>Use <code>transaction()</code> call to groupe the sequence of changes in single UI update transaction.</p>
+<h3 id="page_transaction%28+fun+%29">transaction( fun )</h3>
+<p>Group the sequence of state (and props) updates in the single transaction leading to single UI update.</p>
+<pre><code class="language-javascript">this.transaction( state =&gt; {
+    state.a++;
+    state.b++;
+    this.props.collection.reset();
+});
+</code></pre>
+<p>Read more about transactions in Type-R manual.</p>
+<h3 id="page_store+%3A+%7B++%5B++name+%5D+%3A+TypeAnnotation+%7D+%7C+Store+%7C+StoreConstructor"><code>static</code> store : { [ name ] : TypeAnnotation } | Store | StoreConstructor</h3>
+<p>Stores in Type-R are internally similar to the Record and used to resolve one-to-many and many-to-many relationships by id.
+Stores <em>must not</em> be used to store UI state; they are intended to hold the shared domain state which is cross-referenced by id.</p>
+<p>There may be many stores in Rect-MVx. There is the single <em>default store</em> (<code>Store.global</code>) which is used to cache the data which must be accessible across the pages.</p>
+<p>Specifying the store for the top-level component sets this store as the primary one for all the internal state of the current component subtree.</p>
+<ul>
+<li>
+<code>static store = referenceToTheExistingStore</code>. Update the UI on store changes.</li>
+<li>
+<code>static store = StoreConstructor</code>. Creates the local store with the lifetime bound to the component's one.</li>
+<li>
+<code>static store = { attributes }</code>. Implicitly create the Store subclass from the given attribute spec.</li>
+</ul>
+<h3 id="page_store+%3A+Store">store : Store</h3>
+<p>When the <code>static store</code> is defined, provide the access to the store in component.</p>
+<p>Store <em>is not</em> directly accessible to the subcomponents; you have to pass values down as props.</p>
+<h3 id="page_context+%3A+%7B++%5B++name+%5D+%3A+TypeAnnotation+%7D"><code>static</code> context : { [ name ] : TypeAnnotation }</h3>
+<p>Replacement for standard <code>contextTypes</code>. Just <code>Constructor</code> may be used as type annotation.</p>
+<h3 id="page_childContext+%3A+%7B++%5B++name+%5D+%3A+TypeAnnotation+%7D"><code>static</code> childContext : { [ name ] : TypeAnnotation }</h3>
+<p>Replacement for standard <code>childContextTypes</code>. Just <code>Constructor</code> may be used as type annotation.</p>
+<p><code>getChildContext()</code> function is required to create the context as in raw React.</p>
+<h3 id="page_linkAt%28+%27key%27+%29+%3A+Link">linkAt( 'key' ) : Link</h3>
+<p>Create the <a href="">value link</a> for the state member <code>key</code>. All records support <code>linkAt()</code> method as well.</p>
+<h3 id="page_linkAll%28%29+%3A+%7B++%5B++name+%5D+%3A+Link+%7D">linkAll() : { [ name ] : Link }</h3>
+<p>Create the <a href="">value links</a> for all (or specified) the state members. All records support <code>linkAll()</code> method as well.</p>
+<h3 id="page_asyncUpdate%28%29">asyncUpdate()</h3>
+<p>Safe version of the <code>forceUpdate()</code>. Gracefully handles component disposal and UI update transactions.</p>
+<p>Shall be used in place of every manual call to <code>forceUpdate()</code>.</p>
+<h2 id="page_Link">Link</h2>
+<p>Reference to <a href="">NestedLink</a>'s Link class.</p>
+<h2 id="page_assignToState%28+key+%29">assignToState( key )</h2>
+<p>Create props watcher which assign the property content to the given local state member.</p>
+<h2 id="page_%40mixin%28+A%2C+B%2C+...+%29">@mixin( A, B, ... )</h2>
+<p>Old good React mixins.</p>
+    </div>
+
+        <nav>
+        <ul class="Pager">
+            <li class=Pager--prev><a href="../index.html">Previous</a></li>            <li class=Pager--next><a href="../includes/complex-state.html">Next</a></li>        </ul>
+    </nav>
+    </article>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+    <!-- jQuery -->
+    <script src="../themes/daux/js/jquery-1.11.3.min.js"></script>
+
+    <!-- hightlight.js -->
+    <script src="../themes/daux/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <!-- JS -->
+    
+    <script src="../themes/daux/js/daux.js"></script>
+
+            <!-- Tipue Search -->
+        <script type="text/javascript" src="../tipuesearch/tipuesearch.js"></script>
+
+        <script>
+            window.onunload = function(){}; // force $(document).ready to be called on back/forward navigation in firefox
+            $(function() {
+                tipuesearch({
+                    'base_url': '../'
+                });
+            });
+        </script>
+    
+</body>
+</html>
