@@ -1,10 +1,7 @@
 <p class="lead">
-	<strong>NestedReact</strong> bridges the gap between React and traditional MVC frameworks,
-	combining familiar OO state management and two-way data binding with all the benefits of true unidirectional data flow.
-</p>
-
-<p class="lead">
-    It's MVC framework taking <a src="https://facebook.github.io/react/">React</a> for "V" and <a href="https://github.com/Volicon/NestedTypes">NestedTypes</a> for "M", while being unopinionated on "C". 
+	<strong>React-MVx</strong> bridges the gap between <a src="https://facebook.github.io/react/">React</a>
+     and traditional MVx architecture,
+	combining the powerful OO state management and two-way data binding with all the benefits of the unidirectional data flow.
 </p>
 
 <hr/>
@@ -12,15 +9,15 @@
 <div class=row>
 <div class=col-third>
 
-#### NestedTypes for "M"
+#### Type-R for "M" and "VM"
 
-Does to your data the same as React does to the DOM.
+Does the same to your data as the React does to the DOM.
  
-* Observable (reactive) data structures
-* Easy state synchronization
-* Automatic serialization and REST
-* Aggregation, "to-one", and "to-many" relashionships.
-* Type annotations and assertions
+* Deeply observable changes
+* Painless state synchronization
+* State is JSON-serializable by default
+* Declarative validation and run-time schema checks.
+* Serializable id-references.
 * 10 times faster than BackboneJS.
 
 </div>
@@ -28,17 +25,14 @@ Does to your data the same as React does to the DOM.
 
 #### React for "V"
 
-React. Extended to play well with MVC. 
+React. Improved.
 
-* Simple technique to manage all application state
-    * Handle complex UI state with NestedTypes
-    * Unidirectional data flow
-    * Automatic "pure render" optimization 
-* Handle forms naturally
+* Say _no_ to singletons.
+* Same technique to manage _all levels_ of application state
+* Handle forms naturally:
     * Two-way data binding
-    * Declarative form validation 
-* *React mixins* with ES6 classes.
-* Cuts your code 2-5x compared to React/Redux.
+    * Transparent validation
+* Cuts your code size 2-5x compared to React/Redux.
 
 </div>
 <div class=col-third>
