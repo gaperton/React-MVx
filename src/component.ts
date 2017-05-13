@@ -49,7 +49,8 @@ export class Component<P> extends React.Component<P, Record> {
     linkAll( ...keys : string[] ) : { [ key : string ] : Link<any> }
     linkAll(){
         // Quick and dirty hack to suppres type error - refactor later.
-        return (<any>this.state).linkAll.apply( this, arguments );
+        const { state } = this as any;
+        return state.linkAll.apply( state, arguments );
     }
 
     static define( protoProps, staticProps ){
