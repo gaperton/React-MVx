@@ -1,0 +1,1 @@
+Previous example + state validation.

@@ -1,5 +1,3 @@
-# Data-bound controls
-
 ```javascript
 // Ad-hoc data binding for standard controls
 <input {...link.props} />
@@ -30,7 +28,7 @@ and form layout.
 
 The general pattern you're using for defining the data bound controls is shown on the right.
 
-Here's the reference for data bound tags from [react-mvx/tags](/tags.jsx) which illustrates the technique 
+Here's the reference for data bound tags from [react-mvx/tags]() which illustrates the technique 
 and might be used as starting boilerplate for your custom controls.
 
 ## Text input controls
@@ -46,6 +44,7 @@ import { Input, TextArea } from 'react-mvx/tags'
   which consume linked strings.
 
 These wrappers will add `invalid` class to enclosed HTML element if an error is present in the link.
+
 
 ## Numeric input
 

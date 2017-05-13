@@ -1,0 +1,1 @@
+Page pattern on the example of users list.
