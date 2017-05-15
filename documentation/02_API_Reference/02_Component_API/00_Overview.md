@@ -17,28 +17,38 @@ React-MVx is built around the idea of _universal state management_ featuring
 the same technique to manage the local component state, application page state,
 and the global application state.
 
+## Type annotations cheat sheet
 
+The majority of React-MVx features are controlled with declarative props, state, store, and context type annotations.
 
+### Everything (state, store, props, and context)
 
-### Common type annotations
+Type annotations below represents the run-time type assertions.
 
-Following type annotations shared across all Component declarations.
+ Annotation | Description
+ -----------|-------------
+| `Ctor` | element has specified type
+| `Ctor.isRequired` | element is required
+| `Ctor.has.check(...)`| custom validation check
 
- Annotation | state/store | props | context | Description
- -----------|-------------| ------|--------|-
-| `Ctor` | x | x | x | element has specified type
-| `Ctor.isRequired` | x | x | x | element is required
-| `Ctor.value( defaultValue )` | x | x | | element has default value
-| `defaultValue` | x | x | | element has default value
-| `Ctor.has.watcher(...)`| x | x | | custom reaction on element's change 
-| `Ctor.has.events(...)`| x | x | | listen to custom events from the element
-| `Ctor.has.changeEvents(...)`| x | x | | Update on element's changes
+### state, store, and props
 
-### State/Store/Record only attributes annotations
+You can specify the default value for an attribute or prop, and reactions on its change.
+
+ Annotation | Description
+ -----------|-------------
+| `Ctor.value( defaultValue )` | element has default value
+| `defaultValue` | element has default value
+| `Ctor.has.watcher(...)`| custom reaction on element's change 
+| `Ctor.has.events(...)`| listen to custom events from the element
+| `Ctor.has.changeEvents(...)`| update on element's changes
+
+### state and store
+
+You have an an attribute-level control of the serialization and ownership for the state, store, and records attributes.
 
 Annotation | Description
 -----------|-------------
-| `Ctor.has.check(...)`| attach attribute's validator |
 | `Record.shared`| attribute holds the reference to the record |
 | `Collection.Refs`| collection of references to the records |
 | `Record.from(...)`| reference to the record from the specified collection |
