@@ -1,5 +1,3 @@
-## Rendering control
-
 ### transaction( fun )
 
 Group the sequence of state (and props) updates in the single transaction leading to single UI update.

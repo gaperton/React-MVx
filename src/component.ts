@@ -41,9 +41,9 @@ export class Component<P> extends React.Component<P, Record> {
     
     static extend : ( spec : object, statics? : object ) => Component< any >
 
-    linkAt( key : string ) : Link< any> {
+    linkAt( key : string ) : Link<any> {
         // Quick and dirty hack to suppres type error - refactor later.
-        return (<any>this.state).linkAt( key );
+        return ( this.state as any ).linkAt( key );
     }
 
     linkAll( ...keys : string[] ) : { [ key : string ] : Link<any> }
@@ -51,6 +51,14 @@ export class Component<P> extends React.Component<P, Record> {
         // Quick and dirty hack to suppres type error - refactor later.
         const { state } = this as any;
         return state.linkAll.apply( state, arguments );
+    }
+
+    linkPath( path : string ) : Link<any> {
+        return ( this.state as any ).linkPath( path );
+    }
+
+    get links(){
+        return ( this.state as any )._links;
     }
 
     static define( protoProps, staticProps ){
