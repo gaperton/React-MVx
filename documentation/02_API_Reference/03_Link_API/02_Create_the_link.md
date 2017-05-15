@@ -5,15 +5,18 @@ You can create custom link object encapsulating complex data binding logic with 
 
 ### linkAt( key )
 
-```javascript
-const nameLink = user.linkAt( 'name' );
-```
-
 - `record.linkAt( attr )` links the record's attribute. Semantically it's the reference to the attribute.
 - `collection.linkAt( prop )` links the custom collection property. Property's setter *must* modify some record's attributes or change collections.
 - `component.linkAt( key )` works similar to `component.state.linkAt( key )`.
 
+```javascript
+const nameLink = user.linkAt( 'name' );
+```
+
 ### linkAll()
+
+- `record.linkAll()` links all records attributes.
+- `component.linkAll()` works similar to `component.state.linkAll()`.
 
 ```javascript
 // Link all attributes...
@@ -22,9 +25,6 @@ const { name, email, age } = user.linkAll();
 // Link specified attributes...
 const { name, email } = user.linkAll( 'name', 'email' );
 ```
-
-- `record.linkAll()` links all records attributes.
-- `component.linkAll()` works similar to `component.state.linkAll()`.
 
 ### collection.linkContains( record )
 

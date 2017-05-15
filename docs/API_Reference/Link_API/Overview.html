@@ -82,7 +82,7 @@
     <div class="Page__header">
         <h1>Overview</h1>
                 <span style="float: left; font-size: 10px; color: gray;">
-            Monday, May 15, 2017 11:26 AM        </span>
+            Monday, May 15, 2017 12:34 PM        </span>
                         <span style="float: right; font-size: 10px; color: gray;">
             <a href="https://github.com/Volicon/React-MVx/blob/develop/docs/02_API_Reference/03_Link_API/00_Overview.md" target="_blank">Edit on GitHub</a>
         </span>
@@ -90,7 +90,13 @@
 
 
     <div class="s-content">
-        <pre><code class="language-javascript">// Data bound control for the semantic form markup
+        <p>Link is an intermediate object used to implement the two-way data binding.
+It acts like a transport for the value, the callback to modify it, its validation error, abstracting out
+UI controls from the data representation in the state container and from the state container per se.</p>
+<p>Links to the record's attributes are commonly created with <code>linkAt</code> and <code>linkAll</code> methods of records.
+Record is automatically validated upon the links creation, and link encloses the validation error
+related to the particuler attribute.</p>
+<pre><code class="language-javascript">// Data bound control for the semantic form markup
 const Input = ({ valueLink, ...props }) =&gt; (
     &lt;div className={`form-control ${ valueLink.error ? 'error' : '' }`}&gt;
         &lt;input {...props}
@@ -101,12 +107,6 @@ const Input = ({ valueLink, ...props }) =&gt; (
     &lt;/div&gt;
 );
 </code></pre>
-<p>Link is an intermediate object used to implement the two-way data binding.
-It acts like a transport for the value, the callback to modify it, its validation error, abstracting out
-UI controls from the data representation in the state container and from the state container per se.</p>
-<p>Links to the record's attributes are commonly created with <code>linkAt</code> and <code>linkAll</code> methods of records.
-Record is automatically validated upon the links creation, and link encloses the validation error
-related to the particuler attribute.</p>
 <p>Links makes it possible to create the semantic markup for the form elements, encapsulating the
 all the required styles and validation error indication.</p>
     </div>

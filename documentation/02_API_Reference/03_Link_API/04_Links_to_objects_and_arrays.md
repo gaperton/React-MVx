@@ -79,7 +79,7 @@ Link to arrays proxies Array's `splice()`, `push()`, and `unshift()` methods.
 They works in the same way and accepts the same parameters as corresponding Array methods,
 but returns `undefined` and leads to the proper purely functional update of the parent object chain.
 
-#### `linkToArray.contains( element ) : Link`
+#### linkToArray.contains( element )
 
 Creates the boolean link to the presence of value in array.
 

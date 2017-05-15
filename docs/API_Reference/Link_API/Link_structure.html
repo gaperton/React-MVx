@@ -82,7 +82,7 @@
     <div class="Page__header">
         <h1>Link structure</h1>
                 <span style="float: left; font-size: 10px; color: gray;">
-            Monday, May 15, 2017 11:27 AM        </span>
+            Monday, May 15, 2017 12:46 PM        </span>
                         <span style="float: right; font-size: 10px; color: gray;">
             <a href="https://github.com/Volicon/React-MVx/blob/develop/docs/02_API_Reference/03_Link_API/01_Link_structure.md" target="_blank">Edit on GitHub</a>
         </span>
@@ -90,26 +90,28 @@
 
 
     <div class="s-content">
-        <pre><code class="language-javascript">// Link's shape
+        <p>Here are the most important link members. All the link members are read-only and should not be modified directly.</p>
+<pre><code class="language-javascript">// Link's shape
 {
     value : /* the value */,
     set( newValue ){ /* the function to change it */},
     error : /* validation error */
 }
 </code></pre>
-<p>Here are the most important link members.</p>
 <h3 id="page_value">value</h3>
 <p>Holds linked value. This value is immutable.</p>
 <h3 id="page_error">error</h3>
 <p>Holds the validation error (typically the text error message) which might be consumed and displayed by data-bound countrol.</p>
+<p>An <code>error</code> is populated automatically on link creation when using <code>linkAt()</code> or <code>linkAll()</code> methods, and is produced by declarative
+validators from <code>.has.check()</code> attributes annotations.</p>
 <h3 id="page_set%28+newValue+%29">set( newValue )</h3>
+<p>Tells the state container to update the value.</p>
 <pre><code class="language-javascript">&lt;button onClick={ () =&gt; boolLink.set( !boolLink.value ) } /&gt;
 </code></pre>
-<p>Tells the state container to update the value (<code>link.value</code> is not changed).</p>
 <h3 id="page_update%28+prevValue+%3D%3E+newValue+%29">update( prevValue =&gt; newValue )</h3>
+<p>Update link value using the given value transform function.</p>
 <pre><code class="language-javascript">&lt;button onClick={ () =&gt; boolLink.update( x =&gt; !x ) } /&gt;
 </code></pre>
-<p>Update link value using the given value transform function.</p>
     </div>
 
         <nav>
