@@ -82,7 +82,7 @@
     <div class="Page__header">
         <h1>Events and transactions</h1>
                 <span style="float: left; font-size: 10px; color: gray;">
-            Monday, May 15, 2017 3:45 PM        </span>
+            Monday, May 15, 2017 7:09 PM        </span>
                         <span style="float: right; font-size: 10px; color: gray;">
             <a href="https://github.com/Volicon/React-MVx/blob/develop/docs/02_API_Reference/04_Record/02_Events_and_transactions.md" target="_blank">Edit on GitHub</a>
         </span>
@@ -90,12 +90,95 @@
 
 
     <div class="s-content">
-        <h3 id="page_Change+events">Change events</h3>
-<h3 id="page_record.transaction%28%29">record.transaction()</h3>
+        <p>Record changes occure in the scope of transactions. Record triggers the set of events during the transaction.
+Transaction is executed in three phases.</p>
+<ol>
+<li>Apply all the changes to the record and nested records and collections.</li>
+<li>Send <code>change:[attribute]</code> <em>(record, value, options)</em> events for each attribute which has been updated (including nested objects).</li>
+<li>If any of the model's attributes have changed:
+<ul>
+<li>Send <code>change</code> <em>(record, options)</em> event.</li>
+<li>Notify record's owner on changes.</li>
+</ul>
+</li>
+</ol>
+<p>So, the statement like <code>user.name = 'Joe'</code> will trigger two events: <code>change:attr</code> and the subsequent <code>change</code>.</p>
+<p>Statement <code>user.set({ name : 'Joe', email : 'joe@mail.com' })</code> will (assuming that both attributes was changed) execute like this:</p>
+<ol>
+<li>New name and email values will be applied to the user.</li>
+<li>
+<code>change:name</code> and <code>change:user</code> events will be sent out.</li>
+<li>
+<code>change</code> event will be sent out.</li>
+</ol>
+<p>It's important to understand that any additional changes that may be applied to the record in <code>change:[attribute]</code> and <code>change</code> event handlers
+will be executed in the scope of the original transaction. It means, that:</p>
+<ul>
+<li>No additional <code>change</code> events will be triggered if you modify the record in <code>change:[attribute]</code> event handler (but new <code>change:[attribute]</code> events will).</li>
+<li>If the record will be modified in <code>change</code> event handler, there <em>will</em> be additional <code>change</code> events. However, record's owner will be notifyed only once when the wave of events and reactions will finish its processing.</li>
+</ul>
 <h3 id="page_%3A+Type.has.watcher%28%29"><code>attr</code> : Type.has.watcher()</h3>
+<p>To attach some custom reaction on specific record's attribute change event, you attach the <em>watcher function</em> to this attribute.
+Watcher has the signature <code>( attrValue, attrName ) =&gt; void</code> and is executed in the context of the record. Watcher annotation should be either of these:</p>
+<ul>
+<li>
+<code>Type.has.watcher( 'recordMethodName' )</code>
+</li>
+<li>
+<code>Type.has.watcher( function( value, name ){ ... })</code>
+</li>
+</ul>
+<p>In the example below, any change of the <code>name</code> attribute will result in the subsequent update of the <code>isAdmin</code> attribute, and one <code>change</code> event triggered.</p>
+<pre><code class="language-javascript">@define class User extends Record {
+    static attributes = {
+        name : String.has.watcher( 'onNameChange' ),
+        isAdmin : Boolean,
+    }
+
+    onNameChange(){
+        // Cruel. But we need it for the purpose of the example.
+        this.isAdmin = this.name.indexOf( 'Admin' ) &gt;= 0; 
+    }
+}
+</code></pre>
+<h3 id="page_record.transaction%28+fun+%29">record.transaction( fun )</h3>
+<p>Execute the sequence of updates in <code>fun</code> function in the scope of the transaction, so it will trigger the single <code>change</code> event.
+Transactions are superior to <code>record.set()</code> in terms of both performance and flexibility.</p>
+<pre><code class="language-javascript">some.record.transaction( record =&gt; {
+    record.a = 1; // `change:a` is triggered.
+    record.b = 2; // `change:b` is triggered.
+}); // `change` is triggered.
+</code></pre>
 <h3 id="page_record.changed">record.changed</h3>
-<h3 id="page_record.changedAttributes%28%29">record.changedAttributes()</h3>
-<h3 id="page_record.previousAttributes%28%29">record.previousAttributes()</h3>
+<p>The <code>changed</code> property is the internal hash containing all the attributes that have changed during its last transaction.
+Please do not update <code>changed</code> directly since its state is internally maintained by <code>set()</code>.
+A copy of <code>changed</code> can be acquired from <code>changedAttributes()</code>.</p>
+<h3 id="page_changedAttributes%28+attrs%3F+%29">changedAttributes( attrs? )</h3>
+<p>Retrieve a hash of only the record's attributes that have changed during the last transaction,
+or false if there are none. Optionally, an external attributes hash can be passed in,
+returning the attributes in that hash which differ from the record.
+This can be used to figure out which portions of a view should be updated,
+or what calls need to be made to sync the changes to the server.</p>
+<h3 id="page_previous%28+attr+%29">previous( attr )</h3>
+<p>During a &quot;change&quot; event, this method can be used to get the previous value of a changed attribute.</p>
+<pre><code class="language-javascript">@define class Person extends Record{
+    static attributes = {
+        name: ''
+    }
+}
+
+const bill = new Person({
+  name: &quot;Bill Smith&quot;
+});
+
+bill.on(&quot;change:name&quot;, ( record, name ) =&gt; {
+  alert( `Changed name from ${ bill.previous('name') } to ${ name }`);
+});
+
+bill.name = &quot;Bill Jones&quot;;
+</code></pre>
+<h3 id="page_previousAttributes%28%29">previousAttributes()</h3>
+<p>Return a copy of the record's previous attributes. Useful for getting a diff between versions of a record, or getting back to a valid state after an error occurs.</p>
     </div>
 
         <nav>
