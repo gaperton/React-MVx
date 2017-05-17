@@ -24,7 +24,7 @@
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 </head>
-<body class="with-float">
+<body class="">
     
 <header class="Navbar hidden-print">
     <a class="Navbar__brand" href="../../index.html">React-MVx</a>
@@ -57,12 +57,7 @@
                                     
                                     <div class="CodeToggler">
                         <hr/>
-                                                    <span class="CodeToggler__text">Code blocks</span>
-                            <div class="ButtonGroup" role="group">
-                                <button class="Button Button--default Button--small CodeToggler__button CodeToggler__button--hide">No</button>
-                                <button class="Button Button--default Button--small CodeToggler__button CodeToggler__button--below">Below</button>
-                                <button class="Button Button--default Button--small CodeToggler__button CodeToggler__button--float">Inline</button>
-                            </div>
+                                                    <a class="CodeToggler__button CodeToggler__button--main" href="#">Show Code Blocks Inline</a><br>
                                             </div>
                 
                                     <hr/>
@@ -74,7 +69,7 @@
                             </div>
         </div>
     </aside>
-    <div class="Columns__right Columns__right--float">
+    <div class="Columns__right ">
         <div class="Columns__right__content">
             <div class="doc_content">
                 <article class="Page">
@@ -82,7 +77,7 @@
     <div class="Page__header">
         <h1>Create the link</h1>
                 <span style="float: left; font-size: 10px; color: gray;">
-            Monday, May 15, 2017 12:47 PM        </span>
+            Wednesday, May 17, 2017 1:18 PM        </span>
                         <span style="float: right; font-size: 10px; color: gray;">
             <a href="https://github.com/Volicon/React-MVx/blob/develop/docs/02_API_Reference/03_Link/02_Create_the_link.md" target="_blank">Edit on GitHub</a>
         </span>
@@ -93,7 +88,7 @@
         <p>All records and collections may create links to its elements.
 Component has the shorthand methods to create links to its state record elements.</p>
 <p>You can create custom link object encapsulating complex data binding logic with <code>Link.value</code>.</p>
-<h3 id="page_linkAt%28+key+%29">linkAt( key )</h3>
+<h4 id="page_linkAt%28+key+%29">linkAt( key )</h4>
 <ul>
 <li>
 <code>record.linkAt( attr )</code> links the record's attribute. Semantically it's the reference to the attribute.</li>
@@ -104,7 +99,7 @@ Component has the shorthand methods to create links to its state record elements
 </ul>
 <pre><code class="language-javascript">const nameLink = user.linkAt( 'name' );
 </code></pre>
-<h3 id="page_linkAll%28%29">linkAll()</h3>
+<h4 id="page_linkAll%28%29">linkAll()</h4>
 <ul>
 <li>
 <code>record.linkAll()</code> links all records attributes.</li>
@@ -117,10 +112,10 @@ const { name, email, age } = user.linkAll();
 // Link specified attributes...
 const { name, email } = user.linkAll( 'name', 'email' );
 </code></pre>
-<h3 id="page_collection.linkContains%28+record+%29">collection.linkContains( record )</h3>
+<h4 id="page_collection.linkContains%28+record+%29">collection.linkContains( record )</h4>
 <p>Create the boolean link which is <code>true</code> whenever the record is contained in the collection.</p>
 <p>Setting the link to <code>false</code> will remove record from the collection, setting it to true will add it.</p>
-<h3 id="page_Link.value%28+value%2C+set+%29">Link.value( value, set )</h3>
+<h4 id="page_Link.value%28+value%2C+set+%29">Link.value( value, set )</h4>
 <p>Create custom link with the given <code>value</code> and <code>set</code> function. Use the <code>link.check</code> method to populate the validation error.</p>
     </div>
 

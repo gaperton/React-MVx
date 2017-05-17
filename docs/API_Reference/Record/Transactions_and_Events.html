@@ -24,7 +24,7 @@
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 </head>
-<body class="with-float">
+<body class="">
     
 <header class="Navbar hidden-print">
     <a class="Navbar__brand" href="../../index.html">React-MVx</a>
@@ -57,12 +57,7 @@
                                     
                                     <div class="CodeToggler">
                         <hr/>
-                                                    <span class="CodeToggler__text">Code blocks</span>
-                            <div class="ButtonGroup" role="group">
-                                <button class="Button Button--default Button--small CodeToggler__button CodeToggler__button--hide">No</button>
-                                <button class="Button Button--default Button--small CodeToggler__button CodeToggler__button--below">Below</button>
-                                <button class="Button Button--default Button--small CodeToggler__button CodeToggler__button--float">Inline</button>
-                            </div>
+                                                    <a class="CodeToggler__button CodeToggler__button--main" href="#">Show Code Blocks Inline</a><br>
                                             </div>
                 
                                     <hr/>
@@ -74,7 +69,7 @@
                             </div>
         </div>
     </aside>
-    <div class="Columns__right Columns__right--float">
+    <div class="Columns__right ">
         <div class="Columns__right__content">
             <div class="doc_content">
                 <article class="Page">
@@ -82,7 +77,7 @@
     <div class="Page__header">
         <h1>Transactions and Events</h1>
                 <span style="float: left; font-size: 10px; color: gray;">
-            Tuesday, May 16, 2017 3:01 PM        </span>
+            Wednesday, May 17, 2017 1:16 PM        </span>
                         <span style="float: right; font-size: 10px; color: gray;">
             <a href="https://github.com/Volicon/React-MVx/blob/develop/docs/02_API_Reference/04_Record/03_Transactions_and_Events.md" target="_blank">Edit on GitHub</a>
         </span>
@@ -117,7 +112,7 @@ will be executed in the scope of the original transaction. It means, that:</p>
 <li>No additional <code>change</code> events will be triggered if you modify the record in <code>change:[attribute]</code> event handler (but new <code>change:[attribute]</code> events will).</li>
 <li>If the record will be modified in <code>change</code> event handler, there <em>will</em> be additional <code>change</code> events. However, record's owner will be notifyed only once when the wave of events and reactions will finish its processing.</li>
 </ul>
-<h3 id="page_%3A+Type.has.watcher%28%29"><code>attr</code> : Type.has.watcher()</h3>
+<h4 id="page_attr+%3A+Type.has.watcher%28%29">attr : Type.has.watcher()</h4>
 <p>To attach some custom reaction on specific record's attribute change event, you attach the <em>watcher function</em> to this attribute.
 Watcher has the signature <code>( attrValue, attrName ) =&gt; void</code> and is executed in the context of the record. Watcher annotation should be either of these:</p>
 <ul>
@@ -141,7 +136,7 @@ Watcher has the signature <code>( attrValue, attrName ) =&gt; void</code> and is
     }
 }
 </code></pre>
-<h3 id="page_record.transaction%28+fun+%29">record.transaction( fun )</h3>
+<h4 id="page_record.transaction%28+fun+%29">record.transaction( fun )</h4>
 <p>Execute the sequence of updates in <code>fun</code> function in the scope of the transaction, so it will trigger the single <code>change</code> event.
 Transactions are superior to <code>record.set()</code> in terms of both performance and flexibility.</p>
 <pre><code class="language-javascript">some.record.transaction( record =&gt; {
@@ -149,17 +144,17 @@ Transactions are superior to <code>record.set()</code> in terms of both performa
     record.b = 2; // `change:b` is triggered.
 }); // `change` is triggered.
 </code></pre>
-<h3 id="page_record.changed">record.changed</h3>
+<h4 id="page_record.changed">record.changed</h4>
 <p>The <code>changed</code> property is the internal hash containing all the attributes that have changed during its last transaction.
 Please do not update <code>changed</code> directly since its state is internally maintained by <code>set()</code>.
 A copy of <code>changed</code> can be acquired from <code>changedAttributes()</code>.</p>
-<h3 id="page_changedAttributes%28+attrs%3F+%29">changedAttributes( attrs? )</h3>
+<h4 id="page_changedAttributes%28+attrs%3F+%29">changedAttributes( attrs? )</h4>
 <p>Retrieve a hash of only the record's attributes that have changed during the last transaction,
 or false if there are none. Optionally, an external attributes hash can be passed in,
 returning the attributes in that hash which differ from the record.
 This can be used to figure out which portions of a view should be updated,
 or what calls need to be made to sync the changes to the server.</p>
-<h3 id="page_previous%28+attr+%29">previous( attr )</h3>
+<h4 id="page_previous%28+attr+%29">previous( attr )</h4>
 <p>During a &quot;change&quot; event, this method can be used to get the previous value of a changed attribute.</p>
 <pre><code class="language-javascript">@define class Person extends Record{
     static attributes = {
@@ -177,7 +172,7 @@ bill.on(&quot;change:name&quot;, ( record, name ) =&gt; {
 
 bill.name = &quot;Bill Jones&quot;;
 </code></pre>
-<h3 id="page_previousAttributes%28%29">previousAttributes()</h3>
+<h4 id="page_previousAttributes%28%29">previousAttributes()</h4>
 <p>Return a copy of the record's previous attributes. Useful for getting a diff between versions of a record, or getting back to a valid state after an error occurs.</p>
     </div>
 

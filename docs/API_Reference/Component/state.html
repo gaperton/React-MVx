@@ -24,7 +24,7 @@
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 </head>
-<body class="with-float">
+<body class="">
     
 <header class="Navbar hidden-print">
     <a class="Navbar__brand" href="../../index.html">React-MVx</a>
@@ -57,12 +57,7 @@
                                     
                                     <div class="CodeToggler">
                         <hr/>
-                                                    <span class="CodeToggler__text">Code blocks</span>
-                            <div class="ButtonGroup" role="group">
-                                <button class="Button Button--default Button--small CodeToggler__button CodeToggler__button--hide">No</button>
-                                <button class="Button Button--default Button--small CodeToggler__button CodeToggler__button--below">Below</button>
-                                <button class="Button Button--default Button--small CodeToggler__button CodeToggler__button--float">Inline</button>
-                            </div>
+                                                    <a class="CodeToggler__button CodeToggler__button--main" href="#">Show Code Blocks Inline</a><br>
                                             </div>
                 
                                     <hr/>
@@ -74,7 +69,7 @@
                             </div>
         </div>
     </aside>
-    <div class="Columns__right Columns__right--float">
+    <div class="Columns__right ">
         <div class="Columns__right__content">
             <div class="doc_content">
                 <article class="Page">
@@ -82,7 +77,7 @@
     <div class="Page__header">
         <h1>state</h1>
                 <span style="float: left; font-size: 10px; color: gray;">
-            Friday, May 12, 2017 2:06 PM        </span>
+            Wednesday, May 17, 2017 2:54 PM        </span>
                         <span style="float: right; font-size: 10px; color: gray;">
             <a href="https://github.com/Volicon/React-MVx/blob/develop/docs/02_API_Reference/02_Component/02_state.md" target="_blank">Edit on GitHub</a>
         </span>
@@ -90,10 +85,12 @@
 
 
     <div class="s-content">
-        <h2 id="page_state">state</h2>
-<h3 id="page_state+%3D+%7B+name+%3A+Annotation+%7D+%7C+RecordConstructor"><code>static</code> state = { name : Annotation } | RecordConstructor</h3>
-<p>Component state declaration. State is modeled as <code>Record</code> either referenced by Constructor or imlicitly defined with a given attributes declaration.
-<code>state</code> Record is created before the component mount, and is disposed when component is unmounted.</p>
+        <p>Component's state is modeled as Type-R <code>Record</code>. Record is created before <code>componentWillMount()</code> and disposed after <code>componentWillUnmount()</code>.
+All changed inside of the state record are observed, and the component is updated in case of change.</p>
+<h4 id="page_state+%3D+RecordConstructor"><code>static</code> state = RecordConstructor</h4>
+<p>Define stateful component with the state Record declared externally.</p>
+<h4 id="page_state+%3D+%7B+name+%3A+++%7D"><code>static</code> state = { name : <code>decl</code> }</h4>
+<p>Implicitly define state Record with a given attributes declaration.</p>
 <ul>
 <li>
 <code>Constructor</code> - initialize attribute with the default value of the given constructor.</li>
@@ -111,12 +108,12 @@
 <code>Constructor.has.watcher( watcherFunction | 'methodName' )</code> - call the watcher when the attribute is changed.</li>
 </ul>
 <p>Type annotations listed above may be chained. Please, refer to the [Type-R] type annotations reference for the complete list of options.</p>
-<h3 id="page_state+%3A+Record">state : Record</h3>
-<p>Replaces standard React's <code>state</code> and <code>setState</code>. Holds an object of the <code>Record</code> subclass.</p>
+<h4 id="page_component.state">component.state</h4>
+<p>Holds an object of the <code>Record</code> subclass.</p>
 <p>Use direct assignments to modify the state:</p>
 <pre><code>this.state.x = 5;
 </code></pre>
-<p>Use <code>transaction()</code> call to groupe the sequence of changes in single UI update transaction.</p>
+<p>Use <code>component.transaction()</code> call to group the sequence of changes in single UI update transaction.</p>
     </div>
 
         <nav>

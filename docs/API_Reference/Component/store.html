@@ -24,7 +24,7 @@
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 </head>
-<body class="with-float">
+<body class="">
     
 <header class="Navbar hidden-print">
     <a class="Navbar__brand" href="../../index.html">React-MVx</a>
@@ -57,12 +57,7 @@
                                     
                                     <div class="CodeToggler">
                         <hr/>
-                                                    <span class="CodeToggler__text">Code blocks</span>
-                            <div class="ButtonGroup" role="group">
-                                <button class="Button Button--default Button--small CodeToggler__button CodeToggler__button--hide">No</button>
-                                <button class="Button Button--default Button--small CodeToggler__button CodeToggler__button--below">Below</button>
-                                <button class="Button Button--default Button--small CodeToggler__button CodeToggler__button--float">Inline</button>
-                            </div>
+                                                    <a class="CodeToggler__button CodeToggler__button--main" href="#">Show Code Blocks Inline</a><br>
                                             </div>
                 
                                     <hr/>
@@ -74,7 +69,7 @@
                             </div>
         </div>
     </aside>
-    <div class="Columns__right Columns__right--float">
+    <div class="Columns__right ">
         <div class="Columns__right__content">
             <div class="doc_content">
                 <article class="Page">
@@ -82,7 +77,7 @@
     <div class="Page__header">
         <h1>store</h1>
                 <span style="float: left; font-size: 10px; color: gray;">
-            Friday, May 12, 2017 2:06 PM        </span>
+            Wednesday, May 17, 2017 2:42 PM        </span>
                         <span style="float: right; font-size: 10px; color: gray;">
             <a href="https://github.com/Volicon/React-MVx/blob/develop/docs/02_API_Reference/02_Component/03_store.md" target="_blank">Edit on GitHub</a>
         </span>
@@ -90,21 +85,19 @@
 
 
     <div class="s-content">
-        <h2 id="page_store">store</h2>
-<h3 id="page_store+%3D+%7B+name+%3A+Annotation+%7D+%7C+Store+%7C+StoreConstructor"><code>static</code> store = { name : Annotation } | Store | StoreConstructor</h3>
-<p>Stores in Type-R are internally similar to the Record and used to resolve one-to-many and many-to-many relationships by id.
+        <p>Stores in Type-R are internally similar to the Record and used to resolve one-to-many and many-to-many relationships by id.
 Stores <em>must not</em> be used to store UI state; they are intended to hold the shared domain state which is cross-referenced by id.</p>
-<p>There may be many stores in Rect-MVx. There is the single <em>default store</em> (<code>Store.global</code>) which is used to cache the data which must be accessible across the pages.</p>
+<p>There may be multiple stores in Rect-MVx. There is the single <em>default store</em> (<code>Store.global</code>) which is used to cache the data that must be accessible across the pages.</p>
 <p>Specifying the store for the top-level component sets this store as the primary one for all the internal state of the current component subtree.</p>
-<ul>
-<li>
-<code>static store = referenceToTheExistingStore</code>. Update the UI on store changes.</li>
-<li>
-<code>static store = StoreConstructor</code>. Creates the local store with the lifetime bound to the component's one.</li>
-<li>
-<code>static store = { attributes }</code>. Implicitly create the Store subclass from the given attribute spec.</li>
-</ul>
-<h3 id="page_store+%3A+Store">store : Store</h3>
+<h4 id="page_store+%3D+existingStore"><code>static</code> store = existingStore</h4>
+<p>Expose the <code>existingStore</code> to the component subtree. Update component on store changes.</p>
+<h4 id="page_store+%3D+StoreConstructor"><code>static</code> store = StoreConstructor</h4>
+<p>Creates the local store on component's mount and dispose it when component is unmounted.</p>
+<p>Expose the store to the component subtree. Update component on store changes.</p>
+<h4 id="page_store+%3D+%7B+attrName+%3A++%2C+...+%7D"><code>static</code> store = { attrName : <code>decl</code>, ... }</h4>
+<p>Implicitly create the <code>Store</code> subclass from the given attribute spec.</p>
+<p>Accepts the same <code>decl</code> as the <code>state</code> and <code>Record</code>.</p>
+<h4 id="page_component.store">component.store</h4>
 <p>When the <code>static store</code> is defined, provide the access to the store in component.</p>
 <p>Store <em>is not</em> directly accessible to the subcomponents; you have to pass values down as props.</p>
     </div>

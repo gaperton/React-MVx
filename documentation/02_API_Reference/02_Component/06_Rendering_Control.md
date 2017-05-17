@@ -1,4 +1,4 @@
-### transaction( fun )
+#### component.transaction( fun )
 
 Group the sequence of state (and props) updates in the single transaction leading to single UI update.
 
@@ -12,7 +12,7 @@ this.transaction( state => {
 
 Read more about transactions in Type-R manual.
 
-### `static` pureRender = true
+#### `static` pureRender = true
 
 Generate and attach the "pure render" optimization mixin. Mixin prevents the subsequent render calls in case if props were unchanged.
 Mixin *detects and takes into account inner changes* of records and collections as well.
@@ -20,7 +20,7 @@ Mixin *detects and takes into account inner changes* of records and collections 
 `static props` declaration is required for `pureRender` to work. Only declared props will be compared.
 
 
-### asyncUpdate()
+#### component.asyncUpdate()
 
 Safe version of the `forceUpdate()`. Gracefully handles component disposal and UI update transactions.
 

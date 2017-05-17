@@ -24,7 +24,7 @@
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 </head>
-<body class="with-float">
+<body class="">
     
 <header class="Navbar hidden-print">
     <a class="Navbar__brand" href="../../index.html">React-MVx</a>
@@ -57,12 +57,7 @@
                                     
                                     <div class="CodeToggler">
                         <hr/>
-                                                    <span class="CodeToggler__text">Code blocks</span>
-                            <div class="ButtonGroup" role="group">
-                                <button class="Button Button--default Button--small CodeToggler__button CodeToggler__button--hide">No</button>
-                                <button class="Button Button--default Button--small CodeToggler__button CodeToggler__button--below">Below</button>
-                                <button class="Button Button--default Button--small CodeToggler__button CodeToggler__button--float">Inline</button>
-                            </div>
+                                                    <a class="CodeToggler__button CodeToggler__button--main" href="#">Show Code Blocks Inline</a><br>
                                             </div>
                 
                                     <hr/>
@@ -74,7 +69,7 @@
                             </div>
         </div>
     </aside>
-    <div class="Columns__right Columns__right--float">
+    <div class="Columns__right ">
         <div class="Columns__right__content">
             <div class="doc_content">
                 <article class="Page">
@@ -82,7 +77,7 @@
     <div class="Page__header">
         <h1>context</h1>
                 <span style="float: left; font-size: 10px; color: gray;">
-            Friday, May 12, 2017 2:06 PM        </span>
+            Wednesday, May 17, 2017 2:46 PM        </span>
                         <span style="float: right; font-size: 10px; color: gray;">
             <a href="https://github.com/Volicon/React-MVx/blob/develop/docs/02_API_Reference/02_Component/04_context.md" target="_blank">Edit on GitHub</a>
         </span>
@@ -90,12 +85,18 @@
 
 
     <div class="s-content">
-        <h2 id="page_context">context</h2>
-<h3 id="page_context+%3D+%7B+name+%3A+Annotation+%7D"><code>static</code> context = { name : Annotation }</h3>
-<p>Replacement for standard <code>contextTypes</code>. Just <code>Constructor</code> may be used as type annotation.</p>
-<h3 id="page_childContext+%3D+%7B+name+%3A+Annotation+%7D"><code>static</code> childContext = { name : Annotation }</h3>
-<p>Replacement for standard <code>childContextTypes</code>. Just <code>Constructor</code> may be used as type annotation.</p>
+        <p>Static <code>context</code> and <code>childContext</code> declarations replaces React's standard <code>contextTypes</code> and <code>childContextTypes</code>.</p>
+<h4 id="page_context+%3D+%7B+name+%3A++%2C+...+%7D"><code>static</code> context = { name : <code>decl</code>, ... }</h4>
+<p>Replacement for standard <code>contextTypes</code>.</p>
+<h4 id="page_childContext+%3D+%7B+name+%3A++%2C+...+%7D"><code>static</code> childContext = { name : <code>decl</code>, ... }</h4>
+<p>Replacement for standard <code>childContextTypes</code>.</p>
 <p><code>getChildContext()</code> function is required to create the context as in raw React.</p>
+<h3 id="page_Context+declarations">Context declarations</h3>
+<p>Subset of <code>static props</code> declaration is supported for the context <code>decl</code>.</p>
+<h4 id="page_name+%3A+Constructor"><code>decl</code> name : Constructor</h4>
+<p>Checks whenever the value is an instance of the <code>Constructor</code> and puts the warning to the console if the prop type is not compatible.</p>
+<h4 id="page_name+%3A+Constructor.isRequired"><code>decl</code> name : Constructor.isRequired</h4>
+<p>Value is required.</p>
     </div>
 
         <nav>

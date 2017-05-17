@@ -24,7 +24,7 @@
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 </head>
-<body class="with-float">
+<body class="">
     
 <header class="Navbar hidden-print">
     <a class="Navbar__brand" href="../../index.html">React-MVx</a>
@@ -57,12 +57,7 @@
                                     
                                     <div class="CodeToggler">
                         <hr/>
-                                                    <span class="CodeToggler__text">Code blocks</span>
-                            <div class="ButtonGroup" role="group">
-                                <button class="Button Button--default Button--small CodeToggler__button CodeToggler__button--hide">No</button>
-                                <button class="Button Button--default Button--small CodeToggler__button CodeToggler__button--below">Below</button>
-                                <button class="Button Button--default Button--small CodeToggler__button CodeToggler__button--float">Inline</button>
-                            </div>
+                                                    <a class="CodeToggler__button CodeToggler__button--main" href="#">Show Code Blocks Inline</a><br>
                                             </div>
                 
                                     <hr/>
@@ -74,7 +69,7 @@
                             </div>
         </div>
     </aside>
-    <div class="Columns__right Columns__right--float">
+    <div class="Columns__right ">
         <div class="Columns__right__content">
             <div class="doc_content">
                 <article class="Page">
@@ -82,7 +77,7 @@
     <div class="Page__header">
         <h1>Aggregated and Shared attributes</h1>
                 <span style="float: left; font-size: 10px; color: gray;">
-            Tuesday, May 16, 2017 3:02 PM        </span>
+            Wednesday, May 17, 2017 1:17 PM        </span>
                         <span style="float: right; font-size: 10px; color: gray;">
             <a href="https://github.com/Volicon/React-MVx/blob/develop/docs/02_API_Reference/04_Record/02_Aggregated_and_Shared_attributes.md" target="_blank">Edit on GitHub</a>
         </span>
@@ -116,7 +111,7 @@ To create nested record or collection you should just mention its type in attrib
 <li>They are validated as part of the record.</li>
 <li>They are serialized as nested JSON.</li>
 </ul>
-<h3 id="page_%3A+Type.shared"><code>attr</code> : Type.shared</h3>
+<h4 id="page_attr+%3A+Type.shared">attr : Type.shared</h4>
 <p>Attributes can be marked as <em>shared</em> with adding <code>Type.shared</code> modifier. Such an attribute is not the member of record's aggregation/ownership tree.</p>
 <ul>
 <li>It's initialized with <code>null</code>
@@ -133,18 +128,18 @@ To create nested record or collection you should just mention its type in attrib
     }
 }
 </code></pre>
-<h3 id="page_record.getOwner%28%29">record.getOwner()</h3>
+<h4 id="page_record.getOwner%28%29">record.getOwner()</h4>
 <p>Return the reference to the record's owner, or <code>null</code> if record is not the part of aggregation tree.</p>
 <p>Due to the nature of <em>aggregation</em>, record may have one and only one owner.</p>
-<h3 id="page_record.clone%28%29">record.clone()</h3>
+<h4 id="page_record.clone%28%29">record.clone()</h4>
 <p>Clone the record and all aggregated records and collections.</p>
 <p>The whole aggregation tree will be recursively cloned, references to shared members will copied.</p>
-<h3 id="page_record.assignFrom%28+otherRecord+%29">record.assignFrom( otherRecord )</h3>
+<h4 id="page_record.assignFrom%28+otherRecord+%29">record.assignFrom( otherRecord )</h4>
 <p>Recursively assign the record and its aggregated members with values from <code>otherRecord</code>.
 This operation is similar to <code>record.clone()</code>, but instead of <em>creation</em> of the cloned record it makes an <em>existing</em> record to be the copy
 of other record.</p>
 <p>The whole aggregation tree will be recursively assigned, references to shared members will copied.</p>
-<h3 id="page_record.dispose%28%29">record.dispose()</h3>
+<h4 id="page_record.dispose%28%29">record.dispose()</h4>
 <p>Recursively dispose the record and its aggregated members. &quot;Dispose&quot; means that elements of the aggregation tree will unsubscribe from all event sources. It's crucial to prevent memory leaks in SPA.</p>
 <p>The whole aggregation tree will be recursively disposed, shared members won't.</p>
     </div>

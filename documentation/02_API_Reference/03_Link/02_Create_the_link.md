@@ -3,7 +3,7 @@ Component has the shorthand methods to create links to its state record elements
 
 You can create custom link object encapsulating complex data binding logic with `Link.value`.
 
-### linkAt( key )
+#### linkAt( key )
 
 - `record.linkAt( attr )` links the record's attribute. Semantically it's the reference to the attribute.
 - `collection.linkAt( prop )` links the custom collection property. Property's setter *must* modify some record's attributes or change collections.
@@ -13,7 +13,7 @@ You can create custom link object encapsulating complex data binding logic with 
 const nameLink = user.linkAt( 'name' );
 ```
 
-### linkAll()
+#### linkAll()
 
 - `record.linkAll()` links all records attributes.
 - `component.linkAll()` works similar to `component.state.linkAll()`.
@@ -26,12 +26,12 @@ const { name, email, age } = user.linkAll();
 const { name, email } = user.linkAll( 'name', 'email' );
 ```
 
-### collection.linkContains( record )
+#### collection.linkContains( record )
 
 Create the boolean link which is `true` whenever the record is contained in the collection.
 
 Setting the link to `false` will remove record from the collection, setting it to true will add it.
 
-### Link.value( value, set )
+#### Link.value( value, set )
 
 Create custom link with the given `value` and `set` function. Use the `link.check` method to populate the validation error.

@@ -1,24 +1,29 @@
-Component _props declaration_ replaces standard React's `propTypes` and `defaultProps`.
+Component _static props declaration_ replaces standard React's `propTypes` and `defaultProps`.
+
+#### `static` props = { name : `decl`, ... }
+
+Declare component props. Declaration is an object 
 
 ```javascript
 import React, { define } from 'react-mvx'
 
 @define class PropsDemo extends React.Component {
     static props = {
-        propName : TypeAnnotation,
+        name : Declaration,
         ...
     }
 }
 ```
 
-[TOC]
+### Properties declarations
 
-## Type assertions
+#### `decl` name : Constructor
 
-Use `Constructor` functions for optional props. Add `Constuctor.isRequired` for required props.
+Checks if component prop is an instance of the `Constructor` and puts the warning to the console if the prop type is not compatible.
 
-`static props` declaration will be compiled to corresponding `propTypes` and will produce the run-time
-type asserts and warnings.
+#### `decl` name : Constructor.isRequired
+
+Mark property as required.
 
 ```javascript
 import React, { define } from 'react-mvx'
@@ -51,10 +56,15 @@ import React, { define } from 'react-mvx'
 }
 ```
 
-## Default values (.value(...))
+#### `decl` name : Constructor.value( defaultValue )
 
-`Constructor.value( defaultValue )` or just `defaultValue` is used to specify the default value. In the last case
-the type will be inferred from the `defaultValue`.
+Assign default property value.
+
+#### `decl` name : defaultValue
+
+Assign default property value. The the type will be inferred from the `defaultValue`.
+
+Any function in props annotation is treated as a constructor. Thus, `Function.value( defaultValue )` must be used to specify the defaults for functions.
 
 ```javascript
 import React, { define } from 'react-mvx'
@@ -67,13 +77,14 @@ import React, { define } from 'react-mvx'
 }
 ```
 
-Any function in props annotation is treated as a constructor. Thus, `Function.value( defaultValue )` must be used to specify the defaults for functions.
+#### `decl` name : Constructor.has.watcher( 'componentMethodName' )
 
-## Watchers
+#### `decl` name : Constructor.has.watcher( function( newValue, name ){ ... } )
 
-Component can track changes of individual props through _watchers_ attached to the props.
-Watcher is the function taking the new prop value, which is called first time after the component is
-mounted and every time component receives the new props and this particular prop is changed.
+_Watcher_ is the function which is called when the particular prop is assigned with new value.
+
+Watcher is called after `componentWillMount`, and may be called during `componentWillReceiveProps` if the property is changed.
+Watcher is executed in the context of the component.
 
 ```javascript
 import React, { define } from 'react-mvx'
@@ -81,19 +92,22 @@ import React, { define } from 'react-mvx'
 @define class PropsDemo extends React.Component {
     static props = {
         first : String.has.watcher( 'onFirstChange' ),
-        // Render when record is added to or removed from the collection
         second : Number.has.watcher( second => console.log( 'Received new prop:', second ) )
     }
 
-    onFirstChange( newValue, propName ){
+    onFirstChange( newValue, name ){
         console.log( 'First prop is about to change:', newValue );
     }
 }
 ```
 
-## UI updates on internal props changes (.has.changeEvents(...))
+#### `decl` name : RecordOrCollection.has.changeEvents( true )
 
-Component can observe changes _inside of the records and collections_ and trigger the local UI update.
+Observe _internal changes_ of the record or collection and update the component in case of changes.
+
+#### `decl` name : EventSource.has.changeEvents( 'event1 event2 ...' )
+
+Update the component in case if property triggers any of the listed events.
 
 ```javascript
 import React, { define } from 'react-mvx'
@@ -109,8 +123,7 @@ import { Record } from 'react-mvx'
 }
 ```
 
-## Subscribe for events from props (.has.events(...))
+#### `decl` name : EventSource.has.events({ event : handler, ... })
 
-Type annotation syntax:
-
-- `EventSource.has.events({ [ events ] : handlerFunction | 'methodName' })` - subscribe for events from the property.
+Subscribe for events from the component property. `handler` can either be the name of the component's method,
+or the function handling the event. Handler is executed in the context of the component.

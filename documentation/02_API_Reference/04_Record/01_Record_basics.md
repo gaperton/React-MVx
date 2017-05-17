@@ -1,4 +1,4 @@
-### `static` attributes
+#### `static` attributes
 
 Record is a class with an observalbe and serializable public attributes, which must be declared statically
 in `static attributes` class member, which is an object hash mapping an attribute name to its type annotation.
@@ -24,7 +24,7 @@ with the value which is not compatible with its declared type, the type is being
 
 Therefore, any constructor function may be used as an attribute type, if it behaves as converting constructor. Many of JS built-in types behaves just like that (Date, for instance).
 
-### constructor( attrs?, options? )
+#### constructor( attrs?, options? )
 
 When creating an instance of a record, you can pass in the initial values of the attributes,
  which will be set on the record.
@@ -46,13 +46,13 @@ const book = new Book({
 });
 ```
 
-### initialize( attrs?, options? )
+#### initialize( attrs?, options? )
 
 Called at the end of the `Record` constructor when all attributes are assigned
 and record's inner state is properly initialized. Takes the same arguments as
 a constructor.
 
-### record.attrName
+#### record.attrName
 
 Record's attributes may be directly accessed with `record.name`, as if they would be the members of the class.
 Please note, that you *have to declare all attributes* in `static attributes` declaration before use.
@@ -69,7 +69,7 @@ const myAccount = new Account({ name : 'mine' });
 myAccount.ballance += 1000000; // That works. Good, eh?
 ```
 
-### record.set()
+#### record.set()
 
 Set a hash of attributes (one or many) on the record.
 If any of the attributes change the record's state, a `change` event will be triggered on the record.

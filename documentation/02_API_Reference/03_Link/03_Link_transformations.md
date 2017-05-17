@@ -1,4 +1,4 @@
-###  link.equals( value )
+####  link.equals( value )
 
 ```javascript
 <Checkbox checkedLink={ stringLink.equals( 'optionX' ) } />
@@ -11,7 +11,7 @@ When an equality link is assigned with `true` the parent link value is set with 
 
 Useful for radio groups.
 
-### link.props
+#### link.props
 
 ```javascript
 <input type="text" {...nameLink.props} />
@@ -19,7 +19,7 @@ Useful for radio groups.
 
 Converts the link to the standard `{ value, onChange }` props to be easily consumed by standard `<input />` control.
 
-### link.action( ( prevValue, event ) => newValue )
+#### link.action( ( prevValue, event ) => newValue )
 
 ```javascript
 // simple click event handler...
@@ -40,7 +40,7 @@ with returned value.
 
 This is particularly useful in (but not restricted to) UI event handlers.
 
-### link.check( predicate : value => boolean, errorMsg? )
+#### link.check( predicate : value => boolean, errorMsg? )
 
 Checks whenever the predicate is truthy on linked value, and if it's not, assigns `link.error` with `errorMsg`.
 Does nothing if `link.error` is already populated.

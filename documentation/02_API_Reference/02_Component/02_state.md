@@ -1,8 +1,13 @@
-## state 
-### `static` state = { name : Annotation } | RecordConstructor
+Component's state is modeled as Type-R `Record`. Record is created before `componentWillMount()` and disposed after `componentWillUnmount()`.
+All changed inside of the state record are observed, and the component is updated in case of change.
 
-Component state declaration. State is modeled as `Record` either referenced by Constructor or imlicitly defined with a given attributes declaration.
-`state` Record is created before the component mount, and is disposed when component is unmounted.
+#### `static` state = RecordConstructor
+
+Define stateful component with the state Record declared externally.
+
+#### `static` state = { name : `decl` }
+
+Implicitly define state Record with a given attributes declaration.
 
 - `Constructor` - initialize attribute with the default value of the given constructor.
 - `Constructor.value( val )` or just `val` - provide different default value.
@@ -14,12 +19,12 @@ Component state declaration. State is modeled as `Record` either referenced by C
 
 Type annotations listed above may be chained. Please, refer to the [Type-R] type annotations reference for the complete list of options.
 
-### state : Record
+#### component.state
 
-Replaces standard React's `state` and `setState`. Holds an object of the `Record` subclass.
+Holds an object of the `Record` subclass.
 
 Use direct assignments to modify the state:
 
     this.state.x = 5;
 
-Use `transaction()` call to groupe the sequence of changes in single UI update transaction.
+Use `component.transaction()` call to group the sequence of changes in single UI update transaction.

@@ -24,7 +24,7 @@
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 </head>
-<body class="with-float">
+<body class="">
     
 <header class="Navbar hidden-print">
     <a class="Navbar__brand" href="../../index.html">React-MVx</a>
@@ -57,12 +57,7 @@
                                     
                                     <div class="CodeToggler">
                         <hr/>
-                                                    <span class="CodeToggler__text">Code blocks</span>
-                            <div class="ButtonGroup" role="group">
-                                <button class="Button Button--default Button--small CodeToggler__button CodeToggler__button--hide">No</button>
-                                <button class="Button Button--default Button--small CodeToggler__button CodeToggler__button--below">Below</button>
-                                <button class="Button Button--default Button--small CodeToggler__button CodeToggler__button--float">Inline</button>
-                            </div>
+                                                    <a class="CodeToggler__button CodeToggler__button--main" href="#">Show Code Blocks Inline</a><br>
                                             </div>
                 
                                     <hr/>
@@ -74,7 +69,7 @@
                             </div>
         </div>
     </aside>
-    <div class="Columns__right Columns__right--float">
+    <div class="Columns__right ">
         <div class="Columns__right__content">
             <div class="doc_content">
                 <article class="Page">
@@ -82,7 +77,7 @@
     <div class="Page__header">
         <h1>Rendering Control</h1>
                 <span style="float: left; font-size: 10px; color: gray;">
-            Monday, May 15, 2017 1:14 PM        </span>
+            Wednesday, May 17, 2017 2:29 PM        </span>
                         <span style="float: right; font-size: 10px; color: gray;">
             <a href="https://github.com/Volicon/React-MVx/blob/develop/docs/02_API_Reference/02_Component/06_Rendering_Control.md" target="_blank">Edit on GitHub</a>
         </span>
@@ -90,7 +85,7 @@
 
 
     <div class="s-content">
-        <h3 id="page_transaction%28+fun+%29">transaction( fun )</h3>
+        <h4 id="page_component.transaction%28+fun+%29">component.transaction( fun )</h4>
 <p>Group the sequence of state (and props) updates in the single transaction leading to single UI update.</p>
 <pre><code class="language-javascript">this.transaction( state =&gt; {
     state.a++;
@@ -99,11 +94,11 @@
 });
 </code></pre>
 <p>Read more about transactions in Type-R manual.</p>
-<h3 id="page_pureRender+%3D+true"><code>static</code> pureRender = true</h3>
+<h4 id="page_pureRender+%3D+true"><code>static</code> pureRender = true</h4>
 <p>Generate and attach the &quot;pure render&quot; optimization mixin. Mixin prevents the subsequent render calls in case if props were unchanged.
 Mixin <em>detects and takes into account inner changes</em> of records and collections as well.</p>
 <p><code>static props</code> declaration is required for <code>pureRender</code> to work. Only declared props will be compared.</p>
-<h3 id="page_asyncUpdate%28%29">asyncUpdate()</h3>
+<h4 id="page_component.asyncUpdate%28%29">component.asyncUpdate()</h4>
 <p>Safe version of the <code>forceUpdate()</code>. Gracefully handles component disposal and UI update transactions.</p>
 <p>Shall be used in place of every manual call to <code>forceUpdate()</code>.</p>
     </div>

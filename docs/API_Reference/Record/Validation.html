@@ -24,7 +24,7 @@
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 </head>
-<body class="with-float">
+<body class="">
     
 <header class="Navbar hidden-print">
     <a class="Navbar__brand" href="../../index.html">React-MVx</a>
@@ -57,12 +57,7 @@
                                     
                                     <div class="CodeToggler">
                         <hr/>
-                                                    <span class="CodeToggler__text">Code blocks</span>
-                            <div class="ButtonGroup" role="group">
-                                <button class="Button Button--default Button--small CodeToggler__button CodeToggler__button--hide">No</button>
-                                <button class="Button Button--default Button--small CodeToggler__button CodeToggler__button--below">Below</button>
-                                <button class="Button Button--default Button--small CodeToggler__button CodeToggler__button--float">Inline</button>
-                            </div>
+                                                    <a class="CodeToggler__button CodeToggler__button--main" href="#">Show Code Blocks Inline</a><br>
                                             </div>
                 
                                     <hr/>
@@ -74,7 +69,7 @@
                             </div>
         </div>
     </aside>
-    <div class="Columns__right Columns__right--float">
+    <div class="Columns__right ">
         <div class="Columns__right__content">
             <div class="doc_content">
                 <article class="Page">
@@ -82,7 +77,7 @@
     <div class="Page__header">
         <h1>Validation</h1>
                 <span style="float: left; font-size: 10px; color: gray;">
-            Tuesday, May 16, 2017 10:46 AM        </span>
+            Wednesday, May 17, 2017 1:15 PM        </span>
                         <span style="float: right; font-size: 10px; color: gray;">
             <a href="https://github.com/Volicon/React-MVx/blob/develop/docs/02_API_Reference/04_Record/04_Validation.md" target="_blank">Edit on GitHub</a>
         </span>
@@ -90,11 +85,63 @@
 
 
     <div class="s-content">
-        <h3 id="page_record.isValid%28+attr%3F+%29">record.isValid( attr? )</h3>
-<h3 id="page_%3A+Type.has.check%28%29"><code>attr</code> : Type.has.check()</h3>
-<h3 id="page_%3A+Type.isRequired"><code>attr</code> : Type.isRequired</h3>
-<h3 id="page_record.validate%28%29">record.validate()</h3>
-<h3 id="page_record.validationError">record.validationError</h3>
+        <h3 id="page_Attribute-level+checks">Attribute-level checks</h3>
+<h4 id="page_attr+%3A+Type.has.check%28+predicate%2C+errorMsg%3F+%29">attr : Type.has.check( predicate, errorMsg? )</h4>
+<p>Attribute-level validator.</p>
+<ul>
+<li>
+<code>predicate : value =&gt; boolean</code> is the function taking attribute's value and returning <code>true</code> whenever the value is valid.</li>
+<li>optional <code>errorMsg</code> is the error message which will be passed in case if the validation fail.</li>
+</ul>
+<p>If <code>errorMsg</code> is omitted, error message will be taken from <code>predicate.error</code>. It makes possible to define reusable validation functions.</p>
+<pre><code class="language-javascript">function isAge( years ){
+    return years &gt;= 0 &amp;&amp; years &lt; 200;
+}
+
+isAge.error = &quot;Age must be between 0 and 200&quot;;
+</code></pre>
+<p>Attribute may have any number of checks attached, which are execute in sequence. Validation stops when first check in sequence fails.</p>
+<pre><code class="language-javascript">// Define new attribute metatype encapsulating validation checks.
+const Age = Number.has
+                .check( x =&gt; x &gt;= 0, 'I guess you are a bit older' )
+                .check( x =&gt; x &lt; 200, 'No way man can be that old' );
+</code></pre>
+<h4 id="page_attr+%3A+Type.isRequired">attr : Type.isRequired</h4>
+<p>The special case of attribute-level check cutting out empty values. Attribute value must be truthy to pass, <code>&quot;Required&quot;</code> is used as validation error.</p>
+<p><code>isRequired</code> is the first validator to check, no matter in which order validators were attached.</p>
+<h3 id="page_Record-level+checks">Record-level checks</h3>
+<h4 id="page_record.validate%28%29">record.validate()</h4>
+<p>Override in Record subclass to add record-level validation. Whatever is returned is treated as an error message.</p>
+<h2 id="page_Validation+API">Validation API</h2>
+<h4 id="page_record.isValid%28%29">record.isValid()</h4>
+<p>Returns <code>true</code> whenever the record is valid. The whole aggregation tree is validated.</p>
+<h4 id="page_record.isValid%28+attrName+%29">record.isValid( attrName )</h4>
+<p>Returns <code>true</code> whenever the record's attribute is valid.</p>
+<h4 id="page_record.validationError">record.validationError</h4>
+<p>Detailed validation error information, or <code>null</code> if the record and its <em>aggregation tree</em> is valid.
+An error object has tree structure mapping the invalid subtree of the aggregation tree.</p>
+<pre><code class="language-javascript">// ValidationError object shape
+{
+    error : /* record-level validation error msg as returned from record.validate() */,
+
+    // Attribute-level validation errors, one entry for each invalid attribute.
+    nested : {
+        // Contains nested ValidationError object for nested records and collections...
+        nestedRecord : /* ValidationError */
+        nestedCollection : /* ValidationError */
+
+        // ...and error msg for all other attributes.
+        otherAttr : /* attribute validation error as returned from .has.check() validator */
+    }
+}
+</code></pre>
+<h3 id="page_Validation+error+traversal">Validation error traversal</h3>
+<p>ValidationError has a couple of methods for tree traversal.</p>
+<h4 id="page_validationError.each%28+%28+error%2C+key+%29+%3D%3E+void+%29">validationError.each( ( error, key ) =&gt; void )</h4>
+<p>Iterate through the records's errors (not recursive). <code>key</code> is <code>null</code> for the record-level validation error.</p>
+<h4 id="page_validationError.eachError%28+%28+error%2C+key%2C+recordOrCollection+%29+%3D%3E+void+%29">validationError.eachError( ( error, key, recordOrCollection ) =&gt; void )</h4>
+<p>Recursively traverse aggregation tree errors. <code>key</code> is <code>null</code> for the record-level validation error.
+<code>recordOrCollection</code> is the reference to the current object.</p>
     </div>
 
         <nav>
