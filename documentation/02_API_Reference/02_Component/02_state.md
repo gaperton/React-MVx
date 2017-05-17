@@ -7,33 +7,26 @@ Define stateful component with the state Record declared externally.
 
 #### `static` state = { name : `decl`, ... }
 
-Implicitly define state Record with a given attributes declaration.
+Implicitly define state Record with a given attributes declaration. All declarations working on `props` works for the state as well. Refer to the Record documentation for the attributes declaration syntax.
 
 #### component.state
 
-Holds an object of the `Record` subclass.
+Holds an object of the `Record` subclass. 
 
-Use direct assignments to modify the state:
+*Do not use `component.setState()`*. Use direct assignments to modify the state:
 
     this.state.x = 5;
 
-Use `component.transaction()` call to group the sequence of changes in single UI update transaction.
+Refer to the Record documentation for the complete list of methods.
 
 #### component.transaction( fun )
 
 Group the sequence of state (and props) updates in the single transaction leading to single UI update.
 
-```javascript
-this.transaction( state => {
-    state.a++;
-    state.b++;
-    this.props.collection.reset();
-});
-```
+    this.transaction( state => {
+        state.a++;
+        state.b++;
+        this.props.collection.reset();
+    });
 
-Read more about transactions in Type-R manual.
-
-### State declaration
-
-As the state is internally the Type-R Record, it uses the same declarations.
-Please, refer to the [../04_Record] attribute declarations for the complete list of options.
+Read more about transactions in Record's manual.

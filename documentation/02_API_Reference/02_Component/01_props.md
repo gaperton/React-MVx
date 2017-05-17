@@ -17,10 +17,11 @@ import React, { define } from 'react-mvx'
 
 #### `static` pureRender = true
 
-Generate and attach the "pure render" optimization mixin. Mixin prevents subsequent render calls in case if props were unchanged.
-Mixin *detects and takes into account inner changes* of records and collections as well.
+Prevents subsequent render calls in case if props were unchanged. It's known as "pure render" optimization.
 
-`static props` declaration is required for `pureRender` to work. Only declared props will be tracked.
+*Inner changes of records and collections* are detected and taken into account. Thus, it works properly with mutable records and collections.
+
+`static props` declaration is required for `pureRender` to work. Only declared props will be tracked and compared.
 
 ### Properties declarations
 
