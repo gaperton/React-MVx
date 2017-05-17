@@ -1,10 +1,23 @@
+
+### Attribute-level serialization control
+
+#### `decl` attr : Type.has.toJSON( false )
+
+Exclude attribute from serialization.
+
+#### `decl` attr : Type.has.toJSON( ( value, name ) => json )
+
+Override the default toJSON() method for the selected record's attribute.
+
+#### `decl` attr : Type.has.parse()
+
+Transform the data before it will be passed to the record's attribute when `{ parse : true }` option is used.
+
+### Serialization API
+
 #### record.parse( json )
 
 May be overriden to transform constructor or `set` argument when `{ parse : true }` option is used.
-
-#### attr : Type.has.parse()
-
-Transform the data before it will be passed to the record's attribute when `{ parse : true }` option is used.
 
 #### constructor( json, { parse : true } )
 
@@ -40,8 +53,3 @@ alert( JSON.stringify( artist ) );
 ```
 
 It will, however, produce correct JSON for all the complex attribute types.
-
-#### attr : Type.has.toJSON()
-
-Override the default toJSON() method for the selected record's attribute.
-

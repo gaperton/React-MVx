@@ -1,5 +1,5 @@
-#### attr : Record.from( collectionRef )
+#### `decl` attr : Record.from( collectionRef )
 
-#### attr : Collection.subsetOf( collectionRef )
+#### `decl` attr : Collection.subsetOf( collectionRef )
 
 ### Collection reference

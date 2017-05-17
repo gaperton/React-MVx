@@ -1,7 +1,7 @@
 
-### Attribute-level checks
+### Attribute-level validation checks
 
-#### attr : Type.has.check( predicate, errorMsg? )
+#### `decl` attr : Type.has.check( predicate, errorMsg? )
 
 Attribute-level validator.
 
@@ -27,19 +27,17 @@ const Age = Number.has
                 .check( x => x < 200, 'No way man can be that old' );
 ```
 
-#### attr : Type.isRequired
+#### `decl` attr : Type.isRequired
 
 The special case of attribute-level check cutting out empty values. Attribute value must be truthy to pass, `"Required"` is used as validation error.
 
 `isRequired` is the first validator to check, no matter in which order validators were attached.
 
-### Record-level checks
+### Validation API
 
 #### record.validate()
 
 Override in Record subclass to add record-level validation. Whatever is returned is treated as an error message.
-
-## Validation API
 
 #### record.isValid()
 

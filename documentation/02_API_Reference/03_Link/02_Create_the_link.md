@@ -3,7 +3,7 @@ Component has the shorthand methods to create links to its state record elements
 
 You can create custom link object encapsulating complex data binding logic with `Link.value`.
 
-#### linkAt( key )
+#### object.linkAt( key )
 
 - `record.linkAt( attr )` links the record's attribute. Semantically it's the reference to the attribute.
 - `collection.linkAt( prop )` links the custom collection property. Property's setter *must* modify some record's attributes or change collections.
@@ -13,7 +13,7 @@ You can create custom link object encapsulating complex data binding logic with 
 const nameLink = user.linkAt( 'name' );
 ```
 
-#### linkAll()
+#### object.linkAll()
 
 - `record.linkAll()` links all records attributes.
 - `component.linkAll()` works similar to `component.state.linkAll()`.

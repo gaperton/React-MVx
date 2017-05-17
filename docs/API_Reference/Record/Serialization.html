@@ -77,7 +77,7 @@
     <div class="Page__header">
         <h1>Serialization</h1>
                 <span style="float: left; font-size: 10px; color: gray;">
-            Wednesday, May 17, 2017 1:02 PM        </span>
+            Wednesday, May 17, 2017 3:38 PM        </span>
                         <span style="float: right; font-size: 10px; color: gray;">
             <a href="https://github.com/Volicon/React-MVx/blob/develop/docs/02_API_Reference/04_Record/05_Serialization.md" target="_blank">Edit on GitHub</a>
         </span>
@@ -85,10 +85,16 @@
 
 
     <div class="s-content">
-        <h4 id="page_record.parse%28+json+%29">record.parse( json )</h4>
-<p>May be overriden to transform constructor or <code>set</code> argument when <code>{ parse : true }</code> option is used.</p>
-<h4 id="page_attr+%3A+Type.has.parse%28%29">attr : Type.has.parse()</h4>
+        <h3 id="page_Attribute-level+serialization+control">Attribute-level serialization control</h3>
+<h4 id="page_attr+%3A+Type.has.toJSON%28+false+%29"><code>decl</code> attr : Type.has.toJSON( false )</h4>
+<p>Exclude attribute from serialization.</p>
+<h4 id="page_attr+%3A+Type.has.toJSON%28+%28+value%2C+name+%29+%3D%3E+json+%29"><code>decl</code> attr : Type.has.toJSON( ( value, name ) =&gt; json )</h4>
+<p>Override the default toJSON() method for the selected record's attribute.</p>
+<h4 id="page_attr+%3A+Type.has.parse%28%29"><code>decl</code> attr : Type.has.parse()</h4>
 <p>Transform the data before it will be passed to the record's attribute when <code>{ parse : true }</code> option is used.</p>
+<h3 id="page_Serialization+API">Serialization API</h3>
+<h4 id="page_record.parse%28+json+%29">record.parse( json )</h4>
+<p>May be overriden to transform constructor or <code>set</code> argument when <code>{ parse : true }</code> option is used.</p>
 <h4 id="page_constructor%28+json%2C+%7B+parse+%3A+true+%7D+%29">constructor( json, { parse : true } )</h4>
 <p>Call <code>record.parse( json )</code> and attribute-level parse transforms. They won't be executed by default.</p>
 <h4 id="page_record.set%28+json%2C+%7B+parse+%3A+true+%7D+%29">record.set( json, { parse : true } )</h4>
@@ -115,8 +121,6 @@ artist.birthday = new Date( 1866, 12, 16 );
 alert( JSON.stringify( artist ) );
 </code></pre>
 <p>It will, however, produce correct JSON for all the complex attribute types.</p>
-<h4 id="page_attr+%3A+Type.has.toJSON%28%29">attr : Type.has.toJSON()</h4>
-<p>Override the default toJSON() method for the selected record's attribute.</p>
     </div>
 
         <nav>

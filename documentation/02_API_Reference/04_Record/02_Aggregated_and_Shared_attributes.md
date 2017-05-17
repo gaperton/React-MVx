@@ -27,7 +27,7 @@ All nested records and collections are *aggregated* by default and behave as int
 - They are validated as part of the record.
 - They are serialized as nested JSON.
 
-#### attr : Type.shared
+#### `decl` attr : Type.shared
 
 Attributes can be marked as *shared* with adding `Type.shared` modifier. Such an attribute is not the member of record's aggregation/ownership tree.
 

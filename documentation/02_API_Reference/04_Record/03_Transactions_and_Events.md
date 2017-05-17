@@ -21,7 +21,7 @@ will be executed in the scope of the original transaction. It means, that:
 - No additional `change` events will be triggered if you modify the record in `change:[attribute]` event handler (but new `change:[attribute]` events will).
 - If the record will be modified in `change` event handler, there _will_ be additional `change` events. However, record's owner will be notifyed only once when the wave of events and reactions will finish its processing.
 
-#### attr : Type.has.watcher()
+#### `decl` attr : Type.has.watcher()
 
 To attach some custom reaction on specific record's attribute change event, you attach the _watcher function_ to this attribute.
 Watcher has the signature `( attrValue, attrName ) => void` and is executed in the context of the record. Watcher annotation should be either of these:
@@ -63,7 +63,7 @@ The `changed` property is the internal hash containing all the attributes that h
 Please do not update `changed` directly since its state is internally maintained by `set()`.
 A copy of `changed` can be acquired from `changedAttributes()`.
 
-#### changedAttributes( attrs? ) 
+#### record.changedAttributes( attrs? ) 
 
 Retrieve a hash of only the record's attributes that have changed during the last transaction,
 or false if there are none. Optionally, an external attributes hash can be passed in,
@@ -71,7 +71,7 @@ returning the attributes in that hash which differ from the record.
 This can be used to figure out which portions of a view should be updated,
 or what calls need to be made to sync the changes to the server.
 
-#### previous( attr ) 
+#### record.previous( attr ) 
 
 During a "change" event, this method can be used to get the previous value of a changed attribute.
 
@@ -93,6 +93,6 @@ bill.on("change:name", ( record, name ) => {
 bill.name = "Bill Jones";
 ```
 
-#### previousAttributes()
+#### record.previousAttributes()
 
 Return a copy of the record's previous attributes. Useful for getting a diff between versions of a record, or getting back to a valid state after an error occurs.

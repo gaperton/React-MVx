@@ -1,9 +1,9 @@
-#### `static` attributes
+### Attribute declarations
 
-Record is a class with an observalbe and serializable public attributes, which must be declared statically
-in `static attributes` class member, which is an object hash mapping an attribute name to its type annotation.
- The general form of type annotation is `Type.value( defaultValue )`, where the `Type` is the corresponding constructor function.
-Either `Type` or `defaultValue` can be omitted.
+#### `static` attributes = { name : `decl`, ... }
+
+Record is a class with an observalbe and serializable public attributes. Attributes *must* be declared statically
+in `static attributes` class member, which is an object hash mapping an the name to its declaration.
 
 ```javascript
 @define class User extends Record {
@@ -15,14 +15,24 @@ Either `Type` or `defaultValue` can be omitted.
 }
 ```
 
-- When the function is passed, it's treated as an attribute constructor.
-- When other value than function is passed, it's treated as the default value and the type is being inferred form the value.
-- If you need to pass function as the default value, use `Function.value( theFunction )`.
-
 The Record guarantee that _every attribute will always hold the value of the declared type_. Whenever the an attribute is being assigned
 with the value which is not compatible with its declared type, the type is being converted with an invocation of the constructor: `new Type( value )` (primitive types are treated specially).
 
-Therefore, any constructor function may be used as an attribute type, if it behaves as converting constructor. Many of JS built-in types behaves just like that (Date, for instance).
+#### `decl` name : Type.value( defaultValue )
+
+The general form of type annotation is `Type.value( defaultValue )`, where the `Type` is the corresponding constructor function.
+
+#### `decl` name : Type
+
+When the function is used as `decl`, it's treated as the constructor function.
+Any constructor function may be used as an attribute type, if it behaves as _converting constructor_ (like `new Date( msecs )`).
+
+#### `decl` name : defaultValue
+
+When other value than function is passed, it's treated as the default value and the type is being inferred form the value.
+ If you need to pass function as the default value, use `Function.value( theFunction )`.
+
+### Core Record API
 
 #### constructor( attrs?, options? )
 
@@ -46,7 +56,7 @@ const book = new Book({
 });
 ```
 
-#### initialize( attrs?, options? )
+#### record.initialize( attrs?, options? )
 
 Called at the end of the `Record` constructor when all attributes are assigned
 and record's inner state is properly initialized. Takes the same arguments as

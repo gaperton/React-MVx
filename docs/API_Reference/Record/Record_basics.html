@@ -77,7 +77,7 @@
     <div class="Page__header">
         <h1>Record basics</h1>
                 <span style="float: left; font-size: 10px; color: gray;">
-            Wednesday, May 17, 2017 1:17 PM        </span>
+            Wednesday, May 17, 2017 3:50 PM        </span>
                         <span style="float: right; font-size: 10px; color: gray;">
             <a href="https://github.com/Volicon/React-MVx/blob/develop/docs/02_API_Reference/04_Record/01_Record_basics.md" target="_blank">Edit on GitHub</a>
         </span>
@@ -85,11 +85,10 @@
 
 
     <div class="s-content">
-        <h4 id="page_attributes"><code>static</code> attributes</h4>
-<p>Record is a class with an observalbe and serializable public attributes, which must be declared statically
-in <code>static attributes</code> class member, which is an object hash mapping an attribute name to its type annotation.
-The general form of type annotation is <code>Type.value( defaultValue )</code>, where the <code>Type</code> is the corresponding constructor function.
-Either <code>Type</code> or <code>defaultValue</code> can be omitted.</p>
+        <h3 id="page_Attribute+declarations">Attribute declarations</h3>
+<h4 id="page_attributes+%3D+%7B+name+%3A++%2C+...+%7D"><code>static</code> attributes = { name : <code>decl</code>, ... }</h4>
+<p>Record is a class with an observalbe and serializable public attributes. Attributes <em>must</em> be declared statically
+in <code>static attributes</code> class member, which is an object hash mapping an the name to its declaration.</p>
 <pre><code class="language-javascript">@define class User extends Record {
     static attributes = {
         name    : String.value( 'John Dow' ),
@@ -98,14 +97,17 @@ Either <code>Type</code> or <code>defaultValue</code> can be omitted.</p>
     }
 }
 </code></pre>
-<ul>
-<li>When the function is passed, it's treated as an attribute constructor.</li>
-<li>When other value than function is passed, it's treated as the default value and the type is being inferred form the value.</li>
-<li>If you need to pass function as the default value, use <code>Function.value( theFunction )</code>.</li>
-</ul>
 <p>The Record guarantee that <em>every attribute will always hold the value of the declared type</em>. Whenever the an attribute is being assigned
 with the value which is not compatible with its declared type, the type is being converted with an invocation of the constructor: <code>new Type( value )</code> (primitive types are treated specially).</p>
-<p>Therefore, any constructor function may be used as an attribute type, if it behaves as converting constructor. Many of JS built-in types behaves just like that (Date, for instance).</p>
+<h4 id="page_name+%3A+Type.value%28+defaultValue+%29"><code>decl</code> name : Type.value( defaultValue )</h4>
+<p>The general form of type annotation is <code>Type.value( defaultValue )</code>, where the <code>Type</code> is the corresponding constructor function.</p>
+<h4 id="page_name+%3A+Type"><code>decl</code> name : Type</h4>
+<p>When the function is used as <code>decl</code>, it's treated as the constructor function.
+Any constructor function may be used as an attribute type, if it behaves as <em>converting constructor</em> (like <code>new Date( msecs )</code>).</p>
+<h4 id="page_name+%3A+defaultValue"><code>decl</code> name : defaultValue</h4>
+<p>When other value than function is passed, it's treated as the default value and the type is being inferred form the value.
+If you need to pass function as the default value, use <code>Function.value( theFunction )</code>.</p>
+<h3 id="page_Core+Record+API">Core Record API</h3>
 <h4 id="page_constructor%28+attrs%3F%2C+options%3F+%29">constructor( attrs?, options? )</h4>
 <p>When creating an instance of a record, you can pass in the initial values of the attributes,
 which will be set on the record.</p>
@@ -123,7 +125,7 @@ const book = new Book({
   author: &quot;Scheherazade&quot;
 });
 </code></pre>
-<h4 id="page_initialize%28+attrs%3F%2C+options%3F+%29">initialize( attrs?, options? )</h4>
+<h4 id="page_record.initialize%28+attrs%3F%2C+options%3F+%29">record.initialize( attrs?, options? )</h4>
 <p>Called at the end of the <code>Record</code> constructor when all attributes are assigned
 and record's inner state is properly initialized. Takes the same arguments as
 a constructor.</p>
