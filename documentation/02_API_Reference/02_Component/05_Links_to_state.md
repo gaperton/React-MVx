@@ -1,3 +1,6 @@
+Component implements shorthand methods for creating links to state.
+The same API is implemented by every Record class. All the methods below generally forward calls to the `component.state`.
+
 #### component.linkAt( 'key' )
 
 Create the link for the state member `key`. Is a shortcut for `component.state.linkAt()` method.
