@@ -1,5 +1,7 @@
 Component _static props declaration_ replaces standard React's `propTypes` and `defaultProps`.
 
+## Declarations
+
 #### `static` props = { name : `propDef`, ... }
 
 Declare component props. Declaration is an object 
@@ -23,7 +25,7 @@ Prevents subsequent render calls in case if props were unchanged. It's known as 
 
 `static props` declaration is required for `pureRender` to work. Only declared props will be tracked and compared.
 
-### Properties declarations
+### Properties definitions
 
 #### `propDef` name : Constructor
 

@@ -77,7 +77,7 @@
     <div class="Page__header">
         <h1>state</h1>
                 <span style="float: left; font-size: 10px; color: gray;">
-            Thursday, May 18, 2017 6:14 AM        </span>
+            Thursday, May 18, 2017 8:11 AM        </span>
                         <span style="float: right; font-size: 10px; color: gray;">
             <a href="https://github.com/Volicon/React-MVx/blob/develop/docs/02_API_Reference/02_Component/02_state.md" target="_blank">Edit on GitHub</a>
         </span>
@@ -87,10 +87,12 @@
     <div class="s-content">
         <p>Component's state is modeled as Type-R <code>Record</code>. Record is created before <code>componentWillMount()</code> and disposed after <code>componentWillUnmount()</code>.
 All changed inside of the state record are observed, and the component is updated in case of change.</p>
+<h2 id="page_Declarations">Declarations</h2>
 <h4 id="page_state+%3D+RecordConstructor"><code>static</code> state = RecordConstructor</h4>
 <p>Define stateful component with the state Record declared externally.</p>
 <h4 id="page_state+%3D+%7B+name+%3A++%2C+...+%7D"><code>static</code> state = { name : <code>attrDef</code>, ... }</h4>
 <p>Implicitly define state Record with a given attributes declaration. All declarations working on <code>props</code> works for the state as well. Refer to the Record documentation for the attributes declaration syntax.</p>
+<h2 id="page_Class+members">Class members</h2>
 <h4 id="page_component.state">component.state</h4>
 <p>Holds an object of the <code>Record</code> subclass.</p>
 <p><em>Do not use <code>component.setState()</code></em>. Use direct assignments to modify the state:</p>

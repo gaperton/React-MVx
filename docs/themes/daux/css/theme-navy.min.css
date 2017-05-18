@@ -574,6 +574,12 @@ h6 {
   font-size: 1.6em;
   border-bottom: 1px solid #eee;
   color: black;
+  padding: 5px 0px 5px 20px;
+  border-top-color: #7795b4;
+  border-top-width: 6px;
+  border-top-style: solid;
+  margin-left: -20px;
+  margin-right: -20px;
 }
 .s-content h3 {
   font-size: 1.4em;

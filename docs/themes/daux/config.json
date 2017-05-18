@@ -11,7 +11,7 @@
             "favicon": "<theme_url>img/favicon-green.png",
             "css": ["<theme_url>css/theme-green.min.css"]
         },
-        "navyss": {
+        "navy": {
             "favicon": "<theme_url>img/favicon-navy.png",
             "css": ["<theme_url>css/theme-navy.min.css"]
         },

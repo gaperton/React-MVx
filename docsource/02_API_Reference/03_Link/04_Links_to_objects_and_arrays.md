@@ -4,6 +4,8 @@ defined as a superposition of nested records and collections.
 Links can be used to make purely functional updates of the objects and arrays in records attributes. It's done with
 the help of _at-links_, which points to the elements of linked objects and arrays.
 
+## Object and arrays methods
+
 #### link.at( key )
 
 Create an _at-link_ to the member of array or object.
@@ -14,15 +16,6 @@ container (array or object).
 ```javascript
 // Update this.state.array[ 0 ].name
 this.linkAt( 'array' ).at( 0 ).at( 'name' ).set( 'Joe' );
-```
-
-#### link.pick( key1, key2, ... )
-
-Create _at-links_ to the object's members with designated keys, and wrap them in an object.
-
-```javascript
-// Bulk create at-links for the linked object
-const { name, email } = objLink.pick( 'name', 'email' );
 ```
 
 #### link.map( ( itemLink, itemKey ) => any | void )
@@ -73,7 +66,18 @@ Remove element with a given key from the linked object or array.
 
 Remove element with a given key from the linked object or array.
 
-### Array-specific link methods
+#### link.pick( key1, key2, ... )
+
+## Object-specific methods
+
+Create _at-links_ to the object's members with designated keys, and wrap them in an object.
+
+```javascript
+// Bulk create at-links for the linked object
+const { name, email } = objLink.pick( 'name', 'email' );
+```
+
+## Array-specific methods
 
 #### linkToArray.splice() : void
 

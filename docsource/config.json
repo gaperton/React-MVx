@@ -8,9 +8,9 @@
     "live": {
         "clean_urls": true
     },
+    "themes_directory": "node_modules/daux-api-docs-theme",
     "html": {
-        "theme": "daux-navyss",
-        "themes_path": "node_modules/daux-api-docs-theme",
+        "theme": "daux-navy",
         "breadcrumbs": false,
         "toggle_code": true,
         "date_modified": true,

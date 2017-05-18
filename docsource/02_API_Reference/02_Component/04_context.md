@@ -1,5 +1,7 @@
 Static `context` and `childContext` declarations replaces React's standard `contextTypes` and `childContextTypes`.
 
+## Declarations
+
 #### `static` context = { name : `propDef`, ... }
 
 Replacement for standard `contextTypes`.
@@ -10,7 +12,7 @@ Replacement for standard `childContextTypes`.
 
 `getChildContext()` function is required to create the context as in raw React.
 
-### Context declarations
+### Properties definitions
 
 Subset of `static props` declaration is supported for the context `propDef`.
 

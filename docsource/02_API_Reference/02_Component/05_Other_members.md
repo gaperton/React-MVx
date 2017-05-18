@@ -1,4 +1,4 @@
-### Links to state
+## Links to state
 
 Component implements shorthand methods for creating links to state.
 The same API is implemented by every Record class. All the methods below generally forward calls to the `component.state`.
@@ -19,7 +19,7 @@ Direct access to the links cache. Can be used in event handlers to access the li
 
 All links created for records (and for the component's state) are being cached. They are recreated only in case when their value has been changed.
 
-### UI updates
+## UI updates
 
 #### component.asyncUpdate()
 
@@ -27,6 +27,6 @@ Safe version of the `forceUpdate()`. Gracefully handles component disposal and U
 
 Shall be used in place of every manual call to `forceUpdate()`.
 
-### Events
+## Events
 
 Component implements `Events` interface from the Type-R framework, thus it's able to trigger and subscribe for events.

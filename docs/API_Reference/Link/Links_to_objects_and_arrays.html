@@ -77,7 +77,7 @@
     <div class="Page__header">
         <h1>Links to objects and arrays</h1>
                 <span style="float: left; font-size: 10px; color: gray;">
-            Wednesday, May 17, 2017 3:25 PM        </span>
+            Thursday, May 18, 2017 8:17 AM        </span>
                         <span style="float: right; font-size: 10px; color: gray;">
             <a href="https://github.com/Volicon/React-MVx/blob/develop/docs/02_API_Reference/03_Link/04_Links_to_objects_and_arrays.md" target="_blank">Edit on GitHub</a>
         </span>
@@ -89,17 +89,13 @@
 defined as a superposition of nested records and collections.</p>
 <p>Links can be used to make purely functional updates of the objects and arrays in records attributes. It's done with
 the help of <em>at-links</em>, which points to the elements of linked objects and arrays.</p>
+<h2 id="page_Object+and+arrays+methods">Object and arrays methods</h2>
 <h4 id="page_link.at%28+key+%29">link.at( key )</h4>
 <p>Create an <em>at-link</em> to the member of array or object.</p>
 <p>Whenever an <em>at-link</em> is updated, it will lead to proper purely functional update (with shallow copying) of the
 container (array or object).</p>
 <pre><code class="language-javascript">// Update this.state.array[ 0 ].name
 this.linkAt( 'array' ).at( 0 ).at( 'name' ).set( 'Joe' );
-</code></pre>
-<h4 id="page_link.pick%28+key1%2C+key2%2C+...+%29">link.pick( key1, key2, ... )</h4>
-<p>Create <em>at-links</em> to the object's members with designated keys, and wrap them in an object.</p>
-<pre><code class="language-javascript">// Bulk create at-links for the linked object
-const { name, email } = objLink.pick( 'name', 'email' );
 </code></pre>
 <h4 id="page_link.map%28+%28+itemLink%2C+itemKey+%29+%3D%3E+any+%7C+void+%29">link.map( ( itemLink, itemKey ) =&gt; any | void )</h4>
 <p>Map and filter through the linked array or object to produce an array.
@@ -132,7 +128,13 @@ var list = stringArrayLink.map( ( itemLink, index ) =&gt; {
 <p>Remove element with a given key from the linked object or array.</p>
 <h4 id="page_atLink.remove%28%29">atLink.remove()</h4>
 <p>Remove element with a given key from the linked object or array.</p>
-<h3 id="page_Array-specific+link+methods">Array-specific link methods</h3>
+<h4 id="page_link.pick%28+key1%2C+key2%2C+...+%29">link.pick( key1, key2, ... )</h4>
+<h2 id="page_Object-specific+methods">Object-specific methods</h2>
+<p>Create <em>at-links</em> to the object's members with designated keys, and wrap them in an object.</p>
+<pre><code class="language-javascript">// Bulk create at-links for the linked object
+const { name, email } = objLink.pick( 'name', 'email' );
+</code></pre>
+<h2 id="page_Array-specific+methods">Array-specific methods</h2>
 <h4 id="page_linkToArray.splice%28%29+%3A+void">linkToArray.splice() : void</h4>
 <p>Similar to <code>Array.splice()</code> method, but performs purely functional update.</p>
 <h4 id="page_linkToArray.push%28%29+%3A+void">linkToArray.push() : void</h4>
