@@ -10,7 +10,7 @@
     },
     "html": {
         "theme": "daux-navyss",
-        "themes_path": "../themes",
+        "themes_path": "node_modules/daux-api-docs-theme",
         "breadcrumbs": false,
         "toggle_code": true,
         "date_modified": true,

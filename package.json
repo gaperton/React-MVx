@@ -21,7 +21,7 @@
     "compile": "./node_modules/.bin/tsc && ./node_modules/.bin/webpack -p",
     "deploy": "cp -R ./dist ./examples/*/node_modules/react-mvx",
     "build": "npm run pull && npm run compile",
-    "docs" : "lessc themes/daux/less/theme-navy.less themes/daux/css/theme-navy.min.css && ~/.composer/vendor/bin/daux --source=documentation --destination=docs "
+    "docs": "~/.composer/vendor/bin/daux --source=docsource --destination=docs "
   },
   "keywords": [
     "react",
@@ -35,17 +35,18 @@
   "devDependencies": {
     "@types/prop-types": "*",
     "@types/react": "*",
+    "daux-api-docs-theme": "^1.0.0",
+    "handlebars": "^3.0.3",
+    "highlight.js": "^8.7.0",
+    "marked": "^0.3.5",
     "prop-types": "*",
+    "react": "*",
     "react-dom": "*",
     "source-map-loader": "*",
     "ts-loader": "*",
-    "typescript": "*",
-    "webpack": "*",
-    "react": "*",
     "type-r": "^1.0.0-rc6",
-    "marked": "^0.3.5",
-    "handlebars": "^3.0.3",
-    "highlight.js": "^8.7.0"
+    "typescript": "*",
+    "webpack": "*"
   },
   "peerDependencies": {
     "prop-types": "*",
