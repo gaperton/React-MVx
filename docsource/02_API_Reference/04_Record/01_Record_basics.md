@@ -1,4 +1,4 @@
-### Attribute declarations
+## Declarations
 
 #### `static` attributes = { name : `attrDef`, ... }
 
@@ -19,6 +19,8 @@ attribute type, default value, and metadata controlling different aspects of att
 The Record guarantee that _every attribute will always hold the value of the declared type_. Whenever the an attribute is being assigned
 with the value which is not compatible with its declared type, the type is being converted with an invocation of the constructor: `new Type( value )` (primitive types are treated specially).
 
+### Attribute definitions
+
 #### `attrDef` name : Type.value( defaultValue )
 
 The general form of type annotation is `Type.value( defaultValue )`, where the `Type` is the corresponding constructor function.
@@ -33,7 +35,7 @@ Any constructor function may be used as an attribute type, if it behaves as _con
 When other value than function is passed, it's treated as the default value and the type is being inferred form the value.
  If you need to pass function as the default value, use `Function.value( theFunction )`.
 
-### Core Record API
+## Class methods
 
 #### constructor( attrs?, options? )
 

@@ -77,7 +77,7 @@
     <div class="Page__header">
         <h1>Transactions and Events</h1>
                 <span style="float: left; font-size: 10px; color: gray;">
-            Thursday, May 18, 2017 6:17 AM        </span>
+            Thursday, May 18, 2017 8:21 AM        </span>
                         <span style="float: right; font-size: 10px; color: gray;">
             <a href="https://github.com/Volicon/React-MVx/blob/develop/docs/02_API_Reference/04_Record/03_Transactions_and_Events.md" target="_blank">Edit on GitHub</a>
         </span>
@@ -85,7 +85,7 @@
 
 
     <div class="s-content">
-        <h3 id="page_How+record+updates+are+processed">How record updates are processed</h3>
+        <h2 id="page_How+record+updates+are+processed">How record updates are processed</h2>
 <p>Record changes occure in the scope of transactions. Record triggers the set of events during the transaction.
 Transaction is executed in three steps.</p>
 <ol>
@@ -120,8 +120,7 @@ Transactions are superior to <code>record.set()</code> in terms of both performa
     record.b = 2; // `change:b` is triggered.
 }); // `change` is triggered.
 </code></pre>
-<h3 id="page_Listening+to+change+events">Listening to change events</h3>
-<h4 id="page_Events+API">Events API</h4>
+<h2 id="page_Listening+to+change+events">Listening to change events</h2>
 <h4 id="page_attr+%3A+Type.has.watcher%28+%27methodName%27+%29"><code>attrDef</code> attr : Type.has.watcher( 'methodName' )</h4>
 <h4 id="page_attr+%3A+Type.has.watcher%28+function%28+value%2C+name+%29%7B+...+%7D+%29"><code>attrDef</code> attr : Type.has.watcher( function( value, name ){ ... } )</h4>
 <p>To attach some custom reaction on specific record's attribute change event, you attach the <em>watcher function</em> to this attribute.
@@ -139,7 +138,9 @@ Watcher has the signature <code>( attrValue, attrName ) =&gt; void</code> and is
     }
 }
 </code></pre>
-<h3 id="page_Helper+functions">Helper functions</h3>
+<h4 id="page_Events+API">Events API</h4>
+<p>TODO</p>
+<h2 id="page_Class+methods">Class methods</h2>
 <p>Following API might be useful in change event listeners.</p>
 <h4 id="page_record.changed">record.changed</h4>
 <p>The <code>changed</code> property is the internal hash containing all the attributes that have changed during its last transaction.

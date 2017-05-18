@@ -1,3 +1,5 @@
+## Ad-hoc data binding
+
 Link can be bound to the standard form control consuming `value` and `onChange` props using the `link.props` property:
 
 For the case of string control it's rather straightforward.
@@ -39,13 +41,11 @@ And the select list is bound to the single link in the same way as text inputs.
 </select>
 ```
 
-However, in order to take the full advantage of the value link pattern you're encouraged to create
-the semantic form control wrappers encapsulating the markup for inline validation errors
-and form layout styling.
-
-Not only the forms, but the most of UI can benefit of this technique.
-
 ## Linked UI controls
+
+In order to take the full advantage of the value link pattern you're encouraged to create
+the semantic form control wrappers encapsulating the markup for inline validation errors
+and form layout styling. Not only forms, but the most of the UI can benefit of this technique.
 
 This guide will explain how to create the custom data-bound (linked) controls with inline validation.
 

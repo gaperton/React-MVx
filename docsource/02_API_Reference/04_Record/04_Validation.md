@@ -1,5 +1,5 @@
 
-### Attribute-level validation checks
+## Declarations
 
 #### `attrDef` attr : Type.has.check( predicate, errorMsg? )
 
@@ -33,7 +33,7 @@ The special case of attribute-level check cutting out empty values. Attribute va
 
 `isRequired` is the first validator to check, no matter in which order validators were attached.
 
-### Validation API
+## Class members
 
 #### record.validate()
 

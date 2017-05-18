@@ -1,5 +1,4 @@
-
-### Attribute-level serialization control
+## Declarations
 
 #### `attrDef` attr : Type.has.toJSON( false )
 
@@ -13,7 +12,7 @@ Override the default toJSON() method for the selected record's attribute.
 
 Transform the data before it will be passed to the record's attribute when `{ parse : true }` option is used.
 
-### Serialization API
+## Class members
 
 #### record.parse( json )
 

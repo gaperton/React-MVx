@@ -1,4 +1,4 @@
-### How record updates are processed
+## How record updates are processed
 
 Record changes occure in the scope of transactions. Record triggers the set of events during the transaction.
 Transaction is executed in three steps.
@@ -34,9 +34,7 @@ some.record.transaction( record => {
 }); // `change` is triggered.
 ```
 
-### Listening to change events
-
-#### Events API
+## Listening to change events
 
 #### `attrDef` attr : Type.has.watcher( 'methodName' )
 #### `attrDef` attr : Type.has.watcher( function( value, name ){ ... } )
@@ -60,7 +58,11 @@ Watcher internally listens to `change:attr` event which is triggered during the 
 }
 ```
 
-### Helper functions
+#### Events API
+
+TODO
+
+## Class methods
 
 Following API might be useful in change event listeners.
 

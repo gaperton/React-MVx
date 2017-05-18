@@ -1,4 +1,4 @@
-### Record's id
+## Record's id
 
 #### record.id
 
@@ -33,7 +33,7 @@ alert("Cake id: " + cake.id);
 
 Has this record been saved to the server yet? If the record does not yet have an `id`, it is considered to be new.
 
-### id-references
+## id-references
 
 Serializable references to shared records are called an _id-references_. It is represented as `record.id` in JSON,
 and there must be the populated master collection of records on the client in order to resolve ids on parse.
@@ -53,7 +53,7 @@ Declare an attribute to be the collection, which is the subset of the particular
 
 Serialized as an array of record ids.
 
-#### Relative paths to source collection
+### Relative paths to source collection
 
 `sourceCollection` can be the string with the dot-separated _relative object path_ to the collection.
 In this case, it is resolved dynamically relative to the record's `this`.

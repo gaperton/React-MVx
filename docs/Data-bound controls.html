@@ -77,7 +77,7 @@
     <div class="Page__header">
         <h1>Data-bound controls</h1>
                 <span style="float: left; font-size: 10px; color: gray;">
-            Monday, May 15, 2017 12:33 PM        </span>
+            Thursday, May 18, 2017 8:26 AM        </span>
                         <span style="float: right; font-size: 10px; color: gray;">
             <a href="https://github.com/Volicon/React-MVx/blob/develop/docs/04_Data-bound controls.md" target="_blank">Edit on GitHub</a>
         </span>
@@ -85,7 +85,8 @@
 
 
     <div class="s-content">
-        <p>Link can be bound to the standard form control consuming <code>value</code> and <code>onChange</code> props using the <code>link.props</code> property:</p>
+        <h2 id="page_Ad-hoc+data+binding">Ad-hoc data binding</h2>
+<p>Link can be bound to the standard form control consuming <code>value</code> and <code>onChange</code> props using the <code>link.props</code> property:</p>
 <p>For the case of string control it's rather straightforward.</p>
 <pre><code class="language-javascript">// String
 &lt;input type=&quot;text&quot; {...link.props} /&gt;
@@ -114,11 +115,10 @@
     &lt;option value=&quot;optionB&quot;&gt; B &lt;/option&gt;
 &lt;/select&gt;
 </code></pre>
-<p>However, in order to take the full advantage of the value link pattern you're encouraged to create
-the semantic form control wrappers encapsulating the markup for inline validation errors
-and form layout styling.</p>
-<p>Not only the forms, but the most of UI can benefit of this technique.</p>
 <h2 id="page_Linked+UI+controls">Linked UI controls</h2>
+<p>In order to take the full advantage of the value link pattern you're encouraged to create
+the semantic form control wrappers encapsulating the markup for inline validation errors
+and form layout styling. Not only forms, but the most of the UI can benefit of this technique.</p>
 <p>This guide will explain how to create the custom data-bound (linked) controls with inline validation.</p>
 <p><em>Linked control</em> is the React component following the simple pattern illustrated below. It takes the <code>link</code> as single property
 instead of the value and callbacks. It uses the link to extract the value and validation error, and to modify the value.</p>
