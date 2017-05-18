@@ -15,11 +15,11 @@ Creates the local store on component's mount and dispose it when component is un
 
 Expose the store to the component subtree. Update component on store changes.
 
-#### `static` store = { attrName : `decl`, ... }
+#### `static` store = { attrName : `attrDef`, ... }
 
 Implicitly create the `Store` subclass from the given attribute spec.
 
-Accepts the same `decl` as the `state` and `Record`.
+Accepts the same `attrDef` as the `state` and `Record`.
 
 #### component.store 
 

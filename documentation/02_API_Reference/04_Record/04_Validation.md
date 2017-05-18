@@ -1,7 +1,7 @@
 
 ### Attribute-level validation checks
 
-#### `decl` attr : Type.has.check( predicate, errorMsg? )
+#### `attrDef` attr : Type.has.check( predicate, errorMsg? )
 
 Attribute-level validator.
 
@@ -27,7 +27,7 @@ const Age = Number.has
                 .check( x => x < 200, 'No way man can be that old' );
 ```
 
-#### `decl` attr : Type.isRequired
+#### `attrDef` attr : Type.isRequired
 
 The special case of attribute-level check cutting out empty values. Attribute value must be truthy to pass, `"Required"` is used as validation error.
 

@@ -1,15 +1,15 @@
 
 ### Attribute-level serialization control
 
-#### `decl` attr : Type.has.toJSON( false )
+#### `attrDef` attr : Type.has.toJSON( false )
 
 Exclude attribute from serialization.
 
-#### `decl` attr : Type.has.toJSON( ( value, name ) => json )
+#### `attrDef` attr : Type.has.toJSON( ( value, name ) => json )
 
 Override the default toJSON() method for the selected record's attribute.
 
-#### `decl` attr : Type.has.parse()
+#### `attrDef` attr : Type.has.parse()
 
 Transform the data before it will be passed to the record's attribute when `{ parse : true }` option is used.
 

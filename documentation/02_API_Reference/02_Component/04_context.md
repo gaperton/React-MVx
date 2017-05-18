@@ -1,10 +1,10 @@
 Static `context` and `childContext` declarations replaces React's standard `contextTypes` and `childContextTypes`.
 
-#### `static` context = { name : `decl`, ... }
+#### `static` context = { name : `propDef`, ... }
 
 Replacement for standard `contextTypes`.
 
-#### `static` childContext = { name : `decl`, ... }
+#### `static` childContext = { name : `propDef`, ... }
 
 Replacement for standard `childContextTypes`.
 
@@ -12,12 +12,12 @@ Replacement for standard `childContextTypes`.
 
 ### Context declarations
 
-Subset of `static props` declaration is supported for the context `decl`.
+Subset of `static props` declaration is supported for the context `propDef`.
 
-#### `decl` name : Constructor
+#### `propDef` name : Constructor
 
 Checks whenever the value is an instance of the `Constructor` and puts the warning to the console if the prop type is not compatible.
 
-#### `decl` name : Constructor.isRequired
+#### `propDef` name : Constructor.isRequired
 
 Value is required.

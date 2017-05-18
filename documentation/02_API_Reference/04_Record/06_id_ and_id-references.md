@@ -41,13 +41,13 @@ and there must be the populated master collection of records on the client in or
 There are two kinds of id-references: one-to-many, and many-to-many. They are declared with the special kind of attribute annotation. 
 Id-references behaves in the same way as shared attributes, but _inner changes_ in referenced objects are _not observed_.
 
-#### `decl` attr : Record.from( sourceCollection )
+#### `attrDef` attr : Record.from( sourceCollection )
 
 Declare an attribute to be the record from the particular collection.
 
 Serialized as `record.id`.
 
-#### `decl` attr : Collection.subsetOf( sourceCollection )
+#### `attrDef` attr : Collection.subsetOf( sourceCollection )
 
 Declare an attribute to be the collection, which is the subset of the particular collection.
 

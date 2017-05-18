@@ -5,7 +5,7 @@ All changed inside of the state record are observed, and the component is update
 
 Define stateful component with the state Record declared externally.
 
-#### `static` state = { name : `decl`, ... }
+#### `static` state = { name : `attrDef`, ... }
 
 Implicitly define state Record with a given attributes declaration. All declarations working on `props` works for the state as well. Refer to the Record documentation for the attributes declaration syntax.
 

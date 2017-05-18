@@ -1,6 +1,6 @@
 Component _static props declaration_ replaces standard React's `propTypes` and `defaultProps`.
 
-#### `static` props = { name : `decl`, ... }
+#### `static` props = { name : `propDef`, ... }
 
 Declare component props. Declaration is an object 
 
@@ -25,11 +25,11 @@ Prevents subsequent render calls in case if props were unchanged. It's known as 
 
 ### Properties declarations
 
-#### `decl` name : Constructor
+#### `propDef` name : Constructor
 
 Checks if component prop is an instance of the `Constructor` and puts the warning to the console if the prop type is not compatible.
 
-#### `decl` name : Constructor.isRequired
+#### `propDef` name : Constructor.isRequired
 
 Mark property as required.
 
@@ -64,11 +64,11 @@ import React, { define } from 'react-mvx'
 }
 ```
 
-#### `decl` name : Constructor.value( defaultValue )
+#### `propDef` name : Constructor.value( defaultValue )
 
 Assign default property value.
 
-#### `decl` name : defaultValue
+#### `propDef` name : defaultValue
 
 Assign default property value. The the type will be inferred from the `defaultValue`.
 
@@ -85,9 +85,9 @@ import React, { define } from 'react-mvx'
 }
 ```
 
-#### `decl` name : Constructor.has.watcher( 'componentMethodName' )
+#### `propDef` name : Constructor.has.watcher( 'componentMethodName' )
 
-#### `decl` name : Constructor.has.watcher( function( newValue, name ){ ... } )
+#### `propDef` name : Constructor.has.watcher( function( newValue, name ){ ... } )
 
 _Watcher_ is the function which is called when the particular prop is assigned with new value.
 
@@ -109,11 +109,11 @@ import React, { define } from 'react-mvx'
 }
 ```
 
-#### `decl` name : RecordOrCollection.has.changeEvents( true )
+#### `propDef` name : RecordOrCollection.has.changeEvents( true )
 
 Observe _internal changes_ of the record or collection and update the component in case of changes.
 
-#### `decl` name : EventSource.has.changeEvents( 'event1 event2 ...' )
+#### `propDef` name : EventSource.has.changeEvents( 'event1 event2 ...' )
 
 Update the component in case if property triggers any of the listed events.
 
@@ -131,7 +131,7 @@ import { Record } from 'react-mvx'
 }
 ```
 
-#### `decl` name : EventSource.has.events({ event : handler, ... })
+#### `propDef` name : EventSource.has.events({ event : handler, ... })
 
 Subscribe for events from the component property. `handler` can either be the name of the component's method,
 or the function handling the event. Handler is executed in the context of the component.

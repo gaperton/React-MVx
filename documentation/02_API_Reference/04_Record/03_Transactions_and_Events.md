@@ -38,8 +38,8 @@ some.record.transaction( record => {
 
 #### Events API
 
-#### `decl` attr : Type.has.watcher( 'methodName' )
-#### `decl` attr : Type.has.watcher( function( value, name ){ ... } )
+#### `attrDef` attr : Type.has.watcher( 'methodName' )
+#### `attrDef` attr : Type.has.watcher( function( value, name ){ ... } )
 
 To attach some custom reaction on specific record's attribute change event, you attach the _watcher function_ to this attribute.
 Watcher has the signature `( attrValue, attrName ) => void` and is executed in the context of the record.
