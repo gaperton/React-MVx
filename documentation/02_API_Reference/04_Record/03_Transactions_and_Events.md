@@ -1,5 +1,7 @@
+### How record updates are processed
+
 Record changes occure in the scope of transactions. Record triggers the set of events during the transaction.
-Transaction is executed in three phases.
+Transaction is executed in three steps.
 
 1. Apply all the changes to the record and nested records and collections.
 2. Send `change:[attribute]` *(record, value, options)* events for each attribute which has been updated (including nested objects).
@@ -15,21 +17,34 @@ Statement `user.set({ name : 'Joe', email : 'joe@mail.com' })` will (assuming th
 2. `change:name` and `change:user` events will be sent out.
 3. `change` event will be sent out.
 
-It's important to understand that any additional changes that may be applied to the record in `change:[attribute]` and `change` event handlers
-will be executed in the scope of the original transaction. It means, that:
+Any additional changes that may be applied to the record in `change:[attribute]` and `change` event handlers will be executed in the scope of the original transaction. It means, that:
 
 - No additional `change` events will be triggered if you modify the record in `change:[attribute]` event handler (but new `change:[attribute]` events will).
 - If the record will be modified in `change` event handler, there _will_ be additional `change` events. However, record's owner will be notifyed only once when the wave of events and reactions will finish its processing.
 
-#### `decl` attr : Type.has.watcher()
+#### record.transaction( fun )
+
+Execute the sequence of updates in `fun` function in the scope of the transaction, so it will trigger the single `change` event.
+Transactions are superior to `record.set()` in terms of both performance and flexibility.
+
+```javascript
+some.record.transaction( record => {
+    record.a = 1; // `change:a` is triggered.
+    record.b = 2; // `change:b` is triggered.
+}); // `change` is triggered.
+```
+
+### Listening to change events
+
+#### Events API
+
+#### `decl` attr : Type.has.watcher( 'methodName' )
+#### `decl` attr : Type.has.watcher( function( value, name ){ ... } )
 
 To attach some custom reaction on specific record's attribute change event, you attach the _watcher function_ to this attribute.
-Watcher has the signature `( attrValue, attrName ) => void` and is executed in the context of the record. Watcher annotation should be either of these:
+Watcher has the signature `( attrValue, attrName ) => void` and is executed in the context of the record.
 
-- `Type.has.watcher( 'recordMethodName' )`
-- `Type.has.watcher( function( value, name ){ ... })`
-
-In the example below, any change of the `name` attribute will result in the subsequent update of the `isAdmin` attribute, and one `change` event triggered.
+Watcher internally listens to `change:attr` event which is triggered during the step 2. Therefore, no additional `change` events will be triggered. In the example below, any change of the `name` attribute will result in the subsequent update of the `isAdmin` attribute, and the single`change` event is triggered.
 
 ```javascript
 @define class User extends Record {
@@ -45,17 +60,9 @@ In the example below, any change of the `name` attribute will result in the subs
 }
 ```
 
-#### record.transaction( fun )
+### Helper functions
 
-Execute the sequence of updates in `fun` function in the scope of the transaction, so it will trigger the single `change` event.
-Transactions are superior to `record.set()` in terms of both performance and flexibility.
-
-```javascript
-some.record.transaction( record => {
-    record.a = 1; // `change:a` is triggered.
-    record.b = 2; // `change:b` is triggered.
-}); // `change` is triggered.
-```
+Following API might be useful in change event listeners.
 
 #### record.changed
 

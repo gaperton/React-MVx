@@ -3,7 +3,8 @@
 #### `static` attributes = { name : `decl`, ... }
 
 Record is a class with an observalbe and serializable public attributes. Attributes *must* be declared statically
-in `static attributes` class member, which is an object hash mapping an the name to its declaration.
+in `static attributes` class member, which is an object hash mapping an attribute name name to its declaration, encapsulating
+attribute type, default value, and metadata controlling different aspects of attribute behavior.
 
 ```javascript
 @define class User extends Record {

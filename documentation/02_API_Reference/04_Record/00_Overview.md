@@ -1,8 +1,15 @@
 Record is the serializable class with typed attributes, observable changes, and custom validation checks.
-It differs to the `Model` (which is the subclass of the Record) in the way that it do not implement
-the REST endpoint functionality. Just the serialization.
+It is the main building block for managing the application state; component local state, stores, and collection elements are all subclasses of the `Record`.
+
+In contrast to the "model" class in the majority of data frameworks, Record is *not the key-value hash*. It's the class with statically
+defined set of attributes of known types.
+ 
+`Record` itself is an abstract class. The subclass needs to be defined for every data structure of different shape,
+in a similar way as it's done in statically typed languages.
 
 ```javascript
+import { define, Record } from 'type-r'
+
 // ⤹ required to make magic work  
 @define class User extends Record {
     // ⤹ attribute's declaration
@@ -25,11 +32,3 @@ users.on( 'changes', () => updateUI( users ) ); // ⟵ listen to the changes.
 users.set( json, { parse : true } ); // ⟵ parse raw JSON from the server.
 users.updateEach( user => user.firstName = '' ); // ⟵ bulk update triggering 'changes' once
 ```
-
-Unlike in Backbone, Record is not the key-value hash. It's the static structure with the pre-defined
- set of attributes of known types. You have to create Record's subclass and declare attributes for every 
- Record of different shape in the way close to that for classes in statically typed languages. 
- The simplest form of attribute declaration specifies an attribute's default value and/or 
- its constructor function.
- 
-> It's not Backbone! <b>Do not</b> try to create Record directly, it won't work. Subclassing the Record class and defining its attributes is mandatory.
