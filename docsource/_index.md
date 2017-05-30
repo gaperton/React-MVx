@@ -9,26 +9,18 @@
 <div class=row>
 <div class=col-third>
 
-#### Type-R for "M" and "VM"
-
-Does the same to your data as the React does to the DOM.
+### Type-R for "M" and "VM"
  
-* Deeply observable changes
-* Painless state synchronization
-* State is JSON-serializable by default
+* Single technique to manage UI and domain state.
+* State is observable _and_ serializable by default.
 * Declarative validation and run-time schema checks.
-* Serializable id-references.
 * 10 times faster than BackboneJS.
 
 </div>
 <div class=col-third>
 
-#### React for "V"
+### React for "V"
 
-React. Improved.
-
-* Say _no_ to singletons.
-* Same technique to manage _all levels_ of application state
 * Handle forms naturally:
     * Two-way data binding
     * Transparent validation
@@ -37,7 +29,7 @@ React. Improved.
 </div>
 <div class=col-third>
 
-#### Choose your "C"
+### Choose your "C"
 
 * [react-router](https://github.com/ReactTraining/react-router)
 * No router

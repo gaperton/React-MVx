@@ -9,18 +9,18 @@ Here are the most important link members. All the link members are read-only and
 }
 ```
 
-#### link.value
+### link.value
 
 Holds linked value. This value is immutable.
 
-#### link.error
+### link.error
 
 Holds the validation error (typically the text error message) which might be consumed and displayed by data-bound countrol.
 
 An `error` is populated automatically on link creation when using `linkAt()` or `linkAll()` methods, and is produced by declarative
 validators from `.has.check()` attributes annotations.
 
-#### link.set( newValue )
+### link.set( newValue )
 
 Tells the state container to update the value.
 
@@ -28,7 +28,7 @@ Tells the state container to update the value.
 <button onClick={ () => boolLink.set( !boolLink.value ) } />
 ```
 
-#### link.update( prevValue => newValue )
+### link.update( prevValue => newValue )
 
 Update link value using the given value transform function.
 

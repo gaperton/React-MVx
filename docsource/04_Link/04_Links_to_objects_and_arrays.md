@@ -4,9 +4,9 @@ defined as a superposition of nested records and collections.
 Links can be used to make purely functional updates of the objects and arrays in records attributes. It's done with
 the help of _at-links_, which points to the elements of linked objects and arrays.
 
-## Object and arrays methods
+# Object and arrays methods
 
-#### link.at( key )
+### link.at( key )
 
 Create an _at-link_ to the member of array or object.
 
@@ -18,7 +18,7 @@ container (array or object).
 this.linkAt( 'array' ).at( 0 ).at( 'name' ).set( 'Joe' );
 ```
 
-#### link.map( ( itemLink, itemKey ) => any | void )
+### link.map( ( itemLink, itemKey ) => any | void )
 
 Map and filter through the linked array or object to produce an array.
 Mapping function receives _at-link_ to the corresponding element.
@@ -38,7 +38,7 @@ var list = stringArrayLink.map( ( itemLink, index ) => {
 });
 ```
 
-#### link.update( clonedObject => modifiedObject )
+### link.update( clonedObject => modifiedObject )
 
 Update linked object or array.
 
@@ -52,23 +52,23 @@ Plain objects and arrays are shallow copied already, thus it's safe just to upda
                             }) } />
 ```
 
-#### link.action( ( clonedObject, event ) => Object )
+### link.action( ( clonedObject, event ) => Object )
  
 Creates action to update enclosed object or array.
 
 Plain objects and arrays are shallow copied already, thus it's safe just to update the value in place.
 
-#### link.removeAt( key )
+### link.removeAt( key )
 
 Remove element with a given key from the linked object or array.
 
-#### atLink.remove()
+### atLink.remove()
 
 Remove element with a given key from the linked object or array.
-
-#### link.pick( key1, key2, ... )
 
 ## Object-specific methods
+
+### link.pick( key1, key2, ... )
 
 Create _at-links_ to the object's members with designated keys, and wrap them in an object.
 
@@ -79,19 +79,19 @@ const { name, email } = objLink.pick( 'name', 'email' );
 
 ## Array-specific methods
 
-#### linkToArray.splice() : void
+### linkToArray.splice() : void
 
 Similar to `Array.splice()` method, but performs purely functional update.
 
-#### linkToArray.push() : void 
+### linkToArray.push() : void 
 
 Similar to `Array.push()` method, but performs purely functional update.
 
-#### linkToArray.unshift() : void
+### linkToArray.unshift() : void
 
 Similar to `Array.unshift()` method, but performs purely functional update.
 
-#### linkToArray.contains( element )
+### linkToArray.contains( element )
 
 Creates the boolean link to the presence of value in array.
 

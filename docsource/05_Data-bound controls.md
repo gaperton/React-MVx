@@ -1,8 +1,12 @@
-## Ad-hoc data binding
+# Ad-hoc data binding
 
-Link can be bound to the standard form control consuming `value` and `onChange` props using the `link.props` property:
+### <tag { ...link.props } />
 
-For the case of string control it's rather straightforward.
+Bind the linked value to any standard UI control expecting `value` and `onChange` props.
+
+## Text controls
+
+Bind input or textarea to the linked string:
 
 ```javascript
 // String
@@ -10,20 +14,31 @@ For the case of string control it's rather straightforward.
 <textarea {...link.props} />
 ```
 
-Checkbox can be bound to value either:
+## Checkboxes
 
-- directly, if the value is boolean.
-- to the presense of the value in the array (array of flags), using the `link.contains()` method.
-- to the presense of the record in the collection, using `collection.linkContains()` method.
+Bind the checkbox to the linked boolean:
 
 ```javascript
-// Checkbox
 <input type="checkbox" {...boolLink.props } />
-<input type="checkbox" {...arrayLink.contains( 'optionX' ).props } />
+```
+
+Bind the checkbox to the presence of value in the array:
+
+```javascript
+// array = [ 'optionA' ]
+<input type="checkbox"  {...arrayLink.contains( 'optionA' ).props } /> // Checked
+<input type="checkbox"  {...arrayLink.contains( 'optionB' ).props } /> // Unchecked
+```
+
+Bind the checkbox to the presence of the record in the collection: 
+
+```javascript
 <input type="checkbox" {...collection.linkContains( record ).props } />
 ```
 
-Radio groups can be bound to the single link, using `link.equals()` method.
+## Radio groups
+
+Bind radio group to the single linked value:
 
 ```javascript
 // Radio
@@ -31,7 +46,9 @@ Radio groups can be bound to the single link, using `link.equals()` method.
 <input type="radio" {...link.equals( 'optionB' ).props } />
 ```
 
-And the select list is bound to the single link in the same way as text inputs.
+## Select list
+
+Bind select list to the linked value:
 
 ```javascript
 // Select
@@ -41,16 +58,13 @@ And the select list is bound to the single link in the same way as text inputs.
 </select>
 ```
 
-## Linked UI controls
+# Linked UI controls
 
-In order to take the full advantage of the value link pattern you're encouraged to create
-the semantic form control wrappers encapsulating the markup for inline validation errors
-and form layout styling. Not only forms, but the most of the UI can benefit of this technique.
+_Linked control_ is the custom React component taking the `link` property instead of `value`/`onChange` props pair.
+It uses the link to extract the value and validation error, and to modify the value.
 
-This guide will explain how to create the custom data-bound (linked) controls with inline validation.
-
-_Linked control_ is the React component following the simple pattern illustrated below. It takes the `link` as single property 
-instead of the value and callbacks. It uses the link to extract the value and validation error, and to modify the value.
+Linked controls makes it possible to create the semantic form markup encapsulating inline validation
+and form layout styling. Not just form controls, but the most of the UI can benefit of this technique.
 
 ```javascript
 // Custom data-bound control
@@ -69,13 +83,13 @@ const Input = ({ link, ...props }) => (
 );
 ```
 
-Custom tags mentioned in this guide are available as `react-mvx/tags`. As it's hard to come up with the general solution for inline errors indication, this file is rather intended to be used as a starting boilerplate for your controls.
+There are the set of pre-defined linked UI controls in `react-mvx/tags` modules. Inline error indication is rather project-dependent, thus this file is intended to be used as a reference and starting boilerplate for your controls.
 
 ```javascript
 import { Input } from 'react-mvx/tags'
 ```
 
-### Text input controls
+## Text input controls
 
 `tags.jsx` contains wrappers for standard `<input>` and `<textarea>` tags,
   which consume linked strings. These wrappers add `invalid` class to enclosed HTML element if an error is present in the link,
@@ -90,7 +104,7 @@ import { Input, TextArea } from 'react-mvx/tags'
 
 Its implementation is rather straightforward.
 
-### Numeric input
+## Numeric input
 
 In some cases you can use the _wrong input rejection_ instead of (or in addition to) the validation. The most popular
 example is the numeric-only input control. It guarantees that the linked value will only be updated with the valid number,
@@ -116,7 +130,7 @@ import { NumberInput } from 'react-mvx/tags'
 <NumberInput valueLink={ link } positive={ true }/>
 ```
 
-### Checkboxes
+## Checkboxes
 
 There are different ways how you can handle the checkbox components. The problem of the standard 
 checkbox control, though, is that it's not that easily styled.
@@ -130,7 +144,7 @@ checkbox control, though, is that it's not that easily styled.
 <Checkbox checkedLink={ arrayLink.contains( 'option' ) } />
 ```
 
-### Radio Groups
+## Radio Groups
       
 There are two different ways how you can approach the data binding for the radio groups.
 First option is to pass the `value` of the particular option along with the link. Link this:

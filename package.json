@@ -21,7 +21,7 @@
     "compile": "./node_modules/.bin/tsc && ./node_modules/.bin/webpack -p",
     "deploy": "cp -R ./dist ./examples/*/node_modules/react-mvx",
     "build": "npm run pull && npm run compile",
-    "docs": "~/.composer/vendor/bin/daux --source=docsource --destination=docs "
+    "docs": "~/.composer/vendor/bin/daux --source=docsource --destination=docs"
   },
   "keywords": [
     "react",
