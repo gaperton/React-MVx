@@ -5,27 +5,27 @@ There may be multiple stores in Rect-MVx. There is the single _default store_ (`
 
 Specifying the store for the top-level component sets this store as the primary one for all the internal state of the current component subtree.
 
-## Declarations
+# Declarations
 
-#### `static` store = existingStore
+### `static` store = existingStore
 
 Expose the `existingStore` to the component subtree. Update component on store changes.
 
-#### `static` store = StoreConstructor
+### `static` store = StoreConstructor
 
 Creates the local store on component's mount and dispose it when component is unmounted.
 
 Expose the store to the component subtree. Update component on store changes.
 
-#### `static` store = { attrName : `attrDef`, ... }
+### `static` store = { attrName : `attrDef`, ... }
 
 Implicitly create the `Store` subclass from the given attribute spec.
 
 Accepts the same `attrDef` as the `state` and `Record`.
 
-## Class members
+# Class members
 
-#### component.store 
+### component.store 
 
 When the `static store` is defined, provide the access to the store in component.
 

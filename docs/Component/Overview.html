@@ -46,7 +46,7 @@
 
         <div class="Collapsible__content">
             <!-- Navigation -->
-            <ul class='Nav'><li class='Nav__item '><a href="../Getting_Started.html">Getting Started</a></li><li class='Nav__item  has-children'><a href="../Guides/Data_binding_and_forms.html" class="folder"><i class="Nav__arrow">&nbsp;</i>Guides</a><ul class='Nav'><li class='Nav__item '><a href="../Guides/Data_binding_and_forms.html">Data binding and forms</a></li><li class='Nav__item '><a href="../Guides/Input_Validation.html">Input Validation</a></li><li class='Nav__item '><a href="../Guides/Editable_Lists.html">Editable Lists</a></li><li class='Nav__item '><a href="../Guides/Paging.html">Paging</a></li><li class='Nav__item '><a href="../Guides/id-references_and_stores.html">id-references and stores</a></li><li class='Nav__item '><a href="../Guides/Layered_application_state.html">Layered application state</a></li></ul></li><li class='Nav__item '><a href="../Overview.html">Overview</a></li><li class='Nav__item Nav__item--open has-children'><a href="../Component/Overview.html" class="folder"><i class="Nav__arrow">&nbsp;</i>Component</a><ul class='Nav'><li class='Nav__item Nav__item--active'><a href="../Component/Overview.html">Overview</a></li><li class='Nav__item '><a href="../Component/props.html">props</a></li><li class='Nav__item '><a href="../Component/state.html">state</a></li><li class='Nav__item '><a href="../Component/store.html">store</a></li><li class='Nav__item '><a href="../Component/context.html">context</a></li><li class='Nav__item '><a href="../Component/Other_members.html">Other members</a></li></ul></li><li class='Nav__item  has-children'><a href="../Link/Overview.html" class="folder"><i class="Nav__arrow">&nbsp;</i>Link</a><ul class='Nav'><li class='Nav__item '><a href="../Link/Overview.html">Overview</a></li><li class='Nav__item '><a href="../Link/Link_structure.html">Link structure</a></li><li class='Nav__item '><a href="../Link/Create_the_link.html">Create the link</a></li><li class='Nav__item '><a href="../Link/Link_transformations.html">Link transformations</a></li><li class='Nav__item '><a href="../Link/Links_to_objects_and_arrays.html">Links to objects and arrays</a></li></ul></li><li class='Nav__item '><a href="../Data-bound controls.html">Data-bound controls</a></li><li class='Nav__item '><a href="../Examples.html">Examples</a></li><li class='Nav__item  has-children'><a href="../includes/api.html" class="folder"><i class="Nav__arrow">&nbsp;</i>includes</a><ul class='Nav'><li class='Nav__item '><a href="../includes/api.html">api</a></li><li class='Nav__item '><a href="../includes/complex-state.html">complex-state</a></li><li class='Nav__item '><a href="../includes/databinding.1.html">databinding.1</a></li><li class='Nav__item '><a href="../includes/simple.html">simple</a></li></ul></li></ul>
+            <ul class='Nav'><li class='Nav__item '><a href="../Getting_Started.html">Getting Started</a></li><li class='Nav__item  has-children'><a href="../Guides/Data_binding_and_forms.html" class="folder"><i class="Nav__arrow">&nbsp;</i>Guides</a><ul class='Nav'><li class='Nav__item '><a href="../Guides/Data_binding_and_forms.html">Data binding and forms</a></li><li class='Nav__item '><a href="../Guides/Input_Validation.html">Input Validation</a></li><li class='Nav__item '><a href="../Guides/Editable_Lists.html">Editable Lists</a></li><li class='Nav__item '><a href="../Guides/Paging.html">Paging</a></li><li class='Nav__item '><a href="../Guides/id-references_and_stores.html">id-references and stores</a></li><li class='Nav__item '><a href="../Guides/Layered_application_state.html">Layered application state</a></li></ul></li><li class='Nav__item '><a href="../Overview.html">Overview</a></li><li class='Nav__item Nav__item--open has-children'><a href="../Component/Overview.html" class="folder"><i class="Nav__arrow">&nbsp;</i>Component</a><ul class='Nav'><li class='Nav__item Nav__item--active'><a href="../Component/Overview.html">Overview</a></li><li class='Nav__item '><a href="../Component/props.html">props</a></li><li class='Nav__item '><a href="../Component/state.html">state</a></li><li class='Nav__item '><a href="../Component/store.html">store</a></li><li class='Nav__item '><a href="../Component/context.html">context</a></li><li class='Nav__item '><a href="../Component/Other_members.html">Other members</a></li></ul></li><li class='Nav__item  has-children'><a href="../Link/Overview.html" class="folder"><i class="Nav__arrow">&nbsp;</i>Link</a><ul class='Nav'><li class='Nav__item '><a href="../Link/Overview.html">Overview</a></li><li class='Nav__item '><a href="../Link/Link_structure.html">Link structure</a></li><li class='Nav__item '><a href="../Link/Create_the_link.html">Create the link</a></li><li class='Nav__item '><a href="../Link/Link_transformations.html">Link transformations</a></li><li class='Nav__item '><a href="../Link/Links_to_objects_and_arrays.html">Links to objects and arrays</a></li></ul></li><li class='Nav__item '><a href="../Data-bound controls.html">Data-bound controls</a></li><li class='Nav__item '><a href="../Examples.html">Examples</a></li></ul>
 
             <div class="Links">
                                     <hr/>
@@ -77,7 +77,7 @@
     <div class="Page__header">
         <h1>Overview</h1>
                 <span style="float: left; font-size: 10px; color: gray;">
-            Monday, May 15, 2017 10:13 AM        </span>
+            Tuesday, May 30, 2017 4:53 PM        </span>
                         <span style="float: right; font-size: 10px; color: gray;">
             <a href="https://github.com/Volicon/React-MVx/blob/develop/docs/02_Component/00_Overview.md" target="_blank">Edit on GitHub</a>
         </span>
@@ -88,20 +88,41 @@
         <h1 id="page_React-MVx+UI+Component">React-MVx UI Component</h1>
 <p>React-MVx extends React namespace and should be used instead of <code>react</code>.
 All class Component definitions must be preceeded with the <code>@define</code> decorator.</p>
+<p>All features of the Component are controlled through the unified property and attribute declarations.</p>
 <pre><code class="language-javascript">import React, { define } from 'react-mvx'
 
 @define class Hello extends React.Component {
-    render(){
-        return &lt;h1&gt;'Hi there!'&lt;/h1&gt;;
+    static props = { // instead of `propTypes` and `defaultProps`
+        propName : `propDef`,
+        ...
     }
+
+    static context = { // instead of `contextTypes`
+        propName : `propDef`,
+        ...
+    }
+
+    static childContext = { // instead of `childContextTypes`
+        propName : `propDef`,
+        ...
+    }
+
+    static state = { // instead of &quot;this.state = &quot; in the constructor.
+        attrName : `attrDef`,
+        ...
+    }
+
+    static store = { // store
+        attrName : `attrDef`,
+        ...
+    }
+
+    render(){...}
 }
 </code></pre>
-<p>React-MVx is built around the idea of <em>universal state management</em> featuring
-the same technique to manage the local component state, application page state,
-and the global application state.</p>
-<h2 id="page_Type+annotations+cheat+sheet">Type annotations cheat sheet</h2>
+<h1 id="page_propDef+and+attrDef+cheat+sheet">propDef and attrDef cheat sheet</h1>
 <p>The majority of React-MVx features are controlled with declarative props, state, store, and context type annotations.</p>
-<h3 id="page_Everything+%28state%2C+store%2C+props%2C+and+context%29">Everything (state, store, props, and context)</h3>
+<h2 id="page_Everything+%28state%2C+store%2C+props%2C+and+context%29">Everything (state, store, props, and context)</h2>
 <p>Type annotations below represents the run-time type assertions.</p>
 <table>
 <thead>
@@ -125,7 +146,7 @@ and the global application state.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="page_state%2C+store%2C+and+props">state, store, and props</h3>
+<h2 id="page_state%2C+store%2C+and+props">state, store, and props</h2>
 <p>You can specify the default value for an attribute or prop, and reactions on its change.</p>
 <table>
 <thead>
@@ -157,7 +178,7 @@ and the global application state.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="page_state+and+store">state and store</h3>
+<h2 id="page_state+and+store">state and store</h2>
 <p>You have an an attribute-level control of the serialization and ownership for the state, store, and records attributes.</p>
 <table>
 <thead>

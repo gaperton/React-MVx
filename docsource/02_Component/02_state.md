@@ -1,19 +1,19 @@
 Component's state is modeled as Type-R `Record`. Record is created before `componentWillMount()` and disposed after `componentWillUnmount()`.
 All changed inside of the state record are observed, and the component is updated in case of change.
 
-## Declarations
+# Declarations
 
-#### `static` state = RecordConstructor
+### `static` state = RecordConstructor
 
 Define stateful component with the state Record declared externally.
 
-#### `static` state = { name : `attrDef`, ... }
+### `static` state = { name : `attrDef`, ... }
 
 Implicitly define state Record with a given attributes declaration. All declarations working on `props` works for the state as well. Refer to the Record documentation for the attributes declaration syntax.
 
-## Class members
+# Class members
 
-#### component.state
+### component.state
 
 Holds an object of the `Record` subclass. 
 
@@ -23,7 +23,7 @@ Holds an object of the `Record` subclass.
 
 Refer to the Record documentation for the complete list of methods.
 
-#### component.transaction( fun )
+### component.transaction( fun )
 
 Group the sequence of state (and props) updates in the single transaction leading to single UI update.
 

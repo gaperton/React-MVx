@@ -3,25 +3,46 @@
 React-MVx extends React namespace and should be used instead of `react`.
 All class Component definitions must be preceeded with the `@define` decorator.
 
+All features of the Component are controlled through the unified property and attribute declarations.
+
 ```javascript
 import React, { define } from 'react-mvx'
 
 @define class Hello extends React.Component {
-    render(){
-        return <h1>'Hi there!'</h1>;
+    static props = { // instead of `propTypes` and `defaultProps`
+        propName : `propDef`,
+        ...
     }
+
+    static context = { // instead of `contextTypes`
+        propName : `propDef`,
+        ...
+    }
+
+    static childContext = { // instead of `childContextTypes`
+        propName : `propDef`,
+        ...
+    }
+
+    static state = { // instead of "this.state = " in the constructor.
+        attrName : `attrDef`,
+        ...
+    }
+
+    static store = { // store
+        attrName : `attrDef`,
+        ...
+    }
+
+    render(){...}
 }
 ```
 
-React-MVx is built around the idea of _universal state management_ featuring 
-the same technique to manage the local component state, application page state,
-and the global application state.
-
-## Type annotations cheat sheet
+# propDef and attrDef cheat sheet
 
 The majority of React-MVx features are controlled with declarative props, state, store, and context type annotations.
 
-### Everything (state, store, props, and context)
+## Everything (state, store, props, and context)
 
 Type annotations below represents the run-time type assertions.
 
@@ -31,7 +52,7 @@ Type annotations below represents the run-time type assertions.
 | `Ctor.isRequired` | element is required
 | `Ctor.has.check(...)`| custom validation check
 
-### state, store, and props
+## state, store, and props
 
 You can specify the default value for an attribute or prop, and reactions on its change.
 
@@ -43,7 +64,7 @@ You can specify the default value for an attribute or prop, and reactions on its
 | `Ctor.has.events(...)`| listen to custom events from the element
 | `Ctor.has.changeEvents(...)`| update on element's changes
 
-### state and store
+## state and store
 
 You have an an attribute-level control of the serialization and ownership for the state, store, and records attributes.
 
