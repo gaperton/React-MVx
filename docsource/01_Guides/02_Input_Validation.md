@@ -130,6 +130,8 @@ render(){
 
 As you can see, the validation does not affect the markup in React-MVx. Thanks to the _links_, which conveniently transport the validation error from the place where it occurs to the place where it's consumed.
 
+Here are the complete [sources](https://github.com/gaperton/react-mvx-examples/blob/master/src/validation.jsx), and here you can see the example [working](https://gaperton.github.io/react-mvx-examples/dist/validation.html).
+
 # API used in the example
 
 ## Record's [attribute definitions](https://volicon.github.io/Type-R/Record/Overview.html)
