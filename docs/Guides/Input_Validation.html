@@ -77,7 +77,7 @@
     <div class="Page__header">
         <h1>Input Validation</h1>
                 <span style="float: left; font-size: 10px; color: gray;">
-            Tuesday, May 30, 2017 7:46 PM        </span>
+            Wednesday, May 31, 2017 12:53 PM        </span>
                         <span style="float: right; font-size: 10px; color: gray;">
             <a href="https://github.com/Volicon/React-MVx/blob/develop/docs/01_Guides/02_Input_Validation.md" target="_blank">Edit on GitHub</a>
         </span>
@@ -85,7 +85,128 @@
 
 
     <div class="s-content">
-        <p>Previous example + state validation.</p>
+        <p>In this tutorial we will add input validation to the user editing form from the <a href="Data_binding_and_forms.html">previous example</a>. That's the client-side &quot;as-you-type&quot; validation preventing the user from submitting invalid data while giving him hints.</p>
+<p><img src="validation.png" alt="Validated form" /></p>
+<h1 id="page_State+definition+and+validation+checks">State definition and validation checks</h1>
+<p>All state attributes in React-MVx has associated run-time types and the metadata. The general form of an attribute definition is <code>Constructor.value( defaultValue )</code>. When the <code>defaultValue</code> is used as an attribute definition (as it was in <a href="Data_binding_and_forms.html">previous example</a>), its type (Constructor) is taken from the value.</p>
+<p><code>.value( defaultValue )</code> can be omitted as well. If an attribute definition is the function, it assumed to be the attribute's <code>Constructor</code>. Therefore, the following state definition is equivalent to one in the example.</p>
+<pre><code class="language-javascript">@define class Application extends React.Component {
+    static state = {
+        name : String, // same as ''
+        email : String, // same as ''
+        isActive : Boolean.value( true ) // same as true
+    };
+    ...
+}
+</code></pre>
+<p>This is important because validation checks are the part of the attribute definition. Which is cool, as it allows us to make custom attribute types with all of the validation checks encapsulated. Lets do this for the email.</p>
+<p>Validator itself is the function taking the attribute's value and returning <code>true</code> whenever it is valid.</p>
+<pre><code class="language-javascript">// Something simple, just for illustration purposes.
+function isValidEmail( x ){
+    return !x || x.indexOf('@') &gt;= 0;
+}
+
+// That would be the validation error message.
+isValidEmail.error = 'Invalid email';
+</code></pre>
+<p>Then, we need to attach the validator to the attribute definition. And we've got the Email attribute type which can be used anywhere across the system.</p>
+<pre><code class="language-javascript">const Email = String.has.check( isValidEmail );
+</code></pre>
+<p>Now we have all we need to define our state. We will use the built-in validation check <code>isRequired</code> which fails at empty values for the state of required form elements. This check is special because it is always executed first.</p>
+<pre><code class="language-javascript">@define class Application extends React.Component {
+    static state = {
+        name : String.isRequired,
+        email : Email.isRequired,
+        isActive : true
+    };
+    ...
+}
+</code></pre>
+<h1 id="page_Displaying+validation+errors">Displaying validation errors</h1>
+<p>In React-MVx, the validation happens transparently and automatically. When you create the link, the attribute's validation error is accessible as <code>link.error</code>. Nothing special needs to be done to <em>trigger</em> the validation, all you have to do is to display the error.</p>
+<pre><code class="language-javascript">    render(){
+        const { name, email, isActive } = this.linkAll();
+        return (
+            &lt;form onSubmit={ this.onSubmit }&gt;
+                &lt;label&gt; Name: 
+                    &lt;div className=&quot;validated-control&quot;&gt;
+                        &lt;input type=&quot;text&quot; { ...link.props} /&gt;
+                        { link.error &amp;&amp; &lt;div className=&quot;error&quot;&gt;{ link.error }&lt;/div&gt; }
+                    &lt;/div&gt;
+                &lt;/label&gt;
+                ...
+            &lt;/form&gt;
+        );
+    }
+</code></pre>
+<p>And we would like to have the Save button disabled in case if the state is not valid for any reason:</p>
+<pre><code class="language-javascript">...
+&lt;button type=&quot;submit&quot; disabled={!this.state.isValid()}&gt;
+    Save
+&lt;/button&gt;
+...
+</code></pre>
+<p>That's it. There's one more optional but important thing left to do, though.</p>
+<h1 id="page_Linked+UI+controls">Linked UI controls</h1>
+<p>The final touch is to wrap the form's input displaying the validation error to the dedicated control, taking the <code>link</code> as an argument.</p>
+<p>We define our own reusable <code>Input</code> form element which displays the validation error in the way we want:</p>
+<pre><code class="language-javascript">const Input = ({ link, ...props }) =&gt; (
+    &lt;div className=&quot;validated-control&quot;&gt;
+        &lt;input {...props} {...link.props} /&gt;
+        { link.error &amp;&amp; &lt;div className=&quot;error&quot;&gt;{ link.error }&lt;/div&gt; }
+    &lt;/div&gt;
+);
+</code></pre>
+<p>With that change, our <code>render()</code> method starts looking like this:</p>
+<pre><code class="language-javascript">render(){
+    // Link the state...
+    const { name, email, isActive } = this.linkAll();
+    return (
+        &lt;form onSubmit={ this.onSubmit }&gt;
+            &lt;label&gt;
+                Name: &lt;Input type=&quot;text&quot; link={name}/&gt;
+            &lt;/label&gt;
+            &lt;label&gt;
+                Email: &lt;Input type=&quot;text&quot; link={email}/&gt;
+            &lt;/label&gt;
+            &lt;label&gt;
+                Is active: &lt;input type=&quot;checkbox&quot; {...isActive.props}/&gt;
+            &lt;/label&gt;
+            &lt;button type=&quot;submit&quot; disabled={!this.state.isValid()}&gt;
+                Save
+            &lt;/button&gt;
+            &lt;button type=&quot;button&quot; onClick={this.onCancel}&gt;
+                Clear
+            &lt;/button&gt;
+        &lt;/form&gt;
+    );
+}
+</code></pre>
+<p>As you can see, the validation does not affect the markup in React-MVx. Thanks to the <em>links</em>, which conveniently transport the validation error from the place where it occurs to the place where it's consumed.</p>
+<h1 id="page_API+used+in+the+example">API used in the example</h1>
+<h2 id="page_Record%27s++attribute+definitions">Record's <a href="https://volicon.github.io/Type-R/Record/Overview.html" class="external">attribute definitions</a></h2>
+<h3 id="page_name+%3A+Type.value%28+defaultValue+%29"><code>attrDef</code> name : Type.value( defaultValue )</h3>
+<p>The general form of type annotation is <code>Type.value( defaultValue )</code>, where the <code>Type</code> is the corresponding constructor function.</p>
+<h3 id="page_name+%3A+Type"><code>attrDef</code> name : Type</h3>
+<p>When the function is used as <code>attrDef</code>, it's treated as the constructor function.
+Any constructor function may be used as an attribute type, if it behaves as <em>converting constructor</em> (like <code>new Date( msecs )</code>).</p>
+<h3 id="page_name+%3A+defaultValue"><code>attrDef</code> name : defaultValue</h3>
+<p>When other value than function is passed, it's treated as the default value and the type is being inferred form the value.
+If you need to pass function as the default value, use <code>Function.value( theFunction )</code>.</p>
+<h2 id="page_Validation"><a href="https://volicon.github.io/Type-R/API_by_feature/Validation.html" class="external">Validation</a></h2>
+<h3 id="page_attr+%3A+Type.has.check%28+predicate%2C+errorMsg%3F+%29"><code>attrDef</code> attr : Type.has.check( predicate, errorMsg? )</h3>
+<p>Attribute-level validator.</p>
+<ul>
+<li>
+<code>predicate : value =&gt; boolean</code> is the function taking attribute's value and returning <code>true</code> whenever the value is valid.</li>
+<li>optional <code>errorMsg</code> is the error message which will be passed in case if the validation fail.</li>
+</ul>
+<p>If <code>errorMsg</code> is omitted, error message will be taken from <code>predicate.error</code>. It makes possible to define reusable validation functions.</p>
+<h3 id="page_attr+%3A+Type.isRequired"><code>attrDef</code> attr : Type.isRequired</h3>
+<p>The special case of attribute-level check cutting out empty values. Attribute value must be truthy to pass, <code>&quot;Required&quot;</code> is used as validation error.</p>
+<p><code>isRequired</code> is the first validator to check, no matter in which order validators were attached.</p>
+<h3 id="page_recordOrCollection.isValid%28%29">recordOrCollection.isValid()</h3>
+<p>Returns <code>true</code> whenever an object and its aggregation tree is valid.</p>
     </div>
 
         <nav>
