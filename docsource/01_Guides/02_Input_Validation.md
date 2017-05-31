@@ -60,8 +60,8 @@ In React-MVx, the validation happens transparently and automatically. When you c
             <form onSubmit={ this.onSubmit }>
                 <label> Name: 
                     <div className="validated-control">
-                        <input type="text" { ...link.props} />
-                        { link.error && <div className="error">{ link.error }</div> }
+                        <input type="text" { ...name.props} />
+                        { name.error && <div className="error">{ name.error }</div> }
                     </div>
                 </label>
                 ...

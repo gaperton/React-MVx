@@ -76,8 +76,6 @@
 
     <div class="Page__header">
         <h1>Input Validation</h1>
-                <span style="float: left; font-size: 10px; color: gray;">
-            Wednesday, May 31, 2017 1:07 PM        </span>
                         <span style="float: right; font-size: 10px; color: gray;">
             <a href="https://github.com/Volicon/React-MVx/blob/develop/docs/01_Guides/02_Input_Validation.md" target="_blank">Edit on GitHub</a>
         </span>
@@ -127,8 +125,8 @@ function isValidEmail( x ){
             &lt;form onSubmit={ this.onSubmit }&gt;
                 &lt;label&gt; Name: 
                     &lt;div className=&quot;validated-control&quot;&gt;
-                        &lt;input type=&quot;text&quot; { ...link.props} /&gt;
-                        { link.error &amp;&amp; &lt;div className=&quot;error&quot;&gt;{ link.error }&lt;/div&gt; }
+                        &lt;input type=&quot;text&quot; { ...name.props} /&gt;
+                        { name.error &amp;&amp; &lt;div className=&quot;error&quot;&gt;{ name.error }&lt;/div&gt; }
                     &lt;/div&gt;
                 &lt;/label&gt;
                 ...
