@@ -110,7 +110,7 @@ In some cases you can use the _wrong input rejection_ instead of (or in addition
 example is the numeric-only input control. It guarantees that the linked value will only be updated with the valid number,
 completely encapsulating all related checks and mechanics.
 
-The challenge here is that when number in not an _integer_ it has to go throgh the sequence of intermediate invalid states during the editing process.
+The challenge here is that when number in not an _integer_ it has to go through the sequence of intermediate invalid states during the editing process.
 Like "" -> "-" -> "-0" -> "-0." -> "-0.5".
 
 The proper implementation of wrong input rejection might be tough.
