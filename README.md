@@ -22,17 +22,14 @@ React-MVx application architecture follows scalable MVVM architecture pattern. I
 - [Checklist tree]()([source](/examples/checklistTree))
 - [TodoMVC]()([source](/examples/todomvc))
 - [UsersList]()([source](/examples/userslist))
-- Flux Comparison([source]*/examples/flux-comparison))
+- Flux Comparison([source](/examples/flux-comparison))
 - Babel + Webpack [boilerplate]()([source](/examples/babel-boilerplate))
 
 ## Documentation
 
-- State Management Basics
-    - [Getting started](/docs/simple.md). State management basics with simple stateful component.
-    - [Two-way data binding](/docs/databinding.md)
-    - [Handling the complex state](/docs/complex-state.md)
-- [Complex state](). Records and collections
-- [API Reference](/docs/api.md)
+Start [there](https://volicon.github.io/React-MVx/Guides/Data_binding_and_forms.html).
+
+More tutorials to come.
 
 ## Installation & Requirements
 
