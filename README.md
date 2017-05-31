@@ -2,7 +2,7 @@
 
 React-MVx is the MVVM SPA framework with React as View layer, built upon frontend technologies used at Volicon/Verizon for 3 years.
 
-Contrary to the populular React approaches, React-MVx does not try to avoid the distributed mutable application state. Instead, it is focused on bringing stateful components capabilities to their maximum.
+Contrary to the popular React approaches, React-MVx does not try to avoid the distributed mutable application state. Instead, it is focused on bringing stateful components capabilities to their maximum.
 
 React-MVx manages both local UI state and application domain state with the same universal state container provided by [Type-R]() data framework. It supports:
 
@@ -16,8 +16,6 @@ React-MVx application architecture follows scalable MVVM architecture pattern. I
 
 - It doesn't rely on singletons (unless you _really_ need some data to be shared across pages)
 - It assists and encourages usage of _locally encapsulated state_ and _OO decomposition_.
-
-THIS IS PUBLIC THE BETA. NOT PRODUCTION READY YET.
 
 ## Examples
 
@@ -40,7 +38,7 @@ THIS IS PUBLIC THE BETA. NOT PRODUCTION READY YET.
 
 Supported browsers: Chrome, Firefox, Safari, IE10+.
 
-Requires `react` and `type-r` as peer dependecies. Installation (assuming that React is installed):
+Requires `react` and `type-r` as peer dependencies. Installation (assuming that React is installed):
 
     `npm install react-mvx type-r --save-dev`
 
