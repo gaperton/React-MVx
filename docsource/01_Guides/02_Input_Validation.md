@@ -1,4 +1,4 @@
-In this tutorial we will add input validation to the user editing form from the [previous example](01_Data_binding_and_forms.md). That's the client-side "as-you-type" validation preventing the user from submitting invalid data while giving him hints.
+In this tutorial, we will add input validation to the user editing form from the [previous example](01_Data_binding_and_forms.md). That's the client-side "as-you-type" validation preventing the user from submitting invalid data while giving him hints.
 
 ![Validated form](validation.png)
 
@@ -6,7 +6,7 @@ In this tutorial we will add input validation to the user editing form from the 
 
 All state attributes in React-MVx has associated run-time types and the metadata. The general form of an attribute definition is `Constructor.value( defaultValue )`. When the `defaultValue` is used as an attribute definition (as it was in [previous example](01_Data_binding_and_forms.md)), its type (Constructor) is taken from the value.
 
-`.value( defaultValue )` can be omitted as well. If an attribute definition is the function, it assumed to be the attribute's `Constructor`. Therefore, the following state definition is equivalent to one in the example.
+`.value( defaultValue )` can be omitted as well. If an attribute definition is a function, it assumed to be the attribute's `Constructor`. Therefore, the following state definition is equivalent to one in the example.
 
 ```javascript
 @define class Application extends React.Component {
@@ -19,7 +19,7 @@ All state attributes in React-MVx has associated run-time types and the metadata
 }
 ```
 
-This is important because validation checks are the part of the attribute definition. Which is cool, as it allows us to make custom attribute types with all of the validation checks encapsulated. Lets do this for the email.
+This is important because validation checks are the part of the attribute definition. Which is cool, as it allows us to make custom attribute types with all of the validation checks encapsulated. Let's do this for the email.
 
 Validator itself is the function taking the attribute's value and returning `true` whenever it is valid.
 
@@ -143,11 +143,11 @@ The general form of type annotation is `Type.value( defaultValue )`, where the `
 ### `attrDef` name : Type
 
 When the function is used as `attrDef`, it's treated as the constructor function.
-Any constructor function may be used as an attribute type, if it behaves as _converting constructor_ (like `new Date( msecs )`).
+Any constructor function may be used as an attribute type if it behaves as _converting constructor_ (like `new Date( msecs )`).
 
 ### `attrDef` name : defaultValue
 
-When other value than function is passed, it's treated as the default value and the type is being inferred form the value.
+When the value other than function is passed, it's treated as the default value and the type is being inferred from the value.
  If you need to pass function as the default value, use `Function.value( theFunction )`.
 
 ## [Validation](https://volicon.github.io/Type-R/API_by_feature/Validation.html)
@@ -159,11 +159,11 @@ Attribute-level validator.
 - `predicate : value => boolean` is the function taking attribute's value and returning `true` whenever the value is valid.
 - optional `errorMsg` is the error message which will be passed in case if the validation fail.
 
-If `errorMsg` is omitted, error message will be taken from `predicate.error`. It makes possible to define reusable validation functions.
+If `errorMsg` is omitted, an error message will be taken from `predicate.error`. It makes possible to define reusable validation functions.
 
 ### `attrDef` attr : Type.isRequired
 
-The special case of attribute-level check cutting out empty values. Attribute value must be truthy to pass, `"Required"` is used as validation error.
+The special case of attribute-level check cutting out empty values. The attribute value must be truthy to pass, `"Required"` is used as the validation error.
 
 `isRequired` is the first validator to check, no matter in which order validators were attached.
 
