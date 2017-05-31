@@ -28,18 +28,15 @@ Validator itself is the function taking the attribute's value and returning `tru
 function isValidEmail( x ){
     return !x || x.indexOf('@') >= 0;
 }
-
-// That would be the validation error message.
-isValidEmail.error = 'Invalid email';
 ```
 
 Then, we need to attach the validator to the attribute definition. And we've got the Email attribute type which can be used anywhere across the system.
 
 ```javascript
-const Email = String.has.check( isValidEmail );
+const Email = String.has.check( isValidEmail, 'Invalid email' );
 ```
 
-Now we have all we need to define our state. We will use the built-in validation check `isRequired` which fails at empty values for the state of required form elements. This check is special because it is always executed first.
+Now we have all we need to define our state. We will use the built-in validation check `isRequired` which fails at empty values. This check is special because it is always executed first. Other `checks()` predicates can be chained and are executed in sequence.
 
 ```javascript
 @define class Application extends React.Component {
