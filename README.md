@@ -4,7 +4,7 @@ React-MVx is the MVVM SPA framework with React as View layer, built upon fronten
 
 Contrary to the popular React approaches, React-MVx does not try to avoid the distributed mutable application state. Instead, it is focused on bringing stateful components capabilities to their maximum.
 
-React-MVx manages both local UI state and application domain state with the same universal state container provided by [Type-R]() data framework. It supports:
+React-MVx manages both local UI state and application domain state with the same universal state container provided by [Type-R](https://github.com/Volicon/Type-R) data framework. It supports:
 
 - two-way data binding
 - declarative state validation
