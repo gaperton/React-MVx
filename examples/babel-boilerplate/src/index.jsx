@@ -34,7 +34,7 @@ import './styles.css'
 }
 
 const ItemView = ({ item }) => (
-    <Input valueLink={ item.getLink( 'text' ) } /> 
+    <Input valueLink={ item.linkAt( 'text' ) } /> 
 );
 
 ReactDOM.render( <Application/>, document.getElementById( 'react-application' ) );
