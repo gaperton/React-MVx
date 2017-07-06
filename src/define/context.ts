@@ -1,4 +1,4 @@
-import { compileSpecs, collectSpecs } from './typeSpecs'
+import { compileSpecs } from './typeSpecs'
 import { tools } from 'type-r'
 import { ComponentClass } from 'react'
 

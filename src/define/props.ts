@@ -4,7 +4,7 @@
  * - pure render mixin
  */
 
-import { collectSpecs, compileSpecs, TypeSpecs } from './typeSpecs'
+import { compileSpecs, TypeSpecs } from './typeSpecs'
 import { PureRenderMixin, createChangeTokensConstructor } from './pureRender'
 import { tools } from 'type-r'
 

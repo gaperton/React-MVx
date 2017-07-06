@@ -5,15 +5,15 @@
 import * as React from 'react'
 import { Record, Store, extendable, CallbacksByEvents, mergeProps, mixinRules, define, mixins, declarations, tools, Messenger } from 'type-r'
 import Link from './Link'
-import processSpec, { TypeSpecs } from './define'
+import onDefine, { TypeSpecs } from './define'
 
 @define
 @declarations({
     // Definitions to be extracted from mixins and statics and passed to `onDefine()`
     state                     : mixinRules.merge,
-    State                     : mixinRules.protoValue,
+    State                     : mixinRules.value,
     store                     : mixinRules.merge,
-    Store                     : mixinRules.protoValue,
+    Store                     : mixinRules.value,
     props                     : mixinRules.merge,
     context                   : mixinRules.merge,
     childContext              : mixinRules.merge,
@@ -35,6 +35,8 @@ import processSpec, { TypeSpecs } from './define'
 // Component can send and receive events...
 @mixins( Messenger )
 export class Component<P> extends React.Component<P, Record> {
+    cid : string
+
     static state? : TypeSpecs | typeof Record
     static store? : TypeSpecs | typeof Store
     static props? : TypeSpecs
@@ -70,18 +72,7 @@ export class Component<P> extends React.Component<P, Record> {
         return ( this.state as any )._links;
     }
 
-    static onDefine( definition, BaseClass ){
-        let definition = processSpec( definition, this.prototype );
-
-        const { getDefaultProps, propTypes, contextTypes, childContextTypes, ...protoDefinition } = definition;
-
-        if( getDefaultProps ) this.defaultProps = definition.getDefaultProps();
-        if( propTypes ) this.propTypes = propTypes;
-        if( contextTypes ) this.contextTypes = contextTypes;
-        if( childContextTypes ) this.childContextTypes = childContextTypes;
-
-        Messenger.onDefine.call( this, definition );
-    }
+    static onDefine = onDefine;
 
     readonly state : Record
     readonly store? : Store

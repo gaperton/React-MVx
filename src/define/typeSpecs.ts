@@ -5,34 +5,6 @@ export interface TypeSpecs {
     [ name : string ] : Object | Function
 }
 
-export function collectSpecs( spec, name : string ) : TypeSpecs {
-    var attributes = null;
-
-    // Scan through local mixin, and gather specs. Refactor it later, it's not good. At all.
-    for( var i = spec.mixins.length - 1; i >= 0; i-- ){
-        var mixin      = spec.mixins[ i ],
-            mixinAttrs = mixin[ name ];
-
-        if( mixinAttrs ){
-            attributes || ( attributes = {} );
-            tools.assign( attributes, mixinAttrs );
-        }
-    }
-
-    // Merge it with local data.
-    var specAttrs = spec[ name ];
-    if( specAttrs ){
-        if( attributes ){
-            tools.assign( attributes, specAttrs );
-        }
-        else{
-            attributes = specAttrs;
-        }
-    }
-
-    return attributes;
-}
-
 export function compileSpecs( props : TypeSpecs ){
     const propTypes = {},
         // Create NestedTypes model definition to process props spec.

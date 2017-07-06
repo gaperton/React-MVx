@@ -1,25 +1,33 @@
 /*****************
  * State
  */
-import { collectSpecs } from './typeSpecs'
-import { Record, Store } from 'type-r'
+import { define, Record, Store } from 'type-r'
 
-export default function process( spec, baseProto ){
-    // process state spec...
-    const attributes = collectSpecs( spec, 'state' );
+export default function process( Class, definition ){
+    const { prototype } = Class;
 
-    if( attributes || baseProto.State ){
-        const BaseModel = baseProto.State || Record;
-        
-        spec.State    = attributes ? (
-            typeof attributes === 'function' ? attributes : BaseModel.defaults( attributes )
-        ): BaseModel;
+    let { state, State } = definition;
 
-        spec.mixins.push( StateMixin );
-        spec.mixins.push( UpdateOnNestedChangesMixin );
+    if( typeof state === 'function' ){
+        State = state;
+        state = void 0;
+    }
 
-        delete spec.state;
-        delete spec.attributes;
+    if( state ){
+        const BaseClass = State || Class.prototype.State || Record;
+
+        @define class ComponentState extends BaseClass {
+            static attributes = state;
+        }
+
+        Class.prototype.State = ComponentState;
+    }
+    else if( State ){
+        Class.prototype.State = State;
+    }
+
+    if( state || State ){
+        Class.mixins.merge([ StateMixin, UpdateOnNestedChangesMixin ]);
     }
 }
 

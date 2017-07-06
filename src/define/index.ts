@@ -4,16 +4,12 @@ import processState from './state'
 import processContext from './context'
 import processProps from './props'
 
-export default function process( spec, baseProto = {} ){
+export default function process( Class, definition ){
     // Initialize mixins placeholder...
-    spec.mixins || ( spec.mixins = [] );
-
-    processStore( spec, baseProto );
-    processState( spec, baseProto );
-    processContext( spec, baseProto );
-    processProps( spec, baseProto );
-
-    return spec;
+    processStore( Class, definition );
+    processState( Class, definition );
+    processContext( Class, definition );
+    processProps( Class, definition );
 };
 
 export { Node, Element, TypeSpecs } from './typeSpecs'
