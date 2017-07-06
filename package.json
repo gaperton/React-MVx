@@ -44,13 +44,13 @@
     "react-dom": "*",
     "source-map-loader": "*",
     "ts-loader": "*",
-    "type-r": "^1.0.0-rc6",
+    "type-r": "^1.1.0-a00",
     "typescript": "*",
     "webpack": "*"
   },
   "peerDependencies": {
     "prop-types": "*",
     "react": "*",
-    "type-r": "^1.0.0-rc6"
+    "type-r": "^1.1.0-a00"
   }
 }
