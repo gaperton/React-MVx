@@ -1,7 +1,6 @@
 export interface TypeSpecs {
     [name: string]: Object | Function;
 }
-export declare function collectSpecs(spec: any, name: string): TypeSpecs;
 export declare function compileSpecs(props: TypeSpecs): {
     propTypes: {};
     defaults: any;

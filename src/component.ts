@@ -3,12 +3,12 @@
  */
 
 import * as React from 'react'
-import { Record, Store, extendable, CallbacksByEvents, mergeProps, mixinRules, define, mixins, declarations, tools, Messenger } from 'type-r'
+import { Record, Store, CallbacksByEvents, mixinRules, define, mixins, definitions, tools, Messenger } from 'type-r'
 import Link from './Link'
 import onDefine, { TypeSpecs } from './define'
 
 @define
-@declarations({
+@definitions({
     // Definitions to be extracted from mixins and statics and passed to `onDefine()`
     state                     : mixinRules.merge,
     State                     : mixinRules.value,
@@ -30,7 +30,7 @@ import onDefine, { TypeSpecs } from './define'
 
     // And a bit more to fix inheritance quirks.
     shouldComponentUpdate     : mixinRules.some,
-    getChildContext           : mixinRules.mergeSequence
+    getChildContext           : mixinRules.defaults
 } )
 // Component can send and receive events...
 @mixins( Messenger )

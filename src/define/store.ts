@@ -1,4 +1,4 @@
-import { Store } from 'type-r'
+import { define, Store, MixableConstructor } from 'type-r'
 import { StateMixin, UpdateOnNestedChangesMixin } from './state'
 
 export interface StoreDefinition {
@@ -6,7 +6,7 @@ export interface StoreDefinition {
     Store? : typeof Store
 }
 
-export interface ComponentConstructor {
+export interface ComponentConstructor extends MixableConstructor {
     prototype : {
         store : Store
         Store : typeof Store

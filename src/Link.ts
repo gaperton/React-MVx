@@ -8,7 +8,7 @@ import { Link } from './valuelink/link'
 
 export default Link;
 
-Mixable.mixTo( <any>Link );
+Mixable.mixins.populate( Link as any );
 
 interface LinksCache {
     [ key : string ] : RecordLink
@@ -17,7 +17,7 @@ interface LinksCache {
 /**
  * Record
  */
-Record.mixins({
+Record.mixins.merge([{
     // Link to the record's attribute by its key.
     linkAt( key : string ) : RecordLink {
         return cacheLink( getLinksCache( this ), this, key );
@@ -47,7 +47,7 @@ Record.mixins({
 
         return links;
     }
-});
+}]);
 
 /**
  * Link to Type-R's record attribute.
@@ -119,7 +119,7 @@ function cacheLink( links : LinksCache, record : Record, key : string ) : Record
 /***********************************
  * Collection
  */
-Record.Collection.mixins({
+Record.Collection.mixins.merge([{
     // Boolean link to the record's presence in the collection
     linkContains( record : Record ){
         return new CollectionLink( this, record );
@@ -129,7 +129,7 @@ Record.Collection.mixins({
     linkAt( prop : string ){
         return Link.value( this[ prop ], x => this[ prop ] = x );
     }
-});
+}]);
 
 /**
  * Boolean link to presence of NestedType's record in collection.
