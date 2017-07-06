@@ -5,42 +5,44 @@
  */
 
 import { collectSpecs, compileSpecs, TypeSpecs } from './typeSpecs'
-import createPureRenderMixin from './pureRender'
+import { PureRenderMixin, createChangeTokensConstructor } from './pureRender'
+import { tools } from 'type-r'
 
 export interface PropsMetadata {
     pureRender? : boolean
     _props? : TypeSpecs
-    _listenToPropsArray? : string[]
-    _listenToPropsHash? : { [ propName : string ] : Object | string }
 }
 
-export default function process( spec, { pureRender, _props = {}, _listenToPropsArray = [], _listenToPropsHash = {} } : PropsMetadata ){
+export default function process( Class, { props, pureRender } ){
+    const { prototype } = Class;
+
     // process props spec...
-    const props = collectSpecs( spec, 'props' );
     if( props ){
-        const allProps = spec._props = { ..._props, ...props };
+        // Merge with inherited members...
+        prototype._props = tools.defaults( props, prototype._props || {} );
 
-        const { propTypes, defaults, watchers, changeHandlers } = compileSpecs( allProps );
-        spec.propTypes = propTypes;
+        const { propTypes, defaults, watchers, changeHandlers } = compileSpecs( props );
+        Class.propTypes = propTypes;
 
-        if( defaults ) spec.getDefaultProps = () => defaults;
+        if( defaults ) Class.defaultProps = defaults;
 
         if( watchers ){
-            spec.mixins.unshift( WatchersMixin );
-            spec._watchers = watchers;
+            prototype._watchers = watchers;
+            Class.mixins.merge([ WatchersMixin ]);
         }
 
         if( changeHandlers ){
-            spec.mixins.unshift( ChangeHandlersMixin );
-            spec._changeHandlers = changeHandlers;
+            prototype._changeHandlers = changeHandlers;
+            Class.mixins.merge([ ChangeHandlersMixin ]);
         }
 
-        delete spec.props;
+        if( prototype.pureRender ){
+            prototype.PropsChangeTokens = createChangeTokensConstructor( props );
+        }
     }
 
-    // compile pure render mixin
-    if( spec._props && ( spec.pureRender || pureRender ) ){
-        spec.mixins.push( createPureRenderMixin( spec._props ) );
+    if( pureRender ){
+        Class.mixins.merge([ PureRenderMixin ]);
     }
 }
 

@@ -17,7 +17,7 @@ import processSpec, { TypeSpecs } from './define'
     props                     : mixinRules.merge,
     context                   : mixinRules.merge,
     childContext              : mixinRules.merge,
-    pureRender                : mixinRules.value
+    pureRender                : mixinRules.protoValue
 })
 @mixinRules( {
     // Apply old-school React mixin rules.
