@@ -1,19 +1,20 @@
 import { compileSpecs, collectSpecs } from './typeSpecs'
+import { tools } from 'type-r'
+import { ComponentClass } from 'react'
 
-export default function process( spec, { _context = {}, _childContext = {} } ){
-    // process context specs...
-    const context = collectSpecs( spec, 'context' );
+export default function process( Class : ComponentClass, { context, childContext } ){
+    const { prototype } = Class;
+
     if( context ){
-        spec._context = { ..._context, ...context };
-        spec.contextTypes = compileSpecs( context ).propTypes;
-        delete spec.context;
+        // Merge in inherited members...
+        prototype._context = tools.defaults( context, prototype._context || {} );
+
+        // Compile to propTypes...
+        Class.contextTypes = compileSpecs( context ).propTypes;
     }
 
-    // and child context specs...
-    const childContext = collectSpecs( spec, 'childContext' );
     if( childContext ){
-        spec._childContext = { ..._childContext, ...childContext };
-        spec.childContextTypes = compileSpecs( childContext ).propTypes;
-        delete spec.childContext;
+        prototype._childContext = tools.defaults( childContext, prototype._childContext );
+        Class.childContextTypes = compileSpecs( childContext ).propTypes;
     }
 }

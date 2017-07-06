@@ -21,16 +21,16 @@ import processSpec, { TypeSpecs } from './define'
 })
 @mixinRules( {
     // Apply old-school React mixin rules.
-    componentWillMount        : 'reverse',
-    componentDidMount         : 'reverse',
-    componentWillReceiveProps : 'reverse',
-    componentWillUpdate       : 'reverse',
-    componentDidUpdate        : 'reverse',
-    componentWillUnmount      : 'sequence',
+    componentWillMount        : mixinRules.classLast,
+    componentDidMount         : mixinRules.classLast,
+    componentWillReceiveProps : mixinRules.classLast,
+    componentWillUpdate       : mixinRules.classLast,
+    componentDidUpdate        : mixinRules.classLast,
+    componentWillUnmount      : mixinRules.classFirst,
 
     // And a bit more to fix inheritance quirks.
-    shouldComponentUpdate     : 'some',
-    getChildContext           : 'mergeSequence'
+    shouldComponentUpdate     : mixinRules.some,
+    getChildContext           : mixinRules.mergeSequence
 } )
 // Component can send and receive events...
 @mixins( Messenger )
@@ -71,7 +71,7 @@ export class Component<P> extends React.Component<P, Record> {
     }
 
     static onDefine( definition, BaseClass ){
-        var definition = processSpec( combinedDefinition, this.prototype );
+        let definition = processSpec( definition, this.prototype );
 
         const { getDefaultProps, propTypes, contextTypes, childContextTypes, ...protoDefinition } = definition;
 
@@ -86,7 +86,7 @@ export class Component<P> extends React.Component<P, Record> {
     readonly state : Record
     readonly store? : Store
 
-    assignToState( x, key ){
+    assignToState( x, key : string ){
         this.state.assignFrom({ [ key ] : x });
     }
 
@@ -115,7 +115,7 @@ export class Component<P> extends React.Component<P, Record> {
      * React component will be updated _after_ all the changes to the
      * both props and local state are applied.
      */
-    transaction( fun ){
+    transaction( fun : ( state? : Record ) => void ){
         var shouldComponentUpdate = this.shouldComponentUpdate,
             isRoot = shouldComponentUpdate !== returnFalse;
 
