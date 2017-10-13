@@ -105,7 +105,7 @@ class RecordDeepLink extends Link< any > {
 }
 
 function getLinksCache( record : Record ) : LinksCache {
-    return ( <any>record )._links || ( ( <any>record )._links = new record.Attributes( {} ) );
+    return ( <any>record )._links || ( ( <any>record )._links = new record.AttributesCopy( {} ) );
 }
 
 function cacheLink( links : LinksCache, record : Record, key : string ) : RecordLink {
