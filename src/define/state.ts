@@ -2,8 +2,18 @@
  * State
  */
 import { define, Record, Store } from 'type-r'
+import { ComponentClass } from './common'
 
-export default function process( Class, definition ){
+export interface StateDefinition {
+    state? : object | typeof Record
+    State? : typeof Record
+}
+
+export interface StateProto {
+    State? : typeof Record
+}
+
+export default function process( Class : ComponentClass<StateProto>, definition : StateDefinition ){
     const { prototype } = Class;
 
     let { state, State } = definition;

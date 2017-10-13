@@ -7,33 +7,40 @@
 import { compileSpecs, TypeSpecs } from './typeSpecs'
 import { PureRenderMixin, createChangeTokensConstructor } from './pureRender'
 import { tools } from 'type-r'
+import { ComponentClass } from './common'
 
-export interface PropsMetadata {
+export interface PropsDefinition {
+    pureRender? : boolean
+    props : TypeSpecs
+}
+
+
+export interface PropsProto {
     pureRender? : boolean
     _props? : TypeSpecs
 }
 
-export default function process( Class, { props, pureRender } ){
-    const { prototype } = Class;
+export default function onDefine( this : ComponentClass<PropsProto>, { props, pureRender } : PropsDefinition, BaseClass : ComponentClass<PropsProto> ){
+    const { prototype } = this;
 
     // process props spec...
     if( props ){
         // Merge with inherited members...
-        prototype._props = tools.defaults( props, prototype._props || {} );
+        prototype._props = tools.defaults( props, BaseClass.prototype._props || {} );
 
         const { propTypes, defaults, watchers, changeHandlers } = compileSpecs( props );
-        Class.propTypes = propTypes;
+        this.propTypes = propTypes;
 
-        if( defaults ) Class.defaultProps = defaults;
+        if( defaults ) this.defaultProps = defaults;
 
         if( watchers ){
             prototype._watchers = watchers;
-            Class.mixins.merge([ WatchersMixin ]);
+            this.mixins.merge([ WatchersMixin ]);
         }
 
         if( changeHandlers ){
             prototype._changeHandlers = changeHandlers;
-            Class.mixins.merge([ ChangeHandlersMixin ]);
+            this.mixins.merge([ ChangeHandlersMixin ]);
         }
 
         if( prototype.pureRender ){
@@ -42,7 +49,7 @@ export default function process( Class, { props, pureRender } ){
     }
 
     if( pureRender ){
-        Class.mixins.merge([ PureRenderMixin ]);
+        this.mixins.merge([ PureRenderMixin ]);
     }
 }
 

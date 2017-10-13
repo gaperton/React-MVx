@@ -1,19 +1,18 @@
-import { define, Store, MixableConstructor } from 'type-r'
+import { define, Store } from 'type-r'
 import { StateMixin, UpdateOnNestedChangesMixin } from './state'
+import { ComponentClass } from './common'
 
 export interface StoreDefinition {
     store? : typeof Store | Store | object
     Store? : typeof Store
 }
 
-export interface ComponentConstructor extends MixableConstructor {
-    prototype : {
-        store : Store
-        Store : typeof Store
-    }
+export interface ComponentProto {
+    store? : Store
+    Store? : typeof Store
 }
 
-export default function process( Class : ComponentConstructor, definition : StoreDefinition ){
+export default function process( Class : ComponentClass<ComponentProto>, definition : StoreDefinition ){
     let { store, Store : StoreClass } = definition;
 
     if( store && store instanceof Store ){
