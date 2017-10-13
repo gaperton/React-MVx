@@ -7,8 +7,8 @@
   },
   "description": "React MV* framework",
   "main": "./dist/index.js",
-  "module": "./lib/src/index.js",
-  "types": "./lib/src/index.d.ts",
+  "module": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "files": [
     "dist",
     "lib",
