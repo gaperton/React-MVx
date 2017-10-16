@@ -18,6 +18,9 @@ export interface PropsDefinition {
 export interface PropsProto {
     pureRender? : boolean
     _props? : TypeSpecs
+    _watchers? : any
+    _changeHandlers? : any
+    PropsChangeTokens? : any
 }
 
 export default function onDefine( this : ComponentClass<PropsProto>, { props, pureRender } : PropsDefinition, BaseClass : ComponentClass<PropsProto> ){

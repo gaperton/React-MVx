@@ -34,7 +34,7 @@ import onDefine, { TypeSpecs } from './define'
 } )
 // Component can send and receive events...
 @mixins( Messenger )
-export class Component<P> extends React.Component<P, Record> {
+export class Component<P, S extends Record = Record > extends React.Component<P, S> {
     cid : string
 
     static state? : TypeSpecs | typeof Record
@@ -74,8 +74,17 @@ export class Component<P> extends React.Component<P, Record> {
 
     static onDefine = onDefine;
 
-    readonly state : Record
+    readonly state : S
     readonly store? : Store
+
+    constructor( props?, context? ){
+        super( props, context );
+        this._initializeState();
+    }
+
+    _initializeState(){
+        ( this as any ).state = null;
+    }
 
     assignToState( x, key : string ){
         this.state.assignFrom({ [ key ] : x });

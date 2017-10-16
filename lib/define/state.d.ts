@@ -1,10 +1,18 @@
 /*****************
  * State
  */
-import { Store } from 'type-r';
-export default function process(Class: any, definition: any): void;
+import { Record, Store } from 'type-r';
+import { ComponentClass } from './common';
+export interface StateDefinition {
+    state?: object | typeof Record;
+    State?: typeof Record;
+}
+export interface StateProto {
+    State?: typeof Record;
+}
+export default function process(this: ComponentClass<StateProto>, definition: StateDefinition, BaseComponentClass: ComponentClass<StateProto>): void;
 export declare const StateMixin: {
-    componentWillMount(): void;
+    _initializeState(): void;
     context: {
         _nestedStore: typeof Store;
     };

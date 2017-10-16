@@ -1,6 +1,11 @@
-/// <reference types="react" />
-import { ComponentClass } from 'react';
-export default function process(Class: ComponentClass, {context, childContext}: {
-    context: any;
-    childContext: any;
-}): void;
+import { TypeSpecs } from './typeSpecs';
+import { ComponentClass } from './common';
+export interface ContextDefinition {
+    context: TypeSpecs;
+    childContext: TypeSpecs;
+}
+export interface ContextProto {
+    _context: TypeSpecs;
+    _childContext: TypeSpecs;
+}
+export default function onDefine(this: ComponentClass<ContextProto>, {context, childContext}: ContextDefinition, BaseClass: ComponentClass<ContextProto>): void;

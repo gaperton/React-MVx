@@ -7,12 +7,12 @@ export interface StoreDefinition {
     Store? : typeof Store
 }
 
-export interface ComponentProto {
+export interface StoreProto {
     store? : Store
     Store? : typeof Store
 }
 
-export default function process( Class : ComponentClass<ComponentProto>, definition : StoreDefinition ){
+export default function process( this : ComponentClass<StoreProto>, definition : StoreDefinition, Class : ComponentClass<StoreProto> ){
     let { store, Store : StoreClass } = definition;
 
     if( store && store instanceof Store ){

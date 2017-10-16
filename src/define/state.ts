@@ -13,8 +13,8 @@ export interface StateProto {
     State? : typeof Record
 }
 
-export default function process( Class : ComponentClass<StateProto>, definition : StateDefinition ){
-    const { prototype } = Class;
+export default function process( this : ComponentClass<StateProto>, definition : StateDefinition, BaseComponentClass : ComponentClass<StateProto> ){
+    const { prototype } = this;
 
     let { state, State } = definition;
 
@@ -24,27 +24,27 @@ export default function process( Class : ComponentClass<StateProto>, definition 
     }
 
     if( state ){
-        const BaseClass = State || Class.prototype.State || Record;
+        const BaseClass = State || prototype.State || Record;
 
         @define class ComponentState extends BaseClass {
             static attributes = state;
         }
 
-        Class.prototype.State = ComponentState;
+        prototype.State = ComponentState;
     }
     else if( State ){
-        Class.prototype.State = State;
+        prototype.State = State;
     }
 
     if( state || State ){
-        Class.mixins.merge([ StateMixin, UpdateOnNestedChangesMixin ]);
+        this.mixins.merge([ StateMixin, UpdateOnNestedChangesMixin ]);
     }
 }
 
 export const StateMixin = {
     //state : null,
 
-    componentWillMount(){
+    _initializeState(){
         // props.__keepState is used to workaround issues in Backbone intergation layer
         const state = this.state = this.props.__keepState || new this.State();
         

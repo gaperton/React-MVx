@@ -2496,7 +2496,7 @@ function compileSpecs(props) {
             if (value !== void 0) {
                 //...append it to getDefaultProps function.
                 defaults || (defaults = {});
-                defaults[name] = spec.convert(value);
+                defaults[name] = spec.convert(value, void 0, null, {});
             }
         }
     });
@@ -3421,24 +3421,27 @@ function parseReference(collectionRef) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["c"] = process;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__store__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__state__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__context__ = __webpack_require__(60);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__props__ = __webpack_require__(63);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__typeSpecs__ = __webpack_require__(19);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_4__typeSpecs__["b"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_4__typeSpecs__["a"]; });
+/* harmony export (immutable) */ __webpack_exports__["c"] = onDefine;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_type_r__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__store__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__state__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__context__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__props__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__typeSpecs__ = __webpack_require__(19);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_5__typeSpecs__["b"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_5__typeSpecs__["a"]; });
 
 
 
 
-function process(Class, definition) {
+
+function onDefine(definition, BaseClass) {
     // Initialize mixins placeholder...
-    Object(__WEBPACK_IMPORTED_MODULE_0__store__["a" /* default */])(Class, definition);
-    Object(__WEBPACK_IMPORTED_MODULE_1__state__["c" /* default */])(Class, definition);
-    Object(__WEBPACK_IMPORTED_MODULE_2__context__["a" /* default */])(Class, definition);
-    Object(__WEBPACK_IMPORTED_MODULE_3__props__["a" /* default */])(Class, definition);
+    __WEBPACK_IMPORTED_MODULE_1__store__["a" /* default */].call(this, definition, BaseClass);
+    __WEBPACK_IMPORTED_MODULE_2__state__["c" /* default */].call(this, definition, BaseClass);
+    __WEBPACK_IMPORTED_MODULE_3__context__["a" /* default */].call(this, definition, BaseClass);
+    __WEBPACK_IMPORTED_MODULE_4__props__["a" /* default */].call(this, definition, BaseClass);
+    __WEBPACK_IMPORTED_MODULE_0_type_r__["Messenger"].onDefine.call(this, definition, BaseClass);
 }
 ;
 
@@ -3473,15 +3476,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
  * State
  */
 
-function process(Class, definition) {
-    var prototype = Class.prototype;
+function process(definition, BaseComponentClass) {
+    var prototype = this.prototype;
     var state = definition.state, State = definition.State;
     if (typeof state === 'function') {
         State = state;
         state = void 0;
     }
     if (state) {
-        var BaseClass = State || Class.prototype.State || __WEBPACK_IMPORTED_MODULE_0_type_r__["Record"];
+        var BaseClass = State || prototype.State || __WEBPACK_IMPORTED_MODULE_0_type_r__["Record"];
         var ComponentState = /** @class */ (function (_super) {
             __extends(ComponentState, _super);
             function ComponentState() {
@@ -3493,18 +3496,18 @@ function process(Class, definition) {
             ], ComponentState);
             return ComponentState;
         }(BaseClass));
-        Class.prototype.State = ComponentState;
+        prototype.State = ComponentState;
     }
     else if (State) {
-        Class.prototype.State = State;
+        prototype.State = State;
     }
     if (state || State) {
-        Class.mixins.merge([StateMixin, UpdateOnNestedChangesMixin]);
+        this.mixins.merge([StateMixin, UpdateOnNestedChangesMixin]);
     }
 }
 var StateMixin = {
     //state : null,
-    componentWillMount: function () {
+    _initializeState: function () {
         // props.__keepState is used to workaround issues in Backbone intergation layer
         var state = this.state = this.props.__keepState || new this.State();
         // Take ownership on state...
@@ -7515,7 +7518,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 
 
-function process(Class, definition) {
+function process(definition, Class) {
     var store = definition.store, StoreClass = definition.Store;
     if (store && store instanceof __WEBPACK_IMPORTED_MODULE_0_type_r__["Store"]) {
         // Direct reference to an existing store. Put it to the prototype.
@@ -7598,23 +7601,23 @@ var InternalStoreMixin = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = process;
+/* harmony export (immutable) */ __webpack_exports__["a"] = onDefine;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__typeSpecs__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_type_r__ = __webpack_require__(3);
 
 
-function process(Class, _a) {
+function onDefine(_a, BaseClass) {
     var context = _a.context, childContext = _a.childContext;
-    var prototype = Class.prototype;
+    var prototype = this.prototype;
     if (context) {
         // Merge in inherited members...
-        prototype._context = __WEBPACK_IMPORTED_MODULE_1_type_r__["tools"].defaults(context, prototype._context || {});
+        prototype._context = __WEBPACK_IMPORTED_MODULE_1_type_r__["tools"].defaults(context, BaseClass.prototype._context || {});
         // Compile to propTypes...
-        Class.contextTypes = Object(__WEBPACK_IMPORTED_MODULE_0__typeSpecs__["c" /* compileSpecs */])(context).propTypes;
+        this.contextTypes = Object(__WEBPACK_IMPORTED_MODULE_0__typeSpecs__["c" /* compileSpecs */])(context).propTypes;
     }
     if (childContext) {
-        prototype._childContext = __WEBPACK_IMPORTED_MODULE_1_type_r__["tools"].defaults(childContext, prototype._childContext);
-        Class.childContextTypes = Object(__WEBPACK_IMPORTED_MODULE_0__typeSpecs__["c" /* compileSpecs */])(childContext).propTypes;
+        prototype._childContext = __WEBPACK_IMPORTED_MODULE_1_type_r__["tools"].defaults(childContext, BaseClass.prototype._childContext);
+        this.childContextTypes = Object(__WEBPACK_IMPORTED_MODULE_0__typeSpecs__["c" /* compileSpecs */])(childContext).propTypes;
     }
 }
 
@@ -8239,7 +8242,7 @@ module.exports = function() {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = process;
+/* harmony export (immutable) */ __webpack_exports__["a"] = onDefine;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__typeSpecs__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pureRender__ = __webpack_require__(64);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_type_r__ = __webpack_require__(3);
@@ -8251,31 +8254,31 @@ module.exports = function() {
 
 
 
-function process(Class, _a) {
+function onDefine(_a, BaseClass) {
     var props = _a.props, pureRender = _a.pureRender;
-    var prototype = Class.prototype;
+    var prototype = this.prototype;
     // process props spec...
     if (props) {
         // Merge with inherited members...
-        prototype._props = __WEBPACK_IMPORTED_MODULE_2_type_r__["tools"].defaults(props, prototype._props || {});
+        prototype._props = __WEBPACK_IMPORTED_MODULE_2_type_r__["tools"].defaults(props, BaseClass.prototype._props || {});
         var _b = Object(__WEBPACK_IMPORTED_MODULE_0__typeSpecs__["c" /* compileSpecs */])(props), propTypes = _b.propTypes, defaults = _b.defaults, watchers = _b.watchers, changeHandlers = _b.changeHandlers;
-        Class.propTypes = propTypes;
+        this.propTypes = propTypes;
         if (defaults)
-            Class.defaultProps = defaults;
+            this.defaultProps = defaults;
         if (watchers) {
             prototype._watchers = watchers;
-            Class.mixins.merge([WatchersMixin]);
+            this.mixins.merge([WatchersMixin]);
         }
         if (changeHandlers) {
             prototype._changeHandlers = changeHandlers;
-            Class.mixins.merge([ChangeHandlersMixin]);
+            this.mixins.merge([ChangeHandlersMixin]);
         }
         if (prototype.pureRender) {
             prototype.PropsChangeTokens = Object(__WEBPACK_IMPORTED_MODULE_1__pureRender__["b" /* createChangeTokensConstructor */])(props);
         }
     }
     if (pureRender) {
-        Class.mixins.merge([__WEBPACK_IMPORTED_MODULE_1__pureRender__["a" /* PureRenderMixin */]]);
+        this.mixins.merge([__WEBPACK_IMPORTED_MODULE_1__pureRender__["a" /* PureRenderMixin */]]);
     }
 }
 /**
@@ -8869,8 +8872,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 var Component = /** @class */ (function (_super) {
     __extends(Component, _super);
-    function Component() {
-        return _super !== null && _super.apply(this, arguments) || this;
+    function Component(props, context) {
+        var _this = _super.call(this, props, context) || this;
+        _this._initializeState();
+        return _this;
     }
     Component.prototype.linkAt = function (key) {
         // Quick and dirty hack to suppres type error - refactor later.
@@ -8891,6 +8896,9 @@ var Component = /** @class */ (function (_super) {
         enumerable: true,
         configurable: true
     });
+    Component.prototype._initializeState = function () {
+        this.state = null;
+    };
     Component.prototype.assignToState = function (x, key) {
         this.state.assignFrom((_a = {}, _a[key] = x, _a));
         var _a;

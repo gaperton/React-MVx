@@ -6,7 +6,7 @@ import * as React from 'react';
 import { Record, Store, CallbacksByEvents, Messenger } from 'type-r';
 import Link from './Link';
 import onDefine, { TypeSpecs } from './define';
-export declare class Component<P> extends React.Component<P, Record> {
+export declare class Component<P, S extends Record = Record> extends React.Component<P, S> {
     cid: string;
     static state?: TypeSpecs | typeof Record;
     static store?: TypeSpecs | typeof Store;
@@ -27,8 +27,10 @@ export declare class Component<P> extends React.Component<P, Record> {
     linkPath(path: string): Link<any>;
     readonly links: any;
     static onDefine: typeof onDefine;
-    readonly state: Record;
+    readonly state: S;
     readonly store?: Store;
+    constructor(props?: any, context?: any);
+    _initializeState(): void;
     assignToState(x: any, key: string): void;
     isMounted: () => boolean;
     on: (events: string | CallbacksByEvents, callback, context?) => this;
