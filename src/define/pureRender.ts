@@ -6,14 +6,14 @@ export function createChangeTokensConstructor( props ) {
         this._s = s && s._changeToken;
         ${ propNames.map( name => `
             this.${ name } = ( ( v = p.${ name }) && v._changeToken ) || v;
-        `)}
+        `).join( '' )}
     `);
     
     PropsChangeTokens.prototype._hasChanges = new Function( 'p', 's', `
         var v;
         return ( s && s._changeToken !== this._s ) ${ propNames.map( name => ` ||
             this.${ name } !== ( ( ( v = p.${ name }) && v._changeToken ) || v )
-        `)};
+        `).join( '' )};
     `);    
 
     return PropsChangeTokens;

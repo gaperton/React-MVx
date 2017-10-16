@@ -3,7 +3,7 @@
  * Define value links binding mixins to the Record and Collection
  */
 
-import { Mixable, Record } from 'type-r'
+import { Mixable, MixinsState, Record } from 'type-r'
 import { Link } from './valuelink/link'
 
 export default Link;
@@ -17,7 +17,7 @@ interface LinksCache {
 /**
  * Record
  */
-Record.mixins.merge([{
+MixinsState.get( Record ).merge([{
     // Link to the record's attribute by its key.
     linkAt( key : string ) : RecordLink {
         return cacheLink( getLinksCache( this ), this, key );
@@ -119,7 +119,7 @@ function cacheLink( links : LinksCache, record : Record, key : string ) : Record
 /***********************************
  * Collection
  */
-Record.Collection.mixins.merge([{
+MixinsState.get( Record.Collection ).merge([{
     // Boolean link to the record's presence in the collection
     linkContains( record : Record ){
         return new CollectionLink( this, record );

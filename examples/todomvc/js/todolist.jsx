@@ -1,6 +1,6 @@
 import React, { define } from 'react-mvx'
 import cx from 'classnames'
-import { Input } from 'react-mvx/tags.jsx'
+import { Input } from 'react-mvx/tags'
 import { ToDo } from './model'
 
 @define export default
@@ -21,12 +21,12 @@ class TodoList extends React.Component {
               filtered = filterDone === null ? todos.models
                             : todos.filter( todo => todo.done === filterDone ),
 
-              editingLink = this.state.getLink( 'editing' );
+              editingLink = this.state.linkAt( 'editing' );
 
         return (
             <section className="main">
                 <Input className="toggle-all" id="toggle-all" type="checkbox"
-                       checkedLink={ todos.getLink( 'allDone' ) }/>
+                       checkedLink={ todos.linkAt( 'allDone' ) }/>
 
                 <label htmlFor="toggle-all">Mark all as complete</label>
 
@@ -57,7 +57,7 @@ const TodoItem = ( { todo, editingLink } ) =>{
         <li className={ className }>
             <div className="view">
                 <Input className="toggle" type="checkbox"
-                       checkedLink={ todo.getLink( 'done' ) }/>
+                       checkedLink={ todo.linkAt( 'done' ) }/>
 
                 <label onDoubleClick={ editingLink.action( () => todo ) }>
                     { todo.desc }
@@ -67,7 +67,7 @@ const TodoItem = ( { todo, editingLink } ) =>{
             </div>
 
             { editing && <Input className="edit"
-                                valueLink={ todo.getLink( 'desc' ) }
+                                valueLink={ todo.linkAt( 'desc' ) }
                                 autoFocus={ true }
                                 onBlur={ editingLink.action( () => null ) }
                                 onKeyDown={ editingLink.action( clearOnEnter ) }/> }
