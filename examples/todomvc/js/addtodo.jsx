@@ -1,5 +1,4 @@
 import React, { define } from 'react-mvx'
-import { Input } from 'react-mvx/tags'
 
 @define
 export default class AddTodo extends React.Component {

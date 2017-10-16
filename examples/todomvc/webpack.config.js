@@ -16,7 +16,10 @@ var config = {
     devtool : 'source-map',
 
     resolve : {
-        modules : [ '../../node_modules', 'node_modules', 'src' ]
+        modules : [ '../../node_modules', 'node_modules', 'src' ],
+        alias : {
+            'react-mvx' : path.resolve(__dirname, '../..' ),
+        }
     },
 
     module : {
