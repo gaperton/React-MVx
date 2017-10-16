@@ -8,4 +8,4 @@ export interface StoreProto {
     store?: Store;
     Store?: typeof Store;
 }
-export default function process(this: ComponentClass<StoreProto>, definition: StoreDefinition, Class: ComponentClass<StoreProto>): void;
+export default function onDefine(this: ComponentClass<StoreProto>, definition: StoreDefinition, BaseClass: ComponentClass<StoreProto>): void;

@@ -12,13 +12,13 @@ export interface StoreProto {
     Store? : typeof Store
 }
 
-export default function process( this : ComponentClass<StoreProto>, definition : StoreDefinition, Class : ComponentClass<StoreProto> ){
+export default function onDefine( this : ComponentClass<StoreProto>, definition : StoreDefinition, BaseClass : ComponentClass<StoreProto> ){
     let { store, Store : StoreClass } = definition;
 
     if( store && store instanceof Store ){
         // Direct reference to an existing store. Put it to the prototype.
-        Class.prototype.store = store;
-        Class.mixins.merge([ ExternalStoreMixin, ExposeStoreMixin ]);
+        this.prototype.store = store;
+        this.mixins.merge([ ExternalStoreMixin, ExposeStoreMixin ]);
     }
     else if( store || definition.Store ) {
         if( typeof store === 'function' ){
@@ -27,18 +27,18 @@ export default function process( this : ComponentClass<StoreProto>, definition :
         }
 
         if( store ){
-            const BaseClass = StoreClass || Class.prototype.Store || Store;
+            const BaseClass = StoreClass || this.prototype.Store || Store;
             @define class InternalStore extends BaseClass {
                 static attrbutes = store;
             };
 
-            Class.prototype.Store = InternalStore;
+            this.prototype.Store = InternalStore;
         }
         else if( StoreClass ){
-            Class.prototype.Store = StoreClass;
+            this.prototype.Store = StoreClass;
         }
 
-        Class.mixins.merge([ InternalStoreMixin, UpdateOnNestedChangesMixin, ExposeStoreMixin ]);
+        this.mixins.merge([ InternalStoreMixin, UpdateOnNestedChangesMixin, ExposeStoreMixin ]);
     }
 }
 

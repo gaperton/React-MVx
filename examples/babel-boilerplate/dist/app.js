@@ -7497,7 +7497,7 @@ Store.global = new Store();
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = process;
+/* harmony export (immutable) */ __webpack_exports__["a"] = onDefine;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_type_r__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__state__ = __webpack_require__(30);
 var __extends = (this && this.__extends) || (function () {
@@ -7518,12 +7518,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 
 
-function process(definition, Class) {
+function onDefine(definition, BaseClass) {
     var store = definition.store, StoreClass = definition.Store;
     if (store && store instanceof __WEBPACK_IMPORTED_MODULE_0_type_r__["Store"]) {
         // Direct reference to an existing store. Put it to the prototype.
-        Class.prototype.store = store;
-        Class.mixins.merge([ExternalStoreMixin, ExposeStoreMixin]);
+        this.prototype.store = store;
+        this.mixins.merge([ExternalStoreMixin, ExposeStoreMixin]);
     }
     else if (store || definition.Store) {
         if (typeof store === 'function') {
@@ -7531,7 +7531,7 @@ function process(definition, Class) {
             store = void 0;
         }
         if (store) {
-            var BaseClass = StoreClass || Class.prototype.Store || __WEBPACK_IMPORTED_MODULE_0_type_r__["Store"];
+            var BaseClass_1 = StoreClass || this.prototype.Store || __WEBPACK_IMPORTED_MODULE_0_type_r__["Store"];
             var InternalStore = /** @class */ (function (_super) {
                 __extends(InternalStore, _super);
                 function InternalStore() {
@@ -7542,14 +7542,14 @@ function process(definition, Class) {
                     __WEBPACK_IMPORTED_MODULE_0_type_r__["define"]
                 ], InternalStore);
                 return InternalStore;
-            }(BaseClass));
+            }(BaseClass_1));
             ;
-            Class.prototype.Store = InternalStore;
+            this.prototype.Store = InternalStore;
         }
         else if (StoreClass) {
-            Class.prototype.Store = StoreClass;
+            this.prototype.Store = StoreClass;
         }
-        Class.mixins.merge([InternalStoreMixin, __WEBPACK_IMPORTED_MODULE_1__state__["b" /* UpdateOnNestedChangesMixin */], ExposeStoreMixin]);
+        this.mixins.merge([InternalStoreMixin, __WEBPACK_IMPORTED_MODULE_1__state__["b" /* UpdateOnNestedChangesMixin */], ExposeStoreMixin]);
     }
 }
 /**
