@@ -17,11 +17,11 @@
     "babel-preset-react": "*",
     "babel-runtime": "*",
     "css-loader": "*",
-    "react": "../../node_modules/react",
-    "react-dom": "../../node_modules/react",
+    "react": "*",
+    "react-dom": "*",
     "style-loader": "*",
-    "type-r": "../../node_modules/type-r",
-    "react-mvx": "../../",
+    "type-r": "*",
+    "react-mvx": "*",
     "webpack": "*"
   },
   "scripts": {
