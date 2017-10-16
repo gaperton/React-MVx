@@ -16,8 +16,10 @@ export default class AddTodo extends React.Component {
             <header className="header">
                 <h1>todos</h1>
 
-                <Input className="new-todo" placeholder="What needs to be done?" autoFocus
-                       valueLink={ this.state.linkAt( 'desc' ) }
+                <input className="new-todo"
+                       placeholder="What needs to be done?"
+                       autoFocus
+                       { ...this.linkAt( 'desc' ).props }
                        onKeyDown={ e => this.onKeyDown( e ) }
                 />
             </header>
