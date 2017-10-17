@@ -17,9 +17,9 @@ var config = {
 
     resolve : {
         modules : [ '../../node_modules', 'node_modules', 'src' ],
-        alias : {
-            'react-mvx' : path.resolve(__dirname, '../..' ),
-        }
+        // alias : { //use `npm run example-deploy` in main project
+        //     'react-mvx' : path.resolve(__dirname, '../..' )
+        // }
     },
 
     module : {

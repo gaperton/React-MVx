@@ -2,7 +2,7 @@ module.exports = {
     entry : "./lib/index",
 
     output : {
-        filename      : './dist/index.js',
+        filename      : './dist0/index.js',
         library       : "ReactMVx",
         libraryTarget : 'umd'
     },
