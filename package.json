@@ -18,8 +18,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "pull": "git submodule update --remote && cp ./submodules/NestedLink/tags.* . && cp ./submodules/NestedLink/src/* ./src/valuelink",
-    "compile": "./node_modules/.bin/tsc && ./node_modules/.bin/webpack -p",
-    "deploy": "cp -R ./dist ./examples/*/node_modules/react-mvx",
+    "compile": "./node_modules/.bin/tsc && ./node_modules/.bin/rollup --config",
+    "deploy:example": "bash -c 'target=$0/node_modules/react-mvx  &&  mkdir -p $target  &&  cp -R ./dist/ $target  &&  cp ./tags.js* $target'",
+    "deploy:examples": "for exmpl in `ls -d ./examples/*`; do npm run deploy:example $exmpl; done",
     "build": "npm run pull && npm run compile",
     "docs": "~/.composer/vendor/bin/daux --source=docsource --destination=docs"
   },
@@ -42,10 +43,10 @@
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "source-map-loader": "^0.2.2",
-    "ts-loader": "^2.3.7",
+    "rollup": "^0.50.0",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-uglify": "^2.0.1",
     "type-r": "^1.1.0-a16",
-    "typescript": "^2.5.3",
-    "webpack": "^3.7.1"
+    "typescript": "^2.5.3"
   }
 }
