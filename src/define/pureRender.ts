@@ -11,13 +11,15 @@ export function createChangeTokensConstructor( props ) {
     
     PropsChangeTokens.prototype._hasChanges = new Function( 'p', 's', `
         var v;
-        return ( s && s._changeToken !== this._s ) ${ propNames.map( name => ` ||
+        return ( ( s && s._changeToken ) !== this._s ) ${ propNames.map( name => ` ||
             this.${ name } !== ( ( ( v = p.${ name }) && v._changeToken ) || v )
         `).join( '' )};
     `);    
 
     return PropsChangeTokens;
 };
+
+export const EmptyPropsChangeTokensCtor = createChangeTokensConstructor({});
 
 export const PureRenderMixin = {
     shouldComponentUpdate( nextProps ){
