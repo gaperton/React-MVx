@@ -7,6 +7,7 @@
         "outDir": "lib",
         "declaration": true,
         "target": "es5",
+        "importHelpers":true,
         "module": "es6",
         "sourceMap": true,
         "jsx": "react",
