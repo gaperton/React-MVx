@@ -19,8 +19,8 @@
     "react-dom": "*",
     "style-loader": "*",
     "source-map-loader": "*",
-    "type-r": "*",
-    "react-mvx": "*",
+    "type-r": "^2.0.0-rc00",
+    "react-r": "^2.0.0-rc00",
     "webpack": "*"
   },
   "scripts": {

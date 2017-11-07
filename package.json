@@ -13,6 +13,7 @@
   "files": [
     "dist",
     "lib",
+    "src",
     "tags.jsx",
     "tags.js"
   ],

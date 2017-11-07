@@ -1,4 +1,4 @@
-import React, { define } from 'react-mvx'
+import React, { define } from 'react-r'
 import ReactDOM from 'react-dom'
 import { Record } from 'type-r'
 
