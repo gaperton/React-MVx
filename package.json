@@ -1,11 +1,11 @@
 {
-  "name": "react-mvx",
-  "version": "2.0.0-beta.03",
+  "name": "react-r",
+  "version": "2.0.0-rc01",
   "repository": {
     "type": "git",
     "url": "https://github.com/gaperton/React-MVx.git"
   },
-  "description": "React MV* framework",
+  "description": "Type-R bindings for React",
   "main": "./dist/index.js",
   "module": "./lib/index.js",
   "jsnext:main": "./lib/index.js",
@@ -34,24 +34,22 @@
   ],
   "author": "Vlad Balin",
   "license": "MIT",
-  "dependencies":{
-    "tslib":"*"
+  "dependencies": {
+    "type-r": "^2.0.0-rc04",
+    "prop-types": "*",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
   },
   "devDependencies": {
     "@types/prop-types": "^15.5.2",
-    "@types/react": "^16.0.14",
+    "@types/react": "^16.0.20",
     "daux-api-docs-theme": "^1.0.0",
     "handlebars": "^3.0.3",
     "highlight.js": "^8.7.0",
     "marked": "^0.3.5",
-    "prop-types": "^15.6.0",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
     "rollup": "^0.50.0",
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-uglify": "^2.0.1",
-    "tslib": "^1.8.0",
-    "type-r": "^1.1.0-a18",
-    "typescript": "^2.5.3"
+    "typescript": "^2.6.1"
   }
 }
