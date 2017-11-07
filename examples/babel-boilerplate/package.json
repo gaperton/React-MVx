@@ -1,8 +1,6 @@
 {
   "private": true,
-  "dependencies": {
-    "source-maps-loader": "^0.1.9"
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel-cli": "*",
     "babel-core": "*",
@@ -20,6 +18,7 @@
     "react": "*",
     "react-dom": "*",
     "style-loader": "*",
+    "source-map-loader": "*",
     "type-r": "*",
     "react-mvx": "*",
     "webpack": "*"
