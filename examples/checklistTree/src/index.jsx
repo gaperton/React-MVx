@@ -2,11 +2,10 @@ import './styles.css'
 
 // You should import React from react-mvx, and use it as drop-in replacement.
 // It's 100% compatible.
-import React, { define } from 'react-mvx'
+import React, { define } from 'react-r'
 import ReactDOM from 'react-dom'
-
-// Import input controls, modified to support valueLink. Otherwise they behave as standard.
-import { Checkbox, Input } from 'react-mvx'
+import { Record } from 'type-r'
+import { localStorageIO } from 'type-r/endpoints/localStorage'
 
 // Import checklist model definition. Think of "model" as of an observable serializable class.
 import { ChecklistItem } from './model'
@@ -14,29 +13,31 @@ import { ChecklistItem } from './model'
 // Local counter to help us count top-level renders.
 let _renders = 0;
 
-// @define should be places before every class definition, which uses react-mvx features.
-@define class App extends React.Component {
-    // react-mvx state definition. Syntax is the same as type-R model attributes spec.
-    // In fact, this state _is_ the type-R model internally.
-    static state = {
+// react-mvx state definition. Syntax is the same as type-R model attributes spec.
+// In fact, this state _is_ the type-R model internally.
+@define class State extends Record {
+    // The record is persisted in localStorage
+    static endpoint = localStorageIO( "checklistTree" );
+
+    static attributes = {
+        id : "app", // Persistent record needs to have an id
+
         // 'items' is a collection of ChecklistItem model.
         items : ChecklistItem.Collection // <- It's type annotation. Constructor function designates type.
-    };
+    }
+}
+
+// @define should be places before every class definition, which uses react-mvx features.
+@define class App extends React.Component {
+    static State = State;
 
     // Save and restore state.
     componentWillMount(){
-        // All state in react-mvx is serializable by default.
-        const { state } = this,
-              // load raw JSON from local storage
-              json = JSON.parse( localStorage.getItem( 'checklist' ) || "{}" );
+        // Fetch state from the local storage.
+        this.state.fetch();
 
-        // Initialize state with JSON.
-        state.set( json, { parse : true } );
-
-        window.onunload = () =>{
-            // Save state back to the local storage
-            localStorage.setItem( 'checklist', JSON.stringify( state ) );
-        }
+        // Save state to the local storage on unload.
+        window.onunload = () => this.state.save();
     }
 
     render(){

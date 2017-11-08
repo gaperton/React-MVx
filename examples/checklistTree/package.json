@@ -1,9 +1,6 @@
 {
   "private": true,
-  "dependencies": {
-    "todomvc-app-css": "^2.0.0",
-    "todomvc-common": "^1.0.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel-cli": "*",
     "babel-core": "*",
@@ -17,11 +14,14 @@
     "babel-preset-es2015": "*",
     "babel-preset-react": "*",
     "babel-runtime": "*",
-    "css-loader": "*",
-    "style-loader": "*",
-    "webpack": "*",
     "classnames": "*",
-    "react-modal": "*"
+    "css-loader": "*",
+    "react-modal": "^3.1.2",
+    "react-r": "^2.0.0-rc02",
+    "source-map-loader": "*",
+    "style-loader": "*",
+    "type-r": "^2.0.0-rc05",
+    "webpack": "^3.8.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
