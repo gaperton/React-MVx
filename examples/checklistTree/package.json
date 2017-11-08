@@ -16,7 +16,6 @@
     "babel-runtime": "*",
     "classnames": "*",
     "css-loader": "*",
-    "react-modal": "^3.1.2",
     "react-r": "^2.0.0-rc02",
     "source-map-loader": "*",
     "style-loader": "*",

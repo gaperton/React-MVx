@@ -3981,7 +3981,7 @@ var State = (0, _reactR.define)(_class = (_temp = _class2 = function (_Record) {
 
     return State;
 }(_typeR.Record), _class2.endpoint = (0, _localStorage.localStorageIO)("checklistTree"), _class2.attributes = {
-    id: "app",
+    id: "app", // Persistent record needs to have an id
 
     // 'items' is a collection of ChecklistItem model.
     items: _model.ChecklistItem.Collection // <- It's type annotation. Constructor function designates type.
@@ -4003,10 +4003,12 @@ var App = (0, _reactR.define)(_class3 = (_temp2 = _class4 = function (_React$Com
     App.prototype.componentWillMount = function componentWillMount() {
         var _this3 = this;
 
-        // All state in react-mvx is serializable by default.
+        // Fetch state from the local storage.
         this.state.fetch();
+
+        // Save state to the local storage on unload.
         window.onunload = function () {
-            _this3.state.save();
+            return _this3.state.save();
         };
     };
 
