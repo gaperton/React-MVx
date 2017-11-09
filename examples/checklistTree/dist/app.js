@@ -3967,19 +3967,18 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 // Local counter to help us count top-level renders.
 var _renders = 0;
 
-// react-mvx state definition. Syntax is the same as type-R model attributes spec.
-// In fact, this state _is_ the type-R model internally.
+// React-r state definition.
 
-var State = (0, _reactR.define)(_class = (_temp = _class2 = function (_Record) {
-    _inherits(State, _Record);
+var AppState = (0, _reactR.define)(_class = (_temp = _class2 = function (_Record) {
+    _inherits(AppState, _Record);
 
-    function State() {
-        _classCallCheck(this, State);
+    function AppState() {
+        _classCallCheck(this, AppState);
 
         return _possibleConstructorReturn(this, _Record.apply(this, arguments));
     }
 
-    return State;
+    return AppState;
 }(_typeR.Record), _class2.endpoint = (0, _localStorage.localStorageIO)("checklistTree"), _class2.attributes = {
     id: "app", // Persistent record needs to have an id
 
@@ -4037,7 +4036,7 @@ var App = (0, _reactR.define)(_class3 = (_temp2 = _class4 = function (_React$Com
     };
 
     return App;
-}(_reactR2.default.Component), _class4.State = State, _temp2)) || _class3;
+}(_reactR2.default.Component), _class4.State = AppState, _temp2)) || _class3;
 
 // Simple pure component to render the list of checklist items.
 // They must _not_ be prefixed with @define. No magic here, just raw React.

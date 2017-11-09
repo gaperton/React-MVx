@@ -13,10 +13,9 @@ import { ChecklistItem } from './model'
 // Local counter to help us count top-level renders.
 let _renders = 0;
 
-// react-mvx state definition. Syntax is the same as type-R model attributes spec.
-// In fact, this state _is_ the type-R model internally.
-@define class State extends Record {
-    // The record is persisted in localStorage
+// React-r state definition.
+@define class AppState extends Record {
+    // The state is persisted in localStorage
     static endpoint = localStorageIO( "checklistTree" );
 
     static attributes = {
@@ -29,7 +28,7 @@ let _renders = 0;
 
 // @define should be places before every class definition, which uses react-mvx features.
 @define class App extends React.Component {
-    static State = State;
+    static State = AppState;
 
     // Save and restore state.
     componentWillMount(){
