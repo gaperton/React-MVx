@@ -19,7 +19,7 @@
     "react-r": "^2.0.0-rc02",
     "source-map-loader": "*",
     "style-loader": "*",
-    "type-r": "^2.0.0-rc05",
+    "type-r": "^2.0.0",
     "webpack": "^3.8.1"
   },
   "scripts": {

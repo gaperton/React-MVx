@@ -6,6 +6,8 @@ import TodoList from './todolist.jsx'
 import Filter from './filter.jsx'
 import AddTodo from './addtodo.jsx'
 
+@define class State 
+
 @define class App extends React.Component {
     // Declare component state
     static state = {

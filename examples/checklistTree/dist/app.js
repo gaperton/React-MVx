@@ -1273,9 +1273,9 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["c"] = getOwnerEndpoint;
+/* unused harmony export getOwnerEndpoint */
 /* harmony export (immutable) */ __webpack_exports__["b"] = createIOPromise;
-/* harmony export (immutable) */ __webpack_exports__["d"] = startIO;
+/* harmony export (immutable) */ __webpack_exports__["c"] = startIO;
 /* harmony export (immutable) */ __webpack_exports__["a"] = abortIO;
 /* unused harmony export triggerAndBubble */
 function getOwnerEndpoint(self) {
@@ -3288,7 +3288,7 @@ var Collection = (function (_super) {
         var _this = this;
         if (a_options === void 0) { a_options = {}; }
         var options = __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __assign */]({ parse: true }, a_options), endpoint = this.getEndpoint();
-        return Object(__WEBPACK_IMPORTED_MODULE_8__io_tools__["d" /* startIO */])(this, endpoint.list(options, this), options, function (json) {
+        return Object(__WEBPACK_IMPORTED_MODULE_8__io_tools__["c" /* startIO */])(this, endpoint.list(options, this), options, function (json) {
             var result = _this.set(json, __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __assign */]({ parse: true }, options));
             if (options.liveUpdates) {
                 result = _this.liveUpdates(options.liveUpdates);
@@ -6707,6 +6707,8 @@ var Record = (function (_super) {
     Record.defaults = function (attrs) {
         return this.extend({ attributes: attrs });
     };
+    Record.prototype.save = function (options) { throw new Error('Implemented by mixin'); };
+    Record.prototype.destroy = function (options) { throw new Error('Implemented by mixin'); };
     Record.prototype.previousAttributes = function () { return new this.AttributesCopy(this._previousAttributes); };
     Object.defineProperty(Record.prototype, "__inner_state__", {
         get: function () { return this.attributes; },
@@ -6940,7 +6942,6 @@ var Record = (function (_super) {
             _changeEventName: 'change',
             idAttribute: 'id'
         }),
-        Object(__WEBPACK_IMPORTED_MODULE_1__object_plus__["k" /* mixins */])(__WEBPACK_IMPORTED_MODULE_4__io_mixin__["a" /* IORecordMixin */]),
         Object(__WEBPACK_IMPORTED_MODULE_1__object_plus__["h" /* definitions */])({
             defaults: __WEBPACK_IMPORTED_MODULE_1__object_plus__["j" /* mixinRules */].merge,
             attributes: __WEBPACK_IMPORTED_MODULE_1__object_plus__["j" /* mixinRules */].merge,
@@ -6954,7 +6955,7 @@ var Record = (function (_super) {
 }(__WEBPACK_IMPORTED_MODULE_2__transactions__["b" /* Transactional */]));
 
 ;
-assign(Record.prototype, __WEBPACK_IMPORTED_MODULE_3__attributes__["n" /* UpdateRecordMixin */]);
+assign(Record.prototype, __WEBPACK_IMPORTED_MODULE_3__attributes__["n" /* UpdateRecordMixin */], __WEBPACK_IMPORTED_MODULE_4__io_mixin__["a" /* IORecordMixin */]);
 var BaseRecordAttributes = (function () {
     function BaseRecordAttributes(record, x, options) {
         this.id = x.id;
@@ -7512,14 +7513,11 @@ function ignore() { }
 
 
 var IORecordMixin = {
-    getEndpoint: function () {
-        return Object(__WEBPACK_IMPORTED_MODULE_1__io_tools__["c" /* getOwnerEndpoint */])(this) || this._endpoint;
-    },
     save: function (options) {
         var _this = this;
         if (options === void 0) { options = {}; }
         var endpoint = this.getEndpoint(), json = this.toJSON();
-        return Object(__WEBPACK_IMPORTED_MODULE_1__io_tools__["d" /* startIO */])(this, this.isNew() ?
+        return Object(__WEBPACK_IMPORTED_MODULE_1__io_tools__["c" /* startIO */])(this, this.isNew() ?
             endpoint.create(json, options, this) :
             endpoint.update(this.id, json, options, this), options, function (update) {
             _this.set(update, __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __assign */]({ parse: true }, options));
@@ -7528,12 +7526,12 @@ var IORecordMixin = {
     fetch: function (options) {
         var _this = this;
         if (options === void 0) { options = {}; }
-        return Object(__WEBPACK_IMPORTED_MODULE_1__io_tools__["d" /* startIO */])(this, this.getEndpoint().read(this.id, options, this), options, function (json) { return _this.set(json, __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __assign */]({ parse: true }, options)); });
+        return Object(__WEBPACK_IMPORTED_MODULE_1__io_tools__["c" /* startIO */])(this, this.getEndpoint().read(this.id, options, this), options, function (json) { return _this.set(json, __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __assign */]({ parse: true }, options)); });
     },
     destroy: function (options) {
         var _this = this;
         if (options === void 0) { options = {}; }
-        return Object(__WEBPACK_IMPORTED_MODULE_1__io_tools__["d" /* startIO */])(this, this.getEndpoint().destroy(this.id, options, this), options, function () {
+        return Object(__WEBPACK_IMPORTED_MODULE_1__io_tools__["c" /* startIO */])(this, this.getEndpoint().destroy(this.id, options, this), options, function () {
             var collection = _this.collection;
             if (collection) {
                 collection.remove(_this, options);
