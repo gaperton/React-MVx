@@ -17,11 +17,17 @@
     "babel-preset-es2015": "*",
     "babel-preset-react": "*",
     "babel-runtime": "*",
-    "css-loader": "*",
-    "style-loader": "*",
-    "webpack": "*",
     "classnames": "*",
-    "react-modal": "*"
+    "css-loader": "*",
+    "prop-types": "*",
+    "react": "*",
+    "react-dom": "*",
+    "react-modal": "^3.1.2",
+    "react-type-r": "*",
+    "source-map-loader": "^0.2.3",
+    "style-loader": "*",
+    "type-r": "^2.0.1",
+    "webpack": "^3.8.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

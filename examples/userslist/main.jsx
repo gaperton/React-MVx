@@ -1,19 +1,20 @@
 import './main.css'
 import ReactDOM from 'react-dom'
 
-import React, { Link } from 'react-mvx'
+import React, { Link } from 'react-type-r'
 import { Record, define } from 'type-r'
+import { localStorageIO } from 'type-r/endpoints/localStorage'
 
 import Modal from 'react-modal'
-import {Input, isRequired, isEmail } from 'react-mvx/tags'
+
+const Email = String.has.check( x => !x || x.indexOf( '@' ) >= 0, 'Must be valid e-mail' );
 
 @define class User extends Record {
     static attributes = {
         name : String.isRequired
                     .has.check( x => x.indexOf( ' ' ) < 0, 'Spaces are not allowed' ),
 
-        email : String.isRequired
-                    .has.check( isEmail ),
+        email : Email.isRequired,
 
         isActive : true
     }
@@ -21,12 +22,24 @@ import {Input, isRequired, isEmail } from 'react-mvx/tags'
     remove(){ this.collection.remove( this ); }
 }
 
-@define
-export class UsersList extends React.Component {
-    static state = {
+@define class AppState extends Record {
+    static endpoint = localStorageIO( '/react-type-r/examples' );
+
+    static attributes = {
+        id : 'users-list',
         users   : User.Collection, // No comments required, isn't it?
         editing : User.from( 'users' ), // User from user collection, which is being edited.
         adding  : User.shared.value( null ) // New user, which is being added.
+    }
+}
+
+@define
+export class UsersList extends React.Component {
+    static State = AppState;
+
+    componentWillMount(){
+        this.state.fetch();
+        window.onunload = () => this.state.save();
     }
 
     render(){
@@ -119,7 +132,7 @@ const UserRow = ( { user, onEdit } ) =>(
                 </label>
 
                 <label>
-                    Is active: <Input type="checkbox" checkedLink={ linked.isActive }/>
+                    Is active: <input type="checkbox" { ...linked.isActive.props }/>
                 </label>
 
                 <button type="submit" disabled={ !user.isValid() }>
@@ -133,11 +146,11 @@ const UserRow = ( { user, onEdit } ) =>(
     }
 }
 
-const ValidatedInput = ( props ) => (
+const ValidatedInput = ({ valueLink, ...props }) => (
     <div>
-        <Input { ...props } />
+        <input {...valueLink.props} { ...props } />
         <div className="validation-error">
-            { props.valueLink.error || '' }
+            { valueLink.error || '' }
         </div>
     </div>
 );
