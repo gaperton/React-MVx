@@ -1,6 +1,6 @@
 {
-  "name": "react-r",
-  "version": "2.0.0-rc02",
+  "name": "react-type-r",
+  "version": "2.0.0-rc03",
   "repository": {
     "type": "git",
     "url": "https://github.com/gaperton/React-MVx.git"
@@ -39,11 +39,11 @@
     "prop-types": "*",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
-    "type-r": "^2.0.0"
+    "type-r": "^2.0.1"
   },
   "devDependencies": {
     "@types/prop-types": "^15.5.2",
-    "@types/react": "^16.0.22",
+    "@types/react": "^16.0.23",
     "daux-api-docs-theme": "^1.0.0",
     "handlebars": "^3.0.3",
     "highlight.js": "^8.7.0",
