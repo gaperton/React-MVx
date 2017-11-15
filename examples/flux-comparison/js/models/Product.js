@@ -1,19 +1,18 @@
-import { Model } from 'nestedtypes'
+import { define, Record } from 'type-r'
 import shop from '../../../common/api/shop'
 
-const Product = Model.extend( {
-    attributes : {
+@define
+export default class Product extends Record {
+    static attributes = {
         image     : String,
         title     : String,
         price     : Number,
         inventory : Number
-    },
+    };
 
-    collection : {
+    static collection = {
         fetch(){
             shop.getProducts( products => this.reset( products, { parse : true } ) );
         }
     }
-} );
-
-export default Product;
+}

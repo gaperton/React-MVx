@@ -1,4 +1,4 @@
-import React           from 'nestedreact'
+import React           from 'react-type-r'
 import CCart           from '../../../common/components/Cart.jsx'
 
 const CartContainer = ( { cart } ) => (

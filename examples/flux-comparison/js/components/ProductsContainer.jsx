@@ -1,7 +1,7 @@
-import React           from 'nestedreact'
-
+import React           from 'react-type-r'
 import CProductItem    from '../../../common/components/ProductItem.jsx'
 import CProductsList   from '../../../common/components/ProductsList.jsx'
+
 
 const ProductsContainer = ( { products, addToCart } ) =>(
     <CProductsList title="Flux Shop Demo (NestedReact)">

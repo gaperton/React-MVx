@@ -1,4 +1,4 @@
-import React           from 'nestedreact'
+import React, { define } from 'react-type-r'
 
 import ProductsContainer from './ProductsContainer.jsx'
 import CartContainer     from './CartContainer.jsx'
@@ -6,19 +6,20 @@ import CartContainer     from './CartContainer.jsx'
 import Cart from '../models/Cart'
 import Product from '../models/Product'
 
-const App = React.createClass( {
+@define
+export default class App extends React.Component {
     // Declare application's state
     // UI will be updated automatically on every state,
     // deep changes will be detected too.
-    state : {
+    static state = {
         cart     : Cart,
         products : Product.Collection
-    },
+    }
 
     componentWillMount(){
         // fetch data on application start...
         this.state.products.fetch();
-    },
+    }
 
     render(){
         const { state } = this;
@@ -31,6 +32,4 @@ const App = React.createClass( {
             </div>
         );
     }
-} );
-
-export default App;
+}
