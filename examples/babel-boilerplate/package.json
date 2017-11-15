@@ -17,7 +17,7 @@
     "css-loader": "*",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
-    "react-type-r": "^2.0.0-rc02",
+    "react-type-r": "^2.0.0-rc04",
     "source-map-loader": "*",
     "style-loader": "*",
     "type-r": "^2.0.1",

@@ -1832,16 +1832,16 @@ function triggerAndBubble(eventSource) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["d"] = dispose;
+/* unused harmony export dispose */
 /* harmony export (immutable) */ __webpack_exports__["c"] = convertAndAquire;
-/* harmony export (immutable) */ __webpack_exports__["e"] = free;
-/* harmony export (immutable) */ __webpack_exports__["f"] = freeAll;
-/* harmony export (immutable) */ __webpack_exports__["i"] = sortElements;
+/* harmony export (immutable) */ __webpack_exports__["d"] = free;
+/* harmony export (immutable) */ __webpack_exports__["e"] = freeAll;
+/* harmony export (immutable) */ __webpack_exports__["h"] = sortElements;
 /* harmony export (immutable) */ __webpack_exports__["b"] = addIndex;
-/* harmony export (immutable) */ __webpack_exports__["h"] = removeIndex;
-/* harmony export (immutable) */ __webpack_exports__["j"] = updateIndex;
+/* harmony export (immutable) */ __webpack_exports__["g"] = removeIndex;
+/* harmony export (immutable) */ __webpack_exports__["i"] = updateIndex;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CollectionTransaction; });
-/* harmony export (immutable) */ __webpack_exports__["g"] = logAggregationError;
+/* harmony export (immutable) */ __webpack_exports__["f"] = logAggregationError;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__transactions__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__object_plus__ = __webpack_require__(1);
 
@@ -3117,7 +3117,7 @@ var Collection = (function (_super) {
             return;
         var idAttribute = this.idAttribute;
         if (record.hasChanged(idAttribute)) {
-            Object(__WEBPACK_IMPORTED_MODULE_4__commons__["j" /* updateIndex */])(this._byId, record);
+            Object(__WEBPACK_IMPORTED_MODULE_4__commons__["i" /* updateIndex */])(this._byId, record);
         }
         var isRoot = begin(this);
         if (markAsDirty(this, options)) {
@@ -3263,7 +3263,7 @@ var Collection = (function (_super) {
         var aggregated = !this._shared;
         for (var _i = 0, _a = this.models; _i < _a.length; _i++) {
             var record = _a[_i];
-            Object(__WEBPACK_IMPORTED_MODULE_4__commons__["e" /* free */])(this, record);
+            Object(__WEBPACK_IMPORTED_MODULE_4__commons__["d" /* free */])(this, record);
             if (aggregated)
                 record.dispose();
         }
@@ -3272,12 +3272,21 @@ var Collection = (function (_super) {
     };
     Collection.prototype.reset = function (a_elements, options) {
         if (options === void 0) { options = {}; }
-        var isRoot = begin(this), previousModels = Object(__WEBPACK_IMPORTED_MODULE_4__commons__["d" /* dispose */])(this);
+        var isRoot = begin(this), previousModels = this.models;
         if (a_elements) {
             Object(__WEBPACK_IMPORTED_MODULE_6__set__["a" /* emptySetTransaction */])(this, toElements(this, a_elements, options), options, true);
         }
+        else {
+            this._byId = {};
+            this.models = [];
+        }
         markAsDirty(this, options);
         options.silent || trigger2(this, 'reset', this, defaults({ previousModels: previousModels }, options));
+        var _byId = this._byId;
+        for (var _i = 0, previousModels_1 = previousModels; _i < previousModels_1.length; _i++) {
+            var toDispose = previousModels_1[_i];
+            _byId[toDispose.cid] || Object(__WEBPACK_IMPORTED_MODULE_4__commons__["d" /* free */])(this, toDispose);
+        }
         isRoot && commit(this);
         return this.models;
     };
@@ -3317,7 +3326,7 @@ var Collection = (function (_super) {
     };
     Collection.prototype.sort = function (options) {
         if (options === void 0) { options = {}; }
-        if (Object(__WEBPACK_IMPORTED_MODULE_4__commons__["i" /* sortElements */])(this, options)) {
+        if (Object(__WEBPACK_IMPORTED_MODULE_4__commons__["h" /* sortElements */])(this, options)) {
             var isRoot = begin(this);
             if (markAsDirty(this, options)) {
                 trigger2(this, 'sort', this, options);
@@ -3896,9 +3905,9 @@ module.exports = focusNode;
 
 var _class, _class2, _temp, _class3, _class4, _temp2;
 
-var _reactR = __webpack_require__(37);
+var _reactTypeR = __webpack_require__(37);
 
-var _reactR2 = _interopRequireDefault(_reactR);
+var _reactTypeR2 = _interopRequireDefault(_reactTypeR);
 
 var _reactDom = __webpack_require__(65);
 
@@ -3916,7 +3925,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Item = (0, _reactR.define)(_class = (_temp = _class2 = function (_Record) {
+var Item = (0, _reactTypeR.define)(_class = (_temp = _class2 = function (_Record) {
     _inherits(Item, _Record);
 
     function Item() {
@@ -3930,7 +3939,7 @@ var Item = (0, _reactR.define)(_class = (_temp = _class2 = function (_Record) {
     text: String
 }, _temp)) || _class;
 
-var Application = (0, _reactR.define)(_class3 = (_temp2 = _class4 = function (_React$Component) {
+var Application = (0, _reactTypeR.define)(_class3 = (_temp2 = _class4 = function (_React$Component) {
     _inherits(Application, _React$Component);
 
     function Application() {
@@ -3943,10 +3952,10 @@ var Application = (0, _reactR.define)(_class3 = (_temp2 = _class4 = function (_R
         var state = this.state;
 
 
-        return _reactR2.default.createElement(
+        return _reactTypeR2.default.createElement(
             'div',
             null,
-            _reactR2.default.createElement(
+            _reactTypeR2.default.createElement(
                 'button',
                 { onClick: function onClick() {
                         return state.items.add({});
@@ -3954,22 +3963,22 @@ var Application = (0, _reactR.define)(_class3 = (_temp2 = _class4 = function (_R
                 'Add'
             ),
             state.items.map(function (item) {
-                return _reactR2.default.createElement(ItemView, { key: item.cid, item: item });
+                return _reactTypeR2.default.createElement(ItemView, { key: item.cid, item: item });
             })
         );
     };
 
     return Application;
-}(_reactR2.default.Component), _class4.state = {
+}(_reactTypeR2.default.Component), _class4.state = {
     items: Item.Collection
 }, _temp2)) || _class3;
 
 var ItemView = function ItemView(_ref) {
     var item = _ref.item;
-    return _reactR2.default.createElement('input', item.linkAt('text').props);
+    return _reactTypeR2.default.createElement('input', item.linkAt('text').props);
 };
 
-_reactDom2.default.render(_reactR2.default.createElement(Application, null), document.getElementById('react-application'));
+_reactDom2.default.render(_reactTypeR2.default.createElement(Application, null), document.getElementById('react-application'));
 
 /***/ }),
 /* 37 */
@@ -6469,7 +6478,7 @@ function addTransaction(collection, items, options, merge) {
             return new __WEBPACK_IMPORTED_MODULE_1__commons__["a" /* CollectionTransaction */](collection, isRoot, added, [], nested, needSort);
         }
         if (collection._aggregationError)
-            Object(__WEBPACK_IMPORTED_MODULE_1__commons__["g" /* logAggregationError */])(collection);
+            Object(__WEBPACK_IMPORTED_MODULE_1__commons__["f" /* logAggregationError */])(collection);
     }
     isRoot && commit(collection);
 }
@@ -6488,7 +6497,7 @@ function sortOrMoveElements(collection, added, options) {
         moveElements(collection.models, at, added);
         return false;
     }
-    return Object(__WEBPACK_IMPORTED_MODULE_1__commons__["i" /* sortElements */])(collection, options);
+    return Object(__WEBPACK_IMPORTED_MODULE_1__commons__["h" /* sortElements */])(collection, options);
 }
 function moveElements(source, at, added) {
     for (var j = source.length - 1, i = j - added.length; i >= at; i--, j--) {
@@ -6509,7 +6518,7 @@ function appendElements(collection, a_items, nested, a_options, forceMerge) {
                 var transaction = model._createTransaction(attrs, a_options);
                 transaction && nested.push(transaction);
                 if (model.hasChanged(idAttribute)) {
-                    Object(__WEBPACK_IMPORTED_MODULE_1__commons__["j" /* updateIndex */])(_byId, model);
+                    Object(__WEBPACK_IMPORTED_MODULE_1__commons__["i" /* updateIndex */])(_byId, model);
                 }
             }
         }
@@ -6540,12 +6549,12 @@ function emptySetTransaction(collection, items, options, silent) {
     var isRoot = begin(collection);
     var added = _reallocateEmpty(collection, items, options);
     if (added.length) {
-        var needSort = Object(__WEBPACK_IMPORTED_MODULE_1__commons__["i" /* sortElements */])(collection, options);
+        var needSort = Object(__WEBPACK_IMPORTED_MODULE_1__commons__["h" /* sortElements */])(collection, options);
         if (markAsDirty(collection, silent ? silentOptions : options)) {
             return new __WEBPACK_IMPORTED_MODULE_1__commons__["a" /* CollectionTransaction */](collection, isRoot, added.slice(), [], [], needSort);
         }
         if (collection._aggregationError)
-            Object(__WEBPACK_IMPORTED_MODULE_1__commons__["g" /* logAggregationError */])(collection);
+            Object(__WEBPACK_IMPORTED_MODULE_1__commons__["f" /* logAggregationError */])(collection);
     }
     isRoot && commit(collection);
 }
@@ -6554,14 +6563,14 @@ function setTransaction(collection, items, options) {
     var isRoot = begin(collection), nested = [];
     var previous = collection.models, added = _reallocate(collection, items, nested, options);
     var reusedCount = collection.models.length - added.length, removed = reusedCount < previous.length ? (reusedCount ? _garbageCollect(collection, previous) :
-        Object(__WEBPACK_IMPORTED_MODULE_1__commons__["f" /* freeAll */])(collection, previous)) : [];
-    var addedOrChanged = nested.length || added.length, sorted = (Object(__WEBPACK_IMPORTED_MODULE_1__commons__["i" /* sortElements */])(collection, options) && addedOrChanged) || added.length || options.sorted;
+        Object(__WEBPACK_IMPORTED_MODULE_1__commons__["e" /* freeAll */])(collection, previous)) : [];
+    var addedOrChanged = nested.length || added.length, sorted = (Object(__WEBPACK_IMPORTED_MODULE_1__commons__["h" /* sortElements */])(collection, options) && addedOrChanged) || added.length || options.sorted;
     if (addedOrChanged || removed.length || sorted) {
         if (markAsDirty(collection, options)) {
             return new __WEBPACK_IMPORTED_MODULE_1__commons__["a" /* CollectionTransaction */](collection, isRoot, added, removed, nested, sorted);
         }
         if (collection._aggregationError)
-            Object(__WEBPACK_IMPORTED_MODULE_1__commons__["g" /* logAggregationError */])(collection);
+            Object(__WEBPACK_IMPORTED_MODULE_1__commons__["f" /* logAggregationError */])(collection);
     }
     isRoot && commit(collection);
 }
@@ -6572,7 +6581,7 @@ function _garbageCollect(collection, previous) {
         var record = previous_1[_i];
         if (!_byId[record.cid]) {
             removed.push(record);
-            Object(__WEBPACK_IMPORTED_MODULE_1__commons__["e" /* free */])(collection, record);
+            Object(__WEBPACK_IMPORTED_MODULE_1__commons__["d" /* free */])(collection, record);
         }
     }
     return removed;
@@ -6646,13 +6655,13 @@ function removeOne(collection, el, options) {
     if (model) {
         var isRoot = begin(collection), models = collection.models;
         models.splice(models.indexOf(model), 1);
-        Object(__WEBPACK_IMPORTED_MODULE_0__commons__["h" /* removeIndex */])(collection._byId, model);
+        Object(__WEBPACK_IMPORTED_MODULE_0__commons__["g" /* removeIndex */])(collection._byId, model);
         var notify = markAsDirty(collection, options);
         if (notify) {
             trigger3(model, 'remove', model, collection, options);
             trigger3(collection, 'remove', model, collection, options);
         }
-        Object(__WEBPACK_IMPORTED_MODULE_0__commons__["e" /* free */])(collection, model, options.unset);
+        Object(__WEBPACK_IMPORTED_MODULE_0__commons__["d" /* free */])(collection, model, options.unset);
         notify && trigger2(collection, 'update', collection, options);
         isRoot && commit(collection);
         return model;
@@ -6681,8 +6690,8 @@ function _removeFromIndex(collection, toRemove, unset) {
         var model = collection.get(toRemove[i]);
         if (model) {
             removed[j++] = model;
-            Object(__WEBPACK_IMPORTED_MODULE_0__commons__["h" /* removeIndex */])(_byId, model);
-            Object(__WEBPACK_IMPORTED_MODULE_0__commons__["e" /* free */])(collection, model, unset);
+            Object(__WEBPACK_IMPORTED_MODULE_0__commons__["g" /* removeIndex */])(_byId, model);
+            Object(__WEBPACK_IMPORTED_MODULE_0__commons__["d" /* free */])(collection, model, unset);
         }
     }
     removed.length = j;
