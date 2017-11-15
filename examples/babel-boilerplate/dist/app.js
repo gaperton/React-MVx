@@ -3905,9 +3905,9 @@ module.exports = focusNode;
 
 var _class, _class2, _temp, _class3, _class4, _temp2;
 
-var _reactTypeR = __webpack_require__(37);
+var _reactMvx = __webpack_require__(37);
 
-var _reactTypeR2 = _interopRequireDefault(_reactTypeR);
+var _reactMvx2 = _interopRequireDefault(_reactMvx);
 
 var _reactDom = __webpack_require__(65);
 
@@ -3925,7 +3925,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Item = (0, _reactTypeR.define)(_class = (_temp = _class2 = function (_Record) {
+var Item = (0, _reactMvx.define)(_class = (_temp = _class2 = function (_Record) {
     _inherits(Item, _Record);
 
     function Item() {
@@ -3939,7 +3939,7 @@ var Item = (0, _reactTypeR.define)(_class = (_temp = _class2 = function (_Record
     text: String
 }, _temp)) || _class;
 
-var Application = (0, _reactTypeR.define)(_class3 = (_temp2 = _class4 = function (_React$Component) {
+var Application = (0, _reactMvx.define)(_class3 = (_temp2 = _class4 = function (_React$Component) {
     _inherits(Application, _React$Component);
 
     function Application() {
@@ -3952,10 +3952,10 @@ var Application = (0, _reactTypeR.define)(_class3 = (_temp2 = _class4 = function
         var state = this.state;
 
 
-        return _reactTypeR2.default.createElement(
+        return _reactMvx2.default.createElement(
             'div',
             null,
-            _reactTypeR2.default.createElement(
+            _reactMvx2.default.createElement(
                 'button',
                 { onClick: function onClick() {
                         return state.items.add({});
@@ -3963,22 +3963,22 @@ var Application = (0, _reactTypeR.define)(_class3 = (_temp2 = _class4 = function
                 'Add'
             ),
             state.items.map(function (item) {
-                return _reactTypeR2.default.createElement(ItemView, { key: item.cid, item: item });
+                return _reactMvx2.default.createElement(ItemView, { key: item.cid, item: item });
             })
         );
     };
 
     return Application;
-}(_reactTypeR2.default.Component), _class4.state = {
+}(_reactMvx2.default.Component), _class4.state = {
     items: Item.Collection
 }, _temp2)) || _class3;
 
 var ItemView = function ItemView(_ref) {
     var item = _ref.item;
-    return _reactTypeR2.default.createElement('input', item.linkAt('text').props);
+    return _reactMvx2.default.createElement('input', item.linkAt('text').props);
 };
 
-_reactDom2.default.render(_reactTypeR2.default.createElement(Application, null), document.getElementById('react-application'));
+_reactDom2.default.render(_reactMvx2.default.createElement(Application, null), document.getElementById('react-application'));
 
 /***/ }),
 /* 37 */

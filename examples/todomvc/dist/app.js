@@ -4032,9 +4032,9 @@ var _class, _class2, _temp, _class3, _class4, _temp2;
 
 __webpack_require__(39);
 
-var _reactTypeR = __webpack_require__(12);
+var _reactMvx = __webpack_require__(12);
 
-var _reactTypeR2 = _interopRequireDefault(_reactTypeR);
+var _reactMvx2 = _interopRequireDefault(_reactMvx);
 
 var _typeR = __webpack_require__(4);
 
@@ -4067,7 +4067,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 // Declare component state
-var AppState = (0, _reactTypeR.define)(_class = (_temp = _class2 = function (_Record) {
+var AppState = (0, _reactMvx.define)(_class = (_temp = _class2 = function (_Record) {
     _inherits(AppState, _Record);
 
     function AppState() {
@@ -4077,13 +4077,13 @@ var AppState = (0, _reactTypeR.define)(_class = (_temp = _class2 = function (_Re
     }
 
     return AppState;
-}(_typeR.Record), _class2.endpoint = (0, _localStorage.localStorageIO)('/react-type-r/examples'), _class2.attributes = {
+}(_typeR.Record), _class2.endpoint = (0, _localStorage.localStorageIO)('/react-mvx/examples'), _class2.attributes = {
     id: 'todoMVC',
     todos: _model.ToDo.Collection,
     filterDone: Boolean.value(null) // null | true | false, initialized with null.
 }, _temp)) || _class;
 
-var App = (0, _reactTypeR.define)(_class3 = (_temp2 = _class4 = function (_React$Component) {
+var App = (0, _reactMvx.define)(_class3 = (_temp2 = _class4 = function (_React$Component) {
     _inherits(App, _React$Component);
 
     function App() {
@@ -4108,57 +4108,57 @@ var App = (0, _reactTypeR.define)(_class3 = (_temp2 = _class4 = function (_React
             hasTodos = Boolean(todos.length);
 
 
-        return _reactTypeR2.default.createElement(
+        return _reactMvx2.default.createElement(
             'div',
             null,
-            _reactTypeR2.default.createElement(
+            _reactMvx2.default.createElement(
                 'section',
                 { className: 'todoapp' },
-                _reactTypeR2.default.createElement(_addtodo2.default, { onEnter: function onEnter(desc) {
+                _reactMvx2.default.createElement(_addtodo2.default, { onEnter: function onEnter(desc) {
                         return todos.add({ desc: desc });
                     } }),
-                hasTodos && _reactTypeR2.default.createElement(_todolist2.default, { todos: todos,
+                hasTodos && _reactMvx2.default.createElement(_todolist2.default, { todos: todos,
                     filterDone: filterDone }),
-                hasTodos && _reactTypeR2.default.createElement(_filter2.default, { count: todos.activeCount,
+                hasTodos && _reactMvx2.default.createElement(_filter2.default, { count: todos.activeCount,
                     filterLink: this.state.linkAt('filterDone'),
                     onClear: function onClear() {
                         return todos.clearCompleted();
                     }
                 })
             ),
-            _reactTypeR2.default.createElement(
+            _reactMvx2.default.createElement(
                 'footer',
                 { className: 'info' },
-                _reactTypeR2.default.createElement(
+                _reactMvx2.default.createElement(
                     'p',
                     null,
                     'Double-click to edit a todo'
                 ),
-                _reactTypeR2.default.createElement(
+                _reactMvx2.default.createElement(
                     'p',
                     null,
                     'Template by ',
-                    _reactTypeR2.default.createElement(
+                    _reactMvx2.default.createElement(
                         'a',
                         { href: 'http://sindresorhus.com' },
                         'Sindre Sorhus'
                     )
                 ),
-                _reactTypeR2.default.createElement(
+                _reactMvx2.default.createElement(
                     'p',
                     null,
                     'Created by ',
-                    _reactTypeR2.default.createElement(
+                    _reactMvx2.default.createElement(
                         'a',
                         { href: 'http://todomvc.com' },
                         'Vlad Balin'
                     )
                 ),
-                _reactTypeR2.default.createElement(
+                _reactMvx2.default.createElement(
                     'p',
                     null,
                     'Part of ',
-                    _reactTypeR2.default.createElement(
+                    _reactMvx2.default.createElement(
                         'a',
                         { href: 'http://todomvc.com' },
                         'TodoMVC'
@@ -4169,9 +4169,9 @@ var App = (0, _reactTypeR.define)(_class3 = (_temp2 = _class4 = function (_React
     };
 
     return App;
-}(_reactTypeR2.default.Component), _class4.State = AppState, _temp2)) || _class3;
+}(_reactMvx2.default.Component), _class4.State = AppState, _temp2)) || _class3;
 
-_reactDom2.default.render(_reactTypeR2.default.createElement(App, null), document.getElementById('app-mount-root'));
+_reactDom2.default.render(_reactMvx2.default.createElement(App, null), document.getElementById('app-mount-root'));
 
 /***/ }),
 /* 39 */
@@ -25070,9 +25070,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _class, _class2, _temp;
 
-var _reactTypeR = __webpack_require__(12);
+var _reactMvx = __webpack_require__(12);
 
-var _reactTypeR2 = _interopRequireDefault(_reactTypeR);
+var _reactMvx2 = _interopRequireDefault(_reactMvx);
 
 var _classnames = __webpack_require__(81);
 
@@ -25088,7 +25088,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var TodoList = (0, _reactTypeR.define)(_class = (_temp = _class2 = function (_React$Component) {
+var TodoList = (0, _reactMvx.define)(_class = (_temp = _class2 = function (_React$Component) {
     _inherits(TodoList, _React$Component);
 
     function TodoList() {
@@ -25107,23 +25107,23 @@ var TodoList = (0, _reactTypeR.define)(_class = (_temp = _class2 = function (_Re
             editingLink = this.state.linkAt('editing');
 
 
-        return _reactTypeR2.default.createElement(
+        return _reactMvx2.default.createElement(
             'section',
             { className: 'main' },
-            _reactTypeR2.default.createElement('input', _extends({ type: 'checkbox',
+            _reactMvx2.default.createElement('input', _extends({ type: 'checkbox',
                 className: 'toggle-all',
                 id: 'toggle-all'
             }, todos.linkAt('allDone').props)),
-            _reactTypeR2.default.createElement(
+            _reactMvx2.default.createElement(
                 'label',
                 { htmlFor: 'toggle-all' },
                 'Mark all as complete'
             ),
-            _reactTypeR2.default.createElement(
+            _reactMvx2.default.createElement(
                 'ul',
                 { className: 'todo-list' },
                 filtered.map(function (todo) {
-                    return _reactTypeR2.default.createElement(TodoItem, { key: todo.cid,
+                    return _reactMvx2.default.createElement(TodoItem, { key: todo.cid,
                         todo: todo,
                         editingLink: editingLink });
                 })
@@ -25132,7 +25132,7 @@ var TodoList = (0, _reactTypeR.define)(_class = (_temp = _class2 = function (_Re
     };
 
     return TodoList;
-}(_reactTypeR2.default.Component), _class2.props = {
+}(_reactMvx2.default.Component), _class2.props = {
     todos: _model.ToDo.Collection,
     filterDone: Boolean
 }, _class2.state = {
@@ -25157,28 +25157,28 @@ var TodoItem = function TodoItem(_ref) {
         'editing': editing
     });
 
-    return _reactTypeR2.default.createElement(
+    return _reactMvx2.default.createElement(
         'li',
         { className: className },
-        _reactTypeR2.default.createElement(
+        _reactMvx2.default.createElement(
             'div',
             { className: 'view' },
-            _reactTypeR2.default.createElement('input', _extends({ type: 'checkbox',
+            _reactMvx2.default.createElement('input', _extends({ type: 'checkbox',
                 className: 'toggle'
             }, todo.linkAt('done').props)),
-            _reactTypeR2.default.createElement(
+            _reactMvx2.default.createElement(
                 'label',
                 { onDoubleClick: editingLink.action(function () {
                         return todo;
                     }) },
                 todo.desc
             ),
-            _reactTypeR2.default.createElement('button', { className: 'destroy',
+            _reactMvx2.default.createElement('button', { className: 'destroy',
                 onClick: function onClick() {
                     return todo.remove();
                 } })
         ),
-        editing && _reactTypeR2.default.createElement('input', _extends({ className: 'edit'
+        editing && _reactMvx2.default.createElement('input', _extends({ className: 'edit'
         }, todo.linkAt('desc').props, {
             autoFocus: true,
             onBlur: editingLink.action(function () {
@@ -25255,9 +25255,9 @@ exports.__esModule = true;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _reactTypeR = __webpack_require__(12);
+var _reactMvx = __webpack_require__(12);
 
-var _reactTypeR2 = _interopRequireDefault(_reactTypeR);
+var _reactMvx2 = _interopRequireDefault(_reactMvx);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -25267,42 +25267,42 @@ var Filter = function Filter(_ref) {
     var count = _ref.count,
         filterLink = _ref.filterLink,
         onClear = _ref.onClear;
-    return _reactTypeR2.default.createElement(
+    return _reactMvx2.default.createElement(
         "footer",
         { className: "footer" },
-        _reactTypeR2.default.createElement(
+        _reactMvx2.default.createElement(
             "span",
             { className: "todo-count" },
-            _reactTypeR2.default.createElement(
+            _reactMvx2.default.createElement(
                 "strong",
                 null,
                 count
             ),
             " item left"
         ),
-        _reactTypeR2.default.createElement(
+        _reactMvx2.default.createElement(
             "ul",
             { className: "filters" },
-            _reactTypeR2.default.createElement(
+            _reactMvx2.default.createElement(
                 Radio,
                 { checkedLink: filterLink.equals(null),
                     href: "#/" },
                 "All"
             ),
-            _reactTypeR2.default.createElement(
+            _reactMvx2.default.createElement(
                 Radio,
                 { checkedLink: filterLink.equals(false),
                     href: "#/active" },
                 "Active"
             ),
-            _reactTypeR2.default.createElement(
+            _reactMvx2.default.createElement(
                 Radio,
                 { checkedLink: filterLink.equals(true),
                     href: "#/completed" },
                 "Completed"
             )
         ),
-        _reactTypeR2.default.createElement(
+        _reactMvx2.default.createElement(
             "button",
             { className: "clear-completed",
                 onClick: onClear },
@@ -25319,10 +25319,10 @@ var Radio = function Radio(_ref2) {
         children = _ref2.children,
         props = _objectWithoutProperties(_ref2, ["checkedLink", "children"]);
 
-    return _reactTypeR2.default.createElement(
+    return _reactMvx2.default.createElement(
         "li",
         null,
-        _reactTypeR2.default.createElement(
+        _reactMvx2.default.createElement(
             "a",
             _extends({ className: checkedLink.value ? 'selected' : '',
                 onClick: function onClick() {
@@ -25349,9 +25349,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _class, _class2, _temp;
 
-var _reactTypeR = __webpack_require__(12);
+var _reactMvx = __webpack_require__(12);
 
-var _reactTypeR2 = _interopRequireDefault(_reactTypeR);
+var _reactMvx2 = _interopRequireDefault(_reactMvx);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -25361,7 +25361,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var AddTodo = (0, _reactTypeR.define)(_class = (_temp = _class2 = function (_React$Component) {
+var AddTodo = (0, _reactMvx.define)(_class = (_temp = _class2 = function (_React$Component) {
     _inherits(AddTodo, _React$Component);
 
     function AddTodo() {
@@ -25373,15 +25373,15 @@ var AddTodo = (0, _reactTypeR.define)(_class = (_temp = _class2 = function (_Rea
     AddTodo.prototype.render = function render() {
         var _this2 = this;
 
-        return _reactTypeR2.default.createElement(
+        return _reactMvx2.default.createElement(
             "header",
             { className: "header" },
-            _reactTypeR2.default.createElement(
+            _reactMvx2.default.createElement(
                 "h1",
                 null,
                 "todos"
             ),
-            _reactTypeR2.default.createElement("input", _extends({ className: "new-todo",
+            _reactMvx2.default.createElement("input", _extends({ className: "new-todo",
                 placeholder: "What needs to be done?",
                 autoFocus: true
             }, this.linkAt('desc').props, {
@@ -25406,7 +25406,7 @@ var AddTodo = (0, _reactTypeR.define)(_class = (_temp = _class2 = function (_Rea
     };
 
     return AddTodo;
-}(_reactTypeR2.default.Component), _class2.props = {
+}(_reactMvx2.default.Component), _class2.props = {
     onEnter: Function.value(function () {})
 }, _class2.state = {
     desc: String

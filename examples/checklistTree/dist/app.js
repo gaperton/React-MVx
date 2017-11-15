@@ -3916,9 +3916,9 @@ var _class, _class2, _temp, _class3, _class4, _temp2, _class5, _class6, _temp3;
 
 __webpack_require__(37);
 
-var _reactTypeR = __webpack_require__(42);
+var _reactMvx = __webpack_require__(42);
 
-var _reactTypeR2 = _interopRequireDefault(_reactTypeR);
+var _reactMvx2 = _interopRequireDefault(_reactMvx);
 
 var _reactDom = __webpack_require__(70);
 
@@ -3943,7 +3943,7 @@ var _renders = 0;
 
 // React-r state definition.
 
-var AppState = (0, _reactTypeR.define)(_class = (_temp = _class2 = function (_Record) {
+var AppState = (0, _reactMvx.define)(_class = (_temp = _class2 = function (_Record) {
     _inherits(AppState, _Record);
 
     function AppState() {
@@ -3953,7 +3953,7 @@ var AppState = (0, _reactTypeR.define)(_class = (_temp = _class2 = function (_Re
     }
 
     return AppState;
-}(_typeR.Record), _class2.endpoint = (0, _localStorage.localStorageIO)("/react-type-r/examples"), _class2.attributes = {
+}(_typeR.Record), _class2.endpoint = (0, _localStorage.localStorageIO)("/react-mvx/examples"), _class2.attributes = {
     id: "checklistTree", // Persistent record needs to have an id
 
     // 'items' is a collection of ChecklistItem model.
@@ -3963,7 +3963,7 @@ var AppState = (0, _reactTypeR.define)(_class = (_temp = _class2 = function (_Re
 // @define should be places before every class definition, which uses react-mvx features.
 
 
-var App = (0, _reactTypeR.define)(_class3 = (_temp2 = _class4 = function (_React$Component) {
+var App = (0, _reactMvx.define)(_class3 = (_temp2 = _class4 = function (_React$Component) {
     _inherits(App, _React$Component);
 
     function App() {
@@ -3989,15 +3989,15 @@ var App = (0, _reactTypeR.define)(_class3 = (_temp2 = _class4 = function (_React
         var items = this.state.items;
 
 
-        return _reactTypeR2.default.createElement(
+        return _reactMvx2.default.createElement(
             'div',
             null,
-            _reactTypeR2.default.createElement(
+            _reactMvx2.default.createElement(
                 'div',
                 null,
                 'Renders count: ',
                 _renders++,
-                _reactTypeR2.default.createElement(
+                _reactMvx2.default.createElement(
                     'button',
                     { onClick: function onClick() {
                             return items.add({});
@@ -4005,12 +4005,12 @@ var App = (0, _reactTypeR.define)(_class3 = (_temp2 = _class4 = function (_React
                     'Add children'
                 )
             ),
-            _reactTypeR2.default.createElement(List, { items: items })
+            _reactMvx2.default.createElement(List, { items: items })
         );
     };
 
     return App;
-}(_reactTypeR2.default.Component), _class4.State = AppState, _temp2)) || _class3;
+}(_reactMvx2.default.Component), _class4.State = AppState, _temp2)) || _class3;
 
 // Simple pure component to render the list of checklist items.
 // They must _not_ be prefixed with @define. No magic here, just raw React.
@@ -4018,19 +4018,19 @@ var App = (0, _reactTypeR.define)(_class3 = (_temp2 = _class4 = function (_React
 
 var List = function List(_ref) {
     var items = _ref.items;
-    return _reactTypeR2.default.createElement(
+    return _reactMvx2.default.createElement(
         'div',
         { className: 'children' },
         items.map(function (item) {
             return (/* <- collections have 'map' method as an array */
                 /* models have cid - unique client id to be used in 'key' */
-                _reactTypeR2.default.createElement(Item, { key: item.cid, model: item })
+                _reactMvx2.default.createElement(Item, { key: item.cid, model: item })
             );
         })
     );
 };
 
-var Item = (0, _reactTypeR.define)(_class5 = (_temp3 = _class6 = function (_React$Component2) {
+var Item = (0, _reactMvx.define)(_class5 = (_temp3 = _class6 = function (_React$Component2) {
     _inherits(Item, _React$Component2);
 
     function Item() {
@@ -4047,28 +4047,28 @@ var Item = (0, _reactTypeR.define)(_class5 = (_temp3 = _class6 = function (_Reac
             links = model.linkAll('checked', 'name');
 
 
-        return _reactTypeR2.default.createElement(
+        return _reactMvx2.default.createElement(
             'div',
             { className: 'checklist' },
-            _reactTypeR2.default.createElement(
+            _reactMvx2.default.createElement(
                 'div',
                 { className: 'header' },
-                _reactTypeR2.default.createElement('input', _extends({ type: 'checkbox'
+                _reactMvx2.default.createElement('input', _extends({ type: 'checkbox'
                 }, links.checked.props /* We use links instead of values... */)),
-                _reactTypeR2.default.createElement(
+                _reactMvx2.default.createElement(
                     'span',
                     { className: 'created' },
                     model.created.toLocaleTimeString()
                 ),
-                _reactTypeR2.default.createElement('input', links.name.props /* ...as if they would be values */),
-                _reactTypeR2.default.createElement(
+                _reactMvx2.default.createElement('input', links.name.props /* ...as if they would be values */),
+                _reactMvx2.default.createElement(
                     'button',
                     { onClick: function onClick() {
                             return model.remove();
                         } /* custom model method to remove it from the collection */ },
                     'Delete'
                 ),
-                _reactTypeR2.default.createElement(
+                _reactMvx2.default.createElement(
                     'button',
                     { onClick: function onClick() {
                             return model.subitems.add({});
@@ -4076,19 +4076,19 @@ var Item = (0, _reactTypeR.define)(_class5 = (_temp3 = _class6 = function (_Reac
                     'Add children'
                 )
             ),
-            _reactTypeR2.default.createElement(List, { items: model.subitems /* Render the nested checklist */ })
+            _reactMvx2.default.createElement(List, { items: model.subitems /* Render the nested checklist */ })
         );
     };
 
     return Item;
-}(_reactTypeR2.default.Component), _class6.props = {
+}(_reactMvx2.default.Component), _class6.props = {
     model: _model.ChecklistItem // <- Type annotation, using constructor function. No default value.
 }, _class6.pureRender = true, _temp3)) || _class5;
 
 // That's really it! Let's render it.
 
 
-_reactDom2.default.render(_reactTypeR2.default.createElement(App, null), document.getElementById('app-mount-root'));
+_reactDom2.default.render(_reactMvx2.default.createElement(App, null), document.getElementById('app-mount-root'));
 
 /***/ }),
 /* 37 */

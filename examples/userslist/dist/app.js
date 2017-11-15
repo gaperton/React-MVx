@@ -4192,9 +4192,9 @@ var _reactDom = __webpack_require__(26);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _reactTypeR = __webpack_require__(58);
+var _reactMvx = __webpack_require__(58);
 
-var _reactTypeR2 = _interopRequireDefault(_reactTypeR);
+var _reactMvx2 = _interopRequireDefault(_reactMvx);
 
 var _typeR = __webpack_require__(4);
 
@@ -4252,7 +4252,7 @@ var AppState = (0, _typeR.define)(_class3 = (_temp2 = _class4 = function (_Recor
     }
 
     return AppState;
-}(_typeR.Record), _class4.endpoint = (0, _localStorage.localStorageIO)('/react-type-r/examples'), _class4.attributes = {
+}(_typeR.Record), _class4.endpoint = (0, _localStorage.localStorageIO)('/react-mvx/examples'), _class4.attributes = {
     id: 'users-list',
     users: User.Collection, // No comments required, isn't it?
     editing: User.from('users'), // User from user collection, which is being edited.
@@ -4281,99 +4281,99 @@ var UsersList = exports.UsersList = (0, _typeR.define)(_class5 = (_temp3 = _clas
         var state = this.state;
 
 
-        return _reactTypeR2.default.createElement(
+        return _reactMvx2.default.createElement(
             'div',
             null,
-            _reactTypeR2.default.createElement(
+            _reactMvx2.default.createElement(
                 'button',
                 { onClick: function onClick() {
                         return state.adding = new User();
                     } },
                 'Add User'
             ),
-            _reactTypeR2.default.createElement(Header, null),
+            _reactMvx2.default.createElement(Header, null),
             state.users.map(function (user) {
-                return _reactTypeR2.default.createElement(UserRow, { key: user.cid,
+                return _reactMvx2.default.createElement(UserRow, { key: user.cid,
                     user: user,
                     onEdit: function onEdit() {
                         return state.editing = user;
                     }
                 });
             }),
-            _reactTypeR2.default.createElement(
+            _reactMvx2.default.createElement(
                 _reactModal2.default,
                 { isOpen: Boolean(state.adding) },
-                _reactTypeR2.default.createElement(EditUser, { userLink: state.linkAt('adding'),
+                _reactMvx2.default.createElement(EditUser, { userLink: state.linkAt('adding'),
                     onSave: function onSave() {
                         return state.users.add(state.adding);
                     } })
             ),
-            _reactTypeR2.default.createElement(
+            _reactMvx2.default.createElement(
                 _reactModal2.default,
                 { isOpen: Boolean(state.editing) },
-                _reactTypeR2.default.createElement(EditUser, { userLink: state.linkAt('editing') })
+                _reactMvx2.default.createElement(EditUser, { userLink: state.linkAt('editing') })
             )
         );
     };
 
     return UsersList;
-}(_reactTypeR2.default.Component), _class6.State = AppState, _temp3)) || _class5;
+}(_reactMvx2.default.Component), _class6.State = AppState, _temp3)) || _class5;
 
 var Header = function Header() {
-    return _reactTypeR2.default.createElement(
+    return _reactMvx2.default.createElement(
         'div',
         { className: 'users-row' },
-        _reactTypeR2.default.createElement(
+        _reactMvx2.default.createElement(
             'div',
             null,
             'Name'
         ),
-        _reactTypeR2.default.createElement(
+        _reactMvx2.default.createElement(
             'div',
             null,
             'Email'
         ),
-        _reactTypeR2.default.createElement(
+        _reactMvx2.default.createElement(
             'div',
             null,
             'Is Active'
         ),
-        _reactTypeR2.default.createElement('div', null)
+        _reactMvx2.default.createElement('div', null)
     );
 };
 
 var UserRow = function UserRow(_ref) {
     var user = _ref.user,
         onEdit = _ref.onEdit;
-    return _reactTypeR2.default.createElement(
+    return _reactMvx2.default.createElement(
         'div',
         { className: 'users-row', onDoubleClick: onEdit },
-        _reactTypeR2.default.createElement(
+        _reactMvx2.default.createElement(
             'div',
             null,
             user.name
         ),
-        _reactTypeR2.default.createElement(
+        _reactMvx2.default.createElement(
             'div',
             null,
             user.email
         ),
-        _reactTypeR2.default.createElement(
+        _reactMvx2.default.createElement(
             'div',
             { onClick: function onClick() {
                     return user.isActive = !user.isActive;
                 } },
             user.isActive ? 'Yes' : 'No'
         ),
-        _reactTypeR2.default.createElement(
+        _reactMvx2.default.createElement(
             'div',
             null,
-            _reactTypeR2.default.createElement(
+            _reactMvx2.default.createElement(
                 'button',
                 { onClick: onEdit },
                 'Edit'
             ),
-            _reactTypeR2.default.createElement(
+            _reactMvx2.default.createElement(
                 'button',
                 { onClick: function onClick() {
                         return user.remove();
@@ -4417,33 +4417,33 @@ var EditUser = (0, _typeR.define)(_class7 = (_temp5 = _class8 = function (_React
             linked = user.linkAll();
 
 
-        return _reactTypeR2.default.createElement(
+        return _reactMvx2.default.createElement(
             'form',
             { onSubmit: this.onSubmit },
-            _reactTypeR2.default.createElement(
+            _reactMvx2.default.createElement(
                 'label',
                 null,
                 'Name: ',
-                _reactTypeR2.default.createElement(ValidatedInput, { type: 'text', valueLink: linked.name })
+                _reactMvx2.default.createElement(ValidatedInput, { type: 'text', valueLink: linked.name })
             ),
-            _reactTypeR2.default.createElement(
+            _reactMvx2.default.createElement(
                 'label',
                 null,
                 'Email: ',
-                _reactTypeR2.default.createElement(ValidatedInput, { type: 'text', valueLink: linked.email })
+                _reactMvx2.default.createElement(ValidatedInput, { type: 'text', valueLink: linked.email })
             ),
-            _reactTypeR2.default.createElement(
+            _reactMvx2.default.createElement(
                 'label',
                 null,
                 'Is active: ',
-                _reactTypeR2.default.createElement('input', _extends({ type: 'checkbox' }, linked.isActive.props))
+                _reactMvx2.default.createElement('input', _extends({ type: 'checkbox' }, linked.isActive.props))
             ),
-            _reactTypeR2.default.createElement(
+            _reactMvx2.default.createElement(
                 'button',
                 { type: 'submit', disabled: !user.isValid() },
                 'Save'
             ),
-            _reactTypeR2.default.createElement(
+            _reactMvx2.default.createElement(
                 'button',
                 { type: 'button', onClick: this.onCancel },
                 'Cancel'
@@ -4452,8 +4452,8 @@ var EditUser = (0, _typeR.define)(_class7 = (_temp5 = _class8 = function (_React
     };
 
     return EditUser;
-}(_reactTypeR2.default.Component), _class8.props = {
-    userLink: _reactTypeR.Link.has.watcher(_reactTypeR2.default.assignToState('user')),
+}(_reactMvx2.default.Component), _class8.props = {
+    userLink: _reactMvx.Link.has.watcher(_reactMvx2.default.assignToState('user')),
     onSave: Function
 }, _class8.state = {
     user: User
@@ -4463,11 +4463,11 @@ var ValidatedInput = function ValidatedInput(_ref2) {
     var valueLink = _ref2.valueLink,
         props = _objectWithoutProperties(_ref2, ['valueLink']);
 
-    return _reactTypeR2.default.createElement(
+    return _reactMvx2.default.createElement(
         'div',
         null,
-        _reactTypeR2.default.createElement('input', _extends({}, valueLink.props, props)),
-        _reactTypeR2.default.createElement(
+        _reactMvx2.default.createElement('input', _extends({}, valueLink.props, props)),
+        _reactMvx2.default.createElement(
             'div',
             { className: 'validation-error' },
             valueLink.error || ''
@@ -4475,7 +4475,7 @@ var ValidatedInput = function ValidatedInput(_ref2) {
     );
 };
 
-_reactDom2.default.render(_reactTypeR2.default.createElement(UsersList, null), document.getElementById('app-mount-root'));
+_reactDom2.default.render(_reactMvx2.default.createElement(UsersList, null), document.getElementById('app-mount-root'));
 
 /***/ }),
 /* 43 */
