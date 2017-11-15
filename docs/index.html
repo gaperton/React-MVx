@@ -757,7 +757,24 @@ It passes through anything else, including <code>children</code>.</p>
 </code></pre>
 <h1 id="release-notes">Release Notes</h1>
 <h2 id="2-0-0">2.0.0</h2>
-<p>TBD</p>
+<ul>
+<li>Bug fixes:<ul>
+<li>Fixed problems with deep inheritance from the React.Component</li>
+<li>Mixins now works well with inheritance.</li>
+</ul>
+</li>
+<li>Breaking changes:<ul>
+<li><em>React lifecycle hook methods for the subclass are called automatically</em>.</li>
+</ul>
+</li>
+<li>Other:<ul>
+<li><code>{ ...link.props }</code> for ad-hoc data binding makes <code>tags.jsx</code> wrappers obsolete.</li>
+<li>Type-R v2.0 is required.</li>
+<li>New universal API for generating links (<code>linkAt()</code>)</li>
+<li>First-class component stores support.</li>
+</ul>
+</li>
+</ul>
         </div>
     </div>
   </body>
