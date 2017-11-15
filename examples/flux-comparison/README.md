@@ -39,15 +39,15 @@ Enough words, let's see what we're talking about.
 
 So, they have products. Which is, essentially, this thing:
 
-![](product.jpg)
+![](product.png)
 
 And cart. Which is just another collection of products.
 
-![](cart.jpg)
+![](cart.png)
 
 But that's just type definitions. How do we actually work with these data? We add them to the top-level application state, like this:
 
-![](application.jpg)
+![](application.png)
 
 And that's it. All you have to do next, is to relax and enjoy pure unidirectional data flow.
 
