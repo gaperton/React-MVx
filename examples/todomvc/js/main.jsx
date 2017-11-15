@@ -1,5 +1,5 @@
 import '../css/app.css'
-import React, { define } from 'react-type-r'
+import React, { define } from 'react-mvx'
 import { Record } from 'type-r'
 import ReactDOM from 'react-dom'
 import {ToDo} from './model.js'
@@ -11,7 +11,7 @@ import { localStorageIO } from 'type-r/endpoints/localStorage'
 
 // Declare component state
 @define class AppState extends Record {
-    static endpoint = localStorageIO( '/react-type-r/examples' );
+    static endpoint = localStorageIO( '/react-mvx/examples' );
 
     static attributes = {
         id         : 'todoMVC',

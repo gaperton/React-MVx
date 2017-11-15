@@ -17,11 +17,11 @@
     "css-loader": "*",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
-    "react-type-r": "^2.0.0-rc04",
+    "react-mvx": "^2.0.0-00",
     "prop-types": "*",
     "source-map-loader": "*",
     "style-loader": "*",
-    "type-r": "^2.0.1",
+    "type-r": "^2.0.0",
     "webpack": "^3.8.1"
   },
   "scripts": {

@@ -1,4 +1,4 @@
-import React           from 'react-type-r'
+import React           from 'react-mvx'
 import CCart           from '../../../common/components/Cart.jsx'
 
 const CartContainer = ( { cart } ) => (

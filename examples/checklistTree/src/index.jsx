@@ -2,7 +2,7 @@ import './styles.css'
 
 // You should import React from react-mvx, and use it as drop-in replacement.
 // It's 100% compatible.
-import React, { define } from 'react-type-r'
+import React, { define } from 'react-mvx'
 import ReactDOM from 'react-dom'
 import { Record } from 'type-r'
 import { localStorageIO } from 'type-r/endpoints/localStorage'
@@ -16,7 +16,7 @@ let _renders = 0;
 // React-r state definition.
 @define class AppState extends Record {
     // The state is persisted in localStorage
-    static endpoint = localStorageIO( "/react-type-r/examples" );
+    static endpoint = localStorageIO( "/react-mvx/examples" );
 
     static attributes = {
         id : "checklistTree", // Persistent record needs to have an id

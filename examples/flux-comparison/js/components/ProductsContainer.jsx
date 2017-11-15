@@ -1,4 +1,4 @@
-import React           from 'react-type-r'
+import React           from 'react-mvx'
 import CProductItem    from '../../../common/components/ProductItem.jsx'
 import CProductsList   from '../../../common/components/ProductsList.jsx'
 

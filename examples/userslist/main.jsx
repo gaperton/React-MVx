@@ -1,7 +1,7 @@
 import './main.css'
 import ReactDOM from 'react-dom'
 
-import React, { Link } from 'react-type-r'
+import React, { Link } from 'react-mvx'
 import { Record, define } from 'type-r'
 import { localStorageIO } from 'type-r/endpoints/localStorage'
 
@@ -23,7 +23,7 @@ const Email = String.has.check( x => !x || x.indexOf( '@' ) >= 0, 'Must be valid
 }
 
 @define class AppState extends Record {
-    static endpoint = localStorageIO( '/react-type-r/examples' );
+    static endpoint = localStorageIO( '/react-mvx/examples' );
 
     static attributes = {
         id : 'users-list',

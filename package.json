@@ -1,6 +1,6 @@
 {
-  "name": "react-type-r",
-  "version": "2.0.0-rc04",
+  "name": "react-mvx",
+  "version": "2.0.0-rc900",
   "repository": {
     "type": "git",
     "url": "https://github.com/gaperton/React-MVx.git"
@@ -38,13 +38,11 @@
   "peerDependencies": {
     "prop-types": "*",
     "react": "^16.0.0",
-    "react-dom": "^16.0.0",
     "type-r": "^2.0.0"
   },
   "devDependencies": {
     "prop-types": "*",
     "react": "^16.1.1",
-    "react-dom": "^16.1.1",
     "type-r": "^2.0.1",
     "@types/prop-types": "^15.5.2",
     "@types/react": "^16.0.23",

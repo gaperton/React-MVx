@@ -1,4 +1,4 @@
-import React, { define } from 'react-type-r'
+import React, { define } from 'react-mvx'
 
 import ProductsContainer from './ProductsContainer.jsx'
 import CartContainer     from './CartContainer.jsx'

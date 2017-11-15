@@ -23,7 +23,7 @@
     "react": "*",
     "react-dom": "*",
     "react-modal": "^3.1.2",
-    "react-type-r": "*",
+    "react-mvx": "^2.0.0-00",
     "source-map-loader": "^0.2.3",
     "style-loader": "*",
     "type-r": "^2.0.1",
