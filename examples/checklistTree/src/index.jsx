@@ -2,7 +2,7 @@ import './styles.css'
 
 // You should import React from react-mvx, and use it as drop-in replacement.
 // It's 100% compatible.
-import React, { define } from 'react-tr'
+import React, { define } from 'react-type-r'
 import ReactDOM from 'react-dom'
 import { Record } from 'type-r'
 import { localStorageIO } from 'type-r/endpoints/localStorage'
