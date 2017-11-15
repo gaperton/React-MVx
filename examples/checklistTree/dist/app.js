@@ -3953,8 +3953,8 @@ var AppState = (0, _reactTypeR.define)(_class = (_temp = _class2 = function (_Re
     }
 
     return AppState;
-}(_typeR.Record), _class2.endpoint = (0, _localStorage.localStorageIO)("checklistTree"), _class2.attributes = {
-    id: "app", // Persistent record needs to have an id
+}(_typeR.Record), _class2.endpoint = (0, _localStorage.localStorageIO)("/react-type-r/examples"), _class2.attributes = {
+    id: "checklistTree", // Persistent record needs to have an id
 
     // 'items' is a collection of ChecklistItem model.
     items: _model.ChecklistItem.Collection // <- It's type annotation. Constructor function designates type.

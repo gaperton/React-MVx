@@ -16,10 +16,10 @@ let _renders = 0;
 // React-r state definition.
 @define class AppState extends Record {
     // The state is persisted in localStorage
-    static endpoint = localStorageIO( "checklistTree" );
+    static endpoint = localStorageIO( "/react-type-r/examples" );
 
     static attributes = {
-        id : "app", // Persistent record needs to have an id
+        id : "checklistTree", // Persistent record needs to have an id
 
         // 'items' is a collection of ChecklistItem model.
         items : ChecklistItem.Collection // <- It's type annotation. Constructor function designates type.

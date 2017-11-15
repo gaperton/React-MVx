@@ -1,32 +1,31 @@
 import '../css/app.css'
-import React, { define } from 'react-mvx'
+import React, { define } from 'react-type-r'
+import { Record } from 'type-r'
 import ReactDOM from 'react-dom'
 import {ToDo} from './model.js'
 import TodoList from './todolist.jsx'
 import Filter from './filter.jsx'
 import AddTodo from './addtodo.jsx'
 
-@define class State 
+import { localStorageIO } from 'type-r/endpoints/localStorage'
 
-@define class App extends React.Component {
-    // Declare component state
-    static state = {
+// Declare component state
+@define class AppState extends Record {
+    static endpoint = localStorageIO( '/react-type-r/examples' );
+
+    static attributes = {
+        id         : 'todoMVC',
         todos      : ToDo.Collection,
         filterDone : Boolean.value( null ) // null | true | false, initialized with null.
     }
+}
+
+@define class App extends React.Component {
+    static State = AppState;
 
     componentWillMount(){
-        const { state } = this,
-              // load raw JSON from local storage
-              json = JSON.parse( localStorage.getItem( 'todo-mvc' ) || "{}" );
-
-        // initialize state with raw JSON
-        state.set( json, { parse : true } );
-
-        window.onunload = () =>{
-            // Save state back to the local storage
-            localStorage.setItem( 'todo-mvc', JSON.stringify( state ) );
-        }
+        this.state.fetch();
+        window.onunload = () => this.state.save();
     }
 
     render(){

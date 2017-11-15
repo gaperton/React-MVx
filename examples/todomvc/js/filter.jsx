@@ -1,4 +1,4 @@
-import React from 'react-mvx'
+import React from 'react-type-r'
 
 const Filter = ( { count, filterLink, onClear } ) => (
     <footer className="footer">

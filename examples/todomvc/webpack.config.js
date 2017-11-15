@@ -16,10 +16,7 @@ var config = {
     devtool : 'source-map',
 
     resolve : {
-        modules : [ '../../node_modules', 'node_modules', 'src' ],
-        // alias : { //use `npm run deploy:examples` in main project
-        //     'react-mvx' : path.resolve(__dirname, '../..' )
-        // }
+        modules : [ 'node_modules', 'src' ],
     },
 
     module : {

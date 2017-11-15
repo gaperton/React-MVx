@@ -21,6 +21,11 @@
     "css-loader": "*",
     "react-modal": "^3.1.2",
     "source-map-loader": "^0.2.3",
+    "react": "*",
+    "react-dom": "*",
+    "react-type-r": "*",
+    "prop-types": "*",
+    "type-r": "*",
     "style-loader": "*",
     "webpack": "^3.8.1"
   },

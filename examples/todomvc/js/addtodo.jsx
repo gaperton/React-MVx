@@ -1,4 +1,4 @@
-import React, { define } from 'react-mvx'
+import React, { define } from 'react-type-r'
 
 @define
 export default class AddTodo extends React.Component {
