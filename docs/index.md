@@ -117,3 +117,12 @@ The best way to start is to use the [boilerplate](/examples/babel-boilerplate) w
 babel, webpack, and the minimal set of required dependencies configured.
 
 TypeScript is unsupported (yet) but may work.
+
+## Developer tools
+
+The [modified version of React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/ahggoppikhphoggoibnlbpcpegnchiio) with fixes required for React-MVx is available in the Chrome Web Store.
+
+- Fixed an exception when inspecting the props with custom getters in prototype.
+- Collections are displayed as an array (system fields hidden).
+- Record is displayed as an object (system fields hidden).
+- Component's state (which is the Record) is displayed as an object.
