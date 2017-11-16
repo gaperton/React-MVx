@@ -10,6 +10,7 @@ includes:
   - guides
   - component
   - link
+  - record
   - databinding
   - releasenotes
 
