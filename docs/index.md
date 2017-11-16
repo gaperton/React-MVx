@@ -3,7 +3,8 @@ title: React-MVx 2.0 API Reference
 
 toc_footers:
   - <a href="https://github.com/Volicon/React-MVx">GitHub repository</a>
-  - <a href="https://github.com/Volicon/React-MVx/issues">Ask the question or report the bug</a>
+  - <a href="https://github.com/Volicon/React-MVx/issues">Report the bug</a>
+  - <a href="https://groups.google.com/forum/#!forum/volicon-open-source">Ask the question</a>
   - <a href="http://www.volicon.com/">Supported by <img style="vertical-align: middle" src="images/volicon_verizon_dm.png"/></a>
 
 includes:
