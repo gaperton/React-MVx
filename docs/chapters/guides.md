@@ -2,11 +2,15 @@
 
 ## Data binding and forms
 
-TBD
+[Tutorial: two-way data binding and forms](https://medium.com/@gaperton/react-mvx-tutorial-local-state-and-forms-50c30ce5110e)
 
-## Inpiut Validation
+In this tutorial, we will learn the state management and two-way data binding basics on the example of the simple user info editing form.
 
-TBD
+## Input Validation
+
+[Tutorial: State Definition and Form Validation](https://medium.com/@gaperton/react-mvx-tutorial-state-definition-and-form-validation-8aa0f315fdd9)
+
+In this tutorial, we will add input validation to the user editing form from the previous example. That’s the client-side “as-you-type” validation preventing the user from submitting invalid data while giving him hints.
 
 ## Editable lists
 
