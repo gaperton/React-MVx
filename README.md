@@ -25,9 +25,9 @@ Key features:
 ## Examples
 
 - Babel + Webpack [boilerplate](/examples/babel-boilerplate)
-- [Checklist tree]([source](/examples/checklistTree)
-- [TodoMVC]([source](/examples/todomvc)
-- [UsersList]([source](/examples/userslist)
+- [Checklist tree](/examples/checklistTree)
+- [TodoMVC](/examples/todomvc)
+- [UsersList](/examples/userslist)
 - [Flux Comparison](/examples/flux-comparison)
 
 ## [Documentation](https://volicon.github.io/React-MVx)
@@ -38,12 +38,21 @@ Supported browsers: Chrome, Firefox, Safari, IE10+.
 
 Requires `react`, `prop-types`, and `type-r` as peer dependencies. Installation (assuming that React is installed):
 
-    `npm install react react-mvx type-r prop-types --save-dev`
+    npm install react react-mvx type-r prop-types --save-dev
 
 The best way to start is to use the [boilerplate](/examples/babel-boilerplate) which already has
 babel, webpack, and the minimal set of required dependencies configured.
 
 TypeScript is unsupported (yet) but may work.
+
+## Developer tools
+
+The [modified version of the React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/ahggoppikhphoggoibnlbpcpegnchiio) with fixes required for React-MVx is available in the Chrome Web Store.
+
+- Fixed an exception when inspecting the props with custom getters in prototype.
+- Collections are displayed as an array (system fields hidden).
+- Record is displayed as an object (system fields hidden).
+- Component's state (which is the Record) is displayed as an object.
 
 ---
 

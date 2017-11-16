@@ -82,7 +82,7 @@ import React, { define } from 'react-mvx'
 
 The place to start your project.
 
-### [Checklist tree]([source](/examples/checklistTree)
+### [Checklist tree](/examples/checklistTree)
 
 Hierarchical checklist with simple group selection rules. Demonstrates:
 
@@ -91,11 +91,11 @@ Hierarchical checklist with simple group selection rules. Demonstrates:
 - change even watchers and transactional changes
 - pure render on mutable data
 
-### [TodoMVC]([source](/examples/todomvc)
+### [TodoMVC](/examples/todomvc)
 
 Classic TodoMVC example.
 
-### [UsersList]([source](/examples/userslist)
+### [UsersList](/examples/userslist)
 
 Editable list of users. Demonstrates the state synchronization pattern.
 
@@ -120,7 +120,7 @@ TypeScript is unsupported (yet) but may work.
 
 ## Developer tools
 
-The [modified version of React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/ahggoppikhphoggoibnlbpcpegnchiio) with fixes required for React-MVx is available in the Chrome Web Store.
+The [modified version of the React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/ahggoppikhphoggoibnlbpcpegnchiio) with fixes required for React-MVx is available in the Chrome Web Store.
 
 - Fixed an exception when inspecting the props with custom getters in prototype.
 - Collections are displayed as an array (system fields hidden).
