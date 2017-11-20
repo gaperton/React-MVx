@@ -206,7 +206,7 @@ Illustrates state synchronization pattern.
 
 [Application](https://gaperton.github.io/react-mvx-examples/dist/collection.html), [sources](https://github.com/gaperton/react-mvx-examples/blob/master/src/collection.jsx).
 
-## id-references and stores
+### id-references and stores
 
 Demonstrates local stores and id-references.
 
