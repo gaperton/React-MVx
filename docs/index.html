@@ -197,6 +197,31 @@ babel, webpack, and the minimal set of required dependencies configured.</p>
     }
 }
 </code></pre>
+<h3 id="transactional-state-changes">Transactional state changes</h3>
+<pre><code class="highlight javascript">@define <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+    static state = {
+        counter1 : <span class="hljs-number">0</span>,
+        counter2 : <span class="hljs-number">0</span>
+    }
+
+    onClick = () =&gt; {
+        <span class="hljs-keyword">this</span>.state.transaction( state =&gt; {
+            state.counter1++;
+            state.counter2++;
+        });
+    }
+
+    render(){
+        <span class="hljs-keyword">const</span> { state } = <span class="hljs-keyword">this</span>;
+        <span class="hljs-keyword">return</span> (
+            <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{</span> <span class="hljs-attribute">this.onClick</span> }&gt;</span>
+                { state.counter1 + state.counter2 }
+            <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+        )</span>;
+    }
+}
+</code></pre>
+<h2 id="i-o">I/O</h2>
 <h3 id="persistent-ui-state">Persistent UI state</h3>
 <pre><code class="highlight javascript">@define <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestState</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Record</span> </span>{
     static endpoint = localStorageIO( <span class="hljs-string">'myApp'</span> );
@@ -225,52 +250,6 @@ babel, webpack, and the minimal set of required dependencies configured.</p>
                 { state.counter }
             <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
         )</span>;
-    }
-}
-</code></pre>
-<h3 id="transactional-state-changes">Transactional state changes</h3>
-<pre><code class="highlight javascript">@define <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
-    static state = {
-        counter1 : <span class="hljs-number">0</span>,
-        counter2 : <span class="hljs-number">0</span>
-    }
-
-    onClick = () =&gt; {
-        <span class="hljs-keyword">this</span>.state.transaction( state =&gt; {
-            state.counter1++;
-            state.counter2++;
-        });
-    }
-
-    render(){
-        <span class="hljs-keyword">const</span> { state } = <span class="hljs-keyword">this</span>;
-        <span class="hljs-keyword">return</span> (
-            <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{</span> <span class="hljs-attribute">this.onClick</span> }&gt;</span>
-                { state.counter1 + state.counter2 }
-            <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-        )</span>;
-    }
-}
-</code></pre>
-<h3 id="fetching-multiple-objects-">Fetching multiple objects...</h3>
-<pre><code class="highlight javascript">@define <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestState</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Record</span> </span>{
-    static endpoint = attributesIO();
-
-    static attributes = {
-        coll1 : Some.Collection,
-        coll2 : Other.Collection
-    }
-}
-
-@define <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestPage</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
-    static State = TestState;
-
-    componentWillMount(){
-        <span class="hljs-keyword">this</span>.state.fetch();
-    }
-
-    render(){
-        <span class="hljs-comment">//...</span>
     }
 }
 </code></pre>
@@ -315,6 +294,28 @@ babel, webpack, and the minimal set of required dependencies configured.</p>
                 Collection has { collection.length } items.
             <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
         )</span>;
+    }
+}
+</code></pre>
+<h3 id="fetching-multiple-objects-">Fetching multiple objects...</h3>
+<pre><code class="highlight javascript">@define <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestState</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Record</span> </span>{
+    static endpoint = attributesIO();
+
+    static attributes = {
+        coll1 : Some.Collection,
+        coll2 : Other.Collection
+    }
+}
+
+@define <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestPage</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+    static State = TestState;
+
+    componentWillMount(){
+        <span class="hljs-keyword">this</span>.state.fetch();
+    }
+
+    render(){
+        <span class="hljs-comment">//...</span>
     }
 }
 </code></pre>
