@@ -159,24 +159,180 @@ babel, webpack, and the minimal set of required dependencies configured.</p>
 <li>Component&#39;s state (which is the Record) is displayed as an object.</li>
 </ul>
 
-<h1 id="guides">Guides</h1>
-<h2 id="data-binding-and-forms">Data binding and forms</h2>
+<h1 id="design-patterns">Design patterns</h1>
+<h2 id="stateful-component">Stateful Component</h2>
+<h3 id="inline-state-declaration">Inline state declaration</h3>
+<pre><code class="highlight javascript">@define <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+    static state = {
+        counter : <span class="hljs-number">0</span>
+    }
+
+    render(){
+        <span class="hljs-keyword">const</span> { state } = <span class="hljs-keyword">this</span>;
+        <span class="hljs-keyword">return</span> (
+            <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{</span> () =&gt;</span> state.counter++ }&gt;
+                { state.counter }
+            <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+        )</span>;
+    }
+}
+</code></pre>
+<h3 id="external-state-declaration">External state declaration</h3>
+<pre><code class="highlight javascript">@define <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestState</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Record</span> </span>{
+    static attributes = {
+        counter : <span class="hljs-number">0</span>
+    }
+}
+
+@define <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+    static State = TestState;
+
+    render(){
+        <span class="hljs-keyword">const</span> { state } = <span class="hljs-keyword">this</span>;
+        <span class="hljs-keyword">return</span> (
+            <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{</span> () =&gt;</span> state.counter++ }&gt;
+                { state.counter }
+            <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+        )</span>;
+    }
+}
+</code></pre>
+<h3 id="persistent-ui-state">Persistent UI state</h3>
+<pre><code class="highlight javascript">@define <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestState</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Record</span> </span>{
+    static endpoint = localStorageIO( <span class="hljs-string">'myApp'</span> );
+
+    static attributes = {
+        id : <span class="hljs-string">'TestPage'</span>
+        counter : <span class="hljs-number">0</span>
+    }
+}
+
+@define <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestPage</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+    static State = TestState;
+
+    componentWillMount(){
+        <span class="hljs-keyword">this</span>.state.fetch();
+    }
+
+    componentWillUnmount(){
+        <span class="hljs-keyword">this</span>.state.save();
+    }
+
+    render(){
+        <span class="hljs-keyword">const</span> { state } = <span class="hljs-keyword">this</span>;
+        <span class="hljs-keyword">return</span> (
+            <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{</span> () =&gt;</span> state.counter++ }&gt;
+                { state.counter }
+            <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+        )</span>;
+    }
+}
+</code></pre>
+<h3 id="transactional-state-changes">Transactional state changes</h3>
+<pre><code class="highlight javascript">@define <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+    static state = {
+        counter1 : <span class="hljs-number">0</span>,
+        counter2 : <span class="hljs-number">0</span>
+    }
+
+    onClick = () =&gt; {
+        <span class="hljs-keyword">this</span>.state.transaction( state =&gt; {
+            state.counter1++;
+            state.counter2++;
+        });
+    }
+
+    render(){
+        <span class="hljs-keyword">const</span> { state } = <span class="hljs-keyword">this</span>;
+        <span class="hljs-keyword">return</span> (
+            <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{</span> <span class="hljs-attribute">this.onClick</span> }&gt;</span>
+                { state.counter1 + state.counter2 }
+            <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+        )</span>;
+    }
+}
+</code></pre>
+<h3 id="fetching-multiple-objects-">Fetching multiple objects...</h3>
+<pre><code class="highlight javascript">@define <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestState</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Record</span> </span>{
+    static endpoint = attributesIO();
+
+    static attributes = {
+        coll1 : Some.Collection,
+        coll2 : Other.Collection
+    }
+}
+
+@define <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestPage</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+    static State = TestState;
+
+    componentWillMount(){
+        <span class="hljs-keyword">this</span>.state.fetch();
+    }
+
+    render(){
+        <span class="hljs-comment">//...</span>
+    }
+}
+</code></pre>
+<h3 id="initial-loading-indicator-">Initial loading indicator...</h3>
+<pre><code class="highlight javascript">@define <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Page</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+    static state = {
+        someCollection : Collection,
+        loading : <span class="hljs-literal">true</span>
+    }
+
+    onLoad = () =&gt; <span class="hljs-keyword">this</span>.state.loading = <span class="hljs-literal">false</span>;
+
+    componentWillMount(){
+        <span class="hljs-keyword">this</span>.state.collection.fetch()
+            .then( onLoad ).catch( onLoad );
+    }
+
+    render(){
+        <span class="hljs-keyword">const</span> { state } = <span class="hljs-keyword">this</span>;
+        <span class="hljs-keyword">return</span> state.loading ? (
+            <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>Loading...<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+        )</span> : (
+            <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
+                Loaded { state.someCollection.length } items.
+            <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+        )</span>;
+    }
+}
+</code></pre>
+<h3 id="component-s-loading-indicator-">Component&#39;s loading indicator...</h3>
+<pre><code class="highlight javascript">@define <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">List</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+    static props = {
+        collection : Collection
+    }
+
+    render(){
+        <span class="hljs-keyword">const</span> { collection } = <span class="hljs-keyword">this</span>.props;
+        <span class="hljs-keyword">return</span> collection.hasPendingIO() ? (
+            <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>Loading...<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+        )</span> : (
+            <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
+                Collection has { collection.length } items.
+            <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+        )</span>;
+    }
+}
+</code></pre>
+<h2 id="application-examples">Application Examples</h2>
+<h3 id="data-binding-and-forms">Data binding and forms</h3>
 <p><a href="https://medium.com/@gaperton/react-mvx-tutorial-local-state-and-forms-50c30ce5110e">Tutorial: two-way data binding and forms</a></p>
 <p>In this tutorial, we will learn the state management and two-way data binding basics on the example of the simple user info editing form.</p>
 <p><a href="https://gaperton.github.io/react-mvx-examples/dist/form.html">Application</a>, <a href="https://github.com/gaperton/react-mvx-examples/blob/master/src/form.jsx">sources</a>.</p>
-<h2 id="input-validation">Input Validation</h2>
+<h3 id="input-validation">Input Validation</h3>
 <p><a href="https://medium.com/@gaperton/react-mvx-tutorial-state-definition-and-form-validation-8aa0f315fdd9">Tutorial: State Definition and Form Validation</a></p>
 <p>In this tutorial, we will add input validation to the user editing form from the previous example. That’s the client-side “as-you-type” validation preventing the user from submitting invalid data while giving him hints.</p>
 <p><a href="https://gaperton.github.io/react-mvx-examples/dist/form.html">Application</a>, <a href="https://github.com/gaperton/react-mvx-examples/blob/master/src/validation.jsx">sources</a>.</p>
-<h2 id="editable-lists">Editable lists</h2>
-<p>Tutorial - TBD.</p>
+<h3 id="editable-lists">Editable lists</h3>
+<p>Illustrates state synchronization pattern.</p>
 <p><a href="https://gaperton.github.io/react-mvx-examples/dist/collection.html">Application</a>, <a href="https://github.com/gaperton/react-mvx-examples/blob/master/src/collection.jsx">sources</a>.</p>
-<h2 id="paging">Paging</h2>
-<p>TBD</p>
 <h2 id="id-references-and-stores">id-references and stores</h2>
-<p>TBD</p>
-<h2 id="layered-application-state">Layered application state</h2>
-<p>TBD</p>
+<p>Demonstrates local stores and id-references.</p>
+<p><a href="https://gaperton.github.io/react-mvx-examples/dist/manytomany.html">Application</a>m <a href="https://github.com/gaperton/react-mvx-examples/tree/master/src/manytomany">sources</a></p>
 <h1 id="component">Component</h1>
 <p>React-MVx extends React namespace and should be used instead of <code>react</code>.
 All class Component definitions must be preceeded with the <code>@define</code> decorator.</p>
