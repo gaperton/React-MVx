@@ -1,12 +1,12 @@
 # Two-way data binding
 
 An essense of the "data binding" pattern is that the inner state of the UI control is
-mapped to some value in the application data layer. Whenever the value change, it's 
-synchronized in both directions. Almost all modern JS frontend application frameworks 
+mapped to some value in the application data layer. Whenever the value change, it's
+synchronized in both directions. Almost all modern JS frontend application frameworks
 supports two-way data binding out of box.
 
 React-MVx has the first-class support for the two-way data binding though the concept of
-[value links](https://github.com/volicon/NestedLink). It's best to understand it on 
+[value links](https://github.com/volicon/NestedLink). It's best to understand it on
 the example.
 
 ## Data-bound controlled input component
@@ -16,7 +16,7 @@ In order to use data binding you need to import data bound input controls from `
 
 ```javascript
 import { Component, define } from 'react-mvx'
-import { Input } from 'nestedreact/tags'
+import { Input } from 'react-mvx/tags.jsx'
 ```
 
 Then, you can create the controlled input component like this:
@@ -24,13 +24,13 @@ Then, you can create the controlled input component like this:
 ```javascript
 @define
 export class MyComponent extends Component {
-	static state = {
-		text : ''
-	}
+    static state = {
+        text : ''
+    }
 
-	render(){
-		return <Input valueLink={ this.linkAt( 'text' ) } />;
-	}
+    render(){
+        return <Input valueLink={ this.linkAt( 'text' ) } />;
+    }
 }
 ```
 
@@ -39,13 +39,13 @@ using `model.linkAll()` method. This is the preferable way of dealing with the c
 
 ```javascript
 @define export class MyComponent extends Component {
-	static state = {
-		a : '',
+    static state = {
+        a : '',
         b : '',
         c : ''
-	}
+    }
 
-	render(){
+    render() {
         const links = this.linkAll();
         return (
             <form>
@@ -54,7 +54,7 @@ using `model.linkAll()` method. This is the preferable way of dealing with the c
                 <Input valueLink={ links.c } />
             </form>
         );
-	}
+    }
 }
 ```
 
@@ -64,7 +64,7 @@ using `model.linkAll()` method. This is the preferable way of dealing with the c
 close to this:
 
 ```javascript
-render(){
+render() {
     const link = {
         value : this.state.text,
         set   : x => this.state.text = x
