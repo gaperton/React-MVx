@@ -73,6 +73,10 @@ class RecordLink extends Link< any > {
     set error( x ){
         this._error = x;
     }
+
+    assignFrom( other : Record ){
+        this.value.assignFrom( other );
+    }
 }
 
 class RecordDeepLink extends Link< any > {
@@ -100,6 +104,10 @@ class RecordDeepLink extends Link< any > {
 
     set( x ){
         this.record.deepSet( this.path, x, this.options );
+    }
+
+    assignFrom( other : Record ){
+        this.value.assignFrom( other );
     }
 }
 
