@@ -1,33 +1,53 @@
 /*****************
  * State
  */
-import { collectSpecs } from './typeSpecs'
-import { Record, Store } from 'type-r'
+import { define, Record, Store } from 'type-r'
+import { ComponentClass } from './common'
 
-export default function process( spec, baseProto ){
-    // process state spec...
-    const attributes = collectSpecs( spec, 'state' );
+export interface StateDefinition {
+    state? : object | typeof Record
+    State? : typeof Record
+}
 
-    if( attributes || baseProto.State ){
-        const BaseModel = baseProto.State || Record;
-        
-        spec.State    = attributes ? (
-            typeof attributes === 'function' ? attributes : BaseModel.defaults( attributes )
-        ): BaseModel;
+export interface StateProto {
+    State? : typeof Record
+}
 
-        spec.mixins.push( StateMixin );
-        spec.mixins.push( UpdateOnNestedChangesMixin );
+export default function process( this : ComponentClass<StateProto>, definition : StateDefinition, BaseComponentClass : ComponentClass<StateProto> ){
+    const { prototype } = this;
 
-        delete spec.state;
-        delete spec.attributes;
+    let { state, State } = definition;
+
+    if( typeof state === 'function' ){
+        State = state;
+        state = void 0;
+    }
+
+    if( state ){
+        const BaseClass = State || prototype.State || Record;
+
+        @define class ComponentState extends BaseClass {
+            static attributes = state;
+        }
+
+        prototype.State = ComponentState;
+    }
+    else if( State ){
+        prototype.State = State;
+    }
+
+    if( state || State ){
+        this.mixins.merge([ StateMixin, UpdateOnNestedChangesMixin ]);
     }
 }
 
 export const StateMixin = {
-    state : null,
+    //state : null,
 
-    componentWillMount(){
-        const state = this.state = new this.State();
+    _initializeState(){
+        // props.__keepState is used to workaround issues in Backbone intergation layer
+        const state = this.state = this.props.__keepState || new this.State();
+        
         // Take ownership on state...
         state._owner = this;
         state._ownerKey = 'state';
@@ -43,14 +63,14 @@ export const StateMixin = {
         // TBD: Need to figure out a good way of managing local stores.
         let context, state;
 
-        return  ( ( context = this.context ) && context._archetypeStore ) ||
+        return  ( ( context = this.context ) && context._nestedStore ) ||
                 ( ( state = this.state ) && state._defaultStore );
     },
 
     componentWillUnmount(){
         const { state } = this;
         state._owner = state._ownerKey = void 0;
-        state.dispose();
+        this._preventDispose /* hack for component-view to preserve the state */ || state.dispose();
         this.state = void 0;
     }
 };
