@@ -1,6 +1,7 @@
-export default function createPureRenderMixin(props: any): {
-    _changeTokens: any;
+export declare function createChangeTokensConstructor(props: any): Function;
+export declare const EmptyPropsChangeTokensCtor: Function;
+export declare const PureRenderMixin: {
     shouldComponentUpdate(nextProps: any): any;
-    componentDidMount(): void;
-    componentDidUpdate(): void;
+    componentDidMount: () => void;
+    componentDidUpdate: () => void;
 };

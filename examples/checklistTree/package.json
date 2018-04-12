@@ -1,25 +1,29 @@
 {
   "private": true,
-  "dependencies": {
-    "todomvc-app-css": "^2.0.0",
-    "todomvc-common": "^1.0.0"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "babel": "<6.0.0",
-    "babel-core": "<6.0.0",
-    "babel-loader": "<6.0.0",
-    "babel-runtime": "<6.0.0",
-    "classnames": "^2.2.0",
-    "css-loader": "^0.23.0",
-
-    "type-r": "^1.0.0-rc0",
-    "react-mvx" : "*",
-
-    "react": "^15.0.0",
-    "react-dom": "^15.0.0",
-    "react-modal": "^1.4.0",
-    "style-loader": "^0.13.0",
-    "webpack": "^1.12.6"
+    "babel-cli": "*",
+    "babel-core": "*",
+    "babel-loader": "*",
+    "babel-plugin-add-module-exports": "*",
+    "babel-plugin-transform-class-properties": "*",
+    "babel-plugin-transform-decorators-legacy": "*",
+    "babel-plugin-transform-object-rest-spread": "*",
+    "babel-plugin-transform-react-constant-elements": "*",
+    "babel-plugin-transform-react-inline-elements": "*",
+    "babel-preset-es2015": "*",
+    "babel-preset-react": "*",
+    "babel-runtime": "*",
+    "classnames": "*",
+    "css-loader": "*",
+    "react-mvx": "^2.0.0-00",
+    "react": "*",
+    "react-dom": "*",
+    "prop-types": "*",
+    "source-map-loader": "*",
+    "style-loader": "*",
+    "type-r": "^2.0.1",
+    "webpack": "^3.8.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

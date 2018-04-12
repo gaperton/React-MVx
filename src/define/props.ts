@@ -4,43 +4,55 @@
  * - pure render mixin
  */
 
-import { collectSpecs, compileSpecs, TypeSpecs } from './typeSpecs'
-import createPureRenderMixin from './pureRender'
+import { compileSpecs, TypeSpecs } from './typeSpecs'
+import { PureRenderMixin, createChangeTokensConstructor } from './pureRender'
+import { tools } from 'type-r'
+import { ComponentClass } from './common'
 
-export interface PropsMetadata {
+export interface PropsDefinition {
     pureRender? : boolean
-    _props? : TypeSpecs
-    _listenToPropsArray? : string[]
-    _listenToPropsHash? : { [ propName : string ] : Object | string }
+    props : TypeSpecs
 }
 
-export default function process( spec, { pureRender, _props = {}, _listenToPropsArray = [], _listenToPropsHash = {} } : PropsMetadata ){
+
+export interface PropsProto {
+    pureRender? : boolean
+    _props? : TypeSpecs
+    _watchers? : any
+    _changeHandlers? : any
+    PropsChangeTokens? : any
+}
+
+export default function onDefine( this : ComponentClass<PropsProto>, { props, pureRender } : PropsDefinition, BaseClass : ComponentClass<PropsProto> ){
+    const { prototype } = this;
+
     // process props spec...
-    const props = collectSpecs( spec, 'props' );
     if( props ){
-        const allProps = spec._props = { ..._props, ...props };
+        // Merge with inherited members...
+        prototype._props = tools.defaults( props, BaseClass.prototype._props || {} );
 
-        const { propTypes, defaults, watchers, changeHandlers } = compileSpecs( allProps );
-        spec.propTypes = propTypes;
+        const { propTypes, defaults, watchers, changeHandlers } = compileSpecs( props );
+        this.propTypes = propTypes;
 
-        if( defaults ) spec.getDefaultProps = () => defaults;
+        if( defaults ) this.defaultProps = defaults;
 
         if( watchers ){
-            spec.mixins.unshift( WatchersMixin );
-            spec._watchers = watchers;
+            prototype._watchers = watchers;
+            this.mixins.merge([ WatchersMixin ]);
         }
 
         if( changeHandlers ){
-            spec.mixins.unshift( ChangeHandlersMixin );
-            spec._changeHandlers = changeHandlers;
+            prototype._changeHandlers = changeHandlers;
+            this.mixins.merge([ ChangeHandlersMixin ]);
         }
 
-        delete spec.props;
+        if( prototype.pureRender ){
+            prototype.PropsChangeTokens = createChangeTokensConstructor( props );
+        }
     }
 
-    // compile pure render mixin
-    if( spec._props && ( spec.pureRender || pureRender ) ){
-        spec.mixins.push( createPureRenderMixin( spec._props ) );
+    if( pureRender ){
+        this.mixins.merge([ PureRenderMixin ]);
     }
 }
 
@@ -49,17 +61,26 @@ export default function process( spec, { pureRender, _props = {}, _listenToProps
  * Fires _after_ UI is updated. Used for managing events subscriptions.
  */
 const ChangeHandlersMixin = {
-    componentDidMount  : handleChanges,
-    componentDidUpdate : handleChanges
+    componentDidMount(){
+        handlePropsChanges( this, {}, this.props );
+    },
+
+    componentDidUpdate( prev ){
+        handlePropsChanges( this, prev, this.props );
+    },
+
+    componentWillUnmount(){
+        handlePropsChanges( this, this.props, {} );
+    }
 };
 
-function handleChanges( prev = {} ){
-    const { _changeHandlers, props } = this;
+function handlePropsChanges( component : any, prev : object, next : object ){
+    const { _changeHandlers } = component;
     
     for( let name in _changeHandlers ){
-        if( prev[ name ] !== props[ name ] ){
+        if( prev[ name ] !== next[ name ] ){
             for( let handler of _changeHandlers[ name ] ){
-                handler( props[ name ], prev[ name ], this );
+                handler( next[ name ], prev[ name ], component );
             }
         }
     }

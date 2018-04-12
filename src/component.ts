@@ -1,107 +1,155 @@
 /**
- * React components
+ * React-Type-R component base class. Overrides React component.
  */
 
 import * as React from 'react'
-import { Record, Store, extendable, mergeProps, mixinRules, tools, Mixable, MixinRules } from 'type-r'
-import Link from './Link'
-import processSpec, { TypeSpecs } from './define'
+import { Record, Store, CallbacksByEvents, mixinRules, define, mixins, definitions, tools, Messenger } from 'type-r'
+import Link from './link'
+import onDefine, { TypeSpecs, EmptyPropsChangeTokensCtor } from './define'
 
-const reactMixinRules : MixinRules = {
-    componentWillMount        : 'reverse',
-    componentDidMount         : 'reverse',
-    componentWillReceiveProps : 'reverse',
-    shouldComponentUpdate     : 'some',
-    componentWillUpdate       : 'reverse',
-    componentDidUpdate        : 'reverse',
-    componentWillUnmount      : 'sequence',
-    state                     : 'merge',
-    store                     : 'merge',
-    props                     : 'merge',
-    context                   : 'merge',
-    childContext              : 'merge',
-    getChildContext           : 'mergeSequence'
-};
+@define({
+    PropsChangeTokens : EmptyPropsChangeTokensCtor
+})
+@definitions({
+    // Definitions to be extracted from mixins and statics and passed to `onDefine()`
+    state                     : mixinRules.merge,
+    State                     : mixinRules.value,
+    store                     : mixinRules.merge,
+    Store                     : mixinRules.value,
+    props                     : mixinRules.merge,
+    context                   : mixinRules.merge,
+    childContext              : mixinRules.merge,
+    pureRender                : mixinRules.protoValue
+})
+@mixinRules( {
+    // Apply old-school React mixin rules.
+    componentWillMount        : mixinRules.classLast,
+    componentDidMount         : mixinRules.classLast,
+    componentWillReceiveProps : mixinRules.classLast,
+    componentWillUpdate       : mixinRules.classLast,
+    componentDidUpdate        : mixinRules.classLast,
+    componentWillUnmount      : mixinRules.classFirst,
 
-@extendable
-@mixinRules( reactMixinRules )
-export abstract class Component<P> extends React.Component<P, Record> {
+    // And a bit more to fix inheritance quirks.
+    shouldComponentUpdate     : mixinRules.some,
+    getChildContext           : mixinRules.defaults
+} )
+// Component can send and receive events...
+@mixins( Messenger )
+export class Component<P, S extends Record = Record > extends React.Component<P, S> {
+    cid : string
+
     static state? : TypeSpecs | typeof Record
     static store? : TypeSpecs | typeof Store
     static props? : TypeSpecs
-    static autobind? : string
     static context? : TypeSpecs
     static childContext? : TypeSpecs
     static pureRender? : boolean
 
+    private _disposed : boolean
     private static propTypes: any;
     private static defaultProps: any;
     private static contextTypes : any;
     private static childContextTypes : any;
-    
-    static extend : ( spec : object ) => Component< any >
 
-    linkAt( key : string ) : Link< any> {
+    private PropsChangeTokens : Function
+    
+    static extend : ( spec : object, statics? : object ) => Component< any >
+
+    linkAt( key : string ) : Link<any> {
         // Quick and dirty hack to suppres type error - refactor later.
-        return (<any>this.state).linkAt( key );
+        return ( this.state as any ).linkAt( key );
     }
 
     linkAll( ...keys : string[] ) : { [ key : string ] : Link<any> }
     linkAll(){
         // Quick and dirty hack to suppres type error - refactor later.
-        return (<any>this.state).linkAll.apply( this, arguments );
+        const { state } = this as any;
+        return state.linkAll.apply( state, arguments );
     }
 
-    static define( protoProps, staticProps ){
-        var BaseClass          = tools.getBaseClass( this ),
-            staticsDefinition = tools.getChangedStatics( this, 'state', 'store', 'props', 'autobind', 'context', 'childContext', 'pureRender' ),
-            combinedDefinition = tools.assign( staticsDefinition, protoProps || {} );
-
-        var definition = processSpec( combinedDefinition, this.prototype );
-
-        const { getDefaultProps, propTypes, contextTypes, childContextTypes, ...protoDefinition } = definition;
-
-        if( getDefaultProps ) this.defaultProps = definition.getDefaultProps();
-        if( propTypes ) this.propTypes = propTypes;
-        if( contextTypes ) this.contextTypes = contextTypes;
-        if( childContextTypes ) this.childContextTypes = childContextTypes;
-
-        Mixable.define.call( this, protoDefinition, staticProps );
-
-        return this;
+    linkPath( path : string ) : Link<any> {
+        return ( this.state as any ).linkPath( path );
     }
 
-    readonly state : Record
+    get links(){
+        return ( this.state as any )._links;
+    }
+
+    static onDefine = onDefine;
+
+    readonly state : S
     readonly store? : Store
 
-    assignToState( x, key ){
+    constructor( props?, context? ){
+        super( props, context );
+        this._initializeState();
+    }
+
+    _initializeState(){
+        ( this as any ).state = null;
+    }
+
+    assignToState( x, key : string ){
         this.state.assignFrom({ [ key ] : x });
     }
-}
 
-/**
- * ES5 components definition factory
- */
-export function createClass( a_spec ){
-    // Gather all methods to pin them to `this` later.
-    const methods = [];
-    for( let key in a_spec ){
-        if( a_spec.hasOwnProperty( key ) && typeof a_spec[ key ] === 'function' ){
-            methods.push( key );
+    isMounted : () => boolean
+
+    // Messenger methods...
+    on : ( events : string | CallbacksByEvents, callback, context? ) => this
+    once : ( events : string | CallbacksByEvents, callback, context? ) => this
+    off : ( events? : string | CallbacksByEvents, callback?, context? ) => this
+    trigger      : (name : string, a?, b?, c?, d?, e? ) => this
+
+    stopListening : ( source? : Messenger, a? : string | CallbacksByEvents, b? : Function ) => this
+    listenTo : ( source : Messenger, a : string | CallbacksByEvents, b? : Function ) => this
+    listenToOnce : ( source : Messenger, a : string | CallbacksByEvents, b? : Function ) => this
+
+    dispose : () => void
+
+    componentWillUnmount(){
+        this.dispose();
+    }
+
+    /**
+     * Performs transactional update for both props and state.
+     * Suppress updates during the transaction, and force update aftewards.
+     * Wrapping the sequence of changes in a transactions guarantees that
+     * React component will be updated _after_ all the changes to the
+     * both props and local state are applied.
+     */
+    transaction( fun : ( state? : Record ) => void ){
+        var shouldComponentUpdate = this.shouldComponentUpdate,
+            isRoot = shouldComponentUpdate !== returnFalse;
+
+        if( isRoot ){
+            this.shouldComponentUpdate = returnFalse;
+        }
+
+        const { state, store } = this,
+              withStore = store ? state => store.transaction( () => fun( state ) ) : fun;
+        
+        state ? state.transaction( withStore ) : withStore( state );
+
+        if( isRoot ){
+            this.shouldComponentUpdate = shouldComponentUpdate;
+            this.asyncUpdate();
         }
     }
 
-    const Subclass = Component.extend({
-        // Override constructor to autobind all the methods...
-        constructor(){
-            Component.apply( this.arguments );
-
-            for( let method in methods ){
-                this[ method ] = this[ method ].bind( this );
-            }
-        },
-        ...a_spec
-    });
-
-    return Subclass;
+    // Safe version of the forceUpdate suitable for asynchronous callbacks.
+    asyncUpdate(){
+        this.shouldComponentUpdate === returnFalse || this._disposed || this.forceUpdate();
+    }
 }
+
+function returnFalse(){ return false; }
+
+// Looks like React guys _really_ want to deprecate it. But no way.
+// We will work around their attempt.
+Object.defineProperty( Component.prototype, 'isMounted', {
+    value : function isMounted(){
+        return !this._disposed;
+    }
+})

@@ -2,11 +2,12 @@
     "compilerOptions": {
         "alwaysStrict": true,
         "moduleResolution": "node",
-        "importHelpers": false,
+        "importHelpers": true,
         "noEmitHelpers": false,
         "outDir": "lib",
         "declaration": true,
         "target": "es5",
+        "importHelpers":true,
         "module": "es6",
         "sourceMap": true,
         "jsx": "react",
