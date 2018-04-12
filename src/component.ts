@@ -94,6 +94,10 @@ export class Component<P, S extends Record = Record > extends React.Component<P,
         this.state.assignFrom({ [ key ] : x });
     }
 
+    setState( attrs : object | ( ( state : S, props : P ) => object ) ){
+        this.state.set( typeof attrs === 'function' ? attrs.call( this, this.state, this.props ) : attrs );
+    }
+
     isMounted : () => boolean
 
     // Messenger methods...
