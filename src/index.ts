@@ -1,8 +1,8 @@
-import * as React from 'react'
-import { define, Record, Store, mixins, mixinRules, ChainableAttributeSpec } from 'type-r'
-import processSpec, { Node, Element, TypeSpecs } from './define'
-import Link from './link'
-import { Component } from './component'
+import * as React from 'react';
+import { ChainableAttributeSpec, define, mixinRules, mixins } from 'type-r';
+import { Component } from './component';
+import { Element, Node } from './define';
+import Link from './link';
 
 interface ReactMVx {
     // It's ES6 module

@@ -7,7 +7,6 @@
         "outDir": "lib",
         "declaration": true,
         "target": "es5",
-        "importHelpers":true,
         "module": "es6",
         "sourceMap": true,
         "jsx": "react",
@@ -16,7 +15,6 @@
         "paths": {
             "tslib" : ["node_modules/tslib/tslib.d.ts"]
         }
-
     },
     "files":[
         "./src/index.ts",

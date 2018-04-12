@@ -2,9 +2,8 @@
  * Import ValueLink library
  * Define value links binding mixins to the Record and Collection
  */
-
-import { Mixable, MixinsState, Record } from 'type-r'
-import { Link } from './valuelink/link'
+import { Mixable, MixinsState, Record } from 'type-r';
+import { Link } from './valuelink/link';
 
 export default Link;
 

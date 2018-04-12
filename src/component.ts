@@ -1,11 +1,10 @@
 /**
  * React-Type-R component base class. Overrides React component.
  */
-
-import * as React from 'react'
-import { Record, Store, CallbacksByEvents, mixinRules, define, mixins, definitions, tools, Messenger } from 'type-r'
-import Link from './link'
-import onDefine, { TypeSpecs, EmptyPropsChangeTokensCtor } from './define'
+import * as React from 'react';
+import { CallbacksByEvents, Messenger, Record, Store, define, definitions, mixinRules, mixins } from 'type-r';
+import onDefine, { EmptyPropsChangeTokensCtor, TypeSpecs } from './define';
+import Link from './link';
 
 @define({
     PropsChangeTokens : EmptyPropsChangeTokensCtor

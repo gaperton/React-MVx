@@ -1,9 +1,9 @@
 /// <reference types="react" />
 import * as React from 'react';
-import { define, mixins, mixinRules, ChainableAttributeSpec } from 'type-r';
-import { Node, Element } from './define';
-import Link from './link';
+import { ChainableAttributeSpec, define, mixinRules, mixins } from 'type-r';
 import { Component } from './component';
+import { Element, Node } from './define';
+import Link from './link';
 interface ReactMVx {
     default: ReactMVx;
     define: typeof define;
