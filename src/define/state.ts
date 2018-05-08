@@ -64,7 +64,7 @@ export const StateMixin = {
         let context, state;
 
         return  ( ( context = this.context ) && context._nestedStore ) ||
-                ( ( state = this.state ) && state._defaultStore );
+                ( ( state = this.state ) && state._defaultStore ) || Store.global;
     },
 
     componentWillUnmount(){

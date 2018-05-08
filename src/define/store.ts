@@ -61,7 +61,7 @@ const ExposeStoreMixin = {
     // Will be called by the store when the lookup will fail.
     get( key ){
         // Ask upper store.
-        const store = StateMixin.getStore.call( this, key );
+        const store = StateMixin.getStore.call( this );
         return store && store.get( key );
     }
 };
