@@ -1,6 +1,6 @@
 {
   "name": "react-mvx",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "repository": {
     "type": "git",
     "url": "https://github.com/gaperton/React-MVx.git"
@@ -35,7 +35,8 @@
   ],
   "author": "Vlad Balin",
   "license": "MIT",
-  "peerDependencies": {
+  "dependencies": {
+    "tslib": "^1.9.3",
     "prop-types": "*",
     "react": "^16.0.0",
     "type-r": "git+https://github.com/Volicon/Type-R.git#develop",
@@ -48,12 +49,9 @@
     "highlight.js": "^9.12.0",
     "marked": "^0.3.19",
     "prop-types": "^15.6.1",
-    "react": "^16.6.3",
     "rollup": "^0.50.1",
     "rollup-plugin-node-resolve": "^3.3.0",
     "rollup-plugin-uglify": "^2.0.1",
-    "type-r": "git+https://github.com/Volicon/Type-R.git#develop",
-    "typescript": "*",
-    "valuelink": "git+https://github.com/Volicon/NestedLink.git"
+    "typescript": "*"
   }
 }
