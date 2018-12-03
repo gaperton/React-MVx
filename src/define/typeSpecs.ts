@@ -15,7 +15,9 @@ export function compileSpecs( props : TypeSpecs ){
         watchers : { [ name : string ] : PropWatcher },
         changeHandlers : { [ name : string ] : ChangeHandler[] };
 
-    modelProto.forEachAttr( modelProto._attributes, ( spec : AnyType, name : string ) => {
+    for( let spec of modelProto._attributesArray ){
+        const { name } = spec;
+    
         // Skip auto-generated `id` attribute.
         if( name !== 'id' ){
             const { value, type, options } = spec;
@@ -55,7 +57,7 @@ export function compileSpecs( props : TypeSpecs ){
                 defaults[ name ] = spec.convert( value, void 0, null, {} );
             }
         }
-    });
+    }
 
     return { propTypes, defaults, watchers, changeHandlers };
 }
@@ -105,7 +107,7 @@ function _translateType( Type : Function ){
         case null :
             return PropTypes.any;
         default:
-            return PropTypes.instanceOf( Type );
+            return PropTypes.instanceOf( Type as any );
     }
 }
 
