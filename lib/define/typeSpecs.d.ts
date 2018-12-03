@@ -13,14 +13,9 @@ export declare function compileSpecs(props: TypeSpecs): {
         [name: string]: ChangeHandler[];
     };
 };
-type PropWatcher = (this: ComponentProto, propValue: any, propName: string) => void;
+declare type PropWatcher = (this: ComponentProto, propValue: any, propName: string) => void;
 export declare class Node {
 }
 export declare class Element {
-}
-declare global {
-    interface NumberConstructor {
-        integer: Function;
-    }
 }
 export {};

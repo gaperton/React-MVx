@@ -1,6 +1,6 @@
-import * as PropTypes from 'prop-types'
-import { Record, tools, AnyType, ChangeHandler } from 'type-r'
-import { ComponentProto } from './common'
+import * as PropTypes from 'prop-types';
+import { ChangeHandler, Record } from 'type-r';
+import { ComponentProto } from './common';
 
 export interface TypeSpecs {
     [ name : string ] : object | Function
@@ -78,16 +78,9 @@ function translateType( Type : Function, isRequired : boolean ){
     return isRequired ? T.isRequired : T;
 }
 
-declare global {
-    interface NumberConstructor {
-        integer : Function
-    }
-}
-
 function _translateType( Type : Function ){
     switch( Type ){
         case Number :
-        case Number.integer :
             return PropTypes.number;
         case String :
             return PropTypes.string;
