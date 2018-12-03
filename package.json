@@ -38,7 +38,8 @@
   "peerDependencies": {
     "prop-types": "*",
     "react": "^16.0.0",
-    "type-r": "git+https://github.com/Volicon/Type-R.git#develop"
+    "type-r": "git+https://github.com/Volicon/Type-R.git#develop",
+    "valuelink": "git+https://github.com/Volicon/NestedLink.git"
   },
   "devDependencies": {
     "@types/prop-types": "^15.5.2",
