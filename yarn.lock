@@ -186,6 +186,10 @@ uglify-js@^3.0.9, uglify-js@^3.1.4:
     commander "~2.17.1"
     source-map "~0.6.1"
 
+"valuelink@git+https://github.com/Volicon/NestedLink.git":
+  version "1.5.6"
+  resolved "git+https://github.com/Volicon/NestedLink.git#a9735bd5731309b99605e6ecbe99be1afb0e94c4"
+
 wordwrap@~0.0.2:
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/wordwrap/-/wordwrap-0.0.3.tgz#a3d5da6cd5c0bc0008d37234bbaf1bed63059107"

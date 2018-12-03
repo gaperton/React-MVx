@@ -19,8 +19,8 @@
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "pull": "git submodule update --remote && cp ./submodules/NestedLink/tags.* . && cp ./submodules/NestedLink/src/* ./src/valuelink",
-    "compile": "./node_modules/.bin/tsc && ./node_modules/.bin/rollup --config",
+    "pull": "cp ./node_modules/valuelink/tags.* .",
+    "compile": "./node_modules/.bin/tsc && ./node_modules/.bin/rollup --config && cp ./node_modules/valuelink/tags.* .",
     "deploy:example": "bash -c 'target=$0/node_modules/react-mvx  &&  mkdir -p $target  &&  cp -R ./dist/ $target  &&  cp ./tags.js* $target'",
     "deploy:examples": "for exmpl in `ls -d ./examples/*`; do npm run deploy:example $exmpl; done",
     "build": "yarn && npm run compile",
@@ -52,6 +52,7 @@
     "rollup-plugin-node-resolve": "^3.3.0",
     "rollup-plugin-uglify": "^2.0.1",
     "type-r": "git+https://github.com/Volicon/Type-R.git#develop",
-    "typescript": "*"
+    "typescript": "*",
+    "valuelink": "git+https://github.com/Volicon/NestedLink.git"
   }
 }
