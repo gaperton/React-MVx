@@ -37,7 +37,7 @@
   "peerDependencies": {
     "prop-types": "*",
     "react": "^16.0.0",
-    "type-r": "3.0.0-a00"
+    "type-r": "^3.0.0-a00"
   },
   "devDependencies": {
     "prop-types": "*",
