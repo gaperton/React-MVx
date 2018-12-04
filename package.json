@@ -35,14 +35,18 @@
   ],
   "author": "Vlad Balin",
   "license": "MIT",
-  "dependencies": {
-    "tslib": "^1.9.3",
+  "peerDependencies": {
     "prop-types": "*",
     "react": "^16.0.0",
-    "type-r": "git+https://github.com/Volicon/Type-R.git#develop",
-    "valuelink": "git+https://github.com/Volicon/NestedLink.git"
+    "type-r": "Volicon/Type-R.git#develop",
+    "valuelink": "Volicon/NestedLink"
   },
   "devDependencies": {
+    "prop-types": "*",
+    "react": "^16.0.0",
+    "type-r": "Volicon/Type-R.git#develop",
+    "valuelink": "Volicon/NestedLink",
+    "tslib": "^1.9.3",
     "@types/prop-types": "^15.5.2",
     "@types/react": "^16.7.13",
     "handlebars": "*",
