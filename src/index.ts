@@ -18,8 +18,8 @@ interface ReactMVx {
 
     // additional ReactMVx types
     Link : typeof Link
-    Node : ChainableAttributeSpec
-    Element : ChainableAttributeSpec
+    Node : ChainableAttributeSpec<typeof Node>
+    Element : ChainableAttributeSpec<typeof Element>
 
     // Helper methods
     assignToState( key : string )

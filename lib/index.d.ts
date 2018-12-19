@@ -10,8 +10,8 @@ interface ReactMVx {
     mixinRules: typeof mixinRules;
     Component: typeof Component;
     Link: typeof Link;
-    Node: ChainableAttributeSpec;
-    Element: ChainableAttributeSpec;
+    Node: ChainableAttributeSpec<typeof Node>;
+    Element: ChainableAttributeSpec<typeof Element>;
     assignToState(key: string): any;
 }
 declare const ReactMVx: ReactMVx & typeof React;
