@@ -9,7 +9,7 @@ export interface TypeSpecs {
 export function compileSpecs( props : TypeSpecs ){
     const propTypes = {},
         // Create NestedTypes model definition to process props spec.
-        modelProto = Record.defaults( props ).prototype;
+        modelProto = Record.defaults( props ).prototype as any;
 
     let defaults,
         watchers : { [ name : string ] : PropWatcher },

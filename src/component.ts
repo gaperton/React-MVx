@@ -2,7 +2,7 @@
  * React-Type-R component base class. Overrides React component.
  */
 import * as React from 'react';
-import { CallbacksByEvents, Messenger, Record, Store, define, definitions, mixinRules, mixins } from 'type-r';
+import { EventCallbacks, Messenger, Record, Store, define, definitions, mixinRules, mixins } from 'type-r';
 import onDefine, { EmptyPropsChangeTokensCtor, TypeSpecs } from './define';
 import Link from './link';
 
@@ -45,7 +45,6 @@ export class Component<P, S extends Record = Record > extends React.Component<P,
     static childContext? : TypeSpecs
     static pureRender? : boolean
 
-    private _disposed : boolean
     private static propTypes: any;
     private static defaultProps: any;
     private static contextTypes : any;
@@ -99,18 +98,6 @@ export class Component<P, S extends Record = Record > extends React.Component<P,
 
     isMounted : () => boolean
 
-    // Messenger methods...
-    on : ( events : string | CallbacksByEvents, callback, context? ) => this
-    once : ( events : string | CallbacksByEvents, callback, context? ) => this
-    off : ( events? : string | CallbacksByEvents, callback?, context? ) => this
-    trigger      : (name : string, a?, b?, c?, d?, e? ) => this
-
-    stopListening : ( source? : Messenger, a? : string | CallbacksByEvents, b? : Function ) => this
-    listenTo : ( source : Messenger, a : string | CallbacksByEvents, b? : Function ) => this
-    listenToOnce : ( source : Messenger, a : string | CallbacksByEvents, b? : Function ) => this
-
-    dispose : () => void
-
     componentWillUnmount(){
         this.dispose();
     }
@@ -146,6 +133,8 @@ export class Component<P, S extends Record = Record > extends React.Component<P,
         this.shouldComponentUpdate === returnFalse || this._disposed || this.forceUpdate();
     }
 }
+
+export interface Component<P, S extends Record = Record> extends Messenger {}
 
 function returnFalse(){ return false; }
 

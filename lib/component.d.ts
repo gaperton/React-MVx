@@ -2,7 +2,7 @@
  * React-Type-R component base class. Overrides React component.
  */
 import * as React from 'react';
-import { CallbacksByEvents, Messenger, Record, Store } from 'type-r';
+import { Messenger, Record, Store } from 'type-r';
 import onDefine, { TypeSpecs } from './define';
 import Link from './link';
 export declare class Component<P, S extends Record = Record> extends React.Component<P, S> {
@@ -13,7 +13,6 @@ export declare class Component<P, S extends Record = Record> extends React.Compo
     static context?: TypeSpecs;
     static childContext?: TypeSpecs;
     static pureRender?: boolean;
-    private _disposed;
     private static propTypes;
     private static defaultProps;
     private static contextTypes;
@@ -34,14 +33,6 @@ export declare class Component<P, S extends Record = Record> extends React.Compo
     assignToState(x: any, key: string): void;
     setState(attrs: object | ((state: S, props: P) => object)): void;
     isMounted: () => boolean;
-    on: (events: string | CallbacksByEvents, callback: any, context?: any) => this;
-    once: (events: string | CallbacksByEvents, callback: any, context?: any) => this;
-    off: (events?: string | CallbacksByEvents, callback?: any, context?: any) => this;
-    trigger: (name: string, a?: any, b?: any, c?: any, d?: any, e?: any) => this;
-    stopListening: (source?: Messenger, a?: string | CallbacksByEvents, b?: Function) => this;
-    listenTo: (source: Messenger, a: string | CallbacksByEvents, b?: Function) => this;
-    listenToOnce: (source: Messenger, a: string | CallbacksByEvents, b?: Function) => this;
-    dispose: () => void;
     componentWillUnmount(): void;
     /**
      * Performs transactional update for both props and state.
@@ -52,4 +43,6 @@ export declare class Component<P, S extends Record = Record> extends React.Compo
      */
     transaction(fun: (state?: Record) => void): void;
     asyncUpdate(): void;
+}
+export interface Component<P, S extends Record = Record> extends Messenger {
 }
