@@ -227,9 +227,10 @@ uglify-js@^3.0.9, uglify-js@^3.1.4:
     commander "~2.17.1"
     source-map "~0.6.1"
 
-valuelink@Volicon/NestedLink:
-  version "1.5.6"
-  resolved "https://codeload.github.com/Volicon/NestedLink/tar.gz/a9735bd5731309b99605e6ecbe99be1afb0e94c4"
+valuelink@^1.0.0:
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/valuelink/-/valuelink-1.6.2.tgz#1d1c4909d92ca77e37b5d3ab78bd6e2cef9f68fb"
+  integrity sha512-Y7I9SNUfNH1fzu/NXM+4oHqSpks1sqZNTNdM0srOmM2irgYB1UciTZLB5DmSfmw+meeDQKRkMuJNkER861kOhg==
 
 whatwg-fetch@>=0.10.0:
   version "3.0.0"

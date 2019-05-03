@@ -41,7 +41,7 @@
   },
   "dependencies": {
     "tslib": "*",
-    "valuelink": "Volicon/NestedLink"
+    "valuelink": "^1.0.0"
   },
   "devDependencies": {
     "@types/prop-types": "^15.5.2",
