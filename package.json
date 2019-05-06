@@ -1,6 +1,6 @@
 {
   "name": "react-type-r",
-  "version": "3.0.0-a001",
+  "version": "3.0.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/gaperton/React-MVx.git"
@@ -54,7 +54,7 @@
     "rollup": "^0.50.1",
     "rollup-plugin-node-resolve": "^3.3.0",
     "rollup-plugin-uglify": "^2.0.1",
-    "type-r": "Volicon/Type-R.git#develop",
+    "type-r": "^3.0.0",
     "typescript": "*"
   }
 }

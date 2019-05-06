@@ -207,9 +207,10 @@ tslib@*:
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.9.3.tgz#d7e4dd79245d85428c4d7e4822a79917954ca286"
   integrity sha512-4krF8scpejhaOgqzBEcGM7yDIEfi0/8+8zDRZhNZZ2kjmHJ4hv3zCbQWxoJGz1iw5U0Jl0nma13xzHXcncMavQ==
 
-type-r@Volicon/Type-R.git#develop:
-  version "3.0.6"
-  resolved "https://codeload.github.com/Volicon/Type-R/tar.gz/72cf74c49cba4f69bce6f92e5e2d831fe1d44fe6"
+type-r@^3.0.0:
+  version "3.0.8"
+  resolved "https://registry.yarnpkg.com/type-r/-/type-r-3.0.8.tgz#d12294223be12a26867759c00c6cbc68f646cd04"
+  integrity sha512-ohbSYa21LsmqnR++fq/yNIoqta6koXXk8FcLsXHGyDLNXDDamfUeiSXORssa6kaNwzomum3edyaRI9AT8A057A==
   dependencies:
     isomorphic-fetch "*"
     tslib "*"
