@@ -19,13 +19,13 @@ putting everything in a single LOC. :) It's something more interesting.
 
 So, how could that be? Because, we're doing something significantly different from commonly known React technique:
 
-1. We're using [smart React Links](https://github.com/Volicon/NestedReact#two-way-data-binding) for [two-way data binding](/docs/databinding.md).
+1. We're using [smart React Links](https://github.com/VoliJs/NestedReact#two-way-data-binding) for [two-way data binding](/docs/databinding.md).
 2. Due to (1), we are able to describe the most of UI with fast and lightweight [components defined as stateless functions](https://facebook.github.io/react/docs/reusable-components.html#stateless-functions), introduced in React 0.14.
 
 These two techniques in combination will save you half of the work in JSX, and make it look much cleaner.
 Remember - the best code is the code you avoided to write. :) 
 
-Since our links are framework-neutral and available as [separate dependency-free package](https://github.com/Volicon/valuelink),
+Since our links are framework-neutral and available as [separate dependency-free package](https://github.com/VoliJs/valuelink),
 any React system can benefit from this style. You might wonder how it looks like.
 Typically, like this:
 
@@ -33,25 +33,25 @@ Typically, like this:
 
 ### JS (data layer) is 2-3 times smaller
 
-The reason it's shorter is that it's _not_ flux, _nor_ something strange and immutable. But [_classical mutable models_](https://github.com/Volicon/NestedTypes). Thus, it takes the same size as in Backbone, Angular, Ember, etc. 
+The reason it's shorter is that it's _not_ flux, _nor_ something strange and immutable. But [_classical mutable models_](https://github.com/VoliJs/NestedTypes). Thus, it takes the same size as in Backbone, Angular, Ember, etc. 
 
 But it's not _that_ naive and simple mutable models you dealt with before. They kinda smart enough to _give you features you could expect from flux_:
 
 - Unidirectional data flow.
-- ["Pure render"](https://github.com/Volicon/NestedReact#props-specs-and-pure-render-optimization) optimization.
+- ["Pure render"](https://github.com/VoliJs/NestedReact#props-specs-and-pure-render-optimization) optimization.
 
-Not to mention, that they are [very fast](http://slides.com/vladbalin/performance#/). NestedReact uses [NestedTypes]([https://github.com/Volicon/NestedTypes]) model framework, which is designed to handle collections of 10-50K elements smoothly, and in general all operations are order of magnitude (10x) faster than backbone.
+Not to mention, that they are [very fast](http://slides.com/vladbalin/performance#/). NestedReact uses [NestedTypes]([https://github.com/VoliJs/NestedTypes]) model framework, which is designed to handle collections of 10-50K elements smoothly, and in general all operations are order of magnitude (10x) faster than backbone.
 
 The more complex application will become, the more noticeable this difference in size will be.
 Reason is that in NestedTypes case the data layer is mostly defined with declarative spec.
 All you have to do, is to describe the structure of your data,
 and use our smart Links to [bind it to UI](/docs/databinding.md).
-And it will work this way 90% of the time, [no matter, how complex your data are](https://github.com/Volicon/NestedTypes/blob/master/docs/RelationsGuide.md).
+And it will work this way 90% of the time, [no matter, how complex your data are](https://github.com/VoliJs/NestedTypes/blob/master/docs/RelationsGuide.md).
 
 ## Resources
 
-- [NestedReact docs](https://github.com/Volicon/NestedReact)
-- [Post-backbone models](https://github.com/Volicon/NestedTypes): 10x more performance, type safety, aggregation and relations right out of box. 
+- [NestedReact docs](https://github.com/VoliJs/NestedReact)
+- [Post-backbone models](https://github.com/VoliJs/NestedTypes): 10x more performance, type safety, aggregation and relations right out of box. 
 - [Used by](http://www.volicon.com/)
 
 ##FAQ
@@ -75,7 +75,7 @@ You may safely pass nested models and collection around. As you most likely get 
 
 Because our models and collections can be nested, and parents detects nested changes. So, when you put something complex to the top-level component state, the state (which itself is the model in our case) will notice any changes happend deep inside, and triggers UI update.
 
-There's another example illustrating that, which is a bit simpler - [flux-comparison](https://github.com/Volicon/NestedReact/tree/master/examples/flux-comparison).
+There's another example illustrating that, which is a bit simpler - [flux-comparison](https://github.com/VoliJs/NestedReact/tree/master/examples/flux-comparison).
 
 ### What are that `props` and `state` in component definitions?
 
@@ -89,9 +89,9 @@ state : {
 }
 ```
 
-`props` spec is being compiled to `propTypes`, while `state` spec is used to create [NestedTypes model](http://volicon.github.io/NestedTypes/#nested.model) which will serve instead of standard `this.state`.
+`props` spec is being compiled to `propTypes`, while `state` spec is used to create [NestedTypes model](http://volijs.github.io/NestedTypes/#nested.model) which will serve instead of standard `this.state`.
 
-Refer to [NestedTypes API Reference](http://volicon.github.io/NestedTypes/#attribute-types) for complete type annotation syntax.
+Refer to [NestedTypes API Reference](http://volijs.github.io/NestedTypes/#attribute-types) for complete type annotation syntax.
 
 ### What does `editing : ToDo.from( '^props.todos' )` from `todolist.jsx` mean?
 
@@ -118,7 +118,7 @@ Relation differs to aggregation in many aspects, for example:
  - deep changes in referenced models doesn't trigger attribute's holder change.
 
 Relations is one of the most powerful NestedTypes features. For more information, please 
-check [NestedTypes Relations Guide](https://github.com/Volicon/NestedTypes/blob/master/docs/RelationsGuide.md)
+check [NestedTypes Relations Guide](https://github.com/VoliJs/NestedTypes/blob/master/docs/RelationsGuide.md)
 
 ## Credit
 

@@ -2,8 +2,8 @@
 title: React-MVx 2.0 API Reference
 
 toc_footers:
-  - <a href="https://github.com/Volicon/React-MVx">GitHub repository</a>
-  - <a href="https://github.com/Volicon/React-MVx/issues">Report the bug</a>
+  - <a href="https://volijs.github.io/React-Type-R">GitHub repository</a>
+  - <a href="https://volijs.github.io/React-Type-R/issues">Report the bug</a>
   - <a href="https://groups.google.com/forum/#!forum/volicon-open-source">Ask the question</a>
   - <a href="http://www.volicon.com/">Supported by <img style="vertical-align: middle" src="images/volicon_verizon_dm.png"/></a>
 
@@ -25,8 +25,8 @@ search: true
 React-MVx is the MVVM JS application framework built upon three technologies:
 
 - [React](https://reactjs.org/) as a view layer.
-- [Type-R](https://volicon.github.com/Type-R) as a data layer and UI state management.
-- [NestedLink](https://github.com/Volicon/NestedLink) for two-way data binding.
+- [Type-R](https://volijs.github.io/Type-R) as a data layer and UI state management.
+- [NestedLink](https://github.com/VoliJs/NestedLink) for two-way data binding.
     
 Contrary to the popular React approaches, React-MVx does not try to avoid the distributed mutable application state. Instead, it is focused on bringing stateful components capabilities to their maximum.
 
