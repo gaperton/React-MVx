@@ -54,7 +54,7 @@
           <div class="logo-caption">React-MVx 2.0</div>
           <div>React MVVM framework</div>
         </div>
-        
+
       </div>
         <div class="lang-selector">
         </div>
@@ -65,8 +65,8 @@
       <div id="toc">
       </div>
         <ul class="toc-footer">
-                <li><a href="https://github.com/Volicon/React-MVx">GitHub repository</a></li>
-                <li><a href="https://github.com/Volicon/React-MVx/issues">Report the bug</a></li>
+                <li><a href="https://volijs.github.io/React-Type-R">GitHub repository</a></li>
+                <li><a href="https://volijs.github.io/React-Type-R/issues">Report the bug</a></li>
                 <li><a href="https://groups.google.com/forum/#!forum/volicon-open-source">Ask the question</a></li>
                 <li><a href="http://www.volicon.com/">Supported by <img style="vertical-align: middle" src="images/volicon_verizon_dm.png"/></a></li>
         </ul>
@@ -78,11 +78,11 @@
 <p>React-MVx is the MVVM JS application framework built upon three technologies:</p>
 <ul>
 <li><a href="https://reactjs.org/">React</a> as a view layer.</li>
-<li><a href="https://volicon.github.com/Type-R">Type-R</a> as a data layer and UI state management.</li>
-<li><a href="https://github.com/Volicon/NestedLink">NestedLink</a> for two-way data binding.</li>
+<li><a href="https://volijs.github.io/Type-R">Type-R</a> as a data layer and UI state management.</li>
+<li><a href="https://github.com/VoliJs/NestedLink">NestedLink</a> for two-way data binding.</li>
 </ul>
 <p>Contrary to the popular React approaches, React-MVx does not try to avoid the distributed mutable application state. Instead, it is focused on bringing stateful components capabilities to their maximum.</p>
-<p>React-MVx is built around the idea of <em>universal state management</em> featuring 
+<p>React-MVx is built around the idea of <em>universal state management</em> featuring
 the same technique to manage the local component state, application page state,
 and the global application state. Core building blocks of the application architecture are:</p>
 <ul>
@@ -91,7 +91,7 @@ and the global application state. Core building blocks of the application archit
 <li>Links for two-way data binding.</li>
 <li>Stores (which is the subclass of the Record and can be dynamically created) for resolving record&#39;s id-references.</li>
 </ul>
-<p>React-MVx Component uses the Record class to manage its local state. Record can consists of other records 
+<p>React-MVx Component uses the Record class to manage its local state. Record can consists of other records
 and collections, describing the data structure of arbitrary complexity. All records are serializable by default, has deeply observable changes, and supports the declarative validation. The behavior of record&#39;s attributes and component state/props elements is controlled with declarative <em>type annotations</em>. </p>
 <p>React-MVx extends React namespace and should be used instead of <code>react</code>.
 All class Component definitions must be preceeded with the <code>@define</code> decorator.</p>
@@ -506,7 +506,7 @@ All class Component definitions must be preceeded with the <code>@define</code> 
         <span class="hljs-attr">optionalNumber</span>: <span class="hljs-built_in">Number</span>,
         <span class="hljs-attr">optionalObject</span>: <span class="hljs-built_in">Object</span>,
         <span class="hljs-attr">optionalString</span>: <span class="hljs-built_in">String</span>,
-        <span class="hljs-attr">optionalSymbol</span>: <span class="hljs-built_in">Symbol</span>,   
+        <span class="hljs-attr">optionalSymbol</span>: <span class="hljs-built_in">Symbol</span>,
 
         <span class="hljs-comment">// Anything that can be rendered: numbers, strings, elements or an array</span>
         <span class="hljs-comment">// (or fragment) containing these types.</span>
@@ -724,7 +724,7 @@ Component has the shorthand methods to create links to its state record elements
 <h3 id="link-action-prevvalue-event-newvalue-">link.action( ( prevValue, event ) =&gt; newValue )</h3>
 <p>Convert the link to the UI event handler <code>event =&gt; void</code> which will transform the link using the given function.</p>
 <p><code>link.action</code> takes transform function, and produce a new function which takes single <code>event</code> argument.
-When it&#39;s called, <code>event</code> and link <code>value</code> are passes as transform parameters, and link will be updated 
+When it&#39;s called, <code>event</code> and link <code>value</code> are passes as transform parameters, and link will be updated
 with returned value.</p>
 <pre><code class="highlight javascript"><span class="hljs-comment">// simple click event handler...</span>
 &lt;button onClick={ boolLink.action( <span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> !x ) } /&gt;
@@ -803,15 +803,15 @@ Whenever it returns <code>undefined</code>, the corresponding element is be skip
 Whenever resulting link is assigned with new value, it will flip <code>element</code> in the array.</p>
 <p>Useful for the large checkbox groups.</p>
 <h1 id="record-and-collection">Record and Collection</h1>
-<p>React-MVx relies of <a href="https://volicon.github.io/Type-R/">Type-R</a> framework to manage a multi-layer application state.</p>
+<p>React-MVx relies of <a href="https://volijs.github.io/Type-R/">Type-R</a> framework to manage a multi-layer application state.</p>
 <ul>
-<li><a href="https://volicon.github.io/Type-R/#record">Record</a> class is used to manage component&#39;s state.</li>
-<li>The subset of the <a href="https://volicon.github.io/Type-R/#definition">Record attributes type annotation</a> is used to define props and context.</li>
-<li><a href="https://volicon.github.io/Type-R/#store">Store</a> class is used to represent component&#39;s store (also called &quot;local store&quot;), which is typically used in the root component of SPA page associated with a route. The state of the children components uses upper component&#39;s stores to resolve id-references.</li>
-<li>Type-R <a href="https://volicon.github.io/Type-R/#-static-store-global">global store</a> may be used as a store for the data shared by application pages. This store is used to resolve id-references in case if local stores lookup failed.</li>
+<li><a href="https://volijs.github.io/Type-R/#record">Record</a> class is used to manage component&#39;s state.</li>
+<li>The subset of the <a href="https://volijs.github.io/Type-R/#definition">Record attributes type annotation</a> is used to define props and context.</li>
+<li><a href="https://volijs.github.io/Type-R/#store">Store</a> class is used to represent component&#39;s store (also called &quot;local store&quot;), which is typically used in the root component of SPA page associated with a route. The state of the children components uses upper component&#39;s stores to resolve id-references.</li>
+<li>Type-R <a href="https://volijs.github.io/Type-R/#-static-store-global">global store</a> may be used as a store for the data shared by application pages. This store is used to resolve id-references in case if local stores lookup failed.</li>
 </ul>
 <aside class="warning">
-The meaning of the Store in Type-R and React-Mvx is very different to that in other frameworks. The sole reason you need the store is to have collections of records which are being used to resolve id-references. If you don't have <a href="https://volicon.github.io/Type-R/#id-references">id-references</a> in JSON, you don't need stores. Use state instead.
+The meaning of the Store in Type-R and React-Mvx is very different to that in other frameworks. The sole reason you need the store is to have collections of records which are being used to resolve id-references. If you don't have <a href="https://volijs.github.io/Type-R/#id-references">id-references</a> in JSON, you don't need stores. Use state instead.
 </aside><h1 id="data-binding">Data binding</h1>
 <h2 id="ad-hoc-data-binding">Ad-hoc data binding</h2>
 <h3 id="-link-props-">{ ...link.props }</h3>
@@ -904,7 +904,7 @@ Like &quot;&quot; -&gt; &quot;-&quot; -&gt; &quot;-0&quot; -&gt; &quot;-0.&quot;
 &lt;NumberInput valueLink={ link } positive={ true }/&gt;
 </code></pre>
 <h3 id="checkboxes">Checkboxes</h3>
-<p>There are different ways how you can handle the checkbox components. The problem of the standard 
+<p>There are different ways how you can handle the checkbox components. The problem of the standard
 checkbox control, though, is that it&#39;s not that easily styled.</p>
 <p><code>tags.jsx</code> contains the custom checkbox and radio components implemented using the plain <code>&lt;div /&gt;</code>
  element which toggles <code>selected</code> class on click. By default, it has <code>checkbox</code> CSS class,

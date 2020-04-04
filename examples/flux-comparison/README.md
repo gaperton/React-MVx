@@ -66,4 +66,4 @@ And that type of isolation is exactly what we want, when our system grow large. 
 ![](unidirectional-data-flow.jpg)
 
 On a longer example, difference will become even bigger. Why? Because, we got quite [advanced facilities to
-deal with complex data](https://github.com/Volicon/NestedTypes/blob/master/docs/RelationsGuide.md) up our sleeve, which will come into play. They don't.
+deal with complex data](https://github.com/VoliJs/NestedTypes/blob/master/docs/RelationsGuide.md) up our sleeve, which will come into play. They don't.
